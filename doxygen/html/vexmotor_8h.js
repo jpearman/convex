@@ -1,0 +1,45 @@
+var vexmotor_8h =
+[
+    [ "_vexMotor", "struct__vex_motor.html", "struct__vex_motor" ],
+    [ "kVexMotorNormal", "vexmotor_8h.html#a92ed076752a09f9118679a31d4a60ea2", null ],
+    [ "kVexMotorReversed", "vexmotor_8h.html#a1b37a85fe25cfbd0ffb963aacb406b40", null ],
+    [ "vexMotor", "vexmotor_8h.html#aa5f1a07cf1d824e651883e0e4ea2ce6a", null ],
+    [ "tVexMotorType", "vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819", [
+      [ "kVexMotorUndefined", "vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819affb153e903c4081ca22d1ac404c8b2c9", null ],
+      [ "kVexMotor269", "vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819a72475b4ebe21681da1859d0c7fdb016c", null ],
+      [ "kVexMotor393T", "vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819a93027887fea781a9f4dbc5fb618fc8a4", null ],
+      [ "kVexMotor393S", "vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819a377c1e136d92dd56b697a9db1c230ebd", null ]
+    ] ],
+    [ "tVexMotor", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97", [
+      [ "kVexMotor_None", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97acf9fd52feb616b4b271a74f562f1ebec", null ],
+      [ "kVexMotor_1", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a5554846dcf0617d679eb255548d05dd8", null ],
+      [ "kVexMotor_2", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a8c3b9e36a7a245882bd5fbff60aa11dd", null ],
+      [ "kVexMotor_3", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97af83dc9ed5e5e18d41cf936628e0c3c5a", null ],
+      [ "kVexMotor_4", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97ad6e09eab140b8bc4e0fd4f2abff869b4", null ],
+      [ "kVexMotor_5", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a10b724b72882b09e48c351ff974a6927", null ],
+      [ "kVexMotor_6", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97aa11f5074137521a2450b781ea92743c7", null ],
+      [ "kVexMotor_7", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97aec66aedd7e2313ee87969e687a59f5a3", null ],
+      [ "kVexMotor_8", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97abffe6fad2cf547c557a6e388b39fb9e3", null ],
+      [ "kVexMotor_9", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97ae3e5df98c282d1d31cedbe512b32066d", null ],
+      [ "kVexMotor_10", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a55aab9faf3619870d88cbe2e5ca5da54", null ],
+      [ "kVexMotorNum", "vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a372ce9c349210d6622c2055fb3b3d114", null ]
+    ] ],
+    [ "vexMotorInit", "vexmotor_8h.html#a13559c2f96ffe4b07b88f6d94355aab5", null ],
+    [ "vexMotorSet", "vexmotor_8h.html#a763ff61e33f6b0faef17f4b6c215eef8", null ],
+    [ "vexMotorGet", "vexmotor_8h.html#a17e99d015ffb95737f12a33dac818b57", null ],
+    [ "vexMotorStopAll", "vexmotor_8h.html#a2c9585d4896babe2bda75ca64353e63c", null ],
+    [ "vexMotorTypeSet", "vexmotor_8h.html#a1025331b8626ef76a24a892f374c2c83", null ],
+    [ "vexMotorTypeGet", "vexmotor_8h.html#a43cd68ba99b4aaa0ed95f08ffc9270ee", null ],
+    [ "vexMotorDirectionSet", "vexmotor_8h.html#ae64f633bee0cc1d7b9ab9ee66197b08e", null ],
+    [ "vexMotorDirectionGet", "vexmotor_8h.html#a4eea516846e174834d0d89d418b45084", null ],
+    [ "vexMotorDebug", "vexmotor_8h.html#af0d6e1aac1a3c48eedca563623fb3410", null ],
+    [ "vexMotorPositionSet", "vexmotor_8h.html#a3197e2895bccfed36934669d8c82b97f", null ],
+    [ "vexMotorPositionGet", "vexmotor_8h.html#acc17a38d114df67353cacb87fa8c38bc", null ],
+    [ "vexMotorPositionGetCallback", "vexmotor_8h.html#ab6a999d4e080f943c68273016340fd71", null ],
+    [ "vexMotorPositionSetCallback", "vexmotor_8h.html#a26c2ee17915d12663d6d49dedce072f9", null ],
+    [ "vexMotorEncoderIdCallback", "vexmotor_8h.html#a1634cfabbad76185d40b4ef6c9128d55", null ],
+    [ "vexMotorEncoderIdGet", "vexmotor_8h.html#a32505b91e17f7877870152b31978d775", null ],
+    [ "vexMotorPwmInit", "vexmotor_8h.html#a7dd775936efe0a39c1b7aaa0f279daac", null ],
+    [ "vexMotorPwmSet_0", "vexmotor_8h.html#a2d980243d09cb50b56458bf202360a89", null ],
+    [ "vexMotorPwmSet_9", "vexmotor_8h.html#a2553ed7b8b13223a55ddcdf411516769", null ]
+];

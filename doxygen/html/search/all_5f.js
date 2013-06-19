@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['_5fimedata',['_imeData',['../struct__ime_data.html',1,'']]],
+  ['_5fiodef',['_ioDef',['../struct__io_def.html',1,'']]],
+  ['_5fjsdata',['_jsdata',['../struct__jsdata.html',1,'']]],
+  ['_5flcddata',['_LcdData',['../struct___lcd_data.html',1,'']]],
+  ['_5frctask',['_rcTask',['../struct__rc_task.html',1,'']]],
+  ['_5fsetmotor',['_SetMotor',['../smartmotor_8c.html#af00cc3c5f3aeec6476139ca32baadf63',1,'_SetMotor(int index, int value, bool_t immediate,...):&#160;smartmotor.c'],['../smartmotor_8h.html#af00cc3c5f3aeec6476139ca32baadf63',1,'_SetMotor(int index, int value, bool_t immediate,...):&#160;smartmotor.c']]],
+  ['_5fsmartcontroller',['_smartController',['../struct__smart_controller.html',1,'']]],
+  ['_5fsmartmotorcontrollergetptr',['_SmartMotorControllerGetPtr',['../smartmotor_8h.html#a77b4d54ee4211a6eeea42aa261aea78e',1,'smartmotor.h']]],
+  ['_5fsmartmotorgetcurrent',['_SmartMotorGetCurrent',['../smartmotor_8c.html#a2370585f658aa24f640eaf01234cdc78',1,'_SmartMotorGetCurrent(tVexMotor index, int s,...):&#160;smartmotor.c'],['../smartmotor_8h.html#a2370585f658aa24f640eaf01234cdc78',1,'_SmartMotorGetCurrent(tVexMotor index, int s,...):&#160;smartmotor.c']]],
+  ['_5fsmartmotorgetptr',['_SmartMotorGetPtr',['../smartmotor_8h.html#a739e5de7622365612b4bb2e4cb3df719',1,'smartmotor.h']]],
+  ['_5fsmartmotorsaddpowerextender',['_SmartMotorsAddPowerExtender',['../smartmotor_8c.html#ac620eaa25a2d711bde154e7bcdefec28',1,'_SmartMotorsAddPowerExtender(int p0, int p1, int p2, int p3,...):&#160;smartmotor.c'],['../smartmotor_8h.html#ac620eaa25a2d711bde154e7bcdefec28',1,'_SmartMotorsAddPowerExtender(int p0, int p1, int p2, int p3,...):&#160;smartmotor.c']]],
+  ['_5fsmartmotorsetlimitcurent',['_SmartMotorSetLimitCurent',['../smartmotor_8c.html#a6fb816815baea9d44c3f812a88759330',1,'_SmartMotorSetLimitCurent(tVexMotor index, float current,...):&#160;smartmotor.c'],['../smartmotor_8h.html#a6fb816815baea9d44c3f812a88759330',1,'_SmartMotorSetLimitCurent(tVexMotor index, float current,...):&#160;smartmotor.c']]],
+  ['_5fsmartmotorsetrpmsensor',['_SmartMotorSetRpmSensor',['../smartmotor_8c.html#a8031e89f924d781680d357b785552b99',1,'_SmartMotorSetRpmSensor(tVexMotor index, tVexAnalogPin port, float ticks_per_rev, bool_t reversed,...):&#160;smartmotor.c'],['../smartmotor_8h.html#a7ac0468c9ffc1f2310a46fa7c335ea3d',1,'_SmartMotorSetRpmSensor(tVexMotor index, tVexAnalogPin port, float ticks_per_rev, bool_t revesed,...):&#160;smartmotor.c']]],
+  ['_5fspidata',['_SpiData',['../struct___spi_data.html',1,'']]],
+  ['_5fspirxpacket',['_spiRxPacket',['../union__spi_rx_packet.html',1,'']]],
+  ['_5fspirxpak',['_spiRxPak',['../struct__spi_rx_packet_1_1__spi_rx_pak.html',1,'_spiRxPacket']]],
+  ['_5fspitxpacket',['_spiTxPacket',['../union__spi_tx_packet.html',1,'']]],
+  ['_5fspitxpak',['_spiTxPak',['../struct__spi_tx_packet_1_1__spi_tx_pak.html',1,'_spiTxPacket']]],
+  ['_5fvexdigicfg',['_vexDigiCfg',['../struct__vex_digi_cfg.html',1,'']]],
+  ['_5fveximedata',['_vexImeData',['../struct__vex_ime_data.html',1,'']]],
+  ['_5fvexmotor',['_vexMotor',['../struct__vex_motor.html',1,'']]],
+  ['_5fvexmotorcfg',['_vexMotorCfg',['../struct__vex_motor_cfg.html',1,'']]],
+  ['_5fvexquadencoder_5ft',['_vexQuadEncoder_t',['../struct__vex_quad_encoder__t.html',1,'']]],
+  ['_5fvexsonar_5ft',['_vexSonar_t',['../struct__vex_sonar__t.html',1,'']]],
+  ['_5fvsl_5fct',['_vsl_ct',['../struct__vsl__ct.html',1,'']]]
+];
