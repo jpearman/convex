@@ -2,6 +2,7 @@ var searchData=
 [
   ['vexdigicfg',['vexDigiCfg',['../vexconfig_8h.html#a2bdd27c8d1c7f9756e63867955ac60f1',1,'vexconfig.h']]],
   ['veximedata',['vexImeData',['../vexime_8h.html#a0ab5eaaf9656b0a6a49db3ed57421009',1,'vexime.h']]],
+  ['vexlcdbutton',['vexLcdButton',['../vexlcd_8h.html#affa072242c7aa0c9e26039ec9c800166',1,'vexlcd.h']]],
   ['vexmotor',['vexMotor',['../vexmotor_8h.html#aa5f1a07cf1d824e651883e0e4ea2ce6a',1,'vexmotor.h']]],
   ['vexmotorcfg',['vexMotorCfg',['../vexconfig_8h.html#af72b38966173b1c850edb663eafbd9f0',1,'vexconfig.h']]],
   ['vexquadencoder_5ft',['vexQuadEncoder_t',['../vexencoder_8h.html#ace438a95b456942fcff946c80b715926',1,'vexencoder.h']]],

@@ -4,6 +4,7 @@ var annotated =
     [ "_ioDef", "struct__io_def.html", "struct__io_def" ],
     [ "_jsdata", "struct__jsdata.html", "struct__jsdata" ],
     [ "_LcdData", "struct___lcd_data.html", "struct___lcd_data" ],
+    [ "_pidController", "struct__pid_controller.html", "struct__pid_controller" ],
     [ "_rcTask", "struct__rc_task.html", "struct__rc_task" ],
     [ "_smartController", "struct__smart_controller.html", "struct__smart_controller" ],
     [ "_SpiData", "struct___spi_data.html", "struct___spi_data" ],

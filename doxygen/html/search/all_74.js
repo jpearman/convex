@@ -8,6 +8,7 @@ var searchData=
   ['t_5fx_5forigin',['T_X_ORIGIN',['../apollo_8h.html#a85ecfd97560a9a4885d985db560785f4',1,'apollo.h']]],
   ['t_5fy_5forigin',['T_Y_ORIGIN',['../apollo_8h.html#a0908409f1f8fea9f5c62be17222fac78',1,'apollo.h']]],
   ['target_5fcurrent',['target_current',['../structsmart_motor.html#ad0dde8cc8b9f87ad0bfa060e67a9c9b7',1,'smartMotor']]],
+  ['target_5fvalue',['target_value',['../struct__pid_controller.html#a7678870ce09fbeabf20ffa6d4fbef8eb',1,'_pidController']]],
   ['task',['task',['../robotc__glue_8h.html#a8bc22769f445ed91abfcbac376dea14d',1,'robotc_glue.h']]],
   ['tctlindex',['tCtlIndex',['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749',1,'vexctl.h']]],
   ['temperature',['temperature',['../structsmart_motor.html#afc1d28cfbce795d6ea954ebe725241f5',1,'smartMotor::temperature()'],['../struct__smart_controller.html#afc1d28cfbce795d6ea954ebe725241f5',1,'_smartController::temperature()']]],

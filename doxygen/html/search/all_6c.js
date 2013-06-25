@@ -1,6 +1,7 @@
 var searchData=
 [
   ['l_5fmotor',['l_motor',['../structsmart_motor.html#ab041b3ad984a1f4dcf26f876329337cf',1,'smartMotor']]],
+  ['last_5ferror',['last_error',['../struct__pid_controller.html#a53bf2ded26ca455e1227890c20123cd9',1,'_pidController']]],
   ['lastpgmtime',['lastPgmTime',['../structsmart_motor.html#a8895a12eecc57e45becfceb4027bed2d',1,'smartMotor']]],
   ['lcd_5fbuf_5fmax',['LCD_BUF_MAX',['../vexlcd_8c.html#a960d60a893782323d6d64c121ad50a91',1,'vexlcd.c']]],
   ['lcd_5fdisplays',['LCD_DISPLAYS',['../vexlcd_8c.html#aef8cedd5cc1b2c665b6e0a826200de84',1,'vexlcd.c']]],

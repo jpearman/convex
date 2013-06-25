@@ -5,6 +5,7 @@ var globals_func =
     [ "c", "globals_func_0x63.html", null ],
     [ "d", "globals_func_0x64.html", null ],
     [ "m", "globals_func_0x6d.html", null ],
+    [ "p", "globals_func_0x70.html", null ],
     [ "s", "globals_func_0x73.html", null ],
     [ "v", "globals_func_0x76.html", null ]
 ];

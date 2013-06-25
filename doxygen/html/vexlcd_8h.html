@@ -107,6 +107,7 @@ $(document).ready(function(){initNavTree('vexlcd_8h.html','');});
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">vexlcd.h File Reference</div>  </div>
@@ -129,12 +130,48 @@ Macros</h2></td></tr>
 <tr class="memitem:a9fdc4370838ae8304cf69565c01cdfdd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a9fdc4370838ae8304cf69565c01cdfdd">VEX_LCD_BACKLIGHT</a>&#160;&#160;&#160;0x01</td></tr>
 <tr class="memdesc:a9fdc4370838ae8304cf69565c01cdfdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">bit for turning backlight on  <a href="#a9fdc4370838ae8304cf69565c01cdfdd">More...</a><br/></td></tr>
 <tr class="separator:a9fdc4370838ae8304cf69565c01cdfdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40b8daaa1829ab05c27db4e9835d98f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a40b8daaa1829ab05c27db4e9835d98f8">VEX_LCD_DISPLAY_1</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a40b8daaa1829ab05c27db4e9835d98f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD display on UART1.  <a href="#a40b8daaa1829ab05c27db4e9835d98f8">More...</a><br/></td></tr>
+<tr class="separator:a40b8daaa1829ab05c27db4e9835d98f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab32e5463647b9342d59b5107042a0b62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#ab32e5463647b9342d59b5107042a0b62">VEX_LCD_DISPLAY_2</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ab32e5463647b9342d59b5107042a0b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD display on UART2.  <a href="#ab32e5463647b9342d59b5107042a0b62">More...</a><br/></td></tr>
+<tr class="separator:ab32e5463647b9342d59b5107042a0b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b23ad8b09aaad2d0aebf0a70df9772e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a1b23ad8b09aaad2d0aebf0a70df9772e">VEX_LCD_LINE_1</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a1b23ad8b09aaad2d0aebf0a70df9772e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upper LCD display line.  <a href="#a1b23ad8b09aaad2d0aebf0a70df9772e">More...</a><br/></td></tr>
+<tr class="separator:a1b23ad8b09aaad2d0aebf0a70df9772e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a789d533b288fb5c81ab1562e54411054"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a789d533b288fb5c81ab1562e54411054">VEX_LCD_LINE_2</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a789d533b288fb5c81ab1562e54411054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lower LCD display line.  <a href="#a789d533b288fb5c81ab1562e54411054">More...</a><br/></td></tr>
+<tr class="separator:a789d533b288fb5c81ab1562e54411054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a4a74689655fe37707d4518ed3f4efe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a5a4a74689655fe37707d4518ed3f4efe">VEX_LCD_LINE_T</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a5a4a74689655fe37707d4518ed3f4efe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upper LCD display line.  <a href="#a5a4a74689655fe37707d4518ed3f4efe">More...</a><br/></td></tr>
+<tr class="separator:a5a4a74689655fe37707d4518ed3f4efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3332fc160201eced6e1ff642527adb50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a3332fc160201eced6e1ff642527adb50">VEX_LCD_LINE_B</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a3332fc160201eced6e1ff642527adb50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lower LCD display line.  <a href="#a3332fc160201eced6e1ff642527adb50">More...</a><br/></td></tr>
+<tr class="separator:a3332fc160201eced6e1ff642527adb50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a1f483849b7d23c18bcae30859d47f266"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct___lcd_data.html">_LcdData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a1f483849b7d23c18bcae30859d47f266">LcdData</a></td></tr>
 <tr class="memdesc:a1f483849b7d23c18bcae30859d47f266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds all data for a single LCD display.  <a href="#a1f483849b7d23c18bcae30859d47f266">More...</a><br/></td></tr>
 <tr class="separator:a1f483849b7d23c18bcae30859d47f266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affa072242c7aa0c9e26039ec9c800166"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dc">_vexLcdButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#affa072242c7aa0c9e26039ec9c800166">vexLcdButton</a></td></tr>
+<tr class="separator:affa072242c7aa0c9e26039ec9c800166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a7942f243624e5b3078cab0a18adcc8dc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dc">_vexLcdButton</a> { <br/>
+&#160;&#160;<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dca1bd83054dc1894ef69a0e590944be356">kLcdButtonNone</a> = 0, 
+<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dca7c722b35ff1a120f5fd3da9cf450c07e">kLcdButtonLeft</a> = 1, 
+<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dca7f66cb8748fe50cbfc0fcc416ae8b655">kLcdButtonCenter</a> = 2, 
+<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dca56551c9fd5d0927cf842932859eafc96">kLcdButtonLeftCenter</a> = 3, 
+<br/>
+&#160;&#160;<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dcaf7a35b28b6499dda4e52204d30960788">kLcdButtonRight</a> = 4, 
+<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dca7f99adbf9004b84b7511b18d6acc1c89">kLcdButtonLeftRight</a> = 5, 
+<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dcab370d2599625b6319c189c6e5ec256e7">kLcdButtonCenterRight</a> = 6, 
+<a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dcae11a261d0805b9e7a55d6bcf7cb2ebd1">kLcdButtonLeftCenterRight</a> = 7
+<br/>
+ }</td></tr>
+<tr class="separator:a7942f243624e5b3078cab0a18adcc8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -142,14 +179,26 @@ Functions</h2></td></tr>
 <tr class="memdesc:a29eda027068156cafeba98f61c155637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a LCD and bind to serial port.  <a href="#a29eda027068156cafeba98f61c155637">More...</a><br/></td></tr>
 <tr class="separator:a29eda027068156cafeba98f61c155637"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac27cfcd428974e509902d299feeb6c9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#ac27cfcd428974e509902d299feeb6c9e">vexLcdSet</a> (int16_t display, int16_t line, char *buf)</td></tr>
-<tr class="memdesc:ac27cfcd428974e509902d299feeb6c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show text on LCD line.  <a href="#ac27cfcd428974e509902d299feeb6c9e">More...</a><br/></td></tr>
+<tr class="memdesc:ac27cfcd428974e509902d299feeb6c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show text from beginning of an LCD line.  <a href="#ac27cfcd428974e509902d299feeb6c9e">More...</a><br/></td></tr>
 <tr class="separator:ac27cfcd428974e509902d299feeb6c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf3b4305892e3e6db65240904ad9f591"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#adf3b4305892e3e6db65240904ad9f591">vexLcdSetAt</a> (int16_t display, int16_t line, int16_t col, char *buf)</td></tr>
+<tr class="memdesc:adf3b4305892e3e6db65240904ad9f591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Show text on LCD line and column.  <a href="#adf3b4305892e3e6db65240904ad9f591">More...</a><br/></td></tr>
+<tr class="separator:adf3b4305892e3e6db65240904ad9f591"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b0fcd3685e10dfb695240ccb90b04fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a4b0fcd3685e10dfb695240ccb90b04fe">vexLcdPrintf</a> (int16_t display, int16_t line, char *fmt,...)</td></tr>
 <tr class="memdesc:a4b0fcd3685e10dfb695240ccb90b04fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formated output to LCD - similar to printf.  <a href="#a4b0fcd3685e10dfb695240ccb90b04fe">More...</a><br/></td></tr>
 <tr class="separator:a4b0fcd3685e10dfb695240ccb90b04fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0699dbdf890c6b4be62d08a15bf7145"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#ac0699dbdf890c6b4be62d08a15bf7145">vexLcdPrintfAt</a> (int16_t display, int16_t line, int16_t col, char *fmt,...)</td></tr>
+<tr class="memdesc:ac0699dbdf890c6b4be62d08a15bf7145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formated output to LCD - similar to printf.  <a href="#ac0699dbdf890c6b4be62d08a15bf7145">More...</a><br/></td></tr>
+<tr class="separator:ac0699dbdf890c6b4be62d08a15bf7145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9b6677584d92700bd0f412437ba20bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#ad9b6677584d92700bd0f412437ba20bc">vexLcdClearLine</a> (int16_t display, int16_t line)</td></tr>
+<tr class="memdesc:ad9b6677584d92700bd0f412437ba20bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear a given lcd display line.  <a href="#ad9b6677584d92700bd0f412437ba20bc">More...</a><br/></td></tr>
+<tr class="separator:ad9b6677584d92700bd0f412437ba20bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4758037d7bac0eb10fb3b2f81b6b7383"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a4758037d7bac0eb10fb3b2f81b6b7383">vexLcdBacklight</a> (int16_t display, int16_t value)</td></tr>
 <tr class="memdesc:a4758037d7bac0eb10fb3b2f81b6b7383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn on or off the backlight.  <a href="#a4758037d7bac0eb10fb3b2f81b6b7383">More...</a><br/></td></tr>
 <tr class="separator:a4758037d7bac0eb10fb3b2f81b6b7383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84111e6d5da9a14099668a2b29c4c2f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vexlcd_8h.html#affa072242c7aa0c9e26039ec9c800166">vexLcdButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#a84111e6d5da9a14099668a2b29c4c2f7">vexLcdButtonGet</a> (int16_t display)</td></tr>
+<tr class="memdesc:a84111e6d5da9a14099668a2b29c4c2f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current button status.  <a href="#a84111e6d5da9a14099668a2b29c4c2f7">More...</a><br/></td></tr>
+<tr class="separator:a84111e6d5da9a14099668a2b29c4c2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adee18d4c7db2088bd578a7bb377b339e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexlcd_8h.html#adee18d4c7db2088bd578a7bb377b339e">vexLcdCheckReceiveMessage</a> (<a class="el" href="vexlcd_8h.html#a1f483849b7d23c18bcae30859d47f266">LcdData</a> *lcd)</td></tr>
 <tr class="memdesc:adee18d4c7db2088bd578a7bb377b339e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for receive data and store.  <a href="#adee18d4c7db2088bd578a7bb377b339e">More...</a><br/></td></tr>
 <tr class="separator:adee18d4c7db2088bd578a7bb377b339e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +226,90 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a40b8daaa1829ab05c27db4e9835d98f8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VEX_LCD_DISPLAY_1&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>LCD display on UART1. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab32e5463647b9342d59b5107042a0b62"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VEX_LCD_DISPLAY_2&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>LCD display on UART2. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1b23ad8b09aaad2d0aebf0a70df9772e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VEX_LCD_LINE_1&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Upper LCD display line. </p>
+
+</div>
+</div>
+<a class="anchor" id="a789d533b288fb5c81ab1562e54411054"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VEX_LCD_LINE_2&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lower LCD display line. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5a4a74689655fe37707d4518ed3f4efe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VEX_LCD_LINE_T&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Upper LCD display line. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3332fc160201eced6e1ff642527adb50"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VEX_LCD_LINE_B&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lower LCD display line. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="a1f483849b7d23c18bcae30859d47f266"></a>
 <div class="memitem">
@@ -189,6 +322,49 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Holds all data for a single LCD display. </p>
+
+</div>
+</div>
+<a class="anchor" id="affa072242c7aa0c9e26039ec9c800166"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dc">_vexLcdButton</a>  <a class="el" href="vexlcd_8h.html#affa072242c7aa0c9e26039ec9c800166">vexLcdButton</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="vexlcd_8h.html#a7942f243624e5b3078cab0a18adcc8dc">_vexLcdButton</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dca1bd83054dc1894ef69a0e590944be356"></a>kLcdButtonNone</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dca7c722b35ff1a120f5fd3da9cf450c07e"></a>kLcdButtonLeft</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dca7f66cb8748fe50cbfc0fcc416ae8b655"></a>kLcdButtonCenter</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dca56551c9fd5d0927cf842932859eafc96"></a>kLcdButtonLeftCenter</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dcaf7a35b28b6499dda4e52204d30960788"></a>kLcdButtonRight</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dca7f99adbf9004b84b7511b18d6acc1c89"></a>kLcdButtonLeftRight</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dcab370d2599625b6319c189c6e5ec256e7"></a>kLcdButtonCenterRight</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7942f243624e5b3078cab0a18adcc8dcae11a261d0805b9e7a55d6bcf7cb2ebd1"></a>kLcdButtonLeftCenterRight</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -258,7 +434,64 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Show text on LCD line. </p>
+<p>Show text from beginning of an LCD line. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">display</td><td>The LCD display id, 0 or 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">line</td><td>The line to display the text on, 0 or 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>Pointer to char buffer with test to display </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adf3b4305892e3e6db65240904ad9f591"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexLcdSetAt </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>display</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Show text on LCD line and column. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">display</td><td>The LCD display id, 0 or 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">line</td><td>The line to display the text on, 0 or 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">col</td><td>The position at which to start displaying text </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>Pointer to char buffer with test to display </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -310,6 +543,96 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ac0699dbdf890c6b4be62d08a15bf7145"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexLcdPrintfAt </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>display</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>fmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Formated output to LCD - similar to printf. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">display</td><td>The LCD display id, 0 or 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">line</td><td>The line to display the text on, 0 or 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">col</td><td>The position at which to start displaying text </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fmt</td><td>A sprintf style format string with optional variables </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad9b6677584d92700bd0f412437ba20bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexLcdClearLine </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>display</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear a given lcd display line. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">display</td><td>The LCD display id, 0 or 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">line</td><td>The line to display the text on, 0 or 1 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a4758037d7bac0eb10fb3b2f81b6b7383"></a>
 <div class="memitem">
 <div class="memproto">
@@ -342,6 +665,31 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a84111e6d5da9a14099668a2b29c4c2f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="vexlcd_8h.html#affa072242c7aa0c9e26039ec9c800166">vexLcdButton</a> vexLcdButtonGet </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>display</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current button status. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">display</td><td>The LCD display id, 0 or 1 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The button (or buttons) pressed </dd></dl>
 
 </div>
 </div>
@@ -454,7 +802,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexlcd_8h.html">vexlcd.h</a></li>
-    <li class="footer">Generated on Tue Jun 18 2013 20:43:12 for Convex by
+    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

@@ -5,6 +5,7 @@ var vexcortex_8c =
     [ "CleanupTask", "vexcortex_8c.html#ac708e4b167d25fd3fd57f773cfb1b372", null ],
     [ "vexTaskRegister", "vexcortex_8c.html#a08847f8db8d168c4f8acad495beda363", null ],
     [ "vexTaskRegisterPersistant", "vexcortex_8c.html#a1c7abfe1bdc870614d3b7c9c09b6c412", null ],
+    [ "vexTaskEmergencyStop", "vexcortex_8c.html#ae20339f269fec77376a5ee00407a1ce5", null ],
     [ "vexSleep", "vexcortex_8c.html#a0069824f3952a61165be297146701489", null ],
     [ "vexCortexInit", "vexcortex_8c.html#aade65211a50360620fdd4b72256f3e95", null ],
     [ "vexConsoleInit", "vexcortex_8c.html#a495b476edacff72d6eff8d5bafe41223", null ],

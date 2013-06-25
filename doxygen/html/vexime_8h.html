@@ -206,15 +206,15 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ac3f48915e83bb314828cdda02c197cf3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3">tVexImeChannels</a> { <br/>
-&#160;&#160;<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a59bfbf4d7aa18dccaaf78ab995dbff89">kImeChannel_0</a> = 0, 
-<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a54f6de3e7c9ee9f8debcbcecb83611e9">kImeChannel_1</a> = 1, 
-<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3aa731d67bf5df6a2b88b9b0d3004a92cf">kImeChannel_2</a> = 2, 
-<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a5b2deecabf2f2e2301784a27fec5e677">kImeChannel_3</a> = 3, 
+&#160;&#160;<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a54f6de3e7c9ee9f8debcbcecb83611e9">kImeChannel_1</a> = 0, 
+<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3aa731d67bf5df6a2b88b9b0d3004a92cf">kImeChannel_2</a> = 1, 
+<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a5b2deecabf2f2e2301784a27fec5e677">kImeChannel_3</a> = 2, 
+<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a94b474ed1cc8c37eaa9c319f9f24bccf">kImeChannel_4</a> = 3, 
 <br/>
-&#160;&#160;<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a94b474ed1cc8c37eaa9c319f9f24bccf">kImeChannel_4</a> = 4, 
-<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a484d89ef005e402754c79d1d00552e63">kImeChannel_5</a> = 5, 
-<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a92e78d8858b7488f9d3b5dd972a3c2db">kImeChannel_6</a> = 6, 
-<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a45ca9d5dd0c4c4c54aad48d548d0c605">kImeChannel_7</a> = 7, 
+&#160;&#160;<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a484d89ef005e402754c79d1d00552e63">kImeChannel_5</a> = 4, 
+<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a92e78d8858b7488f9d3b5dd972a3c2db">kImeChannel_6</a> = 5, 
+<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a45ca9d5dd0c4c4c54aad48d548d0c605">kImeChannel_7</a> = 6, 
+<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a49c4ccd2d3109ac382414e94c4930489">kImeChannel_8</a> = 7, 
 <br/>
 &#160;&#160;<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3afee62ed561e3b1babf45216d29fe39ca">kImeTotal</a>, 
 <a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a0f4f6a2f40365e7a581bbebf544cd342">kImeChannelNone</a> = 99
@@ -234,9 +234,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a69b05de0c45a146703ac5988db54fae5"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8h.html#a69b05de0c45a146703ac5988db54fae5">vexImeGetId</a> (int16_t channel)</td></tr>
 <tr class="memdesc:a69b05de0c45a146703ac5988db54fae5"><td class="mdescLeft">&#160;</td><td class="mdescRight">return encoder id  <a href="#a69b05de0c45a146703ac5988db54fae5">More...</a><br/></td></tr>
 <tr class="separator:a69b05de0c45a146703ac5988db54fae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af147a8c23269e3a164b1bdfe5dd0f0ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8h.html#af147a8c23269e3a164b1bdfe5dd0f0ab">vexIMEInit</a> (I2CDriver *i2cp, <a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp)</td></tr>
-<tr class="memdesc:af147a8c23269e3a164b1bdfe5dd0f0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize IMEs on the I2C bus.  <a href="#af147a8c23269e3a164b1bdfe5dd0f0ab">More...</a><br/></td></tr>
-<tr class="separator:af147a8c23269e3a164b1bdfe5dd0f0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c8f5971c372ad42d5e64d9fc91760df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vexime_8h.html#a7239f33409962b7cf56b4c952d96b401">imeData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8h.html#a1c8f5971c372ad42d5e64d9fc91760df">vexImeGetPtr</a> (<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3">tVexImeChannels</a> channel)</td></tr>
+<tr class="memdesc:a1c8f5971c372ad42d5e64d9fc91760df"><td class="mdescLeft">&#160;</td><td class="mdescRight">return pointer to IME data structure  <a href="#a1c8f5971c372ad42d5e64d9fc91760df">More...</a><br/></td></tr>
+<tr class="separator:a1c8f5971c372ad42d5e64d9fc91760df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a8386ebaf0e115078cbcc5d68f3bb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8h.html#a53a8386ebaf0e115078cbcc5d68f3bb4">vexImeInit</a> (I2CDriver *i2cp, <a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp)</td></tr>
+<tr class="memdesc:a53a8386ebaf0e115078cbcc5d68f3bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize IMEs on the I2C bus.  <a href="#a53a8386ebaf0e115078cbcc5d68f3bb4">More...</a><br/></td></tr>
+<tr class="separator:a53a8386ebaf0e115078cbcc5d68f3bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25fe423e796a9a9c6a07eff55c577dba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8h.html#a25fe423e796a9a9c6a07eff55c577dba">vexImeSetType</a> (<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3">tVexImeChannels</a> channel, <a class="el" href="vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819">tVexMotorType</a> type)</td></tr>
 <tr class="memdesc:a25fe423e796a9a9c6a07eff55c577dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set motor type that this IME is attached to.  <a href="#a25fe423e796a9a9c6a07eff55c577dba">More...</a><br/></td></tr>
 <tr class="separator:a25fe423e796a9a9c6a07eff55c577dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -653,9 +656,7 @@ Functions</h2></td></tr>
 
 <p>IME channel definitions. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3a59bfbf4d7aa18dccaaf78ab995dbff89"></a>kImeChannel_0</em>&nbsp;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3a54f6de3e7c9ee9f8debcbcecb83611e9"></a>kImeChannel_1</em>&nbsp;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3a54f6de3e7c9ee9f8debcbcecb83611e9"></a>kImeChannel_1</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3aa731d67bf5df6a2b88b9b0d3004a92cf"></a>kImeChannel_2</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
@@ -668,6 +669,8 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3a92e78d8858b7488f9d3b5dd972a3c2db"></a>kImeChannel_6</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3a45ca9d5dd0c4c4c54aad48d548d0c605"></a>kImeChannel_7</em>&nbsp;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3a49c4ccd2d3109ac382414e94c4930489"></a>kImeChannel_8</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac3f48915e83bb314828cdda02c197cf3afee62ed561e3b1babf45216d29fe39ca"></a>kImeTotal</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
@@ -699,6 +702,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>The encoder count - the offset </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>channel is int16_t to allow this function to be used in callbacks </dd></dl>
 
 </div>
@@ -760,15 +764,41 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>The channel id (address) for this channel </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="af147a8c23269e3a164b1bdfe5dd0f0ab"></a>
+<a class="anchor" id="a1c8f5971c372ad42d5e64d9fc91760df"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vexIMEInit </td>
+          <td class="memname"><a class="el" href="vexime_8h.html#a7239f33409962b7cf56b4c952d96b401">imeData</a>* vexImeGetPtr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3">tVexImeChannels</a>&#160;</td>
+          <td class="paramname"><em>channel</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>return pointer to IME data structure </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>The encoder channel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to an imeData structure </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a53a8386ebaf0e115078cbcc5d68f3bb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexImeInit </td>
           <td>(</td>
           <td class="paramtype">I2CDriver *&#160;</td>
           <td class="paramname"><em>i2cp</em>, </td>
@@ -1597,7 +1627,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexime_8h.html">vexime.h</a></li>
-    <li class="footer">Generated on Tue Jun 18 2013 20:43:12 for Convex by
+    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

@@ -4,6 +4,7 @@ var searchData=
   ['_5fiodef',['_ioDef',['../struct__io_def.html',1,'']]],
   ['_5fjsdata',['_jsdata',['../struct__jsdata.html',1,'']]],
   ['_5flcddata',['_LcdData',['../struct___lcd_data.html',1,'']]],
+  ['_5fpidcontroller',['_pidController',['../struct__pid_controller.html',1,'']]],
   ['_5frctask',['_rcTask',['../struct__rc_task.html',1,'']]],
   ['_5fsmartcontroller',['_smartController',['../struct__smart_controller.html',1,'']]],
   ['_5fspidata',['_SpiData',['../struct___spi_data.html',1,'']]],

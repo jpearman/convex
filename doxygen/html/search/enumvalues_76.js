@@ -27,5 +27,6 @@ var searchData=
   ['vexime5',['vexIme5',['../vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7a0539146af4119aa1f6b0d53a8a8f38f5',1,'vexsensor.h']]],
   ['vexime6',['vexIme6',['../vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7a7374d8443f5564469cb40f2897ae3962',1,'vexsensor.h']]],
   ['vexime7',['vexIme7',['../vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7adaed393f32ecb38cc239b294a99d3f43',1,'vexsensor.h']]],
-  ['vexime8',['vexIme8',['../vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7a4a1c3bd4ad839bc329cb53c8433b2259',1,'vexsensor.h']]]
+  ['vexime8',['vexIme8',['../vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7a4a1c3bd4ad839bc329cb53c8433b2259',1,'vexsensor.h']]],
+  ['vexsensornone',['vexSensorNone',['../vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7a1ad318d3cfb510ce148367df8a22a28c',1,'vexsensor.h']]]
 ];

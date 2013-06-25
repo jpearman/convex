@@ -4,6 +4,7 @@ var searchData=
   ['t_5fconst_5f1',['t_const_1',['../structsmart_motor.html#a85b4f95629f24a02ddd5acc1083e28e7',1,'smartMotor::t_const_1()'],['../struct__smart_controller.html#a85b4f95629f24a02ddd5acc1083e28e7',1,'_smartController::t_const_1()']]],
   ['t_5fconst_5f2',['t_const_2',['../structsmart_motor.html#a57b6d55826de8929ada8473d2a1ae1d4',1,'smartMotor::t_const_2()'],['../struct__smart_controller.html#a57b6d55826de8929ada8473d2a1ae1d4',1,'_smartController::t_const_2()']]],
   ['target_5fcurrent',['target_current',['../structsmart_motor.html#ad0dde8cc8b9f87ad0bfa060e67a9c9b7',1,'smartMotor']]],
+  ['target_5fvalue',['target_value',['../struct__pid_controller.html#a7678870ce09fbeabf20ffa6d4fbef8eb',1,'_pidController']]],
   ['temperature',['temperature',['../structsmart_motor.html#afc1d28cfbce795d6ea954ebe725241f5',1,'smartMotor::temperature()'],['../struct__smart_controller.html#afc1d28cfbce795d6ea954ebe725241f5',1,'_smartController::temperature()']]],
   ['ticks_5fper_5frev',['ticks_per_rev',['../structsmart_motor.html#a3f9e294d86d5eedec4eee2085cc87cbc',1,'smartMotor']]],
   ['time',['time',['../struct__vex_sonar__t.html#abff537f25bc8d06192bd18aff2597aa0',1,'_vexSonar_t']]],

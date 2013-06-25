@@ -25,6 +25,7 @@ var vex_8h =
     [ "vexConsoleInit", "vex_8h.html#a6f2874efc9b81a3a55c3e5a72c3c5dca", null ],
     [ "vexTaskRegister", "vex_8h.html#a08847f8db8d168c4f8acad495beda363", null ],
     [ "vexTaskRegisterPersistant", "vex_8h.html#a1c7abfe1bdc870614d3b7c9c09b6c412", null ],
+    [ "vexTaskEmergencyStop", "vex_8h.html#a6930ce37b9659b139db671ba8d47cfe5", null ],
     [ "vexSleep", "vex_8h.html#a0069824f3952a61165be297146701489", null ],
     [ "vexWatchdogInit", "vex_8h.html#a3602218c8729a3fa41ea9a979f1dbdcb", null ],
     [ "vexWatchdogReload", "vex_8h.html#a20c9d249b570a42778a148bcbc2f1725", null ],

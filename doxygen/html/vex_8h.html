@@ -197,6 +197,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vex_8h.html#a1c7abfe1bdc870614d3b7c9c09b6c412">vexTaskRegisterPersistant</a> (char *name, bool_t p)</td></tr>
 <tr class="memdesc:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a thread so it can be terminated during vexSleep.  <a href="#a1c7abfe1bdc870614d3b7c9c09b6c412">More...</a><br/></td></tr>
 <tr class="separator:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6930ce37b9659b139db671ba8d47cfe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vex_8h.html#a6930ce37b9659b139db671ba8d47cfe5">vexTaskEmergencyStop</a> (void)</td></tr>
+<tr class="memdesc:a6930ce37b9659b139db671ba8d47cfe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop all tasks.  <a href="#a6930ce37b9659b139db671ba8d47cfe5">More...</a><br/></td></tr>
+<tr class="separator:a6930ce37b9659b139db671ba8d47cfe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0069824f3952a61165be297146701489"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vex_8h.html#a0069824f3952a61165be297146701489">vexSleep</a> (int32_t msec)</td></tr>
 <tr class="memdesc:a0069824f3952a61165be297146701489"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleep for given number of ms.  <a href="#a0069824f3952a61165be297146701489">More...</a><br/></td></tr>
 <tr class="separator:a0069824f3952a61165be297146701489"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -599,6 +602,25 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6930ce37b9659b139db671ba8d47cfe5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexTaskEmergencyStop </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stop all tasks. </p>
+<p>Call this to stop all tasks that were registered with vexTaskRegister or vexTaskRegisterPersistant. Use as emergency stop, cortex will need rebooting </p>
+
+</div>
+</div>
 <a class="anchor" id="a0069824f3952a61165be297146701489"></a>
 <div class="memitem">
 <div class="memproto">
@@ -773,7 +795,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vex_8h.html">vex.h</a></li>
-    <li class="footer">Generated on Tue Jun 18 2013 20:43:12 for Convex by
+    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

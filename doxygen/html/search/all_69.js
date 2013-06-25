@@ -28,5 +28,7 @@ var searchData=
   ['ime_5fversion_5faddr',['IME_VERSION_ADDR',['../vexime_8h.html#a00df939951c03d03608e22f55b94b0b3',1,'vexime.h']]],
   ['imedata',['imeData',['../vexime_8h.html#a7239f33409962b7cf56b4c952d96b401',1,'vexime.h']]],
   ['imes',['imes',['../struct__vex_ime_data.html#a7372d711b49be7eaa07359f3b8d9274b',1,'_vexImeData']]],
+  ['integral',['integral',['../struct__pid_controller.html#a1174af01b8a329a6d465ea6e0951b3e5',1,'_pidController']]],
+  ['integral_5flimit',['integral_limit',['../struct__pid_controller.html#a11a1beae188ca309e197e1abd2dd81f8',1,'_pidController']]],
   ['iodef',['ioDef',['../vexdigital_8h.html#a6f0762405207d731dee0a7fb844d7fe1',1,'vexdigital.h']]]
 ];

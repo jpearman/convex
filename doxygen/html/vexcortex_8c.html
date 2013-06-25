@@ -127,6 +127,7 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a04922e4673a244d94b12566890b2e96c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a04922e4673a244d94b12566890b2e96c">MAX_THREAD</a>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:a04922e4673a244d94b12566890b2e96c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for the user threads.  <a href="#a04922e4673a244d94b12566890b2e96c">More...</a><br/></td></tr>
 <tr class="separator:a04922e4673a244d94b12566890b2e96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -140,6 +141,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a1c7abfe1bdc870614d3b7c9c09b6c412">vexTaskRegisterPersistant</a> (char *name, bool_t p)</td></tr>
 <tr class="memdesc:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a thread so it can be terminated during vexSleep.  <a href="#a1c7abfe1bdc870614d3b7c9c09b6c412">More...</a><br/></td></tr>
 <tr class="separator:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae20339f269fec77376a5ee00407a1ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#ae20339f269fec77376a5ee00407a1ce5">vexTaskEmergencyStop</a> ()</td></tr>
+<tr class="memdesc:ae20339f269fec77376a5ee00407a1ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop all tasks.  <a href="#ae20339f269fec77376a5ee00407a1ce5">More...</a><br/></td></tr>
+<tr class="separator:ae20339f269fec77376a5ee00407a1ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0069824f3952a61165be297146701489"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a0069824f3952a61165be297146701489">vexSleep</a> (int32_t msec)</td></tr>
 <tr class="memdesc:a0069824f3952a61165be297146701489"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleep for given number of ms.  <a href="#a0069824f3952a61165be297146701489">More...</a><br/></td></tr>
 <tr class="separator:a0069824f3952a61165be297146701489"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,6 +172,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Storage for the user threads. </p>
 
 </div>
 </div>
@@ -253,6 +259,25 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="ae20339f269fec77376a5ee00407a1ce5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexTaskEmergencyStop </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stop all tasks. </p>
+<p>Call this to stop all tasks that were registered with vexTaskRegister or vexTaskRegisterPersistant. Use as emergency stop, cortex will need rebooting </p>
 
 </div>
 </div>
@@ -367,7 +392,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexcortex_8c.html">vexcortex.c</a></li>
-    <li class="footer">Generated on Tue Jun 18 2013 20:43:12 for Convex by
+    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

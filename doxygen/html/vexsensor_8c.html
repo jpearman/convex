@@ -118,22 +118,28 @@ $(document).ready(function(){initNavTree('vexsensor_8c.html','');});
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac5b2615ce4905d87433dae1c4a6a676e"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexsensor_8c.html#ac5b2615ce4905d87433dae1c4a6a676e">vexSensorValue</a> (<a class="el" href="vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7">tVexSensors</a> port)</td></tr>
-<tr class="memdesc:ac5b2615ce4905d87433dae1c4a6a676e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of a sensor port.  <a href="#ac5b2615ce4905d87433dae1c4a6a676e">More...</a><br/></td></tr>
-<tr class="separator:ac5b2615ce4905d87433dae1c4a6a676e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a044ad4286cc2ac4222eaa4dbd0f0902c"><td class="memItemLeft" align="right" valign="top">bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexsensor_8c.html#a044ad4286cc2ac4222eaa4dbd0f0902c">vexSensorIsAnalog</a> (<a class="el" href="vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7">tVexSensors</a> sensor)</td></tr>
+<tr class="memdesc:a044ad4286cc2ac4222eaa4dbd0f0902c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of a sensor port.  <a href="#a044ad4286cc2ac4222eaa4dbd0f0902c">More...</a><br/></td></tr>
+<tr class="separator:a044ad4286cc2ac4222eaa4dbd0f0902c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4d085ddf099e1de1c3fb545b5db4f9"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexsensor_8c.html#acf4d085ddf099e1de1c3fb545b5db4f9">vexSensorValueGet</a> (<a class="el" href="vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7">tVexSensors</a> sensor)</td></tr>
+<tr class="memdesc:acf4d085ddf099e1de1c3fb545b5db4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value of a sensor port.  <a href="#acf4d085ddf099e1de1c3fb545b5db4f9">More...</a><br/></td></tr>
+<tr class="separator:acf4d085ddf099e1de1c3fb545b5db4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e5d5048fccb2c9e7c10103b24004e21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexsensor_8c.html#a0e5d5048fccb2c9e7c10103b24004e21">vexSensorValueSet</a> (<a class="el" href="vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7">tVexSensors</a> sensor, int32_t value)</td></tr>
+<tr class="memdesc:a0e5d5048fccb2c9e7c10103b24004e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the value of a sensor port.  <a href="#a0e5d5048fccb2c9e7c10103b24004e21">More...</a><br/></td></tr>
+<tr class="separator:a0e5d5048fccb2c9e7c10103b24004e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ROBOTC style sensor interface. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ac5b2615ce4905d87433dae1c4a6a676e"></a>
+<a class="anchor" id="a044ad4286cc2ac4222eaa4dbd0f0902c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int16_t vexSensorValue </td>
+          <td class="memname">bool_t vexSensorIsAnalog </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7">tVexSensors</a>&#160;</td>
-          <td class="paramname"><em>port</em>)</td><td></td>
+          <td class="paramname"><em>sensor</em>)</td><td></td>
           <td></td>
         </tr>
       </table>
@@ -142,11 +148,72 @@ Functions</h2></td></tr>
 <p>Get the value of a sensor port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>A sensor tVexSensors port, can be analog or digital </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sensor</td><td>A sensor of type tVexSensors </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if the port is an analog sensor </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acf4d085ddf099e1de1c3fb545b5db4f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t vexSensorValueGet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7">tVexSensors</a>&#160;</td>
+          <td class="paramname"><em>sensor</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the value of a sensor port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sensor</td><td>A sensor of type tVexSensors </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the current sensor. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>A ROBOTC compatibility function </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0e5d5048fccb2c9e7c10103b24004e21"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexSensorValueSet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexsensor_8h.html#a1868795d6d11a2b222c915135e0b68e7">tVexSensors</a>&#160;</td>
+          <td class="paramname"><em>sensor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the value of a sensor port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sensor</td><td>A sensor of type tVexSensors </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Value to set the sensor to. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section note"><dt>Note</dt><dd>A ROBOTC compatibility function </dd></dl>
 
 </div>
@@ -157,7 +224,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexsensor_8c.html">vexsensor.c</a></li>
-    <li class="footer">Generated on Tue Jun 18 2013 20:43:13 for Convex by
+    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

@@ -12,10 +12,14 @@ var searchData=
   ['delaytimems',['delayTimeMs',['../structsmart_motor.html#a5a8cc605943c4c91758a5f6e286fa53d',1,'smartMotor']]],
   ['delta',['delta',['../structsmart_motor.html#a1ee4a05b54419bfadd66ee351d05812e',1,'smartMotor']]],
   ['delta_5fcount',['delta_count',['../struct__ime_data.html#ad6c78b0503c582b1c5ea8433475c1437',1,'_imeData']]],
+  ['derivative',['derivative',['../struct__pid_controller.html#a8e72ce2ff66dac2c00897016716c4eb0',1,'_pidController']]],
   ['deviceid',['deviceid',['../struct__ime_data.html#a7e7bb10926c33e76cb517b28f00abe29',1,'_imeData']]],
   ['dig_5fconfig_5fsize',['DIG_CONFIG_SIZE',['../vexconfig_8h.html#a103b9b0db8b2635593c1646e6cb2b164',1,'vexconfig.h']]],
   ['distance_5fcm',['distance_cm',['../struct__vex_sonar__t.html#a131c413ed689a7ecc79697bbae4fd68d',1,'_vexSonar_t']]],
   ['distance_5finch',['distance_inch',['../struct__vex_sonar__t.html#a5c4b18f44e4a55c0ffabaea27d08189b',1,'_vexSonar_t']]],
+  ['drive',['drive',['../struct__pid_controller.html#a58270f6be13520a468ab755acbf7bd3c',1,'_pidController']]],
+  ['drive_5fcmd',['drive_cmd',['../struct__pid_controller.html#aff3eb5f3dbdb09fbd04835cd3f01b7c3',1,'_pidController']]],
+  ['drive_5fraw',['drive_raw',['../struct__pid_controller.html#acaf3e2a2915e43945935ffb2911ac20e',1,'_pidController']]],
   ['drivesystemarcadedrive',['DriveSystemArcadeDrive',['../clawbot_8c.html#a52cd4c4301b325654eeb8d3f6a3c1f0e',1,'clawbot.c']]],
   ['drivetask',['DriveTask',['../clawbot_8c.html#a8c9c7298c1061a2987f1fb051cf50168',1,'clawbot.c']]]
 ];
