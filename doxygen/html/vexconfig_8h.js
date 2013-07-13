@@ -14,7 +14,8 @@ var vexconfig_8h =
       [ "kVexSensorSonarCm", "vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99ea14ecc1ac773ed8a06b581cb02c1c1350", null ],
       [ "kVexSensorSonarInch", "vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99eaf7cf9f3516787be7f383b1b09971a17f", null ],
       [ "kVexSensorIME", "vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99ea6362096d5697a6523409e03f3de0bfa9", null ],
-      [ "kVexSensorPotentiometer", "vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99eaa9f82511fc81a2771c542bb7e48f9312", null ]
+      [ "kVexSensorPotentiometer", "vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99eaa9f82511fc81a2771c542bb7e48f9312", null ],
+      [ "kVexSensorInterrupt", "vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99ea73869d589093317769ab25626c1981ce", null ]
     ] ],
     [ "tVexDigitalConfig", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030", [
       [ "kVexConfigInput", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a92e50d449111a666240dbfc31001ee83", null ],
@@ -22,7 +23,8 @@ var vexconfig_8h =
       [ "kVexConfigQuadEnc1", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a46e62b3eab5473ea07232bd266af1489", null ],
       [ "kVexConfigQuadEnc2", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a59aedd4445966527af6d5a5414c9944f", null ],
       [ "kVexConfigSonarOut", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a33d171620562045a8b90abb97988b39c", null ],
-      [ "kVexConfigSonarIn", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a764dd2f4622b6f3ed8e801e85fdb7443", null ]
+      [ "kVexConfigSonarIn", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a764dd2f4622b6f3ed8e801e85fdb7443", null ],
+      [ "kVexConfigInterrupt", "vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a1ab4ada5fe5db1b971b2317d2f3fca77", null ]
     ] ],
     [ "vexDigitalConfigure", "vexconfig_8h.html#a608da14379df1633fcd2c6df094b70a6", null ],
     [ "vexMotorConfigure", "vexconfig_8h.html#a35900825ff1e1c740970f6ef661b504a", null ],

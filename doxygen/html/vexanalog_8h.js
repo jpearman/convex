@@ -13,6 +13,6 @@ var vexanalog_8h =
       [ "kVexAnalog_Num", "vexanalog_8h.html#ab4e1c36487e5604a953fd4112fa1a8e9a873dbad813f05ccb5580b43c6bfa8eb1", null ]
     ] ],
     [ "vexAdcInit", "vexanalog_8h.html#a1a9d59664f9e1af8a850311e71373cbf", null ],
-    [ "vexAdcGet", "vexanalog_8h.html#affa0ea8036b67fa02509b4eb41a1b1cd", null ],
+    [ "vexAdcGet", "vexanalog_8h.html#a0775fe9e40f3c2ca30e0dd3b3b33a547", null ],
     [ "vexAdcDebug", "vexanalog_8h.html#ad0ec41e017b60f124292b557686cef0c", null ]
 ];

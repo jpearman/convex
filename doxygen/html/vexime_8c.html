@@ -134,6 +134,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1c8f5971c372ad42d5e64d9fc91760df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vexime_8h.html#a7239f33409962b7cf56b4c952d96b401">imeData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8c.html#a1c8f5971c372ad42d5e64d9fc91760df">vexImeGetPtr</a> (<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3">tVexImeChannels</a> channel)</td></tr>
 <tr class="memdesc:a1c8f5971c372ad42d5e64d9fc91760df"><td class="mdescLeft">&#160;</td><td class="mdescRight">return pointer to IME data structure  <a href="#a1c8f5971c372ad42d5e64d9fc91760df">More...</a><br/></td></tr>
 <tr class="separator:a1c8f5971c372ad42d5e64d9fc91760df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd2822970f2e1012e6901ee9c8ebe06"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8c.html#acbd2822970f2e1012e6901ee9c8ebe06">vexImeGetChannelMax</a> ()</td></tr>
+<tr class="memdesc:acbd2822970f2e1012e6901ee9c8ebe06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of IMEs found.  <a href="#acbd2822970f2e1012e6901ee9c8ebe06">More...</a><br/></td></tr>
+<tr class="separator:acbd2822970f2e1012e6901ee9c8ebe06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25fe423e796a9a9c6a07eff55c577dba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexime_8c.html#a25fe423e796a9a9c6a07eff55c577dba">vexImeSetType</a> (<a class="el" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3">tVexImeChannels</a> channel, <a class="el" href="vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819">tVexMotorType</a> type)</td></tr>
 <tr class="memdesc:a25fe423e796a9a9c6a07eff55c577dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set motor type that this IME is attached to.  <a href="#a25fe423e796a9a9c6a07eff55c577dba">More...</a><br/></td></tr>
 <tr class="separator:a25fe423e796a9a9c6a07eff55c577dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -313,6 +316,25 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to an imeData structure </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acbd2822970f2e1012e6901ee9c8ebe06"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t vexImeGetChannelMax </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of IMEs found. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of IMEs that were found during the last init </dd></dl>
 
 </div>
 </div>
@@ -1169,7 +1191,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexime_8c.html">vexime.c</a></li>
-    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
+    <li class="footer">Generated on Fri Jul 12 2013 20:22:22 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

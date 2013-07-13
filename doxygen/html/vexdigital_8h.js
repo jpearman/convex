@@ -78,6 +78,9 @@ var vexdigital_8h =
     [ "vexDigitalModeGet", "vexdigital_8h.html#a8e1b0bfe3931cb522548533d8c4351a6", null ],
     [ "vexDigitalPinSet", "vexdigital_8h.html#aa3bcebf79c916229d209485ee73fa7bf", null ],
     [ "vexDigitalPinGet", "vexdigital_8h.html#ac3aaccf0a6cb0ea9554b4a6fbbb8752b", null ],
+    [ "vexDigitalIntrSet", "vexdigital_8h.html#a76b70443675f8c4f5244b8ed153395b7", null ],
+    [ "vexDigitalIntrRun", "vexdigital_8h.html#ac8d2eeb88258bacf2b5659b5e0ced8db", null ],
+    [ "vexDigitalIntrCountGet", "vexdigital_8h.html#a6beec0a8f3dcf96db840e3ce6659924e", null ],
     [ "vexExtIrqInit", "vexdigital_8h.html#a803b9738ea02315e0f468ba4cd57f5a6", null ],
     [ "vexExtSet", "vexdigital_8h.html#a937e59dd4309b635f6f1d8d77b806222", null ],
     [ "vexioDefinition", "vexdigital_8h.html#a15f82d4451970140c436db29f5715a02", null ]

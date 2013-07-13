@@ -15,6 +15,7 @@ var searchData=
   ['derivative',['derivative',['../struct__pid_controller.html#a8e72ce2ff66dac2c00897016716c4eb0',1,'_pidController']]],
   ['deviceid',['deviceid',['../struct__ime_data.html#a7e7bb10926c33e76cb517b28f00abe29',1,'_imeData']]],
   ['dig_5fconfig_5fsize',['DIG_CONFIG_SIZE',['../vexconfig_8h.html#a103b9b0db8b2635593c1646e6cb2b164',1,'vexconfig.h']]],
+  ['display_20on_20the_20lcd',['Display on the LCD',['../display.html',1,'basics']]],
   ['distance_5fcm',['distance_cm',['../struct__vex_sonar__t.html#a131c413ed689a7ecc79697bbae4fd68d',1,'_vexSonar_t']]],
   ['distance_5finch',['distance_inch',['../struct__vex_sonar__t.html#a5c4b18f44e4a55c0ffabaea27d08189b',1,'_vexSonar_t']]],
   ['drive',['drive',['../struct__pid_controller.html#a58270f6be13520a468ab755acbf7bd3c',1,'_pidController']]],

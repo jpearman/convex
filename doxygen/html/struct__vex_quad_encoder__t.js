@@ -1,6 +1,6 @@
 var struct__vex_quad_encoder__t =
 [
-    [ "count", "struct__vex_quad_encoder__t.html#a4858b400f708a13bd514376ab941b27d", null ],
+    [ "count", "struct__vex_quad_encoder__t.html#a98c88a2c5d1c631d33d390625a7edd7c", null ],
     [ "offset", "struct__vex_quad_encoder__t.html#a97bd6c077f3c7769f575b82988b9b668", null ],
     [ "state", "struct__vex_quad_encoder__t.html#a802ec7a63bfab2b1f8b19624be383e6e", null ],
     [ "pa", "struct__vex_quad_encoder__t.html#a73d013b8d1dae027c348df1578140619", null ],

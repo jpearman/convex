@@ -9,10 +9,10 @@ var searchData=
   ['lcd_5fthread_5fpriority',['LCD_THREAD_PRIORITY',['../vex_8h.html#a1542b2b70b08ff0f5d904b13dcfb98f6',1,'vex.h']]],
   ['lcddata',['LcdData',['../vexlcd_8h.html#a1f483849b7d23c18bcae30859d47f266',1,'vexlcd.h']]],
   ['lf',['LF',['../vexshell_8c.html#a350c9d6cb81908d59427ee96844d1a9c',1,'vexshell.c']]],
+  ['license_2edox',['license.dox',['../license_8dox.html',1,'']]],
   ['limit_5fcmd',['limit_cmd',['../structsmart_motor.html#ac5aa51635e29ab6a14684bd488ed31a8',1,'smartMotor']]],
   ['limit_5fcurrent',['limit_current',['../structsmart_motor.html#a67f5d09fdefa7a01506508bb37395ae8',1,'smartMotor']]],
   ['limit_5ftripped',['limit_tripped',['../structsmart_motor.html#a5b38711518002d09c8c353aa9a0493a1',1,'smartMotor']]],
   ['line1',['line1',['../struct___lcd_data.html#a8e4e66e1ba151b283b0be689e44cc7fa',1,'_LcdData']]],
-  ['line2',['line2',['../struct___lcd_data.html#a4f73c55cecd195b3cbd9082903ef5ec8',1,'_LcdData']]],
-  ['license',['License',['../page2.html',1,'']]]
+  ['line2',['line2',['../struct___lcd_data.html#a4f73c55cecd195b3cbd9082903ef5ec8',1,'_LcdData']]]
 ];

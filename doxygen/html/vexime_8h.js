@@ -42,6 +42,7 @@ var vexime_8h =
     [ "vexImeGetCount", "vexime_8h.html#a6221c36d200cbc4fd6e061e69f1df9ff", null ],
     [ "vexImeSetCount", "vexime_8h.html#a1b04d80a5ce70b75e7bd0f5b0d388c1a", null ],
     [ "vexImeGetId", "vexime_8h.html#a69b05de0c45a146703ac5988db54fae5", null ],
+    [ "vexImeGetChannelMax", "vexime_8h.html#a630763c339fdebf9f2d9eef938e432f7", null ],
     [ "vexImeGetPtr", "vexime_8h.html#a1c8f5971c372ad42d5e64d9fc91760df", null ],
     [ "vexImeInit", "vexime_8h.html#a53a8386ebaf0e115078cbcc5d68f3bb4", null ],
     [ "vexImeSetType", "vexime_8h.html#a25fe423e796a9a9c6a07eff55c577dba", null ],

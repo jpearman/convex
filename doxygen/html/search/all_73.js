@@ -13,6 +13,7 @@ var searchData=
   ['sensor_5freverse',['sensor_reverse',['../struct__pid_controller.html#a4762ad2ad018a012b1bd957fa9814124',1,'_pidController']]],
   ['sensor_5fvalue',['sensor_value',['../struct__pid_controller.html#a966d65d508240085f920d39ced8c7db1',1,'_pidController']]],
   ['setmotor',['SetMotor',['../smartmotor_8h.html#a4d52a5e1754962a59621bf8aa897b4b4',1,'smartmotor.h']]],
+  ['setup_2edox',['setup.dox',['../setup_8dox.html',1,'']]],
   ['shell_5fmax_5farguments',['SHELL_MAX_ARGUMENTS',['../vexshell_8h.html#a730dd92884d4fce406efb6678aea8062',1,'vexshell.h']]],
   ['shell_5fmax_5fline_5flength',['SHELL_MAX_LINE_LENGTH',['../vexshell_8h.html#a0aee139645cf59df04bc31635f553024',1,'vexshell.h']]],
   ['shell_5fterminated',['shell_terminated',['../vexshell_8c.html#a168440e44c637282589a4e28eb3a91b8',1,'shell_terminated():&#160;vexshell.c'],['../vexshell_8h.html#a168440e44c637282589a4e28eb3a91b8',1,'shell_terminated():&#160;vexshell.c']]],

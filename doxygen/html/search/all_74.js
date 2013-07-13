@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['the_20basics',['The Basics',['../basics.html',1,'']]],
   ['t_5fambient',['t_ambient',['../structsmart_motor.html#a936368dc952e987e0b81db35f4e35bc2',1,'smartMotor::t_ambient()'],['../struct__smart_controller.html#a936368dc952e987e0b81db35f4e35bc2',1,'_smartController::t_ambient()']]],
   ['t_5fconst_5f1',['t_const_1',['../structsmart_motor.html#a85b4f95629f24a02ddd5acc1083e28e7',1,'smartMotor::t_const_1()'],['../struct__smart_controller.html#a85b4f95629f24a02ddd5acc1083e28e7',1,'_smartController::t_const_1()']]],
   ['t_5fconst_5f2',['t_const_2',['../structsmart_motor.html#a57b6d55826de8929ada8473d2a1ae1d4',1,'smartMotor::t_const_2()'],['../struct__smart_controller.html#a57b6d55826de8929ada8473d2a1ae1d4',1,'_smartController::t_const_2()']]],
@@ -13,7 +14,6 @@ var searchData=
   ['tctlindex',['tCtlIndex',['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749',1,'vexctl.h']]],
   ['temperature',['temperature',['../structsmart_motor.html#afc1d28cfbce795d6ea954ebe725241f5',1,'smartMotor::temperature()'],['../struct__smart_controller.html#afc1d28cfbce795d6ea954ebe725241f5',1,'_smartController::temperature()']]],
   ['test_5ftask_5fstack_5fsize',['TEST_TASK_STACK_SIZE',['../vex_8h.html#a5a50c304bdd9e66032df79cfea02fb35',1,'vex.h']]],
-  ['testpage_2etxt',['testpage.txt',['../testpage_8txt.html',1,'']]],
   ['ticks_5fper_5frev',['ticks_per_rev',['../structsmart_motor.html#a3f9e294d86d5eedec4eee2085cc87cbc',1,'smartMotor']]],
   ['time',['time',['../struct__vex_sonar__t.html#abff537f25bc8d06192bd18aff2597aa0',1,'_vexSonar_t']]],
   ['time_5ff',['time_f',['../struct__vex_sonar__t.html#a890e5c2c653e732e4d7f7e73e059df38',1,'_vexSonar_t']]],

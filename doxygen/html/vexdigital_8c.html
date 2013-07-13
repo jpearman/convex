@@ -131,6 +131,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ac3aaccf0a6cb0ea9554b4a6fbbb8752b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vexdigital_8h.html#a662d3bb67ce141e309cf395c835207f0">tVexDigitalState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8c.html#ac3aaccf0a6cb0ea9554b4a6fbbb8752b">vexDigitalPinGet</a> (<a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a> pin)</td></tr>
 <tr class="memdesc:ac3aaccf0a6cb0ea9554b4a6fbbb8752b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get digital pin state.  <a href="#ac3aaccf0a6cb0ea9554b4a6fbbb8752b">More...</a><br/></td></tr>
 <tr class="separator:ac3aaccf0a6cb0ea9554b4a6fbbb8752b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b70443675f8c4f5244b8ed153395b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8c.html#a76b70443675f8c4f5244b8ed153395b7">vexDigitalIntrSet</a> (<a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a> pin)</td></tr>
+<tr class="memdesc:a76b70443675f8c4f5244b8ed153395b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set digital pin to cause interrupt.  <a href="#a76b70443675f8c4f5244b8ed153395b7">More...</a><br/></td></tr>
+<tr class="separator:a76b70443675f8c4f5244b8ed153395b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a154920e8db4c03ef41de07f01eead"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8c.html#a64a154920e8db4c03ef41de07f01eead">vexDigitalIntrRun</a> ()</td></tr>
+<tr class="memdesc:a64a154920e8db4c03ef41de07f01eead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable any digital pin interrupts.  <a href="#a64a154920e8db4c03ef41de07f01eead">More...</a><br/></td></tr>
+<tr class="separator:a64a154920e8db4c03ef41de07f01eead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6beec0a8f3dcf96db840e3ce6659924e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8c.html#a6beec0a8f3dcf96db840e3ce6659924e">vexDigitalIntrCountGet</a> (<a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a> pin)</td></tr>
+<tr class="memdesc:a6beec0a8f3dcf96db840e3ce6659924e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the interrupt count for a given digital pin.  <a href="#a6beec0a8f3dcf96db840e3ce6659924e">More...</a><br/></td></tr>
+<tr class="separator:a6beec0a8f3dcf96db840e3ce6659924e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -264,6 +273,74 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a76b70443675f8c4f5244b8ed153395b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexDigitalIntrSet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a>&#160;</td>
+          <td class="paramname"><em>pin</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set digital pin to cause interrupt. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>The pin</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This is used for testing at present, the interrupt just increments a counter </p>
+
+</div>
+</div>
+<a class="anchor" id="a64a154920e8db4c03ef41de07f01eead"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexDigitalIntrRun </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable any digital pin interrupts. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6beec0a8f3dcf96db840e3ce6659924e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t vexDigitalIntrCountGet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a>&#160;</td>
+          <td class="paramname"><em>pin</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the interrupt count for a given digital pin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>The pin</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This is used for testing at present, the interrupt just increments a counter </p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a class="anchor" id="a15f82d4451970140c436db29f5715a02"></a>
 <div class="memitem">
@@ -275,18 +352,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#afc6215032be83ae5d6b6bf5d426375f8">VEX_DIGIO_1_PORT</a>,   <a class="code" href="vexdigital_8h.html#a77b4368358498d967267874cb6ea15ef">VEX_DIGIO_1_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#aa2e0c682d63cd7b6f01101d69584f940">VEX_DIGIO_2_PORT</a>,   <a class="code" href="vexdigital_8h.html#a0dd0f7498072398af9a3e7de19c2e97e">VEX_DIGIO_2_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#ae998dff9a1672b88a95f990d33f4ae06">VEX_DIGIO_3_PORT</a>,   <a class="code" href="vexdigital_8h.html#a4bd98fe9b15035d59dc341831d96bd97">VEX_DIGIO_3_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#ae431d3e577f00f53f120152cdef1935c">VEX_DIGIO_4_PORT</a>,   <a class="code" href="vexdigital_8h.html#a7429e62bdf0cdfaf56e65f0febf51b0e">VEX_DIGIO_4_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#a6288d3fa3ff1ea06501d74a251c2bd22">VEX_DIGIO_5_PORT</a>,   <a class="code" href="vexdigital_8h.html#a6e523e0a460f9cd9a7b758d435aa51da">VEX_DIGIO_5_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#a27668feb300c3e99915f3b80999377b3">VEX_DIGIO_6_PORT</a>,   <a class="code" href="vexdigital_8h.html#a9bc39974839df04d35f07429247915fe">VEX_DIGIO_6_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#aae46104612f559bc3a33c48280097fe8">VEX_DIGIO_7_PORT</a>,   <a class="code" href="vexdigital_8h.html#a744d3057c426de7b45f383ac18458ecd">VEX_DIGIO_7_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#a6991ff4f4e89e47fc004f9eaa686b7e0">VEX_DIGIO_8_PORT</a>,   <a class="code" href="vexdigital_8h.html#af7eb3852a65143222c341ee570b2b6a0">VEX_DIGIO_8_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#a32d969133d1db8033f43cf43c26e3238">VEX_DIGIO_9_PORT</a>,   <a class="code" href="vexdigital_8h.html#a39a301a70263330fc8674f57aab18561">VEX_DIGIO_9_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#a998b88219b353905e8a84ff513171638">VEX_DIGIO_10_PORT</a>,  <a class="code" href="vexdigital_8h.html#ac859399b91fa2c875c6036574d095136">VEX_DIGIO_10_PAD</a>, <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#acd43f2e761221aee41340443de548463">VEX_DIGIO_11_PORT</a>,  <a class="code" href="vexdigital_8h.html#a32f53d4338205c0ba23de32f992899a6">VEX_DIGIO_11_PAD</a>, <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> },</div>
-<div class="line">        {<a class="code" href="vexdigital_8h.html#aea1e2cfa9d529726f3c17f6088268248">VEX_DIGIO_12_PORT</a>,  <a class="code" href="vexdigital_8h.html#a152f93c65d2a92ecb21510f5e2775b5b">VEX_DIGIO_12_PAD</a>, <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a> }</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#afc6215032be83ae5d6b6bf5d426375f8">VEX_DIGIO_1_PORT</a>,   <a class="code" href="vexdigital_8h.html#a77b4368358498d967267874cb6ea15ef">VEX_DIGIO_1_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#aa2e0c682d63cd7b6f01101d69584f940">VEX_DIGIO_2_PORT</a>,   <a class="code" href="vexdigital_8h.html#a0dd0f7498072398af9a3e7de19c2e97e">VEX_DIGIO_2_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#ae998dff9a1672b88a95f990d33f4ae06">VEX_DIGIO_3_PORT</a>,   <a class="code" href="vexdigital_8h.html#a4bd98fe9b15035d59dc341831d96bd97">VEX_DIGIO_3_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#ae431d3e577f00f53f120152cdef1935c">VEX_DIGIO_4_PORT</a>,   <a class="code" href="vexdigital_8h.html#a7429e62bdf0cdfaf56e65f0febf51b0e">VEX_DIGIO_4_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#a6288d3fa3ff1ea06501d74a251c2bd22">VEX_DIGIO_5_PORT</a>,   <a class="code" href="vexdigital_8h.html#a6e523e0a460f9cd9a7b758d435aa51da">VEX_DIGIO_5_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#a27668feb300c3e99915f3b80999377b3">VEX_DIGIO_6_PORT</a>,   <a class="code" href="vexdigital_8h.html#a9bc39974839df04d35f07429247915fe">VEX_DIGIO_6_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#aae46104612f559bc3a33c48280097fe8">VEX_DIGIO_7_PORT</a>,   <a class="code" href="vexdigital_8h.html#a744d3057c426de7b45f383ac18458ecd">VEX_DIGIO_7_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#a6991ff4f4e89e47fc004f9eaa686b7e0">VEX_DIGIO_8_PORT</a>,   <a class="code" href="vexdigital_8h.html#af7eb3852a65143222c341ee570b2b6a0">VEX_DIGIO_8_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#a32d969133d1db8033f43cf43c26e3238">VEX_DIGIO_9_PORT</a>,   <a class="code" href="vexdigital_8h.html#a39a301a70263330fc8674f57aab18561">VEX_DIGIO_9_PAD</a>,  <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#a998b88219b353905e8a84ff513171638">VEX_DIGIO_10_PORT</a>,  <a class="code" href="vexdigital_8h.html#ac859399b91fa2c875c6036574d095136">VEX_DIGIO_10_PAD</a>, <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#acd43f2e761221aee41340443de548463">VEX_DIGIO_11_PORT</a>,  <a class="code" href="vexdigital_8h.html#a32f53d4338205c0ba23de32f992899a6">VEX_DIGIO_11_PAD</a>, <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 },</div>
+<div class="line">        {<a class="code" href="vexdigital_8h.html#aea1e2cfa9d529726f3c17f6088268248">VEX_DIGIO_12_PORT</a>,  <a class="code" href="vexdigital_8h.html#a152f93c65d2a92ecb21510f5e2775b5b">VEX_DIGIO_12_PAD</a>, <a class="code" href="vexdigital_8h.html#a564399822ca21e016ce8578c2d2e046fa0f662063325c806ebe2212e73bcb8004">kVexDigitalInput</a>, -1 }</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 <p>definition of a digital IO pin </p>
@@ -300,7 +377,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexdigital_8c.html">vexdigital.c</a></li>
-    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
+    <li class="footer">Generated on Fri Jul 12 2013 20:22:22 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

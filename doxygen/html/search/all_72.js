@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['reading_20joystick_20values',['Reading Joystick values',['../control.html',1,'basics']]],
   ['r_5fmotor',['r_motor',['../structsmart_motor.html#a9364cc0b4bf508bf27d00d647be5b628',1,'smartMotor']]],
   ['rc_5ftasks',['RC_TASKS',['../robotc__glue_8c.html#a1187ced94889aa3f3c7b0eeb6be4b03d',1,'robotc_glue.c']]],
   ['rctask',['rcTask',['../robotc__glue_8c.html#a7d0b5ed3b8671d466cc976c82c35d3b7',1,'robotc_glue.c']]],
@@ -16,5 +17,6 @@ var searchData=
   ['rpm_5ffree',['rpm_free',['../structsmart_motor.html#a94f9b1c324c7f8d48f0457b966a80f57',1,'smartMotor']]],
   ['rxbuf',['rxbuf',['../struct___lcd_data.html#ab05731d6aee769b1ef84ce8f92721007',1,'_LcdData']]],
   ['rxdata',['rxdata',['../struct___spi_data.html#a00ef632e73edd1ba484f3576e5a3d4fe',1,'_SpiData']]],
-  ['rxdata_5ft',['rxdata_t',['../struct___spi_data.html#a08d00d3ecb3a8cf3a995df6b661ebc94',1,'_SpiData']]]
+  ['rxdata_5ft',['rxdata_t',['../struct___spi_data.html#a08d00d3ecb3a8cf3a995df6b661ebc94',1,'_SpiData']]],
+  ['reading_20sensors',['Reading sensors',['../sensors.html',1,'basics']]]
 ];

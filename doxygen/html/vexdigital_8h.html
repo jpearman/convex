@@ -286,6 +286,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ac3aaccf0a6cb0ea9554b4a6fbbb8752b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="vexdigital_8h.html#a662d3bb67ce141e309cf395c835207f0">tVexDigitalState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8h.html#ac3aaccf0a6cb0ea9554b4a6fbbb8752b">vexDigitalPinGet</a> (<a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a> pin)</td></tr>
 <tr class="memdesc:ac3aaccf0a6cb0ea9554b4a6fbbb8752b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get digital pin state.  <a href="#ac3aaccf0a6cb0ea9554b4a6fbbb8752b">More...</a><br/></td></tr>
 <tr class="separator:ac3aaccf0a6cb0ea9554b4a6fbbb8752b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b70443675f8c4f5244b8ed153395b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8h.html#a76b70443675f8c4f5244b8ed153395b7">vexDigitalIntrSet</a> (<a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a> pin)</td></tr>
+<tr class="memdesc:a76b70443675f8c4f5244b8ed153395b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set digital pin to cause interrupt.  <a href="#a76b70443675f8c4f5244b8ed153395b7">More...</a><br/></td></tr>
+<tr class="separator:a76b70443675f8c4f5244b8ed153395b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d2eeb88258bacf2b5659b5e0ced8db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8h.html#ac8d2eeb88258bacf2b5659b5e0ced8db">vexDigitalIntrRun</a> (void)</td></tr>
+<tr class="memdesc:ac8d2eeb88258bacf2b5659b5e0ced8db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable any digital pin interrupts.  <a href="#ac8d2eeb88258bacf2b5659b5e0ced8db">More...</a><br/></td></tr>
+<tr class="separator:ac8d2eeb88258bacf2b5659b5e0ced8db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6beec0a8f3dcf96db840e3ce6659924e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8h.html#a6beec0a8f3dcf96db840e3ce6659924e">vexDigitalIntrCountGet</a> (<a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a> pin)</td></tr>
+<tr class="memdesc:a6beec0a8f3dcf96db840e3ce6659924e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the interrupt count for a given digital pin.  <a href="#a6beec0a8f3dcf96db840e3ce6659924e">More...</a><br/></td></tr>
+<tr class="separator:a6beec0a8f3dcf96db840e3ce6659924e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a803b9738ea02315e0f468ba4cd57f5a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexdigital_8h.html#a803b9738ea02315e0f468ba4cd57f5a6">vexExtIrqInit</a> (void)</td></tr>
 <tr class="memdesc:a803b9738ea02315e0f468ba4cd57f5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise external interrupts.  <a href="#a803b9738ea02315e0f468ba4cd57f5a6">More...</a><br/></td></tr>
 <tr class="separator:a803b9738ea02315e0f468ba4cd57f5a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1209,6 +1218,74 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a76b70443675f8c4f5244b8ed153395b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexDigitalIntrSet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a>&#160;</td>
+          <td class="paramname"><em>pin</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set digital pin to cause interrupt. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>The pin</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This is used for testing at present, the interrupt just increments a counter </p>
+
+</div>
+</div>
+<a class="anchor" id="ac8d2eeb88258bacf2b5659b5e0ced8db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexDigitalIntrRun </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable any digital pin interrupts. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6beec0a8f3dcf96db840e3ce6659924e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t vexDigitalIntrCountGet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767ca">tVexDigitalPin</a>&#160;</td>
+          <td class="paramname"><em>pin</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the interrupt count for a given digital pin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>The pin</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This is used for testing at present, the interrupt just increments a counter </p>
+
+</div>
+</div>
 <a class="anchor" id="a803b9738ea02315e0f468ba4cd57f5a6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1299,7 +1376,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexdigital_8h.html">vexdigital.h</a></li>
-    <li class="footer">Generated on Tue Jun 25 2013 10:11:00 for Convex by
+    <li class="footer">Generated on Fri Jul 12 2013 20:22:22 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

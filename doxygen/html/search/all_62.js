@@ -1,6 +1,7 @@
 var searchData=
 [
   ['bank',['bank',['../structsmart_motor.html#aecd486e3b16d7f8358c9609f29b835a7',1,'smartMotor']]],
+  ['basics_2edox',['basics.dox',['../basics_8dox.html',1,'']]],
   ['batt1',['batt1',['../struct__spi_rx_packet_1_1__spi_rx_pak.html#a1500de1e875c7578e2e09d045da468c0',1,'_spiRxPacket::_spiRxPak']]],
   ['batt2',['batt2',['../struct__spi_rx_packet_1_1__spi_rx_pak.html#aca805c191969bf5ae45346a5054ac5f1',1,'_spiRxPacket::_spiRxPak']]],
   ['bkspace_5fchar',['BKSPACE_CHAR',['../vexshell_8c.html#a9acf07c2e64832d906d9c86fe931d8e8',1,'vexshell.c']]],

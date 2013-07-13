@@ -8,5 +8,7 @@ var dir_9e5b02898a8d6230f8834953bb890d5b =
     [ "robotc_glue.c", "robotc__glue_8c.html", "robotc__glue_8c" ],
     [ "robotc_glue.h", "robotc__glue_8h.html", "robotc__glue_8h" ],
     [ "smartmotor.c", "smartmotor_8c.html", "smartmotor_8c" ],
-    [ "smartmotor.h", "smartmotor_8h.html", "smartmotor_8h" ]
+    [ "smartmotor.h", "smartmotor_8h.html", "smartmotor_8h" ],
+    [ "vexgyro.c", "vexgyro_8c.html", "vexgyro_8c" ],
+    [ "vexgyro.h", "vexgyro_8h.html", "vexgyro_8h" ]
 ];

@@ -2,17 +2,11 @@ var NAVTREE =
 [
   [ "Convex", "index.html", [
     [ "ConVEX API", "index.html", null ],
-    [ "Getting started", "page1.html", [
-      [ "Installing the tools", "page1.html#sec1", [
-        [ "Installing the ARM toolchain", "page1.html#subsection1", null ],
-        [ "Installing eclipse", "page1.html#subsection2", null ]
-      ] ]
-    ] ],
-    [ "License", "page2.html", [
-      [ "CONVEX licensing", "page2.html#sec2", [
-        [ "Apache license", "page2.html#subsection3", null ],
-        [ "GNU GPL3", "page2.html#subsection4", null ]
-      ] ]
+    [ "Getting Started", "getstarted.html", "getstarted" ],
+    [ "The Basics", "basics.html", "basics" ],
+    [ "ConVEX license", "9_license.html", [
+      [ "Apache license", "9_license.html#subsection3", null ],
+      [ "GNU GPL3", "9_license.html#subsection211", null ]
     ] ],
     [ "Data Structures", null, [
       [ "Data Structures", "annotated.html", "annotated" ],
@@ -40,11 +34,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"smartmotor_8h.html#a035d32d7b415402d6fdc4b71b0e906ea",
-"struct__vex_quad_encoder__t.html#a4d49ef7e20428609dffdad6a12d5b06b",
-"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a6398bb2dedc92b5da42f6fa4ba8c14a8",
-"vexlcd_8h.html#a1b23ad8b09aaad2d0aebf0a70df9772e"
+"9_license.html",
+"smartmotor_8c.html#ac844e981b27f5c1af76547e1b9924e7c",
+"struct__vex_motor.html#af113e27943856fda379256192bf93450",
+"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a221d908e15c717c7024e7159ad588a05",
+"vexime_8h.html#ac722ec10df75e11becf70e9771fe0bda",
+"vexspi_8c.html#a976d6fbded4a552423c3024ba509d414"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

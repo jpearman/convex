@@ -4,6 +4,7 @@ var vexime_8c =
     [ "vexImeSetCount", "vexime_8c.html#a1b04d80a5ce70b75e7bd0f5b0d388c1a", null ],
     [ "vexImeGetId", "vexime_8c.html#a69b05de0c45a146703ac5988db54fae5", null ],
     [ "vexImeGetPtr", "vexime_8c.html#a1c8f5971c372ad42d5e64d9fc91760df", null ],
+    [ "vexImeGetChannelMax", "vexime_8c.html#acbd2822970f2e1012e6901ee9c8ebe06", null ],
     [ "vexImeSetType", "vexime_8c.html#a25fe423e796a9a9c6a07eff55c577dba", null ],
     [ "vexImeSetMotor", "vexime_8c.html#af7ec0cffa6d53f454e2f53026094cee9", null ],
     [ "vexImeMotorGetCount", "vexime_8c.html#a26406d6fd750e81f278178db6ebc4266", null ],
