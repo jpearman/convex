@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['another_20page',['Another page',['../page2.html',1,'']]]
+  ['apache_20license',['Apache license',['../apache_lic.html',1,'license']]]
 ];

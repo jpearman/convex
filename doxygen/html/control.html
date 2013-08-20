@@ -104,32 +104,58 @@ $(document).ready(function(){initNavTree('control.html','');});
 <div class="textblock"><p>Access to the joystick is done in a similar way to ROBOTC but with a few extensions.</p>
 <p><a class="el" href="vexctl_8h.html#a347b97c527e51e3bf3a389bc8a809077" title="Get controller data. ">vexControllerGet( tCtlIndex index )</a></p>
 <p>index can either be an analog channel or button name, these are the definitions.</p>
-<ul>
-<li>Ch1 Analog channel 1</li>
-<li>Ch2 Analog channel 2</li>
-<li>Ch3 Analog channel 3</li>
-<li>Ch4 Analog channel 4</li>
-<li>Btn5U Button 5 Up</li>
-<li>Btn5D Button 5 Down</li>
-<li>Btn6U Button 6 Up</li>
-<li>Btn6D Button 6 Down</li>
-<li>Btn7U Button 8 Up</li>
-<li>Btn7D Button 8 Down</li>
-<li>Btn7L Button 8 Left</li>
-<li>Btn7R Button 8 Right</li>
-<li>Btn8U Button 8 Up</li>
-<li>Btn8D Button 8 Down</li>
-<li>Btn8L Button 8 Left</li>
-<li>Btn8R Button 8 Right</li>
-<li>AcclX Accelerometer X axis</li>
-<li>AcclY Accelerometer Y axis</li>
-<li>AcclZ Accelerometer Z axis (not used)</li>
-<li>Btn5 Btn5U or Btn5D</li>
-<li>Btn6 Btn6U or Btn6Dwill return 1</li>
-<li>Btn7 Btn7U or Btn7D or Btn7L or Btn8R</li>
-<li>Btn8 Btn8U or Btn8D or Btn8L or Btn8R</li>
-<li>BtnAny Any button</li>
-</ul>
+<table class="doxtable">
+<tr>
+<th>index </th><th>joystick function  </th></tr>
+<tr>
+<td>Ch1 </td><td>Analog channel 1 </td></tr>
+<tr>
+<td>Ch2 </td><td>Analog channel 2 </td></tr>
+<tr>
+<td>Ch3 </td><td>Analog channel 3 </td></tr>
+<tr>
+<td>Ch4 </td><td>Analog channel 4 </td></tr>
+<tr>
+<td>Btn5U </td><td>Button 5 Up </td></tr>
+<tr>
+<td>Btn5D </td><td>Button 5 Down </td></tr>
+<tr>
+<td>Btn6U </td><td>Button 6 Up </td></tr>
+<tr>
+<td>Btn6D </td><td>Button 6 Down </td></tr>
+<tr>
+<td>Btn7U </td><td>Button 8 Up </td></tr>
+<tr>
+<td>Btn7D </td><td>Button 8 Down </td></tr>
+<tr>
+<td>Btn7L </td><td>Button 8 Left </td></tr>
+<tr>
+<td>Btn7R </td><td>Button 8 Right </td></tr>
+<tr>
+<td>Btn8U </td><td>Button 8 Up </td></tr>
+<tr>
+<td>Btn8D </td><td>Button 8 Down </td></tr>
+<tr>
+<td>Btn8L </td><td>Button 8 Left </td></tr>
+<tr>
+<td>Btn8R </td><td>Button 8 Right </td></tr>
+<tr>
+<td>AcclX </td><td>Accelerometer X axis </td></tr>
+<tr>
+<td>AcclY </td><td>Accelerometer Y axis </td></tr>
+<tr>
+<td>AcclZ </td><td>Accelerometer Z axis (not used) </td></tr>
+<tr>
+<td>Btn5 </td><td>Btn5U or Btn5D </td></tr>
+<tr>
+<td>Btn6 </td><td>Btn6U or Btn6Dwill return 1 </td></tr>
+<tr>
+<td>Btn7 </td><td>Btn7U or Btn7D or Btn7L or Btn8R </td></tr>
+<tr>
+<td>Btn8 </td><td>Btn8U or Btn8D or Btn8L or Btn8R </td></tr>
+<tr>
+<td>BtnAny </td><td>Any button </td></tr>
+</table>
 <p>To access the second controller append Xmtr2 to any of the index names, eg. Btn8UXmtr2.</p>
 <p>Buttons will return 1 (pressed) or 0 (not pressed).</p>
 <p>Analog joystick values are in the range -127 to +127. </p>
@@ -139,7 +165,7 @@ $(document).ready(function(){initNavTree('control.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="basics.html">The Basics</a></li>
-    <li class="footer">Generated on Fri Jul 12 2013 20:22:24 for Convex by
+    <li class="footer">Generated on Tue Aug 20 2013 14:18:21 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

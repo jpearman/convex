@@ -1,5 +1,9 @@
 var vex_8h =
 [
+    [ "CONVEX_VERSION", "vex_8h.html#a1be71c47748d3ff2141bdddce8ef374c", null ],
+    [ "CONVEX_MAJOR", "vex_8h.html#a769bb3214746fddee5b8e08ad7449327", null ],
+    [ "CONVEX_MINOR", "vex_8h.html#aab3f8edbfcd24e4e995dc102c9e7b91d", null ],
+    [ "CONVEX_PATCH", "vex_8h.html#afd95849181a088e15d853d98663f3211", null ],
     [ "SYSTEM_THREAD_PRIORITY", "vex_8h.html#a56217a723acc7d405ee061fe3b89c05d", null ],
     [ "IME_THREAD_PRIORITY", "vex_8h.html#af10266cd756ff2f5a2892249162c393b", null ],
     [ "MONITOR_THREAD_PRIORITY", "vex_8h.html#a6f32b9ca1b28224b5551fe9c5d0c945f", null ],

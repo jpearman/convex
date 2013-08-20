@@ -19,6 +19,7 @@ var searchData=
   ['action_5frenegotiate',['ACTION_RENEGOTIATE',['../vexime_8h.html#a05733b383460cf62d3fee165c1ed1efb',1,'vexime.h']]],
   ['adc_5fch_5fnum',['ADC_CH_NUM',['../vexanalog_8c.html#ad0952c47eae02d3fc66e595c19569880',1,'vexanalog.c']]],
   ['address',['address',['../struct__ime_data.html#af3f726014b044194def151079f1f2d89',1,'_imeData']]],
+  ['apache_20license',['Apache license',['../apache_lic.html',1,'license']]],
   ['apollo_2ec',['apollo.c',['../apollo_8c.html',1,'']]],
   ['apollo_2eh',['apollo.h',['../apollo_8h.html',1,'']]],
   ['apolloanalogsetup',['apolloAnalogSetup',['../apollo_8c.html#a982cd7c961cea7f16db26c32daa3efaf',1,'apolloAnalogSetup():&#160;apollo.c'],['../apollo_8h.html#aade9181594f16577d0da85f93189b5ca',1,'apolloAnalogSetup(void):&#160;apollo.c']]],

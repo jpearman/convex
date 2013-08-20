@@ -101,13 +101,49 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">ConVEX API </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The ConVEX firmware library is an add on package for the ChibiOS/RT operating system that supports the VEX cortex microcontroller. The library adds the necessary functionality to allow C applications to be created and executed on the cortex that can access its available hardware. </p>
+<div class="textblock"><p>The ConVEX firmware library is an add on package for the ChibiOS/RT operating system that supports the VEX cortex microcontroller. The library adds the necessary functionality to allow C applications to be created and executed on the cortex that can access its available hardware.</p>
+<p>ConVEX is not trying to be competitive with ROBOTC or EasyC, it is only appropriate for advanced users who have some familiarity with RTOS concepts and are comfortable with programming micro-controllers at a bare bones level.</p>
+<p>ConVEX uses many features of the ChibiOS/RT library and the hardware abstraction layer it provides for the STM32 processor. Modification of the low level drivers could cause damage to the cortex hardware, however, under most circumstances user code can be developed that is as robust as the existing environments for the cortex.</p>
+<p>Follow the steps outlined in the <a class="el" href="getstarted.html">Getting Started</a> section to install ConVEX and the necessary tools. A few demo programs are included that can be used as a starting point for user projects.</p>
+<h3>Features</h3>
+<p>Preemptive multithreading <br/>
+ 128 priority levels <br/>
+ Round-robin scheduling for threads at the same priority level <br/>
+ Software timers <br/>
+ Counting semaphores <br/>
+ Mutexes with support for the priority inheritance algorithm <br/>
+ Condition variables <br/>
+ Synchronous and asynchronous Messages <br/>
+ Event flags and handlers <br/>
+ Queues <br/>
+ Synchronous and asynchronous I/O with timeout capability <br/>
+ Thread-safe memory heap and memory pool allocators. <br/>
+</p>
+<h3>Cortex specific features</h3>
+<p>Digital IO <br/>
+ Analog Inputs, potentiometer, accelerometer etc. <br/>
+ Ultrasonic sensor support <br/>
+ Quadrature encoder support <br/>
+ Motor control <br/>
+ Integrated motor encoder support <br/>
+ Support for two VEX LCD displays <br/>
+ Competition control <br/>
+ Simple audio tones and chip tone playback support <br/>
+ Command line interface (shell) <br/>
+</p>
+<h3>Optional features</h3>
+<p>SmartMotor library <br/>
+ Apollo - real time display of motor and sensor data <br/>
+ VEX Gyro <br/>
+ PID library <br/>
+ ROBOTC style tasks and Sensor support to allow easy code porting <br/>
+ </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 12 2013 20:22:24 for Convex by
+    <li class="footer">Generated on Tue Aug 20 2013 14:18:21 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

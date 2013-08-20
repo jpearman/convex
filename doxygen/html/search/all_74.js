@@ -14,6 +14,7 @@ var searchData=
   ['tctlindex',['tCtlIndex',['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749',1,'vexctl.h']]],
   ['temperature',['temperature',['../structsmart_motor.html#afc1d28cfbce795d6ea954ebe725241f5',1,'smartMotor::temperature()'],['../struct__smart_controller.html#afc1d28cfbce795d6ea954ebe725241f5',1,'_smartController::temperature()']]],
   ['test_5ftask_5fstack_5fsize',['TEST_TASK_STACK_SIZE',['../vex_8h.html#a5a50c304bdd9e66032df79cfea02fb35',1,'vex.h']]],
+  ['threads_2edox',['threads.dox',['../threads_8dox.html',1,'']]],
   ['ticks_5fper_5frev',['ticks_per_rev',['../structsmart_motor.html#a3f9e294d86d5eedec4eee2085cc87cbc',1,'smartMotor']]],
   ['time',['time',['../struct__vex_sonar__t.html#abff537f25bc8d06192bd18aff2597aa0',1,'_vexSonar_t']]],
   ['time_5ff',['time_f',['../struct__vex_sonar__t.html#a890e5c2c653e732e4d7f7e73e059df38',1,'_vexSonar_t']]],

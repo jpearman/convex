@@ -4,6 +4,7 @@ var searchData=
   ['m_5fwidth',['M_WIDTH',['../apollo_8h.html#a3be0529049ae7cb377b60ef8ee4970b0',1,'apollo.h']]],
   ['m_5fx_5fpos',['M_X_POS',['../apollo_8h.html#a42b88ae73b0a1f3d6a3565042b58809a',1,'apollo.h']]],
   ['m_5fy_5fpos',['M_Y_POS',['../apollo_8h.html#a6de476cdd9249059dfd8a0c5fab5daeb',1,'apollo.h']]],
+  ['mainpage_2edox',['mainpage.dox',['../mainpage_8dox.html',1,'']]],
   ['manualarmclawtask',['ManualArmClawTask',['../clawbot_8c.html#a1fe3071e2c14528266e98eac97fc32cf',1,'clawbot.c']]],
   ['max_5fpid',['MAX_PID',['../pidlib_8h.html#a36b11288ada38ae09b8033e32f738c3d',1,'pidlib.h']]],
   ['max_5fthread',['MAX_THREAD',['../vexcortex_8c.html#a04922e4673a244d94b12566890b2e96c',1,'vexcortex.c']]],
@@ -23,5 +24,6 @@ var searchData=
   ['motorpositionget',['motorPositionGet',['../struct__vex_motor.html#aa8fa1497e68bc18575e40486e3be6e8d',1,'_vexMotor']]],
   ['motorpositionset',['motorPositionSet',['../struct__vex_motor.html#a6c2d858945ff55bc94ce6eb0cd2ea664',1,'_vexMotor']]],
   ['motors',['motors',['../struct__smart_controller.html#aeb59f89d25d6bd4a5e3050e09555c526',1,'_smartController']]],
-  ['mtype',['mtype',['../struct__vex_motor_cfg.html#a75f92dbeae60e125bf5dba09efc1d1ad',1,'_vexMotorCfg']]]
+  ['mtype',['mtype',['../struct__vex_motor_cfg.html#a75f92dbeae60e125bf5dba09efc1d1ad',1,'_vexMotorCfg']]],
+  ['multi_2dtasking',['Multi-tasking',['../threads.html',1,'basics']]]
 ];

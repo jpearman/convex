@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['convex_20license',['ConVEX license',['../9_license.html',1,'']]],
   ['cast_5fuint32_5ft',['cast_uint32_t',['../fastmath_8c.html#a676fea0678945be0b1da32705b938e1a',1,'fastmath.c']]],
   ['cfg',['cfg',['../struct__vex_digi_cfg.html#a0e962ccc033b922d35b6073759e206c6',1,'_vexDigiCfg']]],
   ['ch1',['Ch1',['../struct__jsdata.html#a12728c97adf026f97fde9c998cecaf1e',1,'_jsdata::Ch1()'],['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749af03e566fe11d6cfc78b930783647a6df',1,'Ch1():&#160;vexctl.h']]],
@@ -25,7 +24,13 @@ var searchData=
   ['clawcontroller',['ClawController',['../clawbot_8c.html#a9ba10b2c7acecff4397d113f009a145b',1,'clawbot.c']]],
   ['clawpot',['clawPot',['../clawbot_8c.html#a2acf81d9e5523f5d8b7517362a7d6485',1,'clawbot.c']]],
   ['cleanuptask',['CleanupTask',['../vexcortex_8c.html#ac708e4b167d25fd3fd57f773cfb1b372',1,'CleanupTask(Thread *tp) __attribute__((weak)):&#160;robotc_glue.c'],['../robotc__glue_8c.html#aebb980fafc63f221694f745ca77c32ad',1,'CleanupTask(Thread *tp):&#160;robotc_glue.c']]],
+  ['competition_20control',['Competition control',['../comp_control.html',1,'']]],
+  ['compctl_2edox',['compctl.dox',['../compctl_8dox.html',1,'']]],
   ['cortex_20configuration',['Cortex configuration',['../config.html',1,'basics']]],
+  ['convex_5fmajor',['CONVEX_MAJOR',['../vex_8h.html#a769bb3214746fddee5b8e08ad7449327',1,'vex.h']]],
+  ['convex_5fminor',['CONVEX_MINOR',['../vex_8h.html#aab3f8edbfcd24e4e995dc102c9e7b91d',1,'vex.h']]],
+  ['convex_5fpatch',['CONVEX_PATCH',['../vex_8h.html#afd95849181a088e15d853d98663f3211',1,'vex.h']]],
+  ['convex_5fversion',['CONVEX_VERSION',['../vex_8h.html#a1be71c47748d3ff2141bdddce8ef374c',1,'vex.h']]],
   ['count',['count',['../struct__vex_quad_encoder__t.html#a98c88a2c5d1c631d33d390625a7edd7c',1,'_vexQuadEncoder_t::count()'],['../struct__ime_data.html#a4858b400f708a13bd514376ab941b27d',1,'_imeData::count()']]],
   ['cr',['CR',['../vexshell_8c.html#a876ce77f3c672c7162658151e648389e',1,'vexshell.c']]],
   ['ctl',['ctl',['../struct__spi_rx_packet_1_1__spi_rx_pak.html#aa0de48cd4b9fbb9b9270905a05cdec6e',1,'_spiRxPacket::_spiRxPak']]],
@@ -34,5 +39,7 @@ var searchData=
   ['ctrl_5fq',['CTRL_Q',['../vexshell_8c.html#a0cbbdb572472324f95bedb9eca71b053',1,'vexshell.c']]],
   ['current',['current',['../structsmart_motor.html#af9653d31acfffa5a40aa709b2065e00b',1,'smartMotor::current()'],['../struct__smart_controller.html#af9653d31acfffa5a40aa709b2065e00b',1,'_smartController::current()']]],
   ['convex_20api',['ConVEX API',['../index.html',1,'']]],
-  ['controlling_20motors',['Controlling motors',['../motors.html',1,'basics']]]
+  ['convex_20license',['ConVEX license',['../license.html',1,'']]],
+  ['controlling_20motors',['Controlling motors',['../motors.html',1,'basics']]],
+  ['creating_20new_20projects',['Creating new projects',['../newproject.html',1,'basics']]]
 ];

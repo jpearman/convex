@@ -4,10 +4,8 @@ var NAVTREE =
     [ "ConVEX API", "index.html", null ],
     [ "Getting Started", "getstarted.html", "getstarted" ],
     [ "The Basics", "basics.html", "basics" ],
-    [ "ConVEX license", "9_license.html", [
-      [ "Apache license", "9_license.html#subsection3", null ],
-      [ "GNU GPL3", "9_license.html#subsection211", null ]
-    ] ],
+    [ "Competition control", "comp_control.html", null ],
+    [ "ConVEX license", "license.html", "license" ],
     [ "Data Structures", null, [
       [ "Data Structures", "annotated.html", "annotated" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -34,12 +32,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"9_license.html",
-"smartmotor_8c.html#ac844e981b27f5c1af76547e1b9924e7c",
-"struct__vex_motor.html#af113e27943856fda379256192bf93450",
-"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a221d908e15c717c7024e7159ad588a05",
-"vexime_8h.html#ac722ec10df75e11becf70e9771fe0bda",
-"vexspi_8c.html#a976d6fbded4a552423c3024ba509d414"
+"annotated.html",
+"smartmotor_8c.html#aab976ab79d0bf527bbf7fa07e443fb42",
+"struct__vex_motor.html#a9faa3d2b3cd11671ebac321fbca8ffe4",
+"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a174ff15799b5057e97168d1c77e03a1d",
+"vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a45ca9d5dd0c4c4c54aad48d548d0c605",
+"vexsonar_8h.html#a96d94badc3d64cd6ae6fa3fe813815ab"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
