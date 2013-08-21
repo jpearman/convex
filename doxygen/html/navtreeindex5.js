@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"vexsonar_8h.html#a4d6f65954269daaa091770a3998b1d4e":[6,0,1,0,0,30,11],
 "vexsonar_8h.html#a96d94badc3d64cd6ae6fa3fe813815ab":[6,0,1,0,0,30,1],
 "vexsonar_8h.html#aa343a0040ae76531dc8bfdd0cd874487":[6,0,1,0,0,30,10],
 "vexsonar_8h.html#ac92293c2974304b7925e93ed37743889":[6,0,1,0,0,30,5],

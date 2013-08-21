@@ -7,7 +7,7 @@ var searchData=
   ['data',['data',['../union__spi_tx_packet.html#a725a51e042a923ae976b0c9426cc956c',1,'_spiTxPacket::data()'],['../union__spi_rx_packet.html#a725a51e042a923ae976b0c9426cc956c',1,'_spiRxPacket::data()']]],
   ['data_5ferrors',['data_errors',['../struct__ime_data.html#ab3cfee1634f963620c44540abdbf16d0',1,'_imeData']]],
   ['data_5fpolls',['data_polls',['../struct__ime_data.html#a0c7bdfd115bf56c6bacaa7a6a0eebfee',1,'_imeData']]],
-  ['debug',['debug',['../struct__vex_ime_data.html#a091f28f9a24ec18ef6b2cf8d85bb35e3',1,'_vexImeData']]],
+  ['debug',['debug',['../struct__vex_ime_data.html#a091f28f9a24ec18ef6b2cf8d85bb35e3',1,'_vexImeData::debug()'],['../debug.html',1,'basics']]],
   ['default_5fdevice',['DEFAULT_DEVICE',['../vexime_8h.html#a84cb8bbda8042a324f49102bc200cc54',1,'vexime.h']]],
   ['delaytimems',['delayTimeMs',['../structsmart_motor.html#a5a8cc605943c4c91758a5f6e286fa53d',1,'smartMotor']]],
   ['delta',['delta',['../structsmart_motor.html#a1ee4a05b54419bfadd66ee351d05812e',1,'smartMotor']]],

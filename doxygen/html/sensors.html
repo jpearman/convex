@@ -111,6 +111,7 @@ $(document).ready(function(){initNavTree('sensors.html','');});
 <p>Analog sensors include, potentiometers, gyro and line sensors. To read an analog sensor use the <a class="el" href="vexanalog_8h.html#a0775fe9e40f3c2ca30e0dd3b3b33a547">vexAdcGet</a> function.</p>
 <p><a class="el" href="vexanalog_8h.html#a0775fe9e40f3c2ca30e0dd3b3b33a547" title="Return ADC sample from sample buffer. ">vexAdcGet( int16_t index )</a></p>
 <p>This returns a 12 bit value in the range 0 to 4095.</p>
+<p>The analog inputs are constantly being scanned, vexAdcGet returns the latest value. The sample rate for each analog input in ConVEX is 13.4KHz.</p>
 <h2>Digital Sensors </h2>
 <p>Digital sensors need to be configured before they can be used, by default; all digital pins are set to be inputs. To change the type of a digital pin the <a class="el" href="struct__vex_digi_cfg.html">digital configuration structure</a> is used, see the <a class="el" href="config.html">configuration page</a> for details.</p>
 <p>Simple digital sensors such as bump switches can be read using the <a class="el" href="vexdigital_8h.html#ac3aaccf0a6cb0ea9554b4a6fbbb8752b">vexDigitalPinGet</a> function.</p>
@@ -122,8 +123,12 @@ $(document).ready(function(){initNavTree('sensors.html','');});
 <p><a class="el" href="vexsonar_8h.html#aa343a0040ae76531dc8bfdd0cd874487" title="Get sonar value in cm. ">vexSonarGetCm(tVexSonarChannel channel)</a><br/>
  <a class="el" href="vexsonar_8h.html#a4d6f65954269daaa091770a3998b1d4e" title="Get sonar value in inches. ">vexSonarGetInch(tVexSonarChannel channel)</a><br/>
 </p>
+<p>Sonars can read in either cm or inches regardless of the way they were originally configured.</p>
 <h3>Quadrature encoders</h3>
 <p><a class="el" href="vexencoder_8h.html#ae562fd3ecfe7dfb1d955e43ec21928a3" title="Get encoder count. ">vexEncoderGet(int16_t channel)</a></p>
+<p>Encoder data is returned as a 32 bit signed value.</p>
+<p>Encoders can be set using the vexEncoderSet function, non zero values are allowed.</p>
+<p><a class="el" href="vexencoder_8h.html#af83ef44607608a70b3f96230bb4fa6de" title="Get encoder count. ">vexEncoderSet( int16_t channel, int32_t value )</a>;</p>
 <h2>Smart Sensors </h2>
 <p>The only smart sensors that are currently available are the Integrated Motor Encoders (IMEs).</p>
 <p><a class="el" href="vexime_8c.html#acbd2822970f2e1012e6901ee9c8ebe06">vexImeGetChannelMax()</a> can be used to find the number of IMEs attached to the cortex.</p>
@@ -137,7 +142,7 @@ $(document).ready(function(){initNavTree('sensors.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="basics.html">The Basics</a></li>
-    <li class="footer">Generated on Tue Aug 20 2013 14:18:21 for Convex by
+    <li class="footer">Generated on Tue Aug 20 2013 19:51:26 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

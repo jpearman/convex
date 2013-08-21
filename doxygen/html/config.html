@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('config.html','');});
 <div class="title">Cortex configuration </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Before use the digital and motor ports need to be configured, this is done by passing a structure of configuration information to the following functions.</p>
+<div class="textblock"><p>Before use, the digital and motor ports need to be configured, this is done by passing structures with configuration information to the following functions.</p>
 <p><a class="el" href="vexconfig_8h.html#a608da14379df1633fcd2c6df094b70a6" title="Configure digital ports. ">vexDigitalConfigure(vexDigiCfg *cfg, int16_t cfg_num)</a><br/>
  <a class="el" href="vexconfig_8h.html#a35900825ff1e1c740970f6ef661b504a" title="Configure motors based on a configuration structure. ">vexMotorConfigure(vexMotorCfg *cfg, int16_t cfg_num)</a><br/>
 </p>
@@ -121,6 +121,7 @@ $(document).ready(function(){initNavTree('config.html','');});
 <div class="line">        { <a class="code" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767caa25c71d7fa21ab08684710b2a8cf22d71">kVexDigital_11</a>,   <a class="code" href="vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99ea3b9ded2e42c3b351493b459525a5b66a">kVexSensorQuadEncoder</a>,   <a class="code" href="vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a46e62b3eab5473ea07232bd266af1489">kVexConfigQuadEnc1</a>,    <a class="code" href="vexencoder_8h.html#a5ecdf3347cd5be5373546451ba2d2205a019c803f0cc040b27d445ee7e6e91d76">kVexQuadEncoder_1</a> },</div>
 <div class="line">        { <a class="code" href="vexdigital_8h.html#ada6c474f1f434058485c115c087767caade7b7acc0a0e38026df43efb4319bdd7">kVexDigital_12</a>,   <a class="code" href="vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99ea3b9ded2e42c3b351493b459525a5b66a">kVexSensorQuadEncoder</a>,   <a class="code" href="vexconfig_8h.html#ae48462eaf90683d1b2da2b107286c030a59aedd4445966527af6d5a5414c9944f">kVexConfigQuadEnc2</a>,    <a class="code" href="vexencoder_8h.html#a5ecdf3347cd5be5373546451ba2d2205a019c803f0cc040b27d445ee7e6e91d76">kVexQuadEncoder_1</a> }</div>
 <div class="line">};</div>
+<div class="line"><span class="comment">// Motor configuration</span></div>
 <div class="line"><span class="keyword">static</span>  <a class="code" href="struct__vex_motor_cfg.html" title="Structure holding information to configure a single motor. ">vexMotorCfg</a> mConfig[ <a class="code" href="vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a372ce9c349210d6622c2055fb3b3d114">kVexMotorNum</a> ] = {</div>
 <div class="line">        { <a class="code" href="vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a5554846dcf0617d679eb255548d05dd8">kVexMotor_1</a>,      <a class="code" href="vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819a93027887fea781a9f4dbc5fb618fc8a4">kVexMotor393T</a>,           <a class="code" href="vexmotor_8h.html#a92ed076752a09f9118679a31d4a60ea2" title="Motor command causes normal movement. ">kVexMotorNormal</a>,       <a class="code" href="vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99ea6362096d5697a6523409e03f3de0bfa9">kVexSensorIME</a>,         <a class="code" href="vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a54f6de3e7c9ee9f8debcbcecb83611e9">kImeChannel_1</a> },</div>
 <div class="line">        { <a class="code" href="vexmotor_8h.html#a1233a4fb09fef02c962ccec318e00c97a8c3b9e36a7a245882bd5fbff60aa11dd">kVexMotor_2</a>,      <a class="code" href="vexmotor_8h.html#a62170b45bb8b2b6c66889914eb602819affb153e903c4081ca22d1ac404c8b2c9">kVexMotorUndefined</a>,      <a class="code" href="vexmotor_8h.html#a92ed076752a09f9118679a31d4a60ea2" title="Motor command causes normal movement. ">kVexMotorNormal</a>,       <a class="code" href="vexconfig_8h.html#af55a7bef7693498b6964f850b0efe99ea83e036de1aff6a73a5be31694dc46064">kVexSensorNone</a>,        0 },</div>
@@ -190,7 +191,7 @@ $(document).ready(function(){initNavTree('config.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="basics.html">The Basics</a></li>
-    <li class="footer">Generated on Tue Aug 20 2013 14:18:21 for Convex by
+    <li class="footer">Generated on Tue Aug 20 2013 19:51:26 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

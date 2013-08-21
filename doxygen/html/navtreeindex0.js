@@ -101,6 +101,7 @@ var NAVTREEINDEX0 =
 "comp_control.html":[3],
 "config.html":[2,1],
 "control.html":[2,2],
+"debug.html":[2,6],
 "dir_0afe1dbde3163b092b498b0251b46397.html":[6,0,0,0],
 "dir_107e309f9f293897177ec4de6cf5a764.html":[6,0,0],
 "dir_39cce2f8bb217932b254ee6294567f16.html":[6,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "smartmotor_8c.html#a8ca350fdeab68b0c71c8df78c86b497f":[6,0,1,0,1,7,1],
 "smartmotor_8c.html#a8f0197a2264c27235ce1e880710374f3":[6,0,1,0,1,7,14],
 "smartmotor_8c.html#a904612dd738c965769a62093603b1c2f":[6,0,1,0,1,7,13],
-"smartmotor_8c.html#a9a4557f565013b4d0ba6da748b0e1545":[6,0,1,0,1,7,19],
-"smartmotor_8c.html#aa144c95835a3a6f710c4dda3b7ca8f1f":[6,0,1,0,1,7,26]
+"smartmotor_8c.html#a9a4557f565013b4d0ba6da748b0e1545":[6,0,1,0,1,7,19]
 };

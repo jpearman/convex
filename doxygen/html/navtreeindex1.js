@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"smartmotor_8c.html#aa144c95835a3a6f710c4dda3b7ca8f1f":[6,0,1,0,1,7,26],
 "smartmotor_8c.html#aab976ab79d0bf527bbf7fa07e443fb42":[6,0,1,0,1,7,17],
 "smartmotor_8c.html#ac2067868646a1fc6320aae4ef966b21f":[6,0,1,0,1,7,27],
 "smartmotor_8c.html#ac620eaa25a2d711bde154e7bcdefec28":[6,0,1,0,1,7,24],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "struct__vex_ime_data.html#ad71d46c657f21693d887e50a7cbd2aac":[5,0,11,6],
 "struct__vex_motor.html":[5,0,12],
 "struct__vex_motor.html#a6c2d858945ff55bc94ce6eb0cd2ea664":[5,0,12,4],
-"struct__vex_motor.html#a8ac52160d0007baa4edc21905f809f63":[5,0,12,2],
-"struct__vex_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d":[5,0,12,1]
+"struct__vex_motor.html#a8ac52160d0007baa4edc21905f809f63":[5,0,12,2]
 };

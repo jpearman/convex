@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"struct__vex_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d":[5,0,12,1],
 "struct__vex_motor.html#a9faa3d2b3cd11671ebac321fbca8ffe4":[5,0,12,0],
 "struct__vex_motor.html#aa8fa1497e68bc18575e40486e3be6e8d":[5,0,12,3],
 "struct__vex_motor.html#aaa8b271f7efb8762fce6c36cb6a6090b":[5,0,12,5],
@@ -82,7 +83,7 @@ var NAVTREEINDEX2 =
 "structvex_thread.html#a52f1e9d706c55e1a2014ffff078729ac":[5,0,20,0],
 "structvex_thread.html#a76244b7169887bd8d5714d39d69433bb":[5,0,20,2],
 "structvex_thread.html#ae00897c005088e177afbdfc1aec5caba":[5,0,20,1],
-"threads.html":[2,6],
+"threads.html":[2,7],
 "union__spi_rx_packet.html":[5,0,8],
 "union__spi_rx_packet.html#a725a51e042a923ae976b0c9426cc956c":[5,0,8,2],
 "union__spi_rx_packet.html#ad6626f432e0ed0a4509b296b8eb8bef8":[5,0,8,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "vexctl_8h.html#a4bf83d26199537609eacd2d6356d80d2":[6,0,1,0,0,10,3],
 "vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749":[6,0,1,0,0,10,0],
 "vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a02c37bbb44c7e0bc3d37709aa1ac83dc":[6,0,1,0,0,10,0,38],
-"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a062be535054abdbdc3d6dfd39a267392":[6,0,1,0,0,10,0,16],
-"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a0ecefddb78fafa16c791f8524c97a92b":[6,0,1,0,0,10,0,7]
+"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a062be535054abdbdc3d6dfd39a267392":[6,0,1,0,0,10,0,16]
 };

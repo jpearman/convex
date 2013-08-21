@@ -6,5 +6,6 @@ var basics =
     [ "Controlling motors", "motors.html", null ],
     [ "Reading sensors", "sensors.html", null ],
     [ "Display on the LCD", "display.html", null ],
+    [ "Debug and command shell", "debug.html", null ],
     [ "Multi-tasking", "threads.html", null ]
 ];
