@@ -101,26 +101,11 @@ $(document).ready(function(){initNavTree('comp_control.html','');});
 <div class="title">Competition control </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><pre class="fragment">There are few differences in the way competition control is handled in ConVEX as compared to ROBOTC
-and EasyC.  In all cases the indication of disabled, driver or autonomous periods comes from the
-master processor as part of the background communication between it and the user processor.  EasyC literally
-resets the user processor when it detects a change of state, this causes havoc with variables that may need to be
-retained between the different competition periods but is the only way it can interrupt and reset code
-that may be, for example, waiting for sensors or performing other lenghty operations.  ROBOTC has the oportunity
-to stop user code and tasks at any point as control of the processor returns to the ROBOTC operating system
-between each line of user code.
-
-ConVEX takes a more cooporative approach to the problem, it does not use the brute force mechanism of EasyC
-and, because it is running native ARM code, cannot force a thread or function to stop running at any arbitary
-point.  Every thread in ConVEX that needs to be under competition control must register with a supervisory
-thread and avoid long periods of operation without calling back to the system via a "vexSleep" call.
-
-With the V1.00 release of ConVEX, every program runs expecting VEXnet to be present and, if the competition
-switch is connected, will run in a competition mode.
-
-User code is usually started from functions in the vexuser.c file, four functions should normally be provided,
-although the setup functions are technically optional.  Here is a skeleton vexuser.c file.
-</pre><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="textblock"><p>There are few differences in the way competition control is handled in ConVEX as compared to ROBOTC and EasyC. In all cases the indication of disabled, driver or autonomous periods comes from the master processor as part of the background communication between it and the user processor. EasyC literally resets the user processor when it detects a change of state, this causes havoc with variables that may need to be retained between the different competition periods but is the only way it can interrupt and reset code that may be, for example, waiting for sensors or performing other lenghty operations. ROBOTC has the oportunity to stop user code and tasks at any point as control of the processor returns to the ROBOTC operating system between each line of user code.</p>
+<p>ConVEX takes a more cooporative approach to the problem, it does not use the brute force mechanism of EasyC and, because it is running native ARM code, cannot force a thread or function to stop running at any arbitary point. Every thread in ConVEX that needs to be under competition control must register with a supervisory thread and avoid long periods of operation without calling back to the system via a "vexSleep" call.</p>
+<p>With the V1.00 release of ConVEX, every program runs expecting VEXnet to be present and, if the competition switch is connected, will run in a competition mode.</p>
+<p>User code is usually started from functions in the <a class="el" href="vexuser_8c.html" title="Example of vexuser.c. ">vexuser.c</a> file, four functions should normally be provided, although the setup functions are technically optional. Here is a skeleton <a class="el" href="vexuser_8c.html" title="Example of vexuser.c. ">vexuser.c</a> file.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;ch.h&quot;</span>         <span class="comment">// needs for all ChibiOS programs</span></div>
 <div class="line"><span class="preprocessor">#include &quot;hal.h&quot;</span>        <span class="comment">// hardware abstraction layer header</span></div>
@@ -187,7 +172,7 @@ although the setup functions are technically optional.  Here is a skeleton vexus
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Aug 28 2013 20:30:53 for Convex by
+    <li class="footer">Generated on Thu Aug 29 2013 10:39:42 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>
