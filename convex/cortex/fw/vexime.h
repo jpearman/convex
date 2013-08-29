@@ -45,7 +45,7 @@
 /*                                                                             */
 /*    Description:                                                             */
 /*                                                                             */
-/*    This IME version for the ChibiOS/RT implementation on the cortex		   */
+/*    This IME version for the ChibiOS/RT implementation on the cortex         */
 /*    14 May 2013 was adapted from the code I wrote for the vexpro in Sept     */
 /*    2012                                                                     */
 /*                                                                             */
@@ -68,21 +68,21 @@ extern "C" {
 /** @brief      IME channel definitions                                        */
 /*-----------------------------------------------------------------------------*/
 typedef enum {
-	kImeChannel_1 = 0,
-	kImeChannel_2 = 1,
-	kImeChannel_3 = 2,
-	kImeChannel_4 = 3,
-	kImeChannel_5 = 4,
-	kImeChannel_6 = 5,
-	kImeChannel_7 = 6,
-	kImeChannel_8 = 7,
+    kImeChannel_1 = 0,
+    kImeChannel_2 = 1,
+    kImeChannel_3 = 2,
+    kImeChannel_4 = 3,
+    kImeChannel_5 = 4,
+    kImeChannel_6 = 5,
+    kImeChannel_7 = 6,
+    kImeChannel_8 = 7,
 
-	kImeTotal,
+    kImeTotal,
 
-	kImeChannelNone = 99
+    kImeChannelNone = 99
 } tVexImeChannels;
 
-#define	IME_MAX				kImeTotal   ///< Maximum number of IMEs we search for
+#define IME_MAX             kImeTotal   ///< Maximum number of IMEs we search for
 
 #define DEFAULT_DEVICE      0x60        ///< Default IME address
 #define IME_START_ADDRESS   0x20        ///< Start address when reassigning
@@ -104,61 +104,61 @@ typedef enum {
 
 #define IME_BUF_LEN         16
 
-#define	ACTION_POLL			0
-#define	ACTION_RENEGOTIATE	1
+#define ACTION_POLL         0
+#define ACTION_RENEGOTIATE  1
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      structure to hold everything for one encoder                   */
 /*-----------------------------------------------------------------------------*/
 typedef struct _imeData {
-    uint8_t 	address;        ///< The I2C address of this IME
-    uint8_t		type;           ///< The type of motor this IME is attached to
-    uint16_t	valid;          ///< The IME has been negotiated with and is valid
+    uint8_t     address;        ///< The I2C address of this IME
+    uint8_t     type;           ///< The type of motor this IME is attached to
+    uint16_t    valid;          ///< The IME has been negotiated with and is valid
     uint16_t    motor_index;    ///< A reference to the motor that this IME is connected to
 
 
-    uint8_t 	version[IME_BUF_LEN];   /**< @brief buffer to store version string
+    uint8_t     version[IME_BUF_LEN];   /**< @brief buffer to store version string
                                              read from this IME */
-    uint8_t 	vendor[IME_BUF_LEN];    /**< @brief buffer to store vendor string
+    uint8_t     vendor[IME_BUF_LEN];    /**< @brief buffer to store vendor string
                                              read from this IME */
-    uint8_t 	deviceid[IME_BUF_LEN];  /**< @brief buffer to store device id string
+    uint8_t     deviceid[IME_BUF_LEN];  /**< @brief buffer to store device id string
                                              read from this IME */
-    uint8_t 	enc_data[IME_BUF_LEN];  /**< @brief buffer used when reading encoder
+    uint8_t     enc_data[IME_BUF_LEN];  /**< @brief buffer used when reading encoder
                                              count */
 
-    int32_t 	count;          ///< last encoder count read from IME
+    int32_t     count;          ///< last encoder count read from IME
     int32_t     offset;         ///< an offset that id deducted from count
-    int32_t 	velocity;       ///< velocity data from IME
-    int32_t 	delta_count;    ///< change in count from last time read
-    int32_t 	rpm;            ///< calculated rpm (not tested yet)
+    int32_t     velocity;       ///< velocity data from IME
+    int32_t     delta_count;    ///< change in count from last time read
+    int32_t     rpm;            ///< calculated rpm (not tested yet)
 
-    int32_t 	old_count;      ///< count from last poll
+    int32_t     old_count;      ///< count from last poll
 
-    int32_t		rpm_constant;   ///< constant used to calculate rpm based on IME type
+    int32_t     rpm_constant;   ///< constant used to calculate rpm based on IME type
 
     // track data requests and errors
     uint32_t    data_polls;     ///< number of times this IME was polled
     uint32_t    data_errors;    ///< number of errors in communication with this IME
-	} imeData;
+    } imeData;
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      structure holding all IME data                                 */
 /*-----------------------------------------------------------------------------*/
 typedef struct _vexImeData {
-	I2CDriver   *i2cp;          ///< pointer to the I2C driver
-	vexStream	*chp;           ///< Pointer to vexStream for debug output
-	int16_t		num;            ///< the number of IMEs found on the I2C bus
-	uint16_t	nextAddress;    ///< address for the next discovered IME
-	uint16_t    error_lockup;   ///< total bus loss errors
-	uint16_t	error_ack;      ///< acknowledge errors
-	uint16_t	error_bus;      ///< bus errors
-	uint16_t	error_arb;      ///< arbitration errors
+    I2CDriver   *i2cp;          ///< pointer to the I2C driver
+    vexStream   *chp;           ///< Pointer to vexStream for debug output
+    int16_t     num;            ///< the number of IMEs found on the I2C bus
+    uint16_t    nextAddress;    ///< address for the next discovered IME
+    uint16_t    error_lockup;   ///< total bus loss errors
+    uint16_t    error_ack;      ///< acknowledge errors
+    uint16_t    error_bus;      ///< bus errors
+    uint16_t    error_arb;      ///< arbitration errors
     uint16_t    error_tim;      ///< timing errors
-	uint16_t	error_seq;      ///< sequential errors
-	uint16_t	action;         ///< indicates next action the IME thread should take
-	uint16_t	debug;          ///< flag indicates verbose debug output
-	imeData		imes[ IME_MAX ];///< array with data for each IME
-	} vexImeData;
+    uint16_t    error_seq;      ///< sequential errors
+    uint16_t    action;         ///< indicates next action the IME thread should take
+    uint16_t    debug;          ///< flag indicates verbose debug output
+    imeData     imes[ IME_MAX ];///< array with data for each IME
+    } vexImeData;
 
 #define IME_COUNT_RESET     0x7F000000      ///< Dummy value used during IME reset
 
@@ -169,7 +169,7 @@ typedef struct _vexImeData {
 #define     IME_269             0
 #define     IME_393T            1
 #define     IME_393S            2
-#define	    IME_UND				16
+#define     IME_UND             16
 /** @} */
 
 /*-----------------------------------------------------------------------------*/
@@ -187,27 +187,27 @@ int32_t     vexImeMotorGetCount( tVexMotor motor );
 
 // All of these functions are internal driver use
 // we expose them so alternative IME drivers could be written
-uint16_t	vexIMEFindEncoders( void );
-void		vexIMEDataInit( imeData *ime );
+uint16_t    vexIMEFindEncoders( void );
+void        vexIMEDataInit( imeData *ime );
 
-msg_t		vexIMEUpdateCounts( imeData *ime );
+msg_t       vexIMEUpdateCounts( imeData *ime );
 
-msg_t		vexIMEGetVersion( uint8_t device, uint8_t *buf );
-msg_t		vexIMEGetVendor( uint8_t device, uint8_t *buf );
-msg_t		vexIMEGetDeviceId( uint8_t device, uint8_t *buf );
-msg_t		vexIMEGetStatus( uint8_t device, uint8_t *buf );
-msg_t		vexIMEGetData( uint8_t device, uint8_t *buf );
-msg_t		vexIMEGetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len );
-msg_t		vexIMESetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len );
-msg_t		vexIMEClearCounters( uint8_t device );
-msg_t		vexIMEDisableTermination( uint8_t device );
-msg_t		vexIMEEnableTermination( uint8_t device );
-msg_t		vexIMESetAddr( uint8_t *device, uint8_t newDevice );
-msg_t		vexIMEResetAll( void );
+msg_t       vexIMEGetVersion( uint8_t device, uint8_t *buf );
+msg_t       vexIMEGetVendor( uint8_t device, uint8_t *buf );
+msg_t       vexIMEGetDeviceId( uint8_t device, uint8_t *buf );
+msg_t       vexIMEGetStatus( uint8_t device, uint8_t *buf );
+msg_t       vexIMEGetData( uint8_t device, uint8_t *buf );
+msg_t       vexIMEGetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len );
+msg_t       vexIMESetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len );
+msg_t       vexIMEClearCounters( uint8_t device );
+msg_t       vexIMEDisableTermination( uint8_t device );
+msg_t       vexIMEEnableTermination( uint8_t device );
+msg_t       vexIMESetAddr( uint8_t *device, uint8_t newDevice );
+msg_t       vexIMEResetAll( void );
 
-void		vexIMEHandleErrors( msg_t status, i2cflags_t errors );
-void		vexIMEPrintBuf( vexStream *chp, uint8_t *buf, uint8_t len );
-void		vexIMEDebug(vexStream *chp, int argc, char *argv[]);
+void        vexIMEHandleErrors( msg_t status, i2cflags_t errors );
+void        vexIMEPrintBuf( vexStream *chp, uint8_t *buf, uint8_t len );
+void        vexIMEDebug(vexStream *chp, int argc, char *argv[]);
 
 #ifdef   __cplusplus
 }  // Close scope of extern "C" declaration

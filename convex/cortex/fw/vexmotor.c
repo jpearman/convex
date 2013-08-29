@@ -51,14 +51,14 @@
 
 #include <stdlib.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"        // vex library header
 
 // local variable to store the timer used for pwm motors
 // We tested this on a different board without access to timer4
-static	TIM_TypeDef *PwmTimer = NULL;
+static  TIM_TypeDef *PwmTimer = NULL;
 
 // storage for motor data
 static  vexMotor  vexMotors[kVexMotorNum];
@@ -99,7 +99,7 @@ vexMotorInit()
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Set motor to speed given by value							   */
+/** @brief      Set motor to speed given by value                              */
 /** @param[in]  index The motor index                                          */
 /** @param[in]  value The speed of the motor (-127 to 127)                     */
 /*-----------------------------------------------------------------------------*/
@@ -107,18 +107,18 @@ vexMotorInit()
 void
 vexMotorSet( int16_t index, int16_t value )
 {
-	if( (index < kVexMotor_1) || (index >= kVexMotorNum))
-		return;
+    if( (index < kVexMotor_1) || (index >= kVexMotorNum))
+        return;
 
-	// limit
-	if( value > 127 )
-		value = 127;
-	else
-	if( value < (-127))
-		value = -127;
+    // limit
+    if( value > 127 )
+        value = 127;
+    else
+    if( value < (-127))
+        value = -127;
 
-	// save limited value in array
-	vexMotors[ index ].value = value;
+    // save limited value in array
+    vexMotors[ index ].value = value;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -143,10 +143,10 @@ vexMotorGet( int16_t index )
 void
 vexMotorStopAll()
 {
-	int16_t	i;
+    int16_t i;
 
-	for(i=kVexMotor_1;i<kVexMotorNum;i++)
-		vexMotorSet( i, 0);
+    for(i=kVexMotor_1;i<kVexMotorNum;i++)
+        vexMotorSet( i, 0);
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -342,7 +342,7 @@ vexMotorEncoderIdGet( int16_t index )
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief   	Command line debug of motors								   */
+/** @brief      Command line debug of motors                                   */
 /** @param[in]  chp     A pointer to a vexStream object                      */
 /** @param[in]  argc    The number of command line arguments                   */
 /** @param[in]  argv    An array of pointers to the command line args          */
@@ -351,33 +351,33 @@ vexMotorEncoderIdGet( int16_t index )
 void
 vexMotorDebug(vexStream *chp, int argc, char *argv[])
 {
-	int16_t index;
-	int16_t data;
+    int16_t index;
+    int16_t data;
 
-	if (argc < 2)
-		{
-	    // Status
-	    chprintf(chp, "Motor  Speed  Position Rev   ID\r\n");
-	    for(index=0;index<kVexMotorNum;index++)
-	        {
-	        chprintf(chp, "M_%d  %4d %7d      ", index, vexMotors[ index ].value, vexMotorPositionGet( index ) );
-	        if( vexMotors[ index ].reversed )
-	            chprintf(chp, "true  ");
-	        else
-	            chprintf(chp, "false ");
-	        chprintf(chp,"%d\r\n", vexMotorEncoderIdGet(index));
-	        }
-	    }
-	else
-		{
-		index = atoi( argv[0] );
-		data  = atoi( argv[1] );
-		if( index >= 0 ) {
-			chprintf(chp, "set motor %d to %d\r\n", index, data );
+    if (argc < 2)
+        {
+        // Status
+        chprintf(chp, "Motor  Speed  Position Rev   ID\r\n");
+        for(index=0;index<kVexMotorNum;index++)
+            {
+            chprintf(chp, "M_%d  %4d %7d      ", index, vexMotors[ index ].value, vexMotorPositionGet( index ) );
+            if( vexMotors[ index ].reversed )
+                chprintf(chp, "true  ");
+            else
+                chprintf(chp, "false ");
+            chprintf(chp,"%d\r\n", vexMotorEncoderIdGet(index));
+            }
+        }
+    else
+        {
+        index = atoi( argv[0] );
+        data  = atoi( argv[1] );
+        if( index >= 0 ) {
+            chprintf(chp, "set motor %d to %d\r\n", index, data );
 
-			vexMotorSet( index, data );
-			}
-		}
+            vexMotorSet( index, data );
+            }
+        }
 }
 
 

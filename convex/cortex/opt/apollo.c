@@ -50,8 +50,8 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include "ch.h"
-#include "hal.h"
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"
 
@@ -69,7 +69,7 @@
 *//*---------------------------------------------------------------------------*/
 
 /*-----------------------------------------------------------------------------*/
-/*	Needed to slow down communications from the cortex						   */
+/*  Needed to slow down communications from the cortex                         */
 /*  serial comms to the master processor is twice as fast as comms out of the  */
 /*  joystick programming interface.                                            */
 /*  32 chars @ 230000 baud takes 1.4mS                                         */
@@ -206,7 +206,7 @@ vt100_drawbox( int col, int row, int width, int height )
 
 
 /*-----------------------------------------------------------------------------*/
-/*	Setup functions to draw static display items							   */
+/*  Setup functions to draw static display items                               */
 /*  these are generally called once from the init function                     */
 /*-----------------------------------------------------------------------------*/
 
@@ -348,7 +348,7 @@ apolloJoystickSetup( int joystick )
 }
 
 /*-----------------------------------------------------------------------------*/
-/*	Update variables                    							           */
+/*  Update variables                                                           */
 /*-----------------------------------------------------------------------------*/
 
 /*-----------------------------------------------------------------------------*/
@@ -510,21 +510,21 @@ apolloUpdateJoystickAnalog( int joystick, int row, int h, int v )
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Apollo initialization                  						   */
+/** @brief      Apollo initialization                                          */
 /*-----------------------------------------------------------------------------*/
 void
 apolloInit()
 {
     // clear screen
     vt100_clearscreen();
-	// hide the cursor (may or may not work)
+    // hide the cursor (may or may not work)
     vt100_hidecursor();
 
     // graphics mode
     vt100_graphics();
-	// Setup overlay with lines etc.
+    // Setup overlay with lines etc.
     apolloScreenSetup();
-	
+    
     // normal mode
     vt100_ascii();
     // setup display labels
@@ -545,7 +545,7 @@ apolloDeinit()
     vt100_cursor(T_X_ORIGIN, T_HEIGHT);
     // clearscreen
     vt100_clearscreen();
-	// re-enable cursor
+    // re-enable cursor
     vt100_showcursor();
     // normal character set
     vt100_ascii();
@@ -576,7 +576,7 @@ apolloUpdate()
     apolloUpdateCortex(1);
     apolloUpdateSystem();
 
-	// display the joystick data
+    // display the joystick data
     apolloUpdateJoystickButton( 0, 0, vexControllerGet(Btn5U), vexControllerGet(Btn5D), -1, -1 );
     apolloUpdateJoystickButton( 0, 1, vexControllerGet(Btn6U), vexControllerGet(Btn6D), -1, -1 );
     apolloUpdateJoystickButton( 0, 2, vexControllerGet(Btn7U), vexControllerGet(Btn7D), vexControllerGet(Btn7L), vexControllerGet(Btn7R) );
@@ -597,6 +597,6 @@ apolloUpdate()
         apolloUpdateJoystickAnalog( 1, 3, vexControllerGet(AcclXXmtr2), vexControllerGet(AcclYXmtr2) );
         }
 
-	// move cursor out of the way
+    // move cursor out of the way
     vt100_cursor(T_WIDTH, T_HEIGHT);
 }

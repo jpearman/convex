@@ -48,8 +48,8 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"
 
@@ -72,10 +72,10 @@ static i2cflags_t errors = 0;
 static systime_t tmo = MS2ST(4);
 
 // All our IME data
-static	vexImeData	vexImes;
+static  vexImeData  vexImes;
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      return encoder count										   */
+/** @brief      return encoder count                                           */
 /** @param[in]  channel The encoder channel                                    */
 /** @returns    The encoder count - the offset                                 */
 /** @note  channel is int16_t to allow this function to be used in callbacks   */
@@ -84,13 +84,13 @@ static	vexImeData	vexImes;
 int32_t
 vexImeGetCount( int16_t channel )
 {
-	if( (tVexImeChannels)channel > kImeChannel_8 )
-		return(0);
+    if( (tVexImeChannels)channel > kImeChannel_8 )
+        return(0);
 
-	if( vexImes.imes[channel].valid )
-		return( vexImes.imes[channel].count - vexImes.imes[channel].offset );
-	else
-		return(0);
+    if( vexImes.imes[channel].valid )
+        return( vexImes.imes[channel].count - vexImes.imes[channel].offset );
+    else
+        return(0);
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -233,74 +233,74 @@ vexImeMotorGetCount( tVexMotor motor )
 }
 
 /*-----------------------------------------------------------------------------*/
-/*	Task to poll IME devices	        									   */
+/*  Task to poll IME devices                                                   */
 /*-----------------------------------------------------------------------------*/
 
 static WORKING_AREA(waVexImeTask, IME_TASK_STACK_SIZE);
 static msg_t
 vexImeTask( void *arg )
 {
-	int		i;
-	(void)arg;
+    int     i;
+    (void)arg;
 
-	chRegSetThreadName("ime");
+    chRegSetThreadName("ime");
 
-	// try and find IMEs
-	vexImes.action = ACTION_RENEGOTIATE;
+    // try and find IMEs
+    vexImes.action = ACTION_RENEGOTIATE;
 
-	while(!chThdShouldTerminate())
-		{
-		if( vexImes.action == ACTION_RENEGOTIATE )
-			{
-			// find encoders
-			vexIMEFindEncoders();
+    while(!chThdShouldTerminate())
+        {
+        if( vexImes.action == ACTION_RENEGOTIATE )
+            {
+            // find encoders
+            vexIMEFindEncoders();
 
-		    // Show debug
-			if(vexImes.debug)
-				{
-				for( i = 0;i<vexImes.num;i++ )
-		        	{
-					// print data for demo
-					chprintf(vexImes.chp,"Encoder:%d\r\n", i);
-		        	chprintf(vexImes.chp,"Version:   ");
-		        	vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].version, 8 );
+            // Show debug
+            if(vexImes.debug)
+                {
+                for( i = 0;i<vexImes.num;i++ )
+                    {
+                    // print data for demo
+                    chprintf(vexImes.chp,"Encoder:%d\r\n", i);
+                    chprintf(vexImes.chp,"Version:   ");
+                    vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].version, 8 );
 
-		        	chprintf(vexImes.chp,"Vendor:    ");
-		        	vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].vendor, 8 );
+                    chprintf(vexImes.chp,"Vendor:    ");
+                    vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].vendor, 8 );
 
-		        	chprintf(vexImes.chp,"Device ID: ");
-		        	vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].deviceid, 8 );
-		        	}
-				}
-			}
+                    chprintf(vexImes.chp,"Device ID: ");
+                    vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].deviceid, 8 );
+                    }
+                }
+            }
 
-		// If we have some IMEs then poll each one in turn
-		if( vexImes.num > 0 )
-			{
-			for( i = 0;i<vexImes.num; i++ )
-	    		{
-				// poll next IME
-	        	if( vexIMEUpdateCounts( &vexImes.imes[i] ) == RDY_OK )
-	        		vexImes.error_seq = 0;
+        // If we have some IMEs then poll each one in turn
+        if( vexImes.num > 0 )
+            {
+            for( i = 0;i<vexImes.num; i++ )
+                {
+                // poll next IME
+                if( vexIMEUpdateCounts( &vexImes.imes[i] ) == RDY_OK )
+                    vexImes.error_seq = 0;
 
-	        	// sleep
-	        	chThdSleepMilliseconds(1);
-	    		}
-			}
-	    else
-	    	{
-	    	// No IME's, try and find them
-	    	vexImes.action = ACTION_RENEGOTIATE;
-	    	// Try infrequently
-	    	chThdSleepMilliseconds(10);
-	    	}
-		}
+                // sleep
+                chThdSleepMilliseconds(1);
+                }
+            }
+        else
+            {
+            // No IME's, try and find them
+            vexImes.action = ACTION_RENEGOTIATE;
+            // Try infrequently
+            chThdSleepMilliseconds(10);
+            }
+        }
 
-	return (msg_t)0;
+    return (msg_t)0;
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Initialize IMEs on the I2C bus 		  					       */
+/** @brief      Initialize IMEs on the I2C bus                                 */
 /** @param[in]  i2cp A pointer to the I2C driver (chibios hal driver)          */
 /** @param[in]  chp  A pointer to a vexStream object (used for debug output)   */
 /** @pre        The I2C driver should have already been initialized            */
@@ -311,22 +311,22 @@ vexImeInit( I2CDriver *i2cp, vexStream *chp )
 {
     int16_t     i;
 
-	// Start driver
+    // Start driver
     // This may need to be moved from here if more I2C devices are added
-	i2cStart(i2cp, &imeI2cConfig);
+    i2cStart(i2cp, &imeI2cConfig);
 
-	// Save driver
-	vexImes.i2cp = i2cp;
-	// Save console driver for debug
-	vexImes.chp  = chp;
+    // Save driver
+    vexImes.i2cp = i2cp;
+    // Save console driver for debug
+    vexImes.chp  = chp;
 
-	// Init errors
-	vexImes.error_ack   = 0;
-	vexImes.error_arb   = 0;
-	vexImes.error_bus   = 0;
+    // Init errors
+    vexImes.error_ack   = 0;
+    vexImes.error_arb   = 0;
+    vexImes.error_bus   = 0;
 
-	// turn off debug
-	vexImes.debug       = 0;
+    // turn off debug
+    vexImes.debug       = 0;
 
     // Zero statistics for each ime
     for(i=0;i<IME_MAX;i++)
@@ -337,8 +337,8 @@ vexImeInit( I2CDriver *i2cp, vexStream *chp )
         vexImes.imes[i].motor_index  = -1;
         }
 
-	// Start thread
-	chThdCreateStatic(waVexImeTask, sizeof(waVexImeTask), IME_THREAD_PRIORITY, vexImeTask, NULL);
+    // Start thread
+    chThdCreateStatic(waVexImeTask, sizeof(waVexImeTask), IME_THREAD_PRIORITY, vexImeTask, NULL);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -365,25 +365,25 @@ vexIMEUpdateCounts( imeData *ime )
 
     // get new data
     if( (status = vexIMEGetData( ime->address, ime->enc_data )) == RDY_OK )
-    	{
-    	// 32 bit counter, 48 seems over the top
-    	ime->count    =  ((long)ime->enc_data[0] << 8) | ((long)ime->enc_data[1] << 0) | ((long)ime->enc_data[2] << 24) | ((long)ime->enc_data[3] << 16);
-    	ime->velocity =  ((long)ime->enc_data[4] << 8) + ((long)ime->enc_data[5] << 0);
+        {
+        // 32 bit counter, 48 seems over the top
+        ime->count    =  ((long)ime->enc_data[0] << 8) | ((long)ime->enc_data[1] << 0) | ((long)ime->enc_data[2] << 24) | ((long)ime->enc_data[3] << 16);
+        ime->velocity =  ((long)ime->enc_data[4] << 8) + ((long)ime->enc_data[5] << 0);
 
-    	if(ime->old_count != IME_COUNT_RESET )
-        	{
-    		ime->delta_count =  ime->count - ime->old_count;
+        if(ime->old_count != IME_COUNT_RESET )
+            {
+            ime->delta_count =  ime->count - ime->old_count;
 
-    		// calculate rpm based on IME velocity data
-    		if(ime->velocity != 0)
+            // calculate rpm based on IME velocity data
+            if(ime->velocity != 0)
                 ime->rpm =  ((int32_t)15625 * (int32_t)(60000/4)) / (ime->velocity * ime->rpm_constant);
-    		else
-    			ime->rpm = 0;
-        	}
+            else
+                ime->rpm = 0;
+            }
 
-    	ime->old_count = ime->count;
+        ime->old_count = ime->count;
 
-    	}
+        }
     else
         {
         ime->data_errors++;
@@ -416,7 +416,7 @@ vexIMEDataInit( imeData *ime )
 }
 
 /*---------------------------------------------------------------------------*/
-/** @brief      Search bus and add all encoders found (up to 8)				 */
+/** @brief      Search bus and add all encoders found (up to 8)              */
 /** @returns    The number of IMEs found                                     */
 /** @note       Internal IME driver use only                                 */
 /*---------------------------------------------------------------------------*/
@@ -424,8 +424,8 @@ vexIMEDataInit( imeData *ime )
 uint16_t
 vexIMEFindEncoders()
 {
-    int16_t	i = 0;
-	imeData *ime;
+    int16_t i = 0;
+    imeData *ime;
 
     // Reset
     vexIMEResetAll();
@@ -438,73 +438,73 @@ vexIMEFindEncoders()
 
     // look for up to IME_MAX encoders
     for(i=0;i<IME_MAX;i++)
-    	{
-    	// get next ime slot and initialize it's data
-    	ime = &vexImes.imes[ i ];
-    	vexIMEDataInit( ime );
+        {
+        // get next ime slot and initialize it's data
+        ime = &vexImes.imes[ i ];
+        vexIMEDataInit( ime );
 
-    	// Look for next encoder
-    	// seems enabling the termination of the default devices help initialization
-    	if( vexIMEEnableTermination( ime->address ) == RDY_OK )
-    		{
-    		// one more encoder found
-    		vexImes.num++;
+        // Look for next encoder
+        // seems enabling the termination of the default devices help initialization
+        if( vexIMEEnableTermination( ime->address ) == RDY_OK )
+            {
+            // one more encoder found
+            vexImes.num++;
 
-    		// Set new address
-        	vexIMESetAddr( &ime->address, vexImes.nextAddress );
-        	vexImes.nextAddress += 2;
+            // Set new address
+            vexIMESetAddr( &ime->address, vexImes.nextAddress );
+            vexImes.nextAddress += 2;
 
-        	// Give a little time to set new address
-        	chThdSleepMilliseconds(1);
-
-        	// Get encoder information
-        	vexIMEGetVersion( ime->address, ime->version );
-        	vexIMEGetVendor( ime->address, ime->vendor );
-        	vexIMEGetDeviceId( ime->address, ime->deviceid );
-
-        	// clear encoder counters
-        	vexIMEClearCounters( ime->address );
-
-        	// set a constant for the rpm calculations based on the encoder
-        	// type, we could do this from the device_id but will not know
-        	// if a 393 is set for speed or torque.
-        	// constants reduced by a factor of 4 due to overflow issues
-        	switch( ime->type )
-            	{
-            	case    IME_269:
-            		ime->rpm_constant = 30056/4;
-                	break;
-            	case    IME_393T:
-            		ime->rpm_constant = 78400/4;
-            		break;
-            	case    IME_393S:
-            		ime->rpm_constant = 49000/4;
-            		break;
-            	default:
-            		ime->rpm_constant = 39200/4;
-            		break;
-            	}
-
-       		// valid channel
-        	ime->valid   = 1;
-
-        	// disable termination so we can fint the next encoder
-        	vexIMEDisableTermination( ime->address );
+            // Give a little time to set new address
             chThdSleepMilliseconds(1);
-    		}
-    	else
-    	    {
-    	    // set address as error
-    	    ime->address = 0;
+
+            // Get encoder information
+            vexIMEGetVersion( ime->address, ime->version );
+            vexIMEGetVendor( ime->address, ime->vendor );
+            vexIMEGetDeviceId( ime->address, ime->deviceid );
+
+            // clear encoder counters
+            vexIMEClearCounters( ime->address );
+
+            // set a constant for the rpm calculations based on the encoder
+            // type, we could do this from the device_id but will not know
+            // if a 393 is set for speed or torque.
+            // constants reduced by a factor of 4 due to overflow issues
+            switch( ime->type )
+                {
+                case    IME_269:
+                    ime->rpm_constant = 30056/4;
+                    break;
+                case    IME_393T:
+                    ime->rpm_constant = 78400/4;
+                    break;
+                case    IME_393S:
+                    ime->rpm_constant = 49000/4;
+                    break;
+                default:
+                    ime->rpm_constant = 39200/4;
+                    break;
+                }
+
+            // valid channel
+            ime->valid   = 1;
+
+            // disable termination so we can fint the next encoder
+            vexIMEDisableTermination( ime->address );
+            chThdSleepMilliseconds(1);
+            }
+        else
+            {
+            // set address as error
+            ime->address = 0;
             break;
-    	    }
-    	}
+            }
+        }
 
     // enable termination on last encoder
     if( vexImes.num > 0 )
-		vexIMEEnableTermination( vexImes.imes[ vexImes.num-1 ].address );
+        vexIMEEnableTermination( vexImes.imes[ vexImes.num-1 ].address );
 
-	return( vexImes.num );
+    return( vexImes.num );
 }
 
 /*---------------------------------------------------------------------------*/
@@ -521,17 +521,17 @@ vexIMEFindEncoders()
 msg_t
 vexIMEGetVersion( uint8_t device, uint8_t *buf )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_VERSION_ADDR;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_VERSION_ADDR;
 
-	i2cAcquireBus(vexImes.i2cp);
-	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
-	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -550,17 +550,17 @@ vexIMEGetVersion( uint8_t device, uint8_t *buf )
 msg_t
 vexIMEGetVendor( uint8_t device, uint8_t *buf )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_VENDOR_ADDR;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_VENDOR_ADDR;
 
-	i2cAcquireBus(vexImes.i2cp);
-	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
-	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -579,17 +579,17 @@ vexIMEGetVendor( uint8_t device, uint8_t *buf )
 msg_t
 vexIMEGetDeviceId( uint8_t device, uint8_t *buf )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_DEVICEID_ADDR;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_DEVICEID_ADDR;
 
-	i2cAcquireBus(vexImes.i2cp);
-	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
-	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -608,17 +608,17 @@ vexIMEGetDeviceId( uint8_t device, uint8_t *buf )
 msg_t
 vexIMEGetStatus( uint8_t device, uint8_t *buf )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_STATUS_ADDR;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_STATUS_ADDR;
 
-	i2cAcquireBus(vexImes.i2cp);
-	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 4, tmo);
-	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 4, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -637,17 +637,17 @@ vexIMEGetStatus( uint8_t device, uint8_t *buf )
 msg_t
 vexIMEGetData( uint8_t device, uint8_t *buf )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_DATA_ADDR;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_DATA_ADDR;
 
-	i2cAcquireBus(vexImes.i2cp);
-	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
-	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, 8, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -668,17 +668,17 @@ vexIMEGetData( uint8_t device, uint8_t *buf )
 msg_t
 vexIMEGetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_SCRATCHR_ADDR+offset;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_SCRATCHR_ADDR+offset;
 
-	i2cAcquireBus(vexImes.i2cp);
-	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, len, tmo);
-	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, buf, len, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -699,7 +699,7 @@ vexIMEGetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len )
 msg_t
 vexIMESetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len )
 {
-	msg_t status = RDY_OK;
+    msg_t status = RDY_OK;
     uint8_t *txbuf;
     int i;
 
@@ -723,10 +723,10 @@ vexIMESetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len )
         chHeapFree(txbuf);
         }
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -744,17 +744,17 @@ vexIMESetScratchpad( uint8_t device, uint8_t *buf, uint8_t offset, uint8_t len )
 msg_t
 vexIMEClearCounters( uint8_t device )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_CLEAR_COUNTERS;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_CLEAR_COUNTERS;
 
-	i2cAcquireBus(vexImes.i2cp);
-	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, NULL, 0, tmo);
-	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, NULL, 0, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-	if (status != RDY_OK){
-		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -772,17 +772,17 @@ vexIMEClearCounters( uint8_t device )
 msg_t
 vexIMEDisableTermination( uint8_t device )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_DISABLE_TERM;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_DISABLE_TERM;
 
- 	i2cAcquireBus(vexImes.i2cp);
- 	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, NULL, 0, tmo);
- 	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, NULL, 0, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
- 	if (status != RDY_OK){
- 		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -800,17 +800,17 @@ vexIMEDisableTermination( uint8_t device )
 msg_t
 vexIMEEnableTermination( uint8_t device )
 {
-	msg_t status = RDY_OK;
-    uint8_t	txbuf = IME_ENABLE_TERM;
+    msg_t status = RDY_OK;
+    uint8_t txbuf = IME_ENABLE_TERM;
 
- 	i2cAcquireBus(vexImes.i2cp);
- 	status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, NULL, 0, tmo);
- 	i2cReleaseBus(vexImes.i2cp);
+    i2cAcquireBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, device>>1, &txbuf, 1, NULL, 0, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
- 	if (status != RDY_OK){
- 		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
- 		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     return(status);
 }
@@ -829,8 +829,8 @@ vexIMEEnableTermination( uint8_t device )
 msg_t
 vexIMESetAddr( uint8_t *device, unsigned char newDevice )
 {
-	msg_t status = RDY_OK;
-	uint8_t buf[4];
+    msg_t status = RDY_OK;
+    uint8_t buf[4];
 
 
     //
@@ -838,13 +838,13 @@ vexIMESetAddr( uint8_t *device, unsigned char newDevice )
     buf[1] = newDevice;
 
     i2cAcquireBus(vexImes.i2cp);
-  	status = i2cMasterTransmitTimeout(vexImes.i2cp, (*device)>>1, buf, 2, NULL, 0, tmo);
-  	i2cReleaseBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, (*device)>>1, buf, 2, NULL, 0, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-  	if (status != RDY_OK){
-  		errors = i2cGetErrors(vexImes.i2cp);
-  		vexIMEHandleErrors( status, errors );
-  		}
+    if (status != RDY_OK){
+        errors = i2cGetErrors(vexImes.i2cp);
+        vexIMEHandleErrors( status, errors );
+        }
 
     *device = newDevice;
 
@@ -863,8 +863,8 @@ vexIMESetAddr( uint8_t *device, unsigned char newDevice )
 msg_t
 vexIMEResetAll( )
 {
-	msg_t status = RDY_OK;
-	uint8_t buf[4];
+    msg_t status = RDY_OK;
+    uint8_t buf[4];
 
     //
     buf[0] = IME_RESET_REG;
@@ -872,10 +872,10 @@ vexIMEResetAll( )
     buf[2] = 0x03;
 
     i2cAcquireBus(vexImes.i2cp);
-  	status = i2cMasterTransmitTimeout(vexImes.i2cp, 0, buf, 3, NULL, 0, tmo);
-  	i2cReleaseBus(vexImes.i2cp);
+    status = i2cMasterTransmitTimeout(vexImes.i2cp, 0, buf, 3, NULL, 0, tmo);
+    i2cReleaseBus(vexImes.i2cp);
 
-  	// short delay for reset
+    // short delay for reset
     chThdSleepMilliseconds(100);
 
     return(status);
@@ -892,40 +892,40 @@ vexIMEResetAll( )
 void
 vexIMEHandleErrors( msg_t status, i2cflags_t errors )
 {
-	// A RDY_TIMEOUT should never occur, means bus was held low for long time
-	// reset I2C bus and start again
-	if( status == RDY_TIMEOUT )
-		{
-	    // total bus loss
-	    vexImes.error_lockup++;
-	    // stop bus
-		i2cStop( vexImes.i2cp );
-		// wait
-		chThdSleepMilliseconds(100);
-		// restart
-		i2cStart( vexImes.i2cp , &imeI2cConfig);
-		// force renegotiation
-		vexImes.action = ACTION_RENEGOTIATE;
+    // A RDY_TIMEOUT should never occur, means bus was held low for long time
+    // reset I2C bus and start again
+    if( status == RDY_TIMEOUT )
+        {
+        // total bus loss
+        vexImes.error_lockup++;
+        // stop bus
+        i2cStop( vexImes.i2cp );
+        // wait
+        chThdSleepMilliseconds(100);
+        // restart
+        i2cStart( vexImes.i2cp , &imeI2cConfig);
+        // force renegotiation
+        vexImes.action = ACTION_RENEGOTIATE;
         }
 
-	// If any error then increase number of
-	// sequential errors
-	if( errors != I2CD_NO_ERROR )
-		{
-		vexImes.error_seq++;
-		// if we found too many then assume cable pulled
-		if( vexImes.error_seq == 5 )
-			{
-		    // force re-negotiate
-			vexImes.action = ACTION_RENEGOTIATE;
+    // If any error then increase number of
+    // sequential errors
+    if( errors != I2CD_NO_ERROR )
+        {
+        vexImes.error_seq++;
+        // if we found too many then assume cable pulled
+        if( vexImes.error_seq == 5 )
+            {
+            // force re-negotiate
+            vexImes.action = ACTION_RENEGOTIATE;
             }
-		}
+        }
 
-	// count errors for debug
-	if( errors & I2CD_ACK_FAILURE )
-		vexImes.error_ack++;
-	if( errors & I2CD_ARBITRATION_LOST )
-		vexImes.error_arb++;
+    // count errors for debug
+    if( errors & I2CD_ACK_FAILURE )
+        vexImes.error_ack++;
+    if( errors & I2CD_ARBITRATION_LOST )
+        vexImes.error_arb++;
     if( errors & I2CD_BUS_ERROR )
         vexImes.error_bus++;
     if( errors & I2CD_TIMEOUT )
@@ -963,7 +963,7 @@ vexIMEPrintBuf( vexStream *chp, uint8_t *buf, uint8_t len )
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief   	Debug function to dump IME buffers							   */
+/** @brief      Debug function to dump IME buffers                             */
 /** @param[in]  chp     A pointer to a vexStream object                        */
 /** @param[in]  argc    The number of command line arguments                   */
 /** @param[in]  argv    An array of pointers to the command line args          */
@@ -972,24 +972,24 @@ vexIMEPrintBuf( vexStream *chp, uint8_t *buf, uint8_t len )
 void
 vexIMEDebug(vexStream *chp, int argc, char *argv[])
 {
-	int	i;
+    int i;
 
-	(void)argc;
-	(void)argv;
+    (void)argc;
+    (void)argv;
 
-	chprintf(chp,"%d IME's found\r\n",vexImes.num);
-	chprintf(chp,"Errors Lock(%d) Ack(%d) Bus(%d) Arb(%d) Tim(%d)\r\n",
-	        vexImes.error_lockup, vexImes.error_ack, vexImes.error_bus, vexImes.error_arb, vexImes.error_tim );
+    chprintf(chp,"%d IME's found\r\n",vexImes.num);
+    chprintf(chp,"Errors Lock(%d) Ack(%d) Bus(%d) Arb(%d) Tim(%d)\r\n",
+            vexImes.error_lockup, vexImes.error_ack, vexImes.error_bus, vexImes.error_arb, vexImes.error_tim );
 
-	for(i=0;i<vexImes.num;i++)
-		{
-		chprintf(chp,"IME_%d ", i+1); // want to show 1 through 8 not 0 through 7
-		                              // same with motor index below
-		switch( vexImes.imes[i].type )
-		    {
-		    case    IME_269:
-		        chprintf(chp,"269  ");
-		        break;
+    for(i=0;i<vexImes.num;i++)
+        {
+        chprintf(chp,"IME_%d ", i+1); // want to show 1 through 8 not 0 through 7
+                                      // same with motor index below
+        switch( vexImes.imes[i].type )
+            {
+            case    IME_269:
+                chprintf(chp,"269  ");
+                break;
             case    IME_393T:
                 chprintf(chp,"393T ");
                 break;
@@ -999,14 +999,14 @@ vexIMEDebug(vexStream *chp, int argc, char *argv[])
             default:
                 chprintf(chp,"---- ");
                 break;
-		    }
+            }
 
-		chprintf(chp,"(%-8s) M_%-2d ",vexImes.imes[i].deviceid, vexImes.imes[i].motor_index+1 );
+        chprintf(chp,"(%-8s) M_%-2d ",vexImes.imes[i].deviceid, vexImes.imes[i].motor_index+1 );
         chprintf(chp,"%8d/", vexImes.imes[i].data_polls );
         chprintf(chp,"%-5d ", vexImes.imes[i].data_errors );
         chprintf(chp,"count %6d ", vexImes.imes[i].count );
-		chprintf(chp,"vel   %5d ", vexImes.imes[i].velocity );
-		chprintf(chp,"rpm   %3d ", vexImes.imes[i].rpm );
-		chprintf(chp,"\r\n");
-		}
+        chprintf(chp,"vel   %5d ", vexImes.imes[i].velocity );
+        chprintf(chp,"rpm   %3d ", vexImes.imes[i].rpm );
+        chprintf(chp,"\r\n");
+        }
 }

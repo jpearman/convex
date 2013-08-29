@@ -48,97 +48,97 @@
   * @brief   Cortex configuration
 *//*---------------------------------------------------------------------------*/
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Default digital IO configuration                               */
 /*              All inputs                                                     */
 /*-----------------------------------------------------------------------------*/
-static	vexDigiCfg	vexDefConfig[kVexDigital_Num] = {
-		{ kVexDigital_1,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_2,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_3,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_4,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_5,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_6,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_7,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_8,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_9,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_10,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_11,	kVexSensorDigitalInput, kVexConfigInput,	0 },
-		{ kVexDigital_12,	kVexSensorDigitalInput, kVexConfigInput,	0 }
+static  vexDigiCfg  vexDefConfig[kVexDigital_Num] = {
+        { kVexDigital_1,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_2,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_3,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_4,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_5,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_6,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_7,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_8,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_9,    kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_10,   kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_11,   kVexSensorDigitalInput, kVexConfigInput,    0 },
+        { kVexDigital_12,   kVexSensorDigitalInput, kVexConfigInput,    0 }
 };
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Configure digital ports                                        */
 /** @param[in]  cfg pointer to vexDigiCfg structure                            */
 /** @param[in]  cfg_num number of entries in the cfg structure                 */
-/**	@details    Configure digital ports based on a configuration structure	   */
+/** @details    Configure digital ports based on a configuration structure     */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexDigitalConfigure( vexDigiCfg *cfg, int16_t cfg_num )
 {
-	vexDigiCfg			*_cfg, *_cfg1, *_cfg2;
-	tVexDigitalPin		i;
-	tVexDigitalPin		j;
-	int16_t				len;
+    vexDigiCfg          *_cfg, *_cfg1, *_cfg2;
+    tVexDigitalPin      i;
+    tVexDigitalPin      j;
+    int16_t             len;
 
-	if( cfg == NULL ){
-		_cfg = vexDefConfig;
-		len = DIG_CONFIG_SIZE( vexDefConfig );
-		}
-	else {
-		_cfg = cfg;
-		len = cfg_num;
-		}
+    if( cfg == NULL ){
+        _cfg = vexDefConfig;
+        len = DIG_CONFIG_SIZE( vexDefConfig );
+        }
+    else {
+        _cfg = cfg;
+        len = cfg_num;
+        }
 
-	for(i=0,_cfg1=_cfg;i<len;i++,_cfg1++)
-		{
-	    // An input ?
-		if( _cfg1->cfg == kVexConfigInput )
-			vexDigitalModeSet(_cfg1->pin, kVexDigitalInput );
-		// An output ?
-		if( _cfg1->cfg == kVexConfigOutput )
-			vexDigitalModeSet(_cfg1->pin, kVexDigitalOutput );
+    for(i=0,_cfg1=_cfg;i<len;i++,_cfg1++)
+        {
+        // An input ?
+        if( _cfg1->cfg == kVexConfigInput )
+            vexDigitalModeSet(_cfg1->pin, kVexDigitalInput );
+        // An output ?
+        if( _cfg1->cfg == kVexConfigOutput )
+            vexDigitalModeSet(_cfg1->pin, kVexDigitalOutput );
 
-		// An encoder ?
-		if( _cfg1->cfg == kVexConfigQuadEnc1 )
-			{
-			// find other encoder pin
-			for(j=0, _cfg2=_cfg;j<len;j++,_cfg2++)
-				{
-				if( (_cfg2->cfg == kVexConfigQuadEnc2) && (_cfg1->chan == _cfg2->chan ) )
-					vexEncoderAdd( _cfg1->chan, _cfg1->pin, _cfg2->pin );
-				}
-			}
+        // An encoder ?
+        if( _cfg1->cfg == kVexConfigQuadEnc1 )
+            {
+            // find other encoder pin
+            for(j=0, _cfg2=_cfg;j<len;j++,_cfg2++)
+                {
+                if( (_cfg2->cfg == kVexConfigQuadEnc2) && (_cfg1->chan == _cfg2->chan ) )
+                    vexEncoderAdd( _cfg1->chan, _cfg1->pin, _cfg2->pin );
+                }
+            }
 
-		// A sonar ?
-		if( _cfg1->cfg == kVexConfigSonarOut )
-			{
-			// find other encoder pin
-			for(j=0, _cfg2=_cfg;j<len;j++,_cfg2++)
-				{
-				if( (_cfg2->cfg == kVexConfigSonarIn) && (_cfg1->chan == _cfg2->chan ) )
-					vexSonarAdd( _cfg1->chan, _cfg1->pin, _cfg2->pin );
-				}
-			}
+        // A sonar ?
+        if( _cfg1->cfg == kVexConfigSonarOut )
+            {
+            // find other encoder pin
+            for(j=0, _cfg2=_cfg;j<len;j++,_cfg2++)
+                {
+                if( (_cfg2->cfg == kVexConfigSonarIn) && (_cfg1->chan == _cfg2->chan ) )
+                    vexSonarAdd( _cfg1->chan, _cfg1->pin, _cfg2->pin );
+                }
+            }
 
-		// Interrupt (experimental)
-		if( _cfg1->cfg == kVexConfigInterrupt )
-		    {
-		    vexDigitalIntrSet( _cfg1->pin );
-		    }
+        // Interrupt (experimental)
+        if( _cfg1->cfg == kVexConfigInterrupt )
+            {
+            vexDigitalIntrSet( _cfg1->pin );
+            }
 
-		// A bit messy here
-		// use the default config to save the user config.
-		// obviously if there is no user config then this is superfluous.
-		vexDefConfig[ _cfg1->pin ].type = _cfg1->type;
-		vexDefConfig[ _cfg1->pin ].cfg  = _cfg1->cfg;
+        // A bit messy here
+        // use the default config to save the user config.
+        // obviously if there is no user config then this is superfluous.
+        vexDefConfig[ _cfg1->pin ].type = _cfg1->type;
+        vexDefConfig[ _cfg1->pin ].cfg  = _cfg1->cfg;
         vexDefConfig[ _cfg1->pin ].chan = _cfg1->chan;
-		}
+        }
 }
 
 /*-----------------------------------------------------------------------------*/

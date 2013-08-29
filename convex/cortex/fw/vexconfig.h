@@ -78,31 +78,31 @@ typedef enum {
  *  are inputs but we also define them as QuadEnc1 or QuadEnc2
  */
 typedef enum {
-	kVexConfigInput    = kVexDigitalInput,
-	kVexConfigOutput   = kVexDigitalOutput,
-	kVexConfigQuadEnc1 = 10,
-	kVexConfigQuadEnc2,
-	kVexConfigSonarOut,
+    kVexConfigInput    = kVexDigitalInput,
+    kVexConfigOutput   = kVexDigitalOutput,
+    kVexConfigQuadEnc1 = 10,
+    kVexConfigQuadEnc2,
+    kVexConfigSonarOut,
     kVexConfigSonarIn,
 
     kVexConfigInterrupt
-	} tVexDigitalConfig;
+    } tVexDigitalConfig;
 
 /*-----------------------------------------------------------------------------*/
 /** @brief     Structure holding information to configure a single digital pin */
 /*-----------------------------------------------------------------------------*/
 
 typedef struct _vexDigiCfg {
-	tVexDigitalPin		pin;    ///< The pin number
-	tVexSensorType      type;   ///< Type of pin, quad enc, sonar etc.
-	tVexDigitalConfig	cfg;    ///< The config for this pin, this is type dependent
-	uint16_t			chan;   ///< The channel for this pin, quad enc & sonars
+    tVexDigitalPin      pin;    ///< The pin number
+    tVexSensorType      type;   ///< Type of pin, quad enc, sonar etc.
+    tVexDigitalConfig   cfg;    ///< The config for this pin, this is type dependent
+    uint16_t            chan;   ///< The channel for this pin, quad enc & sonars
 } vexDigiCfg;
 
 /*-----------------------------------------------------------------------------*/
 /** @brief     Macro to calculate the number of entries in digital config      */
 /*-----------------------------------------------------------------------------*/
-#define	DIG_CONFIG_SIZE( x )	sizeof( x ) / sizeof( vexDigiCfg )
+#define DIG_CONFIG_SIZE( x )    sizeof( x ) / sizeof( vexDigiCfg )
 
 /*-----------------------------------------------------------------------------*/
 /** @brief     Structure holding information to configure a single motor       */
@@ -126,7 +126,7 @@ typedef struct _vexMotorCfg {
 extern "C" {
 #endif
 
-void	        vexDigitalConfigure( vexDigiCfg *cfg, int16_t cfg_num );
+void            vexDigitalConfigure( vexDigiCfg *cfg, int16_t cfg_num );
 void            vexMotorConfigure( vexMotorCfg *cfg, int16_t cfg_num );
 
 tVexSensorType  vexDigitalTypeGet( tVexDigitalPin pin );

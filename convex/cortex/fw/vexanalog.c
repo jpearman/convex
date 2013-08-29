@@ -43,8 +43,8 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"
 
@@ -57,12 +57,12 @@
 static ADCConfig adccfg = {0};
 
 // Create buffer to store ADC results
-#define ADC_CH_NUM 		8
+#define ADC_CH_NUM      8
 static adcsample_t samples_buf[ ADC_CH_NUM ];
 
 // Fill ADCConversionGroup structure fields
 static ADCConversionGroup adccg = {
-	  // this 3 fields are common for all MCUs
+      // this 3 fields are common for all MCUs
       // set to TRUE if need circular buffer, set FALSE otherwise
       TRUE,
       // number of channels
@@ -97,14 +97,14 @@ static ADCConversionGroup adccg = {
 };
 
 /*-----------------------------------------------------------------------------*/
-/**	@brief      Initialize the ADC1 sub system   							   */
+/** @brief      Initialize the ADC1 sub system                                 */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexAdcInit()
 {
-	// Init and start ADC1
-	adcInit();
+    // Init and start ADC1
+    adcInit();
     adcStart(&ADCD1, &adccfg);
 
     // Start conversions
@@ -112,7 +112,7 @@ vexAdcInit()
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Return ADC sample from sample buffer   						   */
+/** @brief      Return ADC sample from sample buffer                           */
 /** @param[in]  index The index of the adc channel (0 through 7)               */
 /** @return     The ADC value in the range 0 to 4095                           */
 /*-----------------------------------------------------------------------------*/
@@ -120,14 +120,14 @@ vexAdcInit()
 int16_t
 vexAdcGet( int16_t index )
 {
-	if( (index < 0) || (index > 7))
-		return(-1);
-	else
-		return( samples_buf[ index ] );
+    if( (index < 0) || (index > 7))
+        return(-1);
+    else
+        return( samples_buf[ index ] );
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Dump all analog values to console for debug					   */
+/** @brief      Dump all analog values to console for debug                    */
 /** @param[in]  chp     A pointer to a vexStream object                        */
 /** @param[in]  argc    The number of command line arguments                   */
 /** @param[in]  argv    An array of pointers to the command line args          */
@@ -136,12 +136,12 @@ vexAdcGet( int16_t index )
 void
 vexAdcDebug(vexStream *chp, int argc, char *argv[])
 {
-	int	i;
+    int i;
 
-	(void)argc;
-	(void)argv;
+    (void)argc;
+    (void)argv;
 
-	for(i=0;i<8;i++)
-		chprintf( chp, "channel %d = %4d\r\n", i, vexAdcGet(i) );
+    for(i=0;i<8;i++)
+        chprintf( chp, "channel %d = %4d\r\n", i, vexAdcGet(i) );
 }
 

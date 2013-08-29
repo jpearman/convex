@@ -39,8 +39,8 @@
 /*-----------------------------------------------------------------------------*/
 
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
@@ -55,19 +55,19 @@
  *  This data structure is used to correlate a digital port(pin) number on the cortex
  *  with the port/pad pair on the STM32.
  */
-ioDef	vexioDefinition[ kVexDigital_Num ] = {
-		{VEX_DIGIO_1_PORT,   VEX_DIGIO_1_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_2_PORT,   VEX_DIGIO_2_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_3_PORT,   VEX_DIGIO_3_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_4_PORT,   VEX_DIGIO_4_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_5_PORT,   VEX_DIGIO_5_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_6_PORT,   VEX_DIGIO_6_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_7_PORT,   VEX_DIGIO_7_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_8_PORT,   VEX_DIGIO_8_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_9_PORT,   VEX_DIGIO_9_PAD,  kVexDigitalInput, -1 },
-		{VEX_DIGIO_10_PORT,  VEX_DIGIO_10_PAD, kVexDigitalInput, -1 },
-		{VEX_DIGIO_11_PORT,  VEX_DIGIO_11_PAD, kVexDigitalInput, -1 },
-		{VEX_DIGIO_12_PORT,  VEX_DIGIO_12_PAD, kVexDigitalInput, -1 }
+ioDef   vexioDefinition[ kVexDigital_Num ] = {
+        {VEX_DIGIO_1_PORT,   VEX_DIGIO_1_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_2_PORT,   VEX_DIGIO_2_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_3_PORT,   VEX_DIGIO_3_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_4_PORT,   VEX_DIGIO_4_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_5_PORT,   VEX_DIGIO_5_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_6_PORT,   VEX_DIGIO_6_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_7_PORT,   VEX_DIGIO_7_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_8_PORT,   VEX_DIGIO_8_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_9_PORT,   VEX_DIGIO_9_PAD,  kVexDigitalInput, -1 },
+        {VEX_DIGIO_10_PORT,  VEX_DIGIO_10_PAD, kVexDigitalInput, -1 },
+        {VEX_DIGIO_11_PORT,  VEX_DIGIO_11_PAD, kVexDigitalInput, -1 },
+        {VEX_DIGIO_12_PORT,  VEX_DIGIO_12_PAD, kVexDigitalInput, -1 }
 };
 
 /*-----------------------------------------------------------------------------*/
@@ -75,25 +75,25 @@ ioDef	vexioDefinition[ kVexDigital_Num ] = {
 /** @param[in]  pin The pin to set the new mode on                             */
 /** @param[in]  mode kVexDigitalInput or kVexDigitalOutput                     */
 /*-----------------------------------------------------------------------------*/
-/**	@details
+/** @details
  *  Change the type of a digital IO port
- *	All ports are initially initialized to be INPUTs unless the board.h file
- *	is changed (not recommended)
+ *  All ports are initially initialized to be INPUTs unless the board.h file
+ *  is changed (not recommended)
  */
 
 void
 vexDigitalModeSet( tVexDigitalPin pin, tVexDigitalMode mode )
 {
-	if( pin > kVexDigital_12 )
-		return;
+    if( pin > kVexDigital_12 )
+        return;
 
-	vexioDefinition[ pin ].mode = mode;
+    vexioDefinition[ pin ].mode = mode;
 
-	if( mode == kVexDigitalInput )
-		palSetPadMode( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad , PAL_MODE_INPUT_PULLUP );
-	else
-	if( mode == kVexDigitalOutput )
-		palSetPadMode( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad , PAL_MODE_OUTPUT_PUSHPULL );
+    if( mode == kVexDigitalInput )
+        palSetPadMode( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad , PAL_MODE_INPUT_PULLUP );
+    else
+    if( mode == kVexDigitalOutput )
+        palSetPadMode( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad , PAL_MODE_OUTPUT_PUSHPULL );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -117,20 +117,20 @@ vexDigitalModeGet( tVexDigitalPin pin )
 /** @param[in]  state kVexDigitalLow or kVexDigitalHigh                        */
 /*-----------------------------------------------------------------------------*/
 /** @details
- * 	Set a digital pin to a value, high or low.  If the pin is an input then
+ *  Set a digital pin to a value, high or low.  If the pin is an input then
  *  this enables the pullup or pulldown resistor.
  */
 
 void
 vexDigitalPinSet( tVexDigitalPin pin, tVexDigitalState state )
 {
-	if( pin > kVexDigital_12 )
-		return;
+    if( pin > kVexDigital_12 )
+        return;
 
-	if( state == kVexDigitalLow )
-		palClearPad( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad );
-	else
-		palSetPad( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad );
+    if( state == kVexDigitalLow )
+        palClearPad( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad );
+    else
+        palSetPad( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -138,20 +138,20 @@ vexDigitalPinSet( tVexDigitalPin pin, tVexDigitalState state )
 /** @param[in]  pin The pin to get the state of                                */
 /*-----------------------------------------------------------------------------*/
 /** @details
- *	Read the value of a digital pin, if the pin is a digital output then the
+ *  Read the value of a digital pin, if the pin is a digital output then the
  *  output value is returned.
  */
 
 tVexDigitalState
 vexDigitalPinGet( tVexDigitalPin pin )
 {
-	if( pin > kVexDigital_12 )
-		return( kVexDigitalLow );
+    if( pin > kVexDigital_12 )
+        return( kVexDigitalLow );
 
-	if( palReadPad( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad ) )
-		return( kVexDigitalHigh );
+    if( palReadPad( vexioDefinition[ pin ].port, vexioDefinition[ pin ].pad ) )
+        return( kVexDigitalHigh );
 
-	return( kVexDigitalLow );
+    return( kVexDigitalLow );
 }
 
 

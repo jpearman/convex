@@ -45,8 +45,8 @@
 
 #include <stdlib.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"
 
@@ -56,17 +56,17 @@
 *//*---------------------------------------------------------------------------*/
 
 /*-----------------------------------------------------------------------------*/
-/*	Storage for our SPI data												   */
+/*  Storage for our SPI data                                                   */
 /*-----------------------------------------------------------------------------*/
-static	SpiData				vexSpiData;
+static  SpiData             vexSpiData;
 
-static	GPTDriver		   *spiGpt    = &GPTD2;
-static	Thread 			   *spiThread = NULL;
+static  GPTDriver          *spiGpt    = &GPTD2;
+static  Thread             *spiThread = NULL;
 
 /*-----------------------------------------------------------------------------*/
-/* SPI configuration structure.												   */
-/* Maximum speed (2.25MHz), CPHA=1, CPOL=0, 16bits frames					   */
-/* MSb transmitted first.													   */
+/* SPI configuration structure.                                                */
+/* Maximum speed (2.25MHz), CPHA=1, CPOL=0, 16bits frames                      */
+/* MSb transmitted first.                                                      */
 /*-----------------------------------------------------------------------------*/
 
 static SPIConfig spicfg = {
@@ -77,8 +77,8 @@ static SPIConfig spicfg = {
 };
 
 /*-----------------------------------------------------------------------------*/
-/*  This is the initial communications data to the master processor			   */
-/*  only initialize the txdata   									           */
+/*  This is the initial communications data to the master processor            */
+/*  only initialize the txdata                                                 */
 /*-----------------------------------------------------------------------------*/
 
 static const unsigned char txInitData[32] =
@@ -90,7 +90,7 @@ static const unsigned char txInitData[32] =
 
 
 /*-----------------------------------------------------------------------------*/
-/*	Timer callback					   							       		   */
+/*  Timer callback                                                             */
 /*  We use timer 2 in a one shot mode for the various nasty SPI delays needed  */
 /*  rather than spinning in a loop                                             */
 /*-----------------------------------------------------------------------------*/
@@ -98,50 +98,50 @@ static const unsigned char txInitData[32] =
 static void
 _vspi_gpt_cb(GPTDriver *gptp)
 {
-	(void)gptp;
+    (void)gptp;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// wake thread
-	if (spiThread != NULL) {
-	    chSchReadyI(spiThread);
-	    spiThread = NULL;
-	  }
+    // wake thread
+    if (spiThread != NULL) {
+        chSchReadyI(spiThread);
+        spiThread = NULL;
+      }
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
-/*	Timer config structure	  										       	   */
-/*	1MHz clock																   */
+/*  Timer config structure                                                     */
+/*  1MHz clock                                                                 */
 /*-----------------------------------------------------------------------------*/
 
 static const GPTConfig vexSpiGpt = {
-    1000000, 	/* 1MHz timer clock.*/
+    1000000,    /* 1MHz timer clock.*/
     _vspi_gpt_cb  /* Timer callback.*/
     //NULL  /* Timer callback.*/
     };
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Init the SPI communication to the master processor			   */
+/** @brief      Init the SPI communication to the master processor             */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexSpiInit()
 {
-	uint16_t	i;
+    uint16_t    i;
 
-	// initialize the tx data
-	for(i=0;i<32;i++)
-		vexSpiData.txdata.data[i] = txInitData[i];
+    // initialize the tx data
+    for(i=0;i<32;i++)
+        vexSpiData.txdata.data[i] = txInitData[i];
 
-	vexSpiData.online = 0;
+    vexSpiData.online = 0;
 
     // Initializes the SPI driver 1.
-	spiStart(&SPID1, &spicfg);
+    spiStart(&SPID1, &spicfg);
 
-	// start timer
-	gptStart( spiGpt, &vexSpiGpt );
+    // start timer
+    gptStart( spiGpt, &vexSpiGpt );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -153,11 +153,11 @@ vexSpiInit()
 short
 vexSpiGetOnlineStatus()
 {
-	return( vexSpiData.online );
+    return( vexSpiData.online );
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      return a pointer to a raw joystick data structure			   */
+/** @brief      return a pointer to a raw joystick data structure              */
 /** @param[in]  index Which joytstick to use, 1 or 2                           */
 /** @returns    pointer to _jsdata structure                                   */
 /*-----------------------------------------------------------------------------*/
@@ -165,21 +165,21 @@ vexSpiGetOnlineStatus()
 jsdata *
 vexSpiGetJoystickDataPtr( int16_t index )
 {
-	if(index > 1)
-		return( &vexSpiData.rxdata.pak.js_2 );
-	else
-		return( &vexSpiData.rxdata.pak.js_1 );
+    if(index > 1)
+        return( &vexSpiData.rxdata.pak.js_2 );
+    else
+        return( &vexSpiData.rxdata.pak.js_1 );
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Get competition and status word								   */
+/** @brief      Get competition and status word                                */
 /** @returns    The status word from the spi data                              */
 /*-----------------------------------------------------------------------------*/
 
 uint16_t
 vexSpiGetControl()
 {
-	return( (uint16_t)vexSpiData.rxdata.pak.ctl );
+    return( (uint16_t)vexSpiData.rxdata.pak.ctl );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -196,8 +196,8 @@ vexSpiGetControl()
 uint16_t
 vexSpiGetMainBattery()
 {
-	// 59 mV * batt1 is battery voltage in mV
-	return( (uint16_t)vexSpiData.rxdata.pak.batt1 * SPI_BATTERY_SCALE );
+    // 59 mV * batt1 is battery voltage in mV
+    return( (uint16_t)vexSpiData.rxdata.pak.batt1 * SPI_BATTERY_SCALE );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -209,12 +209,12 @@ vexSpiGetMainBattery()
 uint16_t
 vexSpiGetBackupBattery()
 {
-	// 59 mV * batt1 is battery voltage in mV
-	return( (uint16_t)vexSpiData.rxdata.pak.batt2 * SPI_BATTERY_SCALE );
+    // 59 mV * batt1 is battery voltage in mV
+    return( (uint16_t)vexSpiData.rxdata.pak.batt2 * SPI_BATTERY_SCALE );
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Set motor value in the SPI tx data array					   */
+/** @brief      Set motor value in the SPI tx data array                       */
 /** @param[in]  index The index of the motor, range is 0 through 7             */
 /** @param[in]  data The motor command data in the range +/- 127               */
 /** @param[in]  reversed A flag indicating the motor data is reversed          */
@@ -228,34 +228,34 @@ vexSpiGetBackupBattery()
 void
 vexSpiSetMotor( int16_t index, int16_t data, bool_t reversed )
 {
-	uint8_t	m;
+    uint8_t m;
 
-	// index should be in the range 0 through 7
-	// corresponding to ports 2 through 9 on the cortex
-	if( (index < 0) || (index > 7))
-		return;
+    // index should be in the range 0 through 7
+    // corresponding to ports 2 through 9 on the cortex
+    if( (index < 0) || (index > 7))
+        return;
 
-	// Data will be in the range +/- 127 so limit here and
-	// convert to 0-255
-	if( data > 127)
-		m = 255;
-	else
-	if( data < (-127))
-		m = 0;
-	else
-		m = data + 127;
+    // Data will be in the range +/- 127 so limit here and
+    // convert to 0-255
+    if( data > 127)
+        m = 255;
+    else
+    if( data < (-127))
+        m = 0;
+    else
+        m = data + 127;
 
-	// move to buffer
-	if( !reversed )
-	    vexSpiData.txdata.pak.motor[index] = m;
-	else
-	    vexSpiData.txdata.pak.motor[index] = 255 - m;
+    // move to buffer
+    if( !reversed )
+        vexSpiData.txdata.pak.motor[index] = m;
+    else
+        vexSpiData.txdata.pak.motor[index] = 255 - m;
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Pause for exactly tick uS									   */
+/** @brief      Pause for exactly tick uS                                      */
 /** @param[in]  tick The delay in uS                                           */
-/**	@note       New version suspends thread, timer callback wakes thread	   */
+/** @note       New version suspends thread, timer callback wakes thread       */
 /** @note       Internal SPI driver use only                                   */
 /*-----------------------------------------------------------------------------*/
 
@@ -273,7 +273,7 @@ vexSpiTickDelay(int16_t tick)
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Send/receive one message with the master processor			   */
+/** @brief      Send/receive one message with the master processor             */
 /** @note       This is generally called by the system task                    */
 /*-----------------------------------------------------------------------------*/
 /** @details
@@ -286,53 +286,53 @@ vexSpiTickDelay(int16_t tick)
 void
 vexSpiSend()
 {
-	int16_t		 i;
+    int16_t      i;
 
-	uint16_t	*txbuf = (uint16_t *)vexSpiData.txdata.data;
-	uint16_t	*rxbuf = (uint16_t *)vexSpiData.rxdata_t.data;
+    uint16_t    *txbuf = (uint16_t *)vexSpiData.txdata.data;
+    uint16_t    *rxbuf = (uint16_t *)vexSpiData.rxdata_t.data;
 
-	// Set handshake to indicate new spi message
-	palSetPad( VEX_SPI_ENABLE_PORT, VEX_SPI_ENABLE_PIN );
+    // Set handshake to indicate new spi message
+    palSetPad( VEX_SPI_ENABLE_PORT, VEX_SPI_ENABLE_PIN );
 
     for(i=0;i<16;i++)
-    	{
-    	spiSelectI(&SPID1);
-    	rxbuf[i] = spi_lld_polled_exchange( &SPID1, txbuf[i] );
-    	//spiExchange( &SPID1, 1, &txbuf[i], &rxbuf[i]);
-    	spiUnselectI(&SPID1);
+        {
+        spiSelectI(&SPID1);
+        rxbuf[i] = spi_lld_polled_exchange( &SPID1, txbuf[i] );
+        //spiExchange( &SPID1, 1, &txbuf[i], &rxbuf[i]);
+        spiUnselectI(&SPID1);
 
         if( ((i%4) == 3) && (i != 15) )
-    		{
-    		// long delay between each group of 4 words
-    		vexSpiTickDelay(73);
+            {
+            // long delay between each group of 4 words
+            vexSpiTickDelay(73);
 
-        	// After 4 words negate handshake pin
-           	palClearPad( VEX_SPI_ENABLE_PORT, VEX_SPI_ENABLE_PIN );
-    		}
-    	else
-        	vexSpiTickDelay(8);
-    	}
+            // After 4 words negate handshake pin
+            palClearPad( VEX_SPI_ENABLE_PORT, VEX_SPI_ENABLE_PIN );
+            }
+        else
+            vexSpiTickDelay(8);
+        }
 
     // increase id for next message
     vexSpiData.txdata.pak.id++;
 
     // check integrity of received data
     if( (vexSpiData.rxdata_t.data[0] == 0x17 ) && (vexSpiData.rxdata_t.data[1] == 0xC9 ))
-      	{
-    	// copy temporary data
-    	for(i=0;i<32;i++)
-    		vexSpiData.rxdata.data[i] = vexSpiData.rxdata_t.data[i];
+        {
+        // copy temporary data
+        for(i=0;i<32;i++)
+            vexSpiData.rxdata.data[i] = vexSpiData.rxdata_t.data[i];
 
-    	// Set online status
-    	if( (vexSpiData.rxdata.data[3] & 0x01 ) == 1)
-    		vexSpiData.online = 1;
-    	}
+        // Set online status
+        if( (vexSpiData.rxdata.data[3] & 0x01 ) == 1)
+            vexSpiData.online = 1;
+        }
     else
-    	vexSpiData.errors++;
+        vexSpiData.errors++;
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Debug function to dump SPI buffers							   */
+/** @brief      Debug function to dump SPI buffers                             */
 /** @param[in]  chp     A pointer to a vexStream object                      */
 /** @param[in]  argc    The number of command line arguments                   */
 /** @param[in]  argv    An array of pointers to the command line args          */
@@ -341,12 +341,12 @@ vexSpiSend()
 void
 vexSpiDebug(vexStream *chp, int argc, char *argv[])
 {
-    int16_t	i;
+    int16_t i;
     int16_t index;
     int16_t data;
 
-	(void)argc;
-	(void)argv;
+    (void)argc;
+    (void)argv;
 
     if (argc > 1 )
         {
@@ -370,20 +370,20 @@ vexSpiDebug(vexStream *chp, int argc, char *argv[])
         chprintf(chp,"%02X ", vexSpiData.rxdata.data[i] );
     chprintf(chp,"\r\n");
 
-	chprintf(chp,"errors %ld\r\n", vexSpiData.errors );
+    chprintf(chp,"errors %ld\r\n", vexSpiData.errors );
 
-	chprintf(chp,"JS1 - ");
-	chprintf(chp,"ch1 %3d ", vexSpiData.rxdata.pak.js_1.Ch1);
-	chprintf(chp,"ch2 %3d ", vexSpiData.rxdata.pak.js_1.Ch2);
-	chprintf(chp,"ch3 %3d ", vexSpiData.rxdata.pak.js_1.Ch3);
-	chprintf(chp,"ch4 %3d ", vexSpiData.rxdata.pak.js_1.Ch4);
-	chprintf(chp,"button %2X%2X\r\n", vexSpiData.rxdata.pak.js_1.btns[0],vexSpiData.rxdata.pak.js_1.btns[1]);
-	chprintf(chp,"JS2 - ");
-	chprintf(chp,"ch1 %3d ", vexSpiData.rxdata.pak.js_2.Ch1);
-	chprintf(chp,"ch2 %3d ", vexSpiData.rxdata.pak.js_2.Ch2);
-	chprintf(chp,"ch3 %3d ", vexSpiData.rxdata.pak.js_2.Ch3);
-	chprintf(chp,"ch4 %3d ", vexSpiData.rxdata.pak.js_2.Ch4);
-	chprintf(chp,"button %2X%2X\r\n", vexSpiData.rxdata.pak.js_2.btns[0],vexSpiData.rxdata.pak.js_2.btns[1]);
+    chprintf(chp,"JS1 - ");
+    chprintf(chp,"ch1 %3d ", vexSpiData.rxdata.pak.js_1.Ch1);
+    chprintf(chp,"ch2 %3d ", vexSpiData.rxdata.pak.js_1.Ch2);
+    chprintf(chp,"ch3 %3d ", vexSpiData.rxdata.pak.js_1.Ch3);
+    chprintf(chp,"ch4 %3d ", vexSpiData.rxdata.pak.js_1.Ch4);
+    chprintf(chp,"button %2X%2X\r\n", vexSpiData.rxdata.pak.js_1.btns[0],vexSpiData.rxdata.pak.js_1.btns[1]);
+    chprintf(chp,"JS2 - ");
+    chprintf(chp,"ch1 %3d ", vexSpiData.rxdata.pak.js_2.Ch1);
+    chprintf(chp,"ch2 %3d ", vexSpiData.rxdata.pak.js_2.Ch2);
+    chprintf(chp,"ch3 %3d ", vexSpiData.rxdata.pak.js_2.Ch3);
+    chprintf(chp,"ch4 %3d ", vexSpiData.rxdata.pak.js_2.Ch4);
+    chprintf(chp,"button %2X%2X\r\n", vexSpiData.rxdata.pak.js_2.btns[0],vexSpiData.rxdata.pak.js_2.btns[1]);
 
 }
 

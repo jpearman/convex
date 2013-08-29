@@ -100,12 +100,12 @@
 /** @{                                                                         */
 /** @name task priorities                                                      */
 /*-----------------------------------------------------------------------------*/
-#define	SYSTEM_THREAD_PRIORITY		NORMALPRIO + 10
-#define	IME_THREAD_PRIORITY			NORMALPRIO + 9
-#define	MONITOR_THREAD_PRIORITY		NORMALPRIO + 8
-#define	SONAR_THREAD_PRIORITY		NORMALPRIO + 8
-#define	LCD_THREAD_PRIORITY			NORMALPRIO
-#define	USER_THREAD_PRIORITY		NORMALPRIO + 1
+#define SYSTEM_THREAD_PRIORITY      NORMALPRIO + 10
+#define IME_THREAD_PRIORITY         NORMALPRIO + 9
+#define MONITOR_THREAD_PRIORITY     NORMALPRIO + 8
+#define SONAR_THREAD_PRIORITY       NORMALPRIO + 8
+#define LCD_THREAD_PRIORITY         NORMALPRIO
+#define USER_THREAD_PRIORITY        NORMALPRIO + 1
 /** @} */
 
 /*-----------------------------------------------------------------------------*/
@@ -142,14 +142,14 @@ extern "C" {
 
 /*-----------------------------------------------------------------------------*/
 // Competition top level tasks and functions
-void		vexUserSetup(void)   __attribute__ ((weak));
+void        vexUserSetup(void)   __attribute__ ((weak));
 void        vexUserInit( void )  __attribute__ ((weak));
 msg_t       vexAutonomous( void *arg );
-msg_t		vexOperator( void *arg );
+msg_t       vexOperator( void *arg );
 
 /*-----------------------------------------------------------------------------*/
 // System related functions
-void		vexCortexInit( void );
+void        vexCortexInit( void );
 void        vexConsoleInit( void );
 void        vexTaskRegister( char *name );
 void        vexTaskRegisterPersistant(char *name, bool_t p );
@@ -162,9 +162,9 @@ inline void vexWatchdogReload(void);
 
 /*-----------------------------------------------------------------------------*/
 // used for trying out code
-void    	vexTest( void );
-void    	vexTestDebug(vexStream *chp, int argc, char *argv[]);
-void    	vexServiceEncoder( short source, short pa, short pb, long *encoder );
+void        vexTest( void );
+void        vexTestDebug(vexStream *chp, int argc, char *argv[]);
+void        vexServiceEncoder( short source, short pa, short pb, long *encoder );
 
 #ifdef __cplusplus
 }

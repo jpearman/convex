@@ -43,14 +43,14 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*	A place for test code before integration into it's pown modules			   */
+/*  A place for test code before integration into it's pown modules            */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
 #include <stdlib.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"
 
@@ -101,9 +101,9 @@ vexTest()
 void
 vexTestDebug(vexStream *chp, int argc, char *argv[])
 {
-	(void)argc;
-	(void)argv;
-	(void)chp;
+    (void)argc;
+    (void)argv;
+    (void)chp;
 }
 
 

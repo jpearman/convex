@@ -43,14 +43,14 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*	  Quadrature encoder handling											   */
+/*    Quadrature encoder handling                                              */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
 #include <stdlib.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"        // vex library header
 
@@ -59,7 +59,7 @@
   * @brief   Quad Encoder driver
 *//*---------------------------------------------------------------------------*/
 
-static	vexQuadEncoder_t	vexQuadEncoders[kVexQuadEncoder_Num];
+static  vexQuadEncoder_t    vexQuadEncoders[kVexQuadEncoder_Num];
 
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
@@ -73,15 +73,15 @@ static	vexQuadEncoder_t	vexQuadEncoders[kVexQuadEncoder_Num];
 static inline void
 vexEncoderIrqServiceA( vexQuadEncoder_t *enc )
 {
-	int16_t	pa;
-	int16_t	pb;
+    int16_t pa;
+    int16_t pb;
 
-	// Read state of pins
-	pa = (int16_t)palReadPad( enc->pa_port,  enc->pa_pad );
-	pb = (int16_t)palReadPad( enc->pb_port,  enc->pb_pad );
+    // Read state of pins
+    pa = (int16_t)palReadPad( enc->pa_port,  enc->pa_pad );
+    pb = (int16_t)palReadPad( enc->pb_port,  enc->pb_pad );
 
-	// we were interrupted by pa
-	if( pa ^ pb )enc->count--; else enc->count++;
+    // we were interrupted by pa
+    if( pa ^ pb )enc->count--; else enc->count++;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -90,15 +90,15 @@ vexEncoderIrqServiceA( vexQuadEncoder_t *enc )
 static inline void
 vexEncoderIrqServiceB( vexQuadEncoder_t *enc )
 {
-	int16_t	pa;
-	int16_t	pb;
+    int16_t pa;
+    int16_t pb;
 
-	// Read state of pins
-	pa = (int16_t)palReadPad( enc->pa_port,  enc->pa_pad );
-	pb = (int16_t)palReadPad( enc->pb_port,  enc->pb_pad );
+    // Read state of pins
+    pa = (int16_t)palReadPad( enc->pa_port,  enc->pa_pad );
+    pb = (int16_t)palReadPad( enc->pb_port,  enc->pb_pad );
 
-	// we were interrupted by pb
-	if( pa ^ pb )enc->count++; else enc->count--;
+    // we were interrupted by pb
+    if( pa ^ pb )enc->count++; else enc->count--;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -107,15 +107,15 @@ vexEncoderIrqServiceB( vexQuadEncoder_t *enc )
 static void
 _vqe_1_cb_a(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_1] );
+    // service encoder
+    vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_1] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -124,15 +124,15 @@ _vqe_1_cb_a(EXTDriver *extp, expchannel_t channel)
 static void
 _vqe_1_cb_b(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_1] );
+    // service encoder
+    vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_1] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -141,15 +141,15 @@ _vqe_1_cb_b(EXTDriver *extp, expchannel_t channel)
 static void
 _vqe_2_cb_a(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_2] );
+    // service encoder
+    vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_2] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -158,15 +158,15 @@ _vqe_2_cb_a(EXTDriver *extp, expchannel_t channel)
 static void
 _vqe_2_cb_b(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_2] );
+    // service encoder
+    vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_2] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -175,15 +175,15 @@ _vqe_2_cb_b(EXTDriver *extp, expchannel_t channel)
 static void
 _vqe_3_cb_a(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_3] );
+    // service encoder
+    vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_3] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -192,29 +192,29 @@ _vqe_3_cb_a(EXTDriver *extp, expchannel_t channel)
 static void
 _vqe_3_cb_b(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_3] );
+    // service encoder
+    vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_3] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 static void
 _vqe_4_cb_a(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_4] );
+    // service encoder
+    vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_4] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -223,29 +223,29 @@ _vqe_4_cb_a(EXTDriver *extp, expchannel_t channel)
 static void
 _vqe_4_cb_b(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_4] );
+    // service encoder
+    vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_4] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 static void
 _vqe_5_cb_a(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_5] );
+    // service encoder
+    vexEncoderIrqServiceA( &vexQuadEncoders[kVexQuadEncoder_5] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -254,35 +254,35 @@ _vqe_5_cb_a(EXTDriver *extp, expchannel_t channel)
 static void
 _vqe_5_cb_b(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	// service encoder
-	vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_5] );
+    // service encoder
+    vexEncoderIrqServiceB( &vexQuadEncoders[kVexQuadEncoder_5] );
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
 /*   Associate an interrupt handler with an encoder channel and input          */
 /*-----------------------------------------------------------------------------*/
 
-static	extcallback_t   _vqe_cb_a[kVexQuadEncoder_Num] = {
-		_vqe_1_cb_a,
-		_vqe_2_cb_a,
-		_vqe_3_cb_a,
-		_vqe_4_cb_a,
-		_vqe_5_cb_a
-	};
-static	extcallback_t   _vqe_cb_b[kVexQuadEncoder_Num] = {
-		_vqe_1_cb_b,
-		_vqe_2_cb_b,
-		_vqe_3_cb_b,
-		_vqe_4_cb_b,
-		_vqe_5_cb_b
-	};
+static  extcallback_t   _vqe_cb_a[kVexQuadEncoder_Num] = {
+        _vqe_1_cb_a,
+        _vqe_2_cb_a,
+        _vqe_3_cb_a,
+        _vqe_4_cb_a,
+        _vqe_5_cb_a
+    };
+static  extcallback_t   _vqe_cb_b[kVexQuadEncoder_Num] = {
+        _vqe_1_cb_b,
+        _vqe_2_cb_b,
+        _vqe_3_cb_b,
+        _vqe_4_cb_b,
+        _vqe_5_cb_b
+    };
 
 /*-----------------------------------------------------------------------------*/
 /** @brief    Initialize all the encoder data, counts to zero etc.             */
@@ -314,33 +314,33 @@ vexEncoderInit()
 void
 vexEncoderAdd( tVexQuadEncoderChannel channel, tVexDigitalPin pa, tVexDigitalPin pb )
 {
-	if( channel >= kVexQuadEncoder_Num )
-		return;
+    if( channel >= kVexQuadEncoder_Num )
+        return;
 
-	if(pa > kVexDigital_12)
-		return;
-	if(pb > kVexDigital_12)
-		return;
+    if(pa > kVexDigital_12)
+        return;
+    if(pb > kVexDigital_12)
+        return;
 
-	// zero variables
-	vexQuadEncoders[channel].count  = 0;
-	vexQuadEncoders[channel].offset = 0;
+    // zero variables
+    vexQuadEncoders[channel].count  = 0;
+    vexQuadEncoders[channel].offset = 0;
 
-	// setup first input
-	vexDigitalModeSet( pa, kVexDigitalInput);
-	vexQuadEncoders[channel].pa = pa;
-	vexQuadEncoders[channel].pa_port   = vexioDefinition[pa].port;
-	vexQuadEncoders[channel].pa_pad    = vexioDefinition[pa].pad;
-	vexExtSet( vexQuadEncoders[channel].pa_port, vexQuadEncoders[channel].pa_pad, EXT_CH_MODE_BOTH_EDGES, _vqe_cb_a[channel] );
+    // setup first input
+    vexDigitalModeSet( pa, kVexDigitalInput);
+    vexQuadEncoders[channel].pa = pa;
+    vexQuadEncoders[channel].pa_port   = vexioDefinition[pa].port;
+    vexQuadEncoders[channel].pa_pad    = vexioDefinition[pa].pad;
+    vexExtSet( vexQuadEncoders[channel].pa_port, vexQuadEncoders[channel].pa_pad, EXT_CH_MODE_BOTH_EDGES, _vqe_cb_a[channel] );
 
-	// setup second input
-	vexDigitalModeSet( pb, kVexDigitalInput);
-	vexQuadEncoders[channel].pb = pb;
-	vexQuadEncoders[channel].pb_port   = vexioDefinition[pb].port;
-	vexQuadEncoders[channel].pb_pad    = vexioDefinition[pb].pad;
-	vexExtSet( vexQuadEncoders[channel].pb_port, vexQuadEncoders[channel].pb_pad, EXT_CH_MODE_BOTH_EDGES, _vqe_cb_b[channel] );
+    // setup second input
+    vexDigitalModeSet( pb, kVexDigitalInput);
+    vexQuadEncoders[channel].pb = pb;
+    vexQuadEncoders[channel].pb_port   = vexioDefinition[pb].port;
+    vexQuadEncoders[channel].pb_pad    = vexioDefinition[pb].pad;
+    vexExtSet( vexQuadEncoders[channel].pb_port, vexQuadEncoders[channel].pb_pad, EXT_CH_MODE_BOTH_EDGES, _vqe_cb_b[channel] );
 
-	vexQuadEncoders[channel].state = 1;
+    vexQuadEncoders[channel].state = 1;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -351,11 +351,11 @@ vexEncoderAdd( tVexQuadEncoderChannel channel, tVexDigitalPin pa, tVexDigitalPin
 void
 vexEncoderStart( tVexQuadEncoderChannel channel )
 {
-	if( vexQuadEncoders[channel].state == 1) {
-		// start interrupts
-		extChannelEnable( &EXTD1, vexQuadEncoders[channel].pa_pad );
-		extChannelEnable( &EXTD1, vexQuadEncoders[channel].pb_pad );
-	}
+    if( vexQuadEncoders[channel].state == 1) {
+        // start interrupts
+        extChannelEnable( &EXTD1, vexQuadEncoders[channel].pa_pad );
+        extChannelEnable( &EXTD1, vexQuadEncoders[channel].pb_pad );
+    }
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -366,11 +366,11 @@ vexEncoderStart( tVexQuadEncoderChannel channel )
 void
 vexEncoderStop( tVexQuadEncoderChannel channel )
 {
-	if( vexQuadEncoders[channel].state == 1) {
-		// stop interrupts
-		extChannelDisable( &EXTD1, vexQuadEncoders[channel].pa_pad );
-		extChannelDisable( &EXTD1, vexQuadEncoders[channel].pb_pad );
-	}
+    if( vexQuadEncoders[channel].state == 1) {
+        // stop interrupts
+        extChannelDisable( &EXTD1, vexQuadEncoders[channel].pa_pad );
+        extChannelDisable( &EXTD1, vexQuadEncoders[channel].pb_pad );
+    }
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -380,10 +380,10 @@ vexEncoderStop( tVexQuadEncoderChannel channel )
 void
 vexEncoderStartAll()
 {
-	tVexQuadEncoderChannel	c;
+    tVexQuadEncoderChannel  c;
 
-	for(c=kVexQuadEncoder_1;c<kVexQuadEncoder_Num;c++)
-		vexEncoderStart( c );
+    for(c=kVexQuadEncoder_1;c<kVexQuadEncoder_Num;c++)
+        vexEncoderStart( c );
 }
 
 
@@ -404,7 +404,7 @@ vexEncoderGet( int16_t channel )
     if( channel < 0 || channel >= kVexQuadEncoder_Num )
         return(0);
 
-	return( vexQuadEncoders[channel].count - vexQuadEncoders[channel].offset );
+    return( vexQuadEncoders[channel].count - vexQuadEncoders[channel].offset );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -458,13 +458,13 @@ vexEncoderGetId( int16_t channel )
 void
 vexEncoderDebug(vexStream *chp, int argc, char *argv[])
 {
-	(void)argc;
-	(void)argv;
+    (void)argc;
+    (void)argv;
 
-	tVexQuadEncoderChannel	c;
+    tVexQuadEncoderChannel  c;
 
-	for(c=kVexQuadEncoder_1;c<kVexQuadEncoder_Num;c++)
-		chprintf(chp,"E%d %8ld  %8ld\r\n", c, vexQuadEncoders[c].count, vexQuadEncoders[c].offset );
+    for(c=kVexQuadEncoder_1;c<kVexQuadEncoder_Num;c++)
+        chprintf(chp,"E%d %8ld  %8ld\r\n", c, vexQuadEncoders[c].count, vexQuadEncoders[c].offset );
 }
 
 

@@ -43,12 +43,12 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*	A place for test code before integration into it's pown modules			   */
+/*  A place for test code before integration into it's pown modules            */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
@@ -64,7 +64,7 @@
 uint16_t
 vexControllerCompetitonState()
 {
-	return( vexSpiGetControl() );
+    return( vexSpiGetControl() );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -76,88 +76,88 @@ vexControllerCompetitonState()
 int16_t
 vexControllerGet( tCtlIndex index )
 {
-	jsdata *js;
-	int16_t analog;
+    jsdata *js;
+    int16_t analog;
 
-	// Get pointer to raw joystick data
-	if(index < Ch1Xmtr2)
-		js = vexSpiGetJoystickDataPtr( 1 );
-	else
-		js = vexSpiGetJoystickDataPtr( 2 );
+    // Get pointer to raw joystick data
+    if(index < Ch1Xmtr2)
+        js = vexSpiGetJoystickDataPtr( 1 );
+    else
+        js = vexSpiGetJoystickDataPtr( 2 );
 
-	// decode data, needs transmitter 2 to be defined as index + 0x80
-	switch( index & 0x7F )
-		{
-	    // clip analog joystick at +127 (max would be +128)
-		case	Ch1:
-		    analog = ( js->Ch1 == 0xFF ) ? 127 : js->Ch1 - 127;
-		    return( analog );
-			break;
-		case	Ch2:
+    // decode data, needs transmitter 2 to be defined as index + 0x80
+    switch( index & 0x7F )
+        {
+        // clip analog joystick at +127 (max would be +128)
+        case    Ch1:
+            analog = ( js->Ch1 == 0xFF ) ? 127 : js->Ch1 - 127;
+            return( analog );
+            break;
+        case    Ch2:
             analog = ( js->Ch2 == 0xFF ) ? 127 : js->Ch2 - 127;
-			return( -analog ); // flip vertical axis
-			break;
-		case	Ch3:
+            return( -analog ); // flip vertical axis
+            break;
+        case    Ch3:
             analog = ( js->Ch3 == 0xFF ) ? 127 : js->Ch3 - 127;
-			return( -analog ); // flip vertical axis
-			break;
-		case	Ch4:
+            return( -analog ); // flip vertical axis
+            break;
+        case    Ch4:
             analog = ( js->Ch4 == 0xFF ) ? 127 : js->Ch4 - 127;
-			return( analog );
-			break;
+            return( analog );
+            break;
 
-		case	Btn8D:
-			return( ( js->btns[1] & 0x01 ) ? 1 : 0 );
-			break;
-		case	Btn8L:
-			return( ( js->btns[1] & 0x02 ) ? 1 : 0 );
-			break;
-		case	Btn8U:
-			return( ( js->btns[1] & 0x04 ) ? 1 : 0 );
-			break;
-		case	Btn8R:
-			return( ( js->btns[1] & 0x08 ) ? 1 : 0 );
-			break;
+        case    Btn8D:
+            return( ( js->btns[1] & 0x01 ) ? 1 : 0 );
+            break;
+        case    Btn8L:
+            return( ( js->btns[1] & 0x02 ) ? 1 : 0 );
+            break;
+        case    Btn8U:
+            return( ( js->btns[1] & 0x04 ) ? 1 : 0 );
+            break;
+        case    Btn8R:
+            return( ( js->btns[1] & 0x08 ) ? 1 : 0 );
+            break;
 
-		case	Btn7D:
-			return( ( js->btns[1] & 0x10 ) ? 1 : 0 );
-			break;
-		case	Btn7L:
-			return( ( js->btns[1] & 0x20 ) ? 1 : 0 );
-			break;
-		case	Btn7U:
-			return( ( js->btns[1] & 0x40 ) ? 1 : 0 );
-			break;
-		case	Btn7R:
-			return( ( js->btns[1] & 0x80 ) ? 1 : 0 );
-			break;
+        case    Btn7D:
+            return( ( js->btns[1] & 0x10 ) ? 1 : 0 );
+            break;
+        case    Btn7L:
+            return( ( js->btns[1] & 0x20 ) ? 1 : 0 );
+            break;
+        case    Btn7U:
+            return( ( js->btns[1] & 0x40 ) ? 1 : 0 );
+            break;
+        case    Btn7R:
+            return( ( js->btns[1] & 0x80 ) ? 1 : 0 );
+            break;
 
-		case	Btn5D:
-			return( ( js->btns[0] & 0x01 ) ? 1 : 0 );
-			break;
-		case	Btn5U:
-			return( ( js->btns[0] & 0x02 ) ? 1 : 0 );
-			break;
+        case    Btn5D:
+            return( ( js->btns[0] & 0x01 ) ? 1 : 0 );
+            break;
+        case    Btn5U:
+            return( ( js->btns[0] & 0x02 ) ? 1 : 0 );
+            break;
 
-		case	Btn6D:
-			return( ( js->btns[0] & 0x04 ) ? 1 : 0 );
-			break;
-		case	Btn6U:
-			return( ( js->btns[0] & 0x08 ) ? 1 : 0 );
-			break;
+        case    Btn6D:
+            return( ( js->btns[0] & 0x04 ) ? 1 : 0 );
+            break;
+        case    Btn6U:
+            return( ( js->btns[0] & 0x08 ) ? 1 : 0 );
+            break;
 
-		// Accelerometers (there is no Z !)
-		case	AcclX:
-			return( js->acc_x - 127 );
-			break;
-		case	AcclY:
-			return( js->acc_y - 127 );
-			break;
-		case	AcclZ:
-			return( js->acc_z - 127 );
-			break;
+        // Accelerometers (there is no Z !)
+        case    AcclX:
+            return( js->acc_x - 127 );
+            break;
+        case    AcclY:
+            return( js->acc_y - 127 );
+            break;
+        case    AcclZ:
+            return( js->acc_z - 127 );
+            break;
 
-		// Check for any button in the group
+        // Check for any button in the group
         case    Btn5:
             return( ( js->btns[0] & 0x03 ) ? 1 : 0 );
             break;
@@ -176,7 +176,7 @@ vexControllerGet( tCtlIndex index )
             return( ( js->btns[0] || js->btns[1] ) ? 1 : 0 );
             break;
 
-		default:
-			return 0;
-		}
+        default:
+            return 0;
+        }
 }

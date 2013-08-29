@@ -46,8 +46,8 @@
 
 #include <stdlib.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "vex.h"
 
 /*-----------------------------------------------------------------------------*/
@@ -64,24 +64,24 @@
 #endif
 
 // Old stile EXTConfig
-#if	EXT_VERSION == 0
+#if EXT_VERSION == 0
 static  EXTConfig vexExtCfg = {
    {
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOD_DIGIO_11
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOD_DIGIO_12
-   {EXT_CH_MODE_DISABLED, NULL},	//
-   {EXT_CH_MODE_DISABLED, NULL},	//
-   {EXT_CH_MODE_DISABLED, NULL},	//
-   {EXT_CH_MODE_DISABLED, NULL},	//
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOC_DIGIO_3
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOC_DIGIO_4 or GPIOE_DIGIO_10
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOE_DIGIO_7
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOE_DIGIO_1
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOE_DIGIO_8
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOE_DIGIO_2
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOD_DIGIO_11
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOD_DIGIO_12
+   {EXT_CH_MODE_DISABLED, NULL},    //
+   {EXT_CH_MODE_DISABLED, NULL},    //
+   {EXT_CH_MODE_DISABLED, NULL},    //
+   {EXT_CH_MODE_DISABLED, NULL},    //
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOC_DIGIO_3
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOC_DIGIO_4 or GPIOE_DIGIO_10
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOE_DIGIO_7
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOE_DIGIO_1
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOE_DIGIO_8
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOE_DIGIO_2
    {EXT_CH_MODE_DISABLED, NULL},    // GPIOE_DIGIO_9
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOE_DIGIO_5
-   {EXT_CH_MODE_DISABLED, NULL},	// GPIOE_DIGIO_6
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOE_DIGIO_5
+   {EXT_CH_MODE_DISABLED, NULL},    // GPIOE_DIGIO_6
    {EXT_CH_MODE_DISABLED, NULL},    //
    },
 #ifndef  BOARD_OLIMEX_STM32_P103
@@ -103,47 +103,47 @@ static  EXTConfig vexExtCfg = {
 #ifndef  BOARD_OLIMEX_STM32_P103
 static  EXTConfig vexExtCfg = {
    {
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOD, NULL},	// GPIOD_DIGIO_11
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOD, NULL},	// GPIOD_DIGIO_12
-   {EXT_CH_MODE_DISABLED                 , NULL},	//
-   {EXT_CH_MODE_DISABLED                 , NULL},	//
-   {EXT_CH_MODE_DISABLED                 , NULL},	//
-   {EXT_CH_MODE_DISABLED                 , NULL},	//
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},	// GPIOC_DIGIO_3
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},	// GPIOC_DIGIO_4 or GPIOE_DIGIO_10
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},	// GPIOE_DIGIO_7
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},	// GPIOE_DIGIO_1
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},	// GPIOE_DIGIO_8
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},	// GPIOE_DIGIO_2
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOD, NULL},   // GPIOD_DIGIO_11
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOD, NULL},   // GPIOD_DIGIO_12
+   {EXT_CH_MODE_DISABLED                 , NULL},   //
+   {EXT_CH_MODE_DISABLED                 , NULL},   //
+   {EXT_CH_MODE_DISABLED                 , NULL},   //
+   {EXT_CH_MODE_DISABLED                 , NULL},   //
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},   // GPIOC_DIGIO_3
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},   // GPIOC_DIGIO_4 or GPIOE_DIGIO_10
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},   // GPIOE_DIGIO_7
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},   // GPIOE_DIGIO_1
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},   // GPIOE_DIGIO_8
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},   // GPIOE_DIGIO_2
    {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},   // GPIOE_DIGIO_9
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},	// GPIOE_DIGIO_5
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},	// GPIOE_DIGIO_6
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},   // GPIOE_DIGIO_5
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOE, NULL},   // GPIOE_DIGIO_6
    {EXT_CH_MODE_DISABLED                 , NULL}    //
    }
 };
 #else
 static  EXTConfig vexExtCfg = {
    {
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},	// 
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},	// 
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},	//
-   {EXT_CH_MODE_DISABLED                 , NULL},	//
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},	//
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},	//
-   {EXT_CH_MODE_DISABLED                 , NULL},	// 
-   {EXT_CH_MODE_DISABLED                 , NULL},	//
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},	// 
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},	// 
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},	// 
-   {EXT_CH_MODE_DISABLED                 , NULL},	// 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},   // 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},   // 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},   //
+   {EXT_CH_MODE_DISABLED                 , NULL},   //
    {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},   //
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},	// 
-   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},	// 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},   //
+   {EXT_CH_MODE_DISABLED                 , NULL},   // 
+   {EXT_CH_MODE_DISABLED                 , NULL},   //
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},   // 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},   // 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},   // 
+   {EXT_CH_MODE_DISABLED                 , NULL},   // 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},   //
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOC, NULL},   // 
+   {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL},   // 
    {EXT_CH_MODE_DISABLED | EXT_MODE_GPIOB, NULL}    //
    }
 };
 #endif
-#endif	// EXT_VERSION
+#endif  // EXT_VERSION
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Configure GPIO pin to be external interrupt source             */
@@ -153,54 +153,54 @@ static  EXTConfig vexExtCfg = {
 /** @param[in]  cb A callback to be called when the irq fires                  */
 /*-----------------------------------------------------------------------------*/
 
-#if	EXT_VERSION == 0
+#if EXT_VERSION == 0
 /*-----------------------------------------------------------------------------*/
-/*	Version 2.43 ext interrupt setup			                               */
+/*  Version 2.43 ext interrupt setup                                           */
 /*-----------------------------------------------------------------------------*/
 void
 vexExtSet( ioportid_t port, uint16_t channel, uint32_t mode, extcallback_t cb )
 {
-	vexExtCfg.channels[channel].mode = mode;
-	vexExtCfg.channels[channel].cb   = cb;
+    vexExtCfg.channels[channel].mode = mode;
+    vexExtCfg.channels[channel].cb   = cb;
 
-	// Only on the real VEX board
+    // Only on the real VEX board
 #ifndef  BOARD_OLIMEX_STM32_P103
-	// Fix the shared interrupt issue with D4 and D10
-	if( channel == 7 )
-	    {
+    // Fix the shared interrupt issue with D4 and D10
+    if( channel == 7 )
+        {
         if( port == PORT_DIGIO_10 )
             vexExtCfg.exti[1] = (EXT_MODE_GPIOC << 8) | (EXT_MODE_GPIOE << 12);
         if( port == PORT_DIGIO_4 )
             vexExtCfg.exti[1] = (EXT_MODE_GPIOC << 8) | (EXT_MODE_GPIOC << 12);
-	    }
+        }
 #else
-	(void)port;
+    (void)port;
 #endif
 }
 
 #else
 
 /*-----------------------------------------------------------------------------*/
-/*	Version 2.60 and on changed the way ext interrupts were setup			   */
+/*  Version 2.60 and on changed the way ext interrupts were setup              */
 /*-----------------------------------------------------------------------------*/
 void
 vexExtSet( ioportid_t port, uint16_t channel, uint32_t mode, extcallback_t cb )
 {
-	vexExtCfg.channels[channel].mode = (vexExtCfg.channels[channel].mode & EXT_MODE_GPIO_MASK) | mode;
-	vexExtCfg.channels[channel].cb   = cb;
+    vexExtCfg.channels[channel].mode = (vexExtCfg.channels[channel].mode & EXT_MODE_GPIO_MASK) | mode;
+    vexExtCfg.channels[channel].cb   = cb;
 
-	// Only on the real VEX board
+    // Only on the real VEX board
 #ifndef  BOARD_OLIMEX_STM32_P103
-	// Fix the shared interrupt issue with D4 and D10
-	if( channel == 7 )
-	    {
+    // Fix the shared interrupt issue with D4 and D10
+    if( channel == 7 )
+        {
         if( port == PORT_DIGIO_10 )
             vexExtCfg.channels[channel].mode = (vexExtCfg.channels[channel].mode & ~EXT_MODE_GPIO_MASK) | EXT_MODE_GPIOE;
         if( port == PORT_DIGIO_4 )
             vexExtCfg.channels[channel].mode = (vexExtCfg.channels[channel].mode & ~EXT_MODE_GPIO_MASK) | EXT_MODE_GPIOC;
-	    }
+        }
 #else
-	(void)port;
+    (void)port;
 #endif
 }
 
@@ -214,7 +214,7 @@ vexExtSet( ioportid_t port, uint16_t channel, uint32_t mode, extcallback_t cb )
 void
 vexExtIrqInit()
 {
-	// Activates the EXT driver 1.
-	extStart(&EXTD1, &vexExtCfg);
+    // Activates the EXT driver 1.
+    extStart(&EXTD1, &vexExtCfg);
 }
 

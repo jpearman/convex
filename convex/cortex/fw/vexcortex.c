@@ -44,8 +44,8 @@
 /*-----------------------------------------------------------------------------*/
 
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
@@ -71,10 +71,10 @@ static const SerialConfig console_config =
 // lcd communications at 19200 baud
 static const SerialConfig lcd_config =
 {
-	19200,
-	0,
-	USART_CR2_STOP1_BITS,
-	0
+    19200,
+    0,
+    USART_CR2_STOP1_BITS,
+    0
 };
 
 /*-----------------------------------------------------------------------------*/
@@ -209,10 +209,10 @@ vexSleep( int32_t msec )
 /*  only one if these can be active so re-use space                            */
 /*-----------------------------------------------------------------------------*/
 
-static	WORKING_AREA(waVexUserTask, USER_TASK_STACK_SIZE);
+static  WORKING_AREA(waVexUserTask, USER_TASK_STACK_SIZE);
 
 /*-----------------------------------------------------------------------------*/
-/*	Task that runs every 15mS and monitors competition state                   */
+/*  Task that runs every 15mS and monitors competition state                   */
 /*-----------------------------------------------------------------------------*/
 
 static WORKING_AREA(waVexCortexMonitorTask, MONITOR_TASK_STACK_SIZE);
@@ -223,22 +223,22 @@ vexCortexMonitorTask(void *arg)
     Thread  *tp = NULL;
     uint16_t    state;
 
-	(void)arg;
+    (void)arg;
 
-	chRegSetThreadName("monitor");
-	chEvtInit(&task_terminate);
+    chRegSetThreadName("monitor");
+    chEvtInit(&task_terminate);
 
-	// clear event listeners
+    // clear event listeners
     for(i=0;i<MAX_THREAD;i++)
         {
         myThreads[ i ].tp = (Thread *)0;
         myThreads[ i ].persistant = FALSE;
         }
 
-	// wait until all the master cpu resets are done
-	// it issues two additional resets after power on
-	// at 100mS intervals
-	chThdSleepMilliseconds(120);
+    // wait until all the master cpu resets are done
+    // it issues two additional resets after power on
+    // at 100mS intervals
+    chThdSleepMilliseconds(120);
 
     // wait for good spi comms
     while( vexSpiGetOnlineStatus() == 0 )
@@ -254,44 +254,44 @@ vexCortexMonitorTask(void *arg)
     if( vexUserInit )
         vexUserInit();
 
-	while (TRUE)
-	    {
-		chThdSleepMilliseconds(16);
+    while (TRUE)
+        {
+        chThdSleepMilliseconds(16);
 
-		if( (vexControllerCompetitonState() & kFlagDisabled ) != kFlagDisabled )
-		    {
-			if( (vexControllerCompetitonState() & kFlagAutonomousMode ) != kFlagAutonomousMode )
-			    {
-			    // Operator control
-				// Start the operator thread at higher than normal priority
-				tp = chThdCreateStatic(waVexUserTask, sizeof(waVexUserTask), USER_THREAD_PRIORITY, vexOperator, NULL);
-			    state = 0;
-			    }
-			else
-			    {
-			    // Autonomous
-			    // Start the operator thread at higher than normal priority
-			    tp = chThdCreateStatic(waVexUserTask, sizeof(waVexUserTask), USER_THREAD_PRIORITY, vexAutonomous, NULL);
+        if( (vexControllerCompetitonState() & kFlagDisabled ) != kFlagDisabled )
+            {
+            if( (vexControllerCompetitonState() & kFlagAutonomousMode ) != kFlagAutonomousMode )
+                {
+                // Operator control
+                // Start the operator thread at higher than normal priority
+                tp = chThdCreateStatic(waVexUserTask, sizeof(waVexUserTask), USER_THREAD_PRIORITY, vexOperator, NULL);
+                state = 0;
+                }
+            else
+                {
+                // Autonomous
+                // Start the operator thread at higher than normal priority
+                tp = chThdCreateStatic(waVexUserTask, sizeof(waVexUserTask), USER_THREAD_PRIORITY, vexAutonomous, NULL);
                 state = kFlagAutonomousMode;
-			    }
+                }
 
             while( (vexControllerCompetitonState() & (kFlagDisabled | kFlagAutonomousMode)) == state )
                {
 #ifdef  BOARD_OLIMEX_STM32_P103
-		   	   // Debug
-			   if( palReadPad( GPIOA, GPIOA_BUTTON ) )
-				   {
-		           while( palReadPad( GPIOA, GPIOA_BUTTON ) )
-		               chThdSleepMilliseconds(16);
-		           break;
-			       }
+               // Debug
+               if( palReadPad( GPIOA, GPIOA_BUTTON ) )
+                   {
+                   while( palReadPad( GPIOA, GPIOA_BUTTON ) )
+                       chThdSleepMilliseconds(16);
+                   break;
+                   }
 #endif
-			   chThdSleepMilliseconds(16);
+               chThdSleepMilliseconds(16);
 
-			   // Emergency stop
-			   if( vexKillAll )
-			       break;
-			   }
+               // Emergency stop
+               if( vexKillAll )
+                   break;
+               }
 
             // Broadcast termination event
             chThdSleepMilliseconds(50);
@@ -301,104 +301,104 @@ vexCortexMonitorTask(void *arg)
             chSysUnlock();
             chThdSleepMilliseconds(50);
 
-		    // wait for termination
-	     	chThdWait( tp );
+            // wait for termination
+            chThdWait( tp );
 
-		    // stop all motors
-		    vexMotorStopAll();
+            // stop all motors
+            vexMotorStopAll();
 
-		    // wait for all threads to stop
-	        for(i=0;i<MAX_THREAD;i++)
-	            {
-	            if( ( myThreads[ i ].tp != 0 ) && (myThreads[ i ].persistant == FALSE) )
-	                {
-	                chThdWait( myThreads[ i ].tp );
-	                myThreads[ i ].tp = (Thread *)0;
-	                }
-	            }
+            // wait for all threads to stop
+            for(i=0;i<MAX_THREAD;i++)
+                {
+                if( ( myThreads[ i ].tp != 0 ) && (myThreads[ i ].persistant == FALSE) )
+                    {
+                    chThdWait( myThreads[ i ].tp );
+                    myThreads[ i ].tp = (Thread *)0;
+                    }
+                }
 
-	        // We are done
+            // We are done
             while( vexKillAll )
                 chThdSleepMilliseconds(50);
-		    }
-		}
+            }
+        }
 
     return (msg_t)0;
 }
 
 
 /*-----------------------------------------------------------------------------*/
-/*	Task that runs every 15mS that updates the SPI communications buffer and   */
+/*  Task that runs every 15mS that updates the SPI communications buffer and   */
 /*  then communicates with the master processor                                */
 /*-----------------------------------------------------------------------------*/
 
 static WORKING_AREA(waVexCortexSystemTask, SYSTEM_TASK_STACK_SIZE);
 static msg_t
 vexCortexSystemTask(void *arg) {
-	  (void)arg;
-	  int16_t   m;
+      (void)arg;
+      int16_t   m;
 
-	  chRegSetThreadName("system");
+      chRegSetThreadName("system");
 
-	  // wait until all the master cpu resets are done
-	  // it issues two additional resets after power on
-	  // at 100mS intervals
-	  chThdSleepMilliseconds(120);
+      // wait until all the master cpu resets are done
+      // it issues two additional resets after power on
+      // at 100mS intervals
+      chThdSleepMilliseconds(120);
 
-	  while (TRUE)
-	  	  {
-		  chThdSleepMilliseconds(16);
+      while (TRUE)
+          {
+          chThdSleepMilliseconds(16);
 
-		  // get motor data
-		  // motor data 1 through 8 goes to spi slots 0 to 7
-		  for(m=0;m<8;m++)
-		      vexSpiSetMotor( m, vexMotorGet( m+1 ), vexMotorDirectionGet(m+1) );
+          // get motor data
+          // motor data 1 through 8 goes to spi slots 0 to 7
+          for(m=0;m<8;m++)
+              vexSpiSetMotor( m, vexMotorGet( m+1 ), vexMotorDirectionGet(m+1) );
 
-		  // comms to master
-		  vexSpiSend();
+          // comms to master
+          vexSpiSend();
 #ifdef    VEX_WATCHDOG_ENABLE
-		  vexWatchdogReload();
+          vexWatchdogReload();
 #endif
-	  	  }
+          }
 
-	  return (msg_t)0;
+      return (msg_t)0;
 }
 
 /*-----------------------------------------------------------------------------*/
-/**  @brief     Initialize the VEX cortex									   */
+/**  @brief     Initialize the VEX cortex                                      */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexCortexInit()
 {
-	// Init SPI communications
-	vexSpiInit();
+    // Init SPI communications
+    vexSpiInit();
 
-	// Initialize the motors
-	vexMotorInit();
+    // Initialize the motors
+    vexMotorInit();
 
-	// Init ADC conversions - No ADC on olimex
-#ifndef	BOARD_OLIMEX_STM32_P103
-	vexAdcInit();
+    // Init ADC conversions - No ADC on olimex
+#ifndef BOARD_OLIMEX_STM32_P103
+    vexAdcInit();
 #endif
 
-	// start any test code
-	vexTest();
+    // start any test code
+    vexTest();
 
     // Activates the lcd serial driver using custom configuration.
-	sdStart(SD_LCD1, &lcd_config);
-	vexLcdInit( 0, SD_LCD1 );
-	vexLcdPrintf( 0, 0, "ConVEX V%s" , CONVEX_VERSION);
-	vexLcdPrintf( 0, 1, "VEX CORTEX LCD1" );
+    sdStart(SD_LCD1, &lcd_config);
+    vexLcdInit( 0, SD_LCD1 );
+    vexLcdPrintf( 0, 0, "ConVEX V%s" , CONVEX_VERSION);
+    vexLcdPrintf( 0, 1, "VEX CORTEX LCD1" );
 
-	// Activates the lcd serial driver using custom configuration.
-	sdStart(SD_LCD2, &lcd_config);
-	vexLcdInit( 1, SD_LCD2 );
-	vexLcdPrintf( 1, 0, "ConVEX V%s" , CONVEX_VERSION);
-	vexLcdPrintf( 1, 1, "VEX CORTEX LCD2" );
+    // Activates the lcd serial driver using custom configuration.
+    sdStart(SD_LCD2, &lcd_config);
+    vexLcdInit( 1, SD_LCD2 );
+    vexLcdPrintf( 1, 0, "ConVEX V%s" , CONVEX_VERSION);
+    vexLcdPrintf( 1, 1, "VEX CORTEX LCD2" );
 
-	// Init encoder data structures
-	vexEncoderInit();
+    // Init encoder data structures
+    vexEncoderInit();
 
     // Init I2C bus
     i2cInit();
@@ -406,28 +406,28 @@ vexCortexInit()
     vexImeInit( &I2CD1, (vexStream *)SD_CONSOLE );
 
     // call user setup if it has been defined
-	if( vexUserSetup )
-	    vexUserSetup();
+    if( vexUserSetup )
+        vexUserSetup();
 
-	// start interrupts
-	vexExtIrqInit();
-	// start any encoders
-	vexEncoderStartAll();
-	// start any sonars
-	vexSonarStartAll();
-	vexSonarRun();
+    // start interrupts
+    vexExtIrqInit();
+    // start any encoders
+    vexEncoderStartAll();
+    // start any sonars
+    vexSonarStartAll();
+    vexSonarRun();
 
-	// Start any digital pin interrupts
-	vexDigitalIntrRun();
+    // Start any digital pin interrupts
+    vexDigitalIntrRun();
 
 #ifdef    VEX_WATCHDOG_ENABLE
     vexWatchdogInit();
 #endif
 
-	// Start the system thread at higher than normal priority
-	chThdCreateStatic(waVexCortexSystemTask, sizeof(waVexCortexSystemTask), SYSTEM_THREAD_PRIORITY, vexCortexSystemTask, NULL);
-	// Start the monitor thread at higher than normal priority
-	chThdCreateStatic(waVexCortexMonitorTask, sizeof(waVexCortexMonitorTask), MONITOR_THREAD_PRIORITY, vexCortexMonitorTask, NULL);
+    // Start the system thread at higher than normal priority
+    chThdCreateStatic(waVexCortexSystemTask, sizeof(waVexCortexSystemTask), SYSTEM_THREAD_PRIORITY, vexCortexSystemTask, NULL);
+    // Start the monitor thread at higher than normal priority
+    chThdCreateStatic(waVexCortexMonitorTask, sizeof(waVexCortexMonitorTask), MONITOR_THREAD_PRIORITY, vexCortexMonitorTask, NULL);
 }
 
 /*-----------------------------------------------------------------------------*/

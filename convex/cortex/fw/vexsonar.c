@@ -43,14 +43,14 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*	  Sonar handling														   */
+/*    Sonar handling                                                           */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
 #include <stdlib.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
 #include "chprintf.h"
 #include "vex.h"
 
@@ -61,161 +61,161 @@
 
 /** @brief  Internal sonar driver states    */
 typedef enum {
-	kSonarStatePing = 0,
-	kSonarStateWait,
-	kSonarStateDone,
-	kSonarStateError
+    kSonarStatePing = 0,
+    kSonarStateWait,
+    kSonarStateDone,
+    kSonarStateError
 } tVexSonnarState;;
 
-static	vexSonar_t	vexSonars[kVexSonar_Num];
+static  vexSonar_t  vexSonars[kVexSonar_Num];
 
 #ifdef BOARD_OLIMEX_STM32_P103
-static	GPTDriver		   *sonarGpt = &GPTD4;
+static  GPTDriver          *sonarGpt = &GPTD4;
 #else
 static  GPTDriver          *sonarGpt = &GPTD5;
 #endif
-static	tVexSonarChannel	nextSonar = kVexSonar_1;
-static	tVexSonnarState		nextState = kSonarStatePing;
-static	Thread 			   *vexSonarThread = NULL;
+static  tVexSonarChannel    nextSonar = kVexSonar_1;
+static  tVexSonnarState     nextState = kSonarStatePing;
+static  Thread             *vexSonarThread = NULL;
 
 // flags
-#define	SONAR_ENABLED		0x01    ///< flag to indicate sonar is enabled
-#define	SONAR_INSTALLED		0x02    ///< flag to indicate sonar is installed
+#define SONAR_ENABLED       0x01    ///< flag to indicate sonar is enabled
+#define SONAR_INSTALLED     0x02    ///< flag to indicate sonar is installed
 
 /*-----------------------------------------------------------------------------*/
-/*	Callback for timer expired   				                               */
-/*  We use this to														       */
-/*  1. time the 10uS pulse to stat the sonar ping							   */
-/*	2. as a 40mS timeout if the received echo is not received				   */
+/*  Callback for timer expired                                                 */
+/*  We use this to                                                             */
+/*  1. time the 10uS pulse to stat the sonar ping                              */
+/*  2. as a 40mS timeout if the received echo is not received                  */
 /*-----------------------------------------------------------------------------*/
 
-#define	SONAR_TIMEOUT	40000	    ///< Default timeout for sonar, 40mS
+#define SONAR_TIMEOUT   40000       ///< Default timeout for sonar, 40mS
 
 static void
 _vs_gpt_cb(GPTDriver *gptp)
 {
-	(void)gptp;
+    (void)gptp;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	if( nextState == kSonarStatePing )
-		{
-		nextState = kSonarStateWait;
-		vexDigitalPinSet( vexSonars[nextSonar].pa, 0 );
-		gptStartOneShotI( sonarGpt, SONAR_TIMEOUT );
-		}
-	else
-	if( nextState == kSonarStateWait )
-		{
-		vexSonars[nextSonar].time_r = 0;
-		vexSonars[nextSonar].time_f = SONAR_TIMEOUT;
-		nextState = kSonarStateError;
-		}
+    if( nextState == kSonarStatePing )
+        {
+        nextState = kSonarStateWait;
+        vexDigitalPinSet( vexSonars[nextSonar].pa, 0 );
+        gptStartOneShotI( sonarGpt, SONAR_TIMEOUT );
+        }
+    else
+    if( nextState == kSonarStateWait )
+        {
+        vexSonars[nextSonar].time_r = 0;
+        vexSonars[nextSonar].time_f = SONAR_TIMEOUT;
+        nextState = kSonarStateError;
+        }
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
-/*	Timer config structure	  										       	   */
-/*	1MHz clock																   */
+/*  Timer config structure                                                     */
+/*  1MHz clock                                                                 */
 /*-----------------------------------------------------------------------------*/
 
 static const GPTConfig vexSonarGpt = {
-    1000000, 	/* 1MHz timer clock.*/
+    1000000,    /* 1MHz timer clock.*/
     _vs_gpt_cb  /* Timer callback.*/
     };
 
 /*-----------------------------------------------------------------------------*/
-/*	Task to poll enabled sonar devices										   */
+/*  Task to poll enabled sonar devices                                         */
 /*-----------------------------------------------------------------------------*/
 
 static WORKING_AREA(waVexSonarTask, SONAR_TASK_STACK_SIZE);
 static msg_t
 VexSonarTask( void *arg )
 {
-	tVexSonarChannel	c;
+    tVexSonarChannel    c;
 
-	(void)arg;
+    (void)arg;
 
-	chRegSetThreadName("sonar");
+    chRegSetThreadName("sonar");
 
-	gptStart( sonarGpt, &vexSonarGpt );
+    gptStart( sonarGpt, &vexSonarGpt );
 
-	while(!chThdShouldTerminate())
-		{
-		if( vexSonars[nextSonar].flags == (SONAR_INSTALLED | SONAR_ENABLED) )
-			{
-			// ping sonar
-			vexSonarPing(nextSonar);
+    while(!chThdShouldTerminate())
+        {
+        if( vexSonars[nextSonar].flags == (SONAR_INSTALLED | SONAR_ENABLED) )
+            {
+            // ping sonar
+            vexSonarPing(nextSonar);
 
-			// wait for next time slot
-			// the timer is set to timeout in 40mS but we need a 10mS gap before any more
-			// pings can be sent
-			chThdSleepUntil(chTimeNow() + 50);
+            // wait for next time slot
+            // the timer is set to timeout in 40mS but we need a 10mS gap before any more
+            // pings can be sent
+            chThdSleepUntil(chTimeNow() + 50);
 
-			// calculate echo time
-			vexSonars[nextSonar].time = vexSonars[nextSonar].time_f - vexSonars[nextSonar].time_r;
+            // calculate echo time
+            vexSonars[nextSonar].time = vexSonars[nextSonar].time_f - vexSonars[nextSonar].time_r;
 
-			// was the time too great ?
-			if( vexSonars[nextSonar].time > 35000 )
-				vexSonars[nextSonar].time = -1;
+            // was the time too great ?
+            if( vexSonars[nextSonar].time > 35000 )
+                vexSonars[nextSonar].time = -1;
 
-			// if we have a valid time calculate real distance
-			if( vexSonars[nextSonar].time != -1 )
-				{
-				vexSonars[nextSonar].distance_cm = vexSonars[nextSonar].time   / 58;
-				vexSonars[nextSonar].distance_inch = vexSonars[nextSonar].time / 148;
-				}
-			else
-				{
-				vexSonars[nextSonar].distance_cm = -1;
-				vexSonars[nextSonar].distance_inch = -1;
-				}
+            // if we have a valid time calculate real distance
+            if( vexSonars[nextSonar].time != -1 )
+                {
+                vexSonars[nextSonar].distance_cm = vexSonars[nextSonar].time   / 58;
+                vexSonars[nextSonar].distance_inch = vexSonars[nextSonar].time / 148;
+                }
+            else
+                {
+                vexSonars[nextSonar].distance_cm = -1;
+                vexSonars[nextSonar].distance_inch = -1;
+                }
 
-			// look for next sonar
-			for(c=kVexSonar_1;c<kVexSonar_Num;c++)
-				{
-				if( ++nextSonar == kVexSonar_Num )
-					nextSonar = kVexSonar_1;
+            // look for next sonar
+            for(c=kVexSonar_1;c<kVexSonar_Num;c++)
+                {
+                if( ++nextSonar == kVexSonar_Num )
+                    nextSonar = kVexSonar_1;
 
-				// we need sonar to be installed and enabled
-				if( vexSonars[nextSonar].flags == (SONAR_INSTALLED | SONAR_ENABLED) )
-					break;
-				}
-			}
-		else
-			// Nothing enabled, just wait
-			chThdSleepMilliseconds(25);
-		}
+                // we need sonar to be installed and enabled
+                if( vexSonars[nextSonar].flags == (SONAR_INSTALLED | SONAR_ENABLED) )
+                    break;
+                }
+            }
+        else
+            // Nothing enabled, just wait
+            chThdSleepMilliseconds(25);
+        }
 
-	return (msg_t)0;
+    return (msg_t)0;
 }
 
 /*-----------------------------------------------------------------------------*/
-/*	Callback for echo receive pulse				                               */
+/*  Callback for echo receive pulse                                            */
 /*-----------------------------------------------------------------------------*/
 
 static void
 _vs_echo_cb(EXTDriver *extp, expchannel_t channel)
 {
-	(void)extp;
-	(void)channel;
+    (void)extp;
+    (void)channel;
 
-	chSysLockFromIsr();
+    chSysLockFromIsr();
 
-	if( palReadPad( vexSonars[nextSonar].pb_port,  vexSonars[nextSonar].pb_pad ) )
-		vexSonars[nextSonar].time_r = sonarGpt->tim->CNT;
-	else
-		{
-		vexSonars[nextSonar].time_f = sonarGpt->tim->CNT;
-		nextState = kSonarStateDone;
-		}
+    if( palReadPad( vexSonars[nextSonar].pb_port,  vexSonars[nextSonar].pb_pad ) )
+        vexSonars[nextSonar].time_r = sonarGpt->tim->CNT;
+    else
+        {
+        vexSonars[nextSonar].time_f = sonarGpt->tim->CNT;
+        nextState = kSonarStateDone;
+        }
 
-	chSysUnlockFromIsr();
+    chSysUnlockFromIsr();
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief  	Add a sonar to the array of installed sonars				   */
+/** @brief      Add a sonar to the array of installed sonars                   */
 /** @param[in]  channel The sonar channel                                      */
 /** @param[in]  pa The first input pin used by the sonar                       */
 /** @param[in]  pb The second input pin used by the sonat                      */
@@ -224,72 +224,72 @@ _vs_echo_cb(EXTDriver *extp, expchannel_t channel)
 void
 vexSonarAdd( tVexSonarChannel channel, tVexDigitalPin pa, tVexDigitalPin pb )
 {
-	if( channel >= kVexSonar_Num )
-		return;
+    if( channel >= kVexSonar_Num )
+        return;
 
-	if(pa > kVexDigital_12)
-		return;
-	if(pb > kVexDigital_12)
-		return;
+    if(pa > kVexDigital_12)
+        return;
+    if(pb > kVexDigital_12)
+        return;
 
-	// zero variables
+    // zero variables
 
-	// setup first pin as output
-	vexDigitalModeSet( pa, kVexDigitalOutput);
-	vexSonars[channel].pa = pa;
-	vexSonars[channel].pa_port   = vexioDefinition[pa].port;
-	vexSonars[channel].pa_pad    = vexioDefinition[pa].pad;
+    // setup first pin as output
+    vexDigitalModeSet( pa, kVexDigitalOutput);
+    vexSonars[channel].pa = pa;
+    vexSonars[channel].pa_port   = vexioDefinition[pa].port;
+    vexSonars[channel].pa_pad    = vexioDefinition[pa].pad;
 
-	// setup second pin as input
-	vexDigitalModeSet( pb, kVexDigitalInput);
-	vexSonars[channel].pb = pb;
-	vexSonars[channel].pb_port   = vexioDefinition[pb].port;
-	vexSonars[channel].pb_pad    = vexioDefinition[pb].pad;
-	vexExtSet( vexSonars[channel].pb_port, vexSonars[channel].pb_pad, EXT_CH_MODE_BOTH_EDGES, _vs_echo_cb );
+    // setup second pin as input
+    vexDigitalModeSet( pb, kVexDigitalInput);
+    vexSonars[channel].pb = pb;
+    vexSonars[channel].pb_port   = vexioDefinition[pb].port;
+    vexSonars[channel].pb_pad    = vexioDefinition[pb].pad;
+    vexExtSet( vexSonars[channel].pb_port, vexSonars[channel].pb_pad, EXT_CH_MODE_BOTH_EDGES, _vs_echo_cb );
 
-	// installed and enabled
-	vexSonars[channel].flags = (SONAR_INSTALLED | SONAR_ENABLED);
+    // installed and enabled
+    vexSonars[channel].flags = (SONAR_INSTALLED | SONAR_ENABLED);
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief	    Start a sonar by enabling the interrupt port				   */
+/** @brief      Start a sonar by enabling the interrupt port                   */
 /** @param[in]  channel The sonar channel                                      */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexSonarStart( tVexSonarChannel channel )
 {
-	if( vexSonars[channel].flags & SONAR_ENABLED ) {
-		// start interrupts
-		extChannelEnable( &EXTD1, vexSonars[channel].pb_pad );
-	}
+    if( vexSonars[channel].flags & SONAR_ENABLED ) {
+        // start interrupts
+        extChannelEnable( &EXTD1, vexSonars[channel].pb_pad );
+    }
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Stop a sonar by disabling the interrupt port				   */
+/** @brief      Stop a sonar by disabling the interrupt port                   */
 /** @param[in]  channel The sonar channel                                      */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexSonarStop( tVexSonarChannel channel )
 {
-	if( vexSonars[channel].flags & SONAR_ENABLED ) {
-		// start interrupts
-		extChannelDisable( &EXTD1, vexSonars[channel].pb_pad );
-	}
+    if( vexSonars[channel].flags & SONAR_ENABLED ) {
+        // start interrupts
+        extChannelDisable( &EXTD1, vexSonars[channel].pb_pad );
+    }
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Enable all installed sonars									   */
+/** @brief      Enable all installed sonars                                    */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexSonarStartAll()
 {
-	tVexSonarChannel	c;
+    tVexSonarChannel    c;
 
-	for(c=kVexSonar_1;c<kVexSonar_Num;c++)
-		vexSonarStart( c );
+    for(c=kVexSonar_1;c<kVexSonar_Num;c++)
+        vexSonarStart( c );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -299,25 +299,25 @@ vexSonarStartAll()
 void
 vexSonarRun()
 {
-	tVexSonarChannel	c;
+    tVexSonarChannel    c;
 
-	// ALready running
-	if( vexSonarThread != NULL )
-		return;
+    // ALready running
+    if( vexSonarThread != NULL )
+        return;
 
-	// start task if there is a valid sonar installed
-	for(c=kVexSonar_1;c<kVexSonar_Num;c++)
-		{
-		if( vexSonars[c].flags & SONAR_INSTALLED ) {
-			// Creates the blinker thread.
-			vexSonarThread = chThdCreateStatic(waVexSonarTask, sizeof(waVexSonarTask), SONAR_THREAD_PRIORITY, VexSonarTask, NULL);
-			break;
-			}
-		}
+    // start task if there is a valid sonar installed
+    for(c=kVexSonar_1;c<kVexSonar_Num;c++)
+        {
+        if( vexSonars[c].flags & SONAR_INSTALLED ) {
+            // Creates the blinker thread.
+            vexSonarThread = chThdCreateStatic(waVexSonarTask, sizeof(waVexSonarTask), SONAR_THREAD_PRIORITY, VexSonarTask, NULL);
+            break;
+            }
+        }
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Start 10uS pulse to initiate sonar ping						   */
+/** @brief      Start 10uS pulse to initiate sonar ping                        */
 /** @param[in]  channel The sonar channel                                      */
 /** @note       Internal sonar driver function                                 */
 /*-----------------------------------------------------------------------------*/
@@ -325,11 +325,11 @@ vexSonarRun()
 void
 vexSonarPing(tVexSonarChannel channel)
 {
-	if( vexSonars[channel].flags == (SONAR_INSTALLED | SONAR_ENABLED)) {
-		vexDigitalPinSet( vexSonars[channel].pa, 1 );
-		nextState = kSonarStatePing;
-		gptStartOneShot( sonarGpt, 10 );
-		}
+    if( vexSonars[channel].flags == (SONAR_INSTALLED | SONAR_ENABLED)) {
+        vexDigitalPinSet( vexSonars[channel].pa, 1 );
+        nextState = kSonarStatePing;
+        gptStartOneShot( sonarGpt, 10 );
+        }
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -341,11 +341,11 @@ vexSonarPing(tVexSonarChannel channel)
 int16_t
 vexSonarGetCm( tVexSonarChannel channel )
 {
-	if( vexSonars[channel].flags & SONAR_INSTALLED ) {
-		return( vexSonars[channel].distance_cm );
-		}
-	else
-		return(-1);
+    if( vexSonars[channel].flags & SONAR_INSTALLED ) {
+        return( vexSonars[channel].distance_cm );
+        }
+    else
+        return(-1);
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -357,15 +357,15 @@ vexSonarGetCm( tVexSonarChannel channel )
 int16_t
 vexSonarGetInch( tVexSonarChannel channel )
 {
-	if( vexSonars[channel].flags & SONAR_INSTALLED ) {
-		return( vexSonars[channel].distance_inch );
-		}
-	else
-		return(-1);
+    if( vexSonars[channel].flags & SONAR_INSTALLED ) {
+        return( vexSonars[channel].distance_inch );
+        }
+    else
+        return(-1);
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      Send useful information to debug console					   */
+/** @brief      Send useful information to debug console                       */
 /** @param[in]  chp     A pointer to a vexStream object                      */
 /** @param[in]  argc    The number of command line arguments                   */
 /** @param[in]  argv    An array of pointers to the command line args          */
@@ -374,16 +374,16 @@ vexSonarGetInch( tVexSonarChannel channel )
 void
 vexSonarDebug(vexStream *chp, int argc, char *argv[])
 {
-	(void)argc;
-	(void)argv;
+    (void)argc;
+    (void)argv;
 
-	tVexSonarChannel	c;
+    tVexSonarChannel    c;
 
-	for(c=kVexSonar_1;c<kVexSonar_Num;c++)
-		{
-		chprintf(chp,"S%d %d %5d %5d ", c, vexSonars[c].flags, vexSonars[c].time_r, vexSonars[c].time_f );
-		chprintf(chp,"%5d %4d(cm) %3d(inch)\r\n", vexSonars[c].time, vexSonars[c].distance_cm, vexSonars[c].distance_inch );
-		}
+    for(c=kVexSonar_1;c<kVexSonar_Num;c++)
+        {
+        chprintf(chp,"S%d %d %5d %5d ", c, vexSonars[c].flags, vexSonars[c].time_r, vexSonars[c].time_f );
+        chprintf(chp,"%5d %4d(cm) %3d(inch)\r\n", vexSonars[c].time, vexSonars[c].distance_cm, vexSonars[c].distance_inch );
+        }
 }
 
 
