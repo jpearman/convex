@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.4"/>
-<title>Convex: C:/projects/vex/cortex/fw/vexmotor.c File Reference</title>
+<title>Convex: C:/projects/convex/cortex/fw/vexmotor.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -165,18 +165,6 @@ Functions</h2></td></tr>
 <tr class="memitem:af0d6e1aac1a3c48eedca563623fb3410"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexmotor_8c.html#af0d6e1aac1a3c48eedca563623fb3410">vexMotorDebug</a> (<a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp, int argc, char *argv[])</td></tr>
 <tr class="memdesc:af0d6e1aac1a3c48eedca563623fb3410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command line debug of motors.  <a href="#af0d6e1aac1a3c48eedca563623fb3410">More...</a><br/></td></tr>
 <tr class="separator:af0d6e1aac1a3c48eedca563623fb3410"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a160627cda4a00af884ca50e01d79b5ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexmotor_8c.html#a160627cda4a00af884ca50e01d79b5ac">CH_IRQ_HANDLER</a> (TIM4_IRQHandler)</td></tr>
-<tr class="memdesc:a160627cda4a00af884ca50e01d79b5ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Motor interrupt handler.  <a href="#a160627cda4a00af884ca50e01d79b5ac">More...</a><br/></td></tr>
-<tr class="separator:a160627cda4a00af884ca50e01d79b5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dd775936efe0a39c1b7aaa0f279daac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexmotor_8c.html#a7dd775936efe0a39c1b7aaa0f279daac">vexMotorPwmInit</a> (TIM_TypeDef *tim)</td></tr>
-<tr class="memdesc:a7dd775936efe0a39c1b7aaa0f279daac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the pwm motors @ 1200Hz.  <a href="#a7dd775936efe0a39c1b7aaa0f279daac">More...</a><br/></td></tr>
-<tr class="separator:a7dd775936efe0a39c1b7aaa0f279daac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d980243d09cb50b56458bf202360a89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexmotor_8c.html#a2d980243d09cb50b56458bf202360a89">vexMotorPwmSet_0</a> (int16_t value)</td></tr>
-<tr class="memdesc:a2d980243d09cb50b56458bf202360a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control motor on port 0.  <a href="#a2d980243d09cb50b56458bf202360a89">More...</a><br/></td></tr>
-<tr class="separator:a2d980243d09cb50b56458bf202360a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2553ed7b8b13223a55ddcdf411516769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexmotor_8c.html#a2553ed7b8b13223a55ddcdf411516769">vexMotorPwmSet_9</a> (int16_t value)</td></tr>
-<tr class="memdesc:a2553ed7b8b13223a55ddcdf411516769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control motor on port 9.  <a href="#a2553ed7b8b13223a55ddcdf411516769">More...</a><br/></td></tr>
-<tr class="separator:a2553ed7b8b13223a55ddcdf411516769"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Motor port driver. </p>
@@ -655,112 +643,13 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a160627cda4a00af884ca50e01d79b5ac"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">CH_IRQ_HANDLER </td>
-          <td>(</td>
-          <td class="paramtype">TIM4_IRQHandler&#160;</td>
-          <td class="paramname">)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Motor interrupt handler. </p>
-<dl class="section note"><dt>Note</dt><dd>Internal motor driver use only </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a7dd775936efe0a39c1b7aaa0f279daac"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vexMotorPwmInit </td>
-          <td>(</td>
-          <td class="paramtype">TIM_TypeDef *&#160;</td>
-          <td class="paramname"><em>tim</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the pwm motors @ 1200Hz. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tim</td><td>A pointer to a STD32 timer structure </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a2d980243d09cb50b56458bf202360a89"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vexMotorPwmSet_0 </td>
-          <td>(</td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>value</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control motor on port 0. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>The command value for the motor on port 0 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Warning</dt><dd>Do not call this function directly </dd>
-<dd>
-Do not change from positive values to negative values directly </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Internal motor driver use only </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a2553ed7b8b13223a55ddcdf411516769"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vexMotorPwmSet_9 </td>
-          <td>(</td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>value</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Control motor on port 9. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>The command value for the motor on port 9 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Warning</dt><dd>Do not call this function directly </dd>
-<dd>
-Do not change from positive values to negative values directly </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Internal motor driver use only </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexmotor_8c.html">vexmotor.c</a></li>
-    <li class="footer">Generated on Tue Aug 20 2013 19:51:26 for Convex by
+    <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexmotor_8c.html">vexmotor.c</a></li>
+    <li class="footer">Generated on Wed Aug 28 2013 20:30:53 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

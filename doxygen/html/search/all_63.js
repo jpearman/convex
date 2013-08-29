@@ -10,7 +10,6 @@ var searchData=
   ['ch3xmtr2',['Ch3Xmtr2',['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a755662a27645031b33590a42ff64140b',1,'vexctl.h']]],
   ['ch4',['Ch4',['../struct__jsdata.html#a881bae9a50f4bc854ea6f8a21311b6eb',1,'_jsdata::Ch4()'],['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a1dfd6e5a895e9ccf858531bb01b91e61',1,'Ch4():&#160;vexctl.h']]],
   ['ch4xmtr2',['Ch4Xmtr2',['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a2814e72d237abb1b04e5d9e2f14086fb',1,'vexctl.h']]],
-  ['ch_5firq_5fhandler',['CH_IRQ_HANDLER',['../vexmotor_8c.html#a160627cda4a00af884ca50e01d79b5ac',1,'vexmotor.c']]],
   ['chan',['chan',['../struct__vex_digi_cfg.html#ab7be689013e9728e79991dfdeb07dd7b',1,'_vexDigiCfg']]],
   ['channel',['channel',['../struct__vex_motor_cfg.html#a87a2d059ff3004eb769848369d28a509',1,'_vexMotorCfg']]],
   ['chp',['chp',['../struct__vex_ime_data.html#ac6401114a212394ce0d2f1fff43cfdcc',1,'_vexImeData']]],

@@ -39,7 +39,7 @@ var vexmotor_8h =
     [ "vexMotorPositionSetCallback", "vexmotor_8h.html#a26c2ee17915d12663d6d49dedce072f9", null ],
     [ "vexMotorEncoderIdCallback", "vexmotor_8h.html#a1634cfabbad76185d40b4ef6c9128d55", null ],
     [ "vexMotorEncoderIdGet", "vexmotor_8h.html#a32505b91e17f7877870152b31978d775", null ],
-    [ "vexMotorPwmInit", "vexmotor_8h.html#a7dd775936efe0a39c1b7aaa0f279daac", null ],
-    [ "vexMotorPwmSet_0", "vexmotor_8h.html#a2d980243d09cb50b56458bf202360a89", null ],
-    [ "vexMotorPwmSet_9", "vexmotor_8h.html#a2553ed7b8b13223a55ddcdf411516769", null ]
+    [ "_vexMotorPwmInit", "vexmotor_8h.html#a5a0dd06fef4cc70f4558a14b8f41a54f", null ],
+    [ "_vexMotorPwmSet_0", "vexmotor_8h.html#a934d8b8e9ef47aaf57497417d365e065", null ],
+    [ "_vexMotorPwmSet_9", "vexmotor_8h.html#a3cc1683041e84603026f7b83c67161fd", null ]
 ];

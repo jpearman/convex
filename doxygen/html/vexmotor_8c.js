@@ -16,7 +16,7 @@ var vexmotor_8c =
     [ "vexMotorEncoderIdGet", "vexmotor_8c.html#a32505b91e17f7877870152b31978d775", null ],
     [ "vexMotorDebug", "vexmotor_8c.html#af0d6e1aac1a3c48eedca563623fb3410", null ],
     [ "CH_IRQ_HANDLER", "vexmotor_8c.html#a160627cda4a00af884ca50e01d79b5ac", null ],
-    [ "vexMotorPwmInit", "vexmotor_8c.html#a7dd775936efe0a39c1b7aaa0f279daac", null ],
-    [ "vexMotorPwmSet_0", "vexmotor_8c.html#a2d980243d09cb50b56458bf202360a89", null ],
-    [ "vexMotorPwmSet_9", "vexmotor_8c.html#a2553ed7b8b13223a55ddcdf411516769", null ]
+    [ "_vexMotorPwmInit", "vexmotor_8c.html#a5a0dd06fef4cc70f4558a14b8f41a54f", null ],
+    [ "_vexMotorPwmSet_0", "vexmotor_8c.html#a934d8b8e9ef47aaf57497417d365e065", null ],
+    [ "_vexMotorPwmSet_9", "vexmotor_8c.html#a3cc1683041e84603026f7b83c67161fd", null ]
 ];

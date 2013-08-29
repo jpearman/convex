@@ -33,11 +33,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"smartmotor_8c.html#aa144c95835a3a6f710c4dda3b7ca8f1f",
-"struct__vex_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d",
-"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a0ecefddb78fafa16c791f8524c97a92b",
-"vexime_8h.html#ac3f48915e83bb314828cdda02c197cf3a0f4f6a2f40365e7a581bbebf544cd342",
-"vexsonar_8h.html#a4d6f65954269daaa091770a3998b1d4e"
+"smartmotor_8c.html#a904612dd738c965769a62093603b1c2f",
+"struct__vex_motor.html#a6c2d858945ff55bc94ce6eb0cd2ea664",
+"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a02c37bbb44c7e0bc3d37709aa1ac83dc",
+"vexime_8h.html#abdedc015623219b3582271bd3caf86cc",
+"vexsonar_8h.html#a41db38bb0a136363e87ccf1958e76924afd393c3b19239965b8eaf2ba6674d7d1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

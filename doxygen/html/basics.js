@@ -1,5 +1,6 @@
 var basics =
 [
+    [ "Loading the demo projects", "loaddemo.html", null ],
     [ "Creating new projects", "newproject.html", null ],
     [ "Cortex configuration", "config.html", null ],
     [ "Reading Joystick values", "control.html", null ],

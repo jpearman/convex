@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.4"/>
-<title>Convex: C:/projects/vex/cortex/fw/vexmotor.h Source File</title>
+<title>Convex: C:/projects/convex/cortex/fw/vexmotor.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -267,24 +267,27 @@ $(document).ready(function(){initNavTree('vexmotor_8h_source.html','');});
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="vexmotor_8c.html#a1634cfabbad76185d40b4ef6c9128d55" title="Set the callback used to get motor position. ">vexMotorEncoderIdCallback</a>( int16_t index, int16_t (*cb)(int16_t), int16_t port );</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;int16_t         <a class="code" href="vexmotor_8c.html#a32505b91e17f7877870152b31978d775" title="Get the motor encoder id. ">vexMotorEncoderIdGet</a>( int16_t index );</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">// do not call these</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="vexmotor_8c.html#a7dd775936efe0a39c1b7aaa0f279daac" title="Initialize the pwm motors @ 1200Hz. ">vexMotorPwmInit</a>( TIM_TypeDef *tim );</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="vexmotor_8c.html#a2d980243d09cb50b56458bf202360a89" title="Control motor on port 0. ">vexMotorPwmSet_0</a>( int16_t value );</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="vexmotor_8c.html#a2553ed7b8b13223a55ddcdf411516769" title="Control motor on port 9. ">vexMotorPwmSet_9</a>( int16_t value );</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#ifdef   __cplusplus</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor"></span>}  <span class="comment">// Close scope of extern &quot;C&quot; declaration</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _VEXMOTOR */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">// do not call these</span><span class="comment"></span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">/** @private                                                                   */</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keywordtype">void</span>            _vexMotorPwmInit( TIM_TypeDef *tim );<span class="comment"></span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/** @private                                                                   */</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keywordtype">void</span>            _vexMotorPwmSet_0( int16_t value );<span class="comment"></span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/** @private                                                                   */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keywordtype">void</span>            _vexMotorPwmSet_9( int16_t value );</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#ifdef   __cplusplus</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor"></span>}  <span class="comment">// Close scope of extern &quot;C&quot; declaration</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* _VEXMOTOR */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_39cce2f8bb217932b254ee6294567f16.html">vex</a></li><li class="navelem"><a class="el" href="dir_b5e8d6cab5ffd968b3bd427c6c6f2b80.html">cortex</a></li><li class="navelem"><a class="el" href="dir_f61136e0ed55f83c7b4c3927b7836c01.html">fw</a></li><li class="navelem"><a class="el" href="vexmotor_8h.html">vexmotor.h</a></li>
-    <li class="footer">Generated on Tue Aug 20 2013 19:51:26 for Convex by
+    <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexmotor_8h.html">vexmotor.h</a></li>
+    <li class="footer">Generated on Wed Aug 28 2013 20:30:53 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>
