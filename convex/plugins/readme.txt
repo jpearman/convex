@@ -1,0 +1,1 @@
+move this plugin to the eclipse (or PROS) plugins folder.
