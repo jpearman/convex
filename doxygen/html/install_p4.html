@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('install_p4.html','');});
 <div class="contents">
 <div class="textblock"><p>The cortexFlash utility is a single executable file available for both Windows and OSX. It is one method of downloading the compiled binary to the cortex. Purdue college has recently released the PROS IDE, if you are using this then it includes a java based cortex flash utility which can be used as an alternative.</p>
 <p>cortexFlash can be downloaded from the <a href="https://github.com/jpearman/stm32flashCortex">github project page.</a></p>
-<p>The utility can be placed in any convienient location on the PC, you will need to modify the PATH environment variable if you want to run it from the command line without giving the full execuatble path.</p>
+<p>The utility can be placed in any convenient location on the PC, you will need to modify the PATH environment variable if you want to run it from the command line without giving the full executable path.</p>
 <p>Usage is as follows.</p>
 <pre class="fragment">Usage: cortexflash [-bvngfhc] [-[rw] filename] [comport]
        -b rate         Baud rate (default 115200)
@@ -132,8 +132,8 @@ Examples:
 
        Read flash to file:
        cortexflash -X -r filename COM4
-</pre><p>The default output file name that ConVEX creates is ch.hex. Here is an example of downloading a test project that shows correct operation of the program.</p>
-<pre class="fragment">$cortexflash -X -w C:/Projects/vex/cortex/projects/TestProject-Clawbot/build/ch.hex COM4
+</pre><p>The default output file name that ConVEX creates is output.hex. Here is an example of downloading a test project that shows correct operation of the program.</p>
+<pre class="fragment">$cortexflash -X -w C:/Projects/vex/cortex/projects/TestProject-Clawbot/bin/output.hex COM4
 VEX cortex flash loader
 
 Using Parser : Intel HEX
@@ -160,7 +160,7 @@ Wrote address 0x0800b778 (100.00%)
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="getstarted.html">Getting Started</a></li>
-    <li class="footer">Generated on Wed Aug 28 2013 20:30:53 for Convex by
+    <li class="footer">Generated on Thu Aug 29 2013 10:29:27 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>
