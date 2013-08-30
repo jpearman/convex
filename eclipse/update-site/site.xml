@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="ConVEX plugins" url="http://jpearman.github.com/convex/eclipse/update-site">
+      Simple plugin that allows creation of a new ConVEX project
+   </description>
+   <feature url="features/com.sbj.convex_1.0.0.201308301006.jar" id="com.sbj.convex" version="1.0.0.201308301006"/>
+</site>
