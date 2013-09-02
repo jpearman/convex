@@ -460,6 +460,7 @@ vexConsoleInit()
 #define KR_KEY_Reload           (0xAAAA)
 #define KR_KEY_Enable           (0xCCCC)
 
+#define IWDT_RESET_MASK         0x20000000
 /** @endcond                                                                   */
 /*-----------------------------------------------------------------------------*/
 
@@ -495,5 +496,22 @@ vexWatchdogReload()
 
     // reload watchdog timer
     p->KR = KR_KEY_Reload;
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief     Check to see if the IWDG was the cause of reset                 */
+/*  @returns   1 if IWDG caused reset else returns 0                           */
+/*-----------------------------------------------------------------------------*/
+
+int16_t
+vexWatchdogResetFlagGet()
+{
+    RCC_TypeDef   *p = RCC;
+
+    // See if we were reset by IWDT
+    if( p->CSR &  IWDT_RESET_MASK)
+        return(1);
+    else
+        return(0);
 }
 

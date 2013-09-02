@@ -143,9 +143,9 @@ vexAudioTask( void *arg )
 /** @param[in]  timems duration of tone                                        */
 /*-----------------------------------------------------------------------------*/
 /** @details
- *  This is the base function that all sound playback is based around
- *  The first time this is called all the DAC and DMA initialization is done
- *  a thread is created to stop the sound after the requested time
+ *  This is the base function that all sound playback uses.
+ *  The first time this is called all the DAC and DMA initialization is done,
+ *  a thread is created to stop the sound after the requested playback time
  */
 
 void

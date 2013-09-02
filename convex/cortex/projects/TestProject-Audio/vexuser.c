@@ -101,7 +101,7 @@ RtttlDemo( int tune )
 
     if( tune < NUM_TUNES )
         {
-        n = vexAudioPlayRttl( MyTunes[tune], 128, 1 );
+        n = vexAudioPlayRtttl( MyTunes[tune], 128, 1 );
         vexLcdPrintf( 1, 1, "%s", n );
         }
 }

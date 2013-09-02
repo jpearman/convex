@@ -6,13 +6,12 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*    Module:     vexaudio.h                                                   */
+/*    Module:     vexbkup.h                                                    */
 /*    Author:     James Pearman                                                */
-/*    Created:    25 April 2012                                                */
+/*    Created:    1 Sept 2013                                                  */
 /*                                                                             */
 /*    Revisions:                                                               */
-/*                V0.20  25 Apr 2012 - Original version for EasyC              */
-/*                V1.00  4 July 2013 - Initial release                         */
+/*                V1.00     1 Sept 2013 - Initial release                      */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
@@ -43,85 +42,27 @@
 /*    Mentor for team 8888 RoboLancers, Pasadena CA.                           */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
-/*                                                                             */
-/*    Description:                                                             */
-/*                                                                             */
-/*        Header file for vex sound functions                                  */
-/*                                                                             */
-/*-----------------------------------------------------------------------------*/
-/*                                                                             */
 
-#ifndef VEXAUDIO_H_
-#define VEXAUDIO_H_
+#ifndef __VEXBKUP__
+#define __VEXBKUP__
 
 /*-----------------------------------------------------------------------------*/
-/** @file    vexaudio.h
-  * @brief   DAC port driver macros and prototypes
+/** @file    vexbkup.h
+  * @brief   Backup register access macros and prototypes
 *//*---------------------------------------------------------------------------*/
 
-// un-comment this to allow per tone amplitude control at the expense of memory
-//#define VSL_AMP_PER_TONE 1
 
-// Public functions
-void    vexAudioPlaySound( int freq, int amplitude, int timems );
-void    vexAudioPlaySoundWait( int freq, int amplitude, int timems );
-void    vexAudioStopSound( void );
-
-char   *vexAudioPlayRtttl( char *song , int amplitude, int repeat );
-
-int     vexAudioInitChipToneSong( int len );
-void    vexAudioDeinitChipToneSong( void );
-void    vexAudioStartChipToneSong( int repeat );
-void    vexAudioStopChipToneSong( void );
-void    vexAudioSetNextChipTone( int freq, int amplitude, int timems );
-void    vexAudioDebugChipTone( void );
-
-
-// private functions
-int     vexAudioPlayNextChipTone( void );
-void    VSL_Factorize(int n, int *f1, int *f2);
-void    VSL_CreateSineWave( int amplitude );
-void    VSL_InitTimer( int prescale, int period );
-void    VSL_Init( void );
-void    VSL_Deinit(void);
-
-#ifdef VSL_AMP_PER_TONE
-// version using amplitude per tone - uses more memory
-typedef struct _vsl_ct {
-    int freq;
-    int amplitude;
-    int timems;
-    } vsl_ct;
-#else
-// default - single amplitude for the song
-typedef struct _vsl_ct {
-    int freq;
-    int timems;
-    } vsl_ct;
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-/** @cond  */ // Not for Doxygen
-#define DEFAULT_AMPLITUDE   64
-#define MIN_AMPLITUDE        0
-#define MAX_AMPLITUDE      255
+void        vexBkupInit(void);
+void        vexBkupRegisterWrite( int16_t index, uint16_t data );
+uint16_t    vexBkupRegisterRead( int16_t index );
+void        vexBkupDebug(vexStream *chp, int argc, char *argv[]);
 
-// DAC definitions from standard peripheral library
-#define DAC_Channel_1                      ((uint32_t)0x00000000)
-#define DAC_Channel_2                      ((uint32_t)0x00000010)
-#define DAC_Trigger_T7_TRGO                ((uint32_t)0x00000014) /*!< TIM7 TRGO selected as external conversion trigger for DAC channel */
-#define DAC_WaveGeneration_None            ((uint32_t)0x00000000)
-#define DAC_LFSRUnmask_Bit0                ((uint32_t)0x00000000) /*!< Unmask DAC channel LFSR bit0 for noise wave generation */
-#define DAC_OutputBuffer_Enable            ((uint32_t)0x00000000)
-#define DAC_OutputBuffer_Disable           ((uint32_t)0x00000002)
-#define CR_CLEAR_MASK                      ((uint32_t)0x00000FFE)
+#ifdef __cplusplus
+}
+#endif
 
-// Timer definitions from standard peripheral library
-#define TIM_PSCReloadMode_Immediate        ((uint16_t)0x0001)
-#define TIM_TRGOSource_Update              ((uint16_t)0x0020)
-/** @endcond  */
-
-#endif // VEXAUDIO_H_
-
-
-
-
+#endif  // __VEXBKUP__

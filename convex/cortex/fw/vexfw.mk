@@ -16,6 +16,7 @@ VEXFWSRC = ${CONVEX}/fw/vexshell.c \
            ${CONVEX}/fw/vexaudio.c \
            ${CONVEX}/fw/vexrttl.c \
            ${CONVEX}/fw/vexsensor.c \
+           ${CONVEX}/fw/vexbkup.c \
            ${CONVEX}/fw/vextest.c
 
 # Required include directories

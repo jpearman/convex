@@ -6,7 +6,7 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*    Module:     rtttl.c                                                      */
+/*    Module:     vexrtttl.c                                                   */
 /*    Author:     James Pearman                                                */
 /*    Created:    26 April 2012                                                */
 /*                                                                             */
@@ -84,11 +84,9 @@
 #include "hal.h"        // hardware abstraction layer header
 #include "vex.h"        // vex library header
 
-#include "vexaudio.h"
-
 /*-----------------------------------------------------------------------------*/
 /** @file    vexrttl.c
-  * @brief   Read rttl song and setup cortex for background playback
+  * @brief   Read rtttl song and setup cortex for background playback
 *//*---------------------------------------------------------------------------*/
 
 static int notefreq[12] = {4186, 4434, 4698, 4978, 5274, 5587,
@@ -104,14 +102,14 @@ note2freq(int note)
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Play ringtone string using the vsl sound library               */
-/** @param[in]  song Pointer to buffer with rttl sond data                     */
+/** @param[in]  song Pointer to buffer with rtttl sound data                   */
 /** @param[in]  amplitude volume to play song at                               */
 /** @param[in]  repeat flag indicating song is played continuously in a loop   */
 /** @returns    char * to name of song                                         */
 /*-----------------------------------------------------------------------------*/
 
 char *
-vexAudioPlayRttl( char *song , int amplitude, int repeat )
+vexAudioPlayRtttl( char *song , int amplitude, int repeat )
 {
     char *p = song;
     char *q;
