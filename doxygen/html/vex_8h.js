@@ -33,6 +33,7 @@ var vex_8h =
     [ "vexSleep", "vex_8h.html#a0069824f3952a61165be297146701489", null ],
     [ "vexWatchdogInit", "vex_8h.html#a3602218c8729a3fa41ea9a979f1dbdcb", null ],
     [ "vexWatchdogReload", "vex_8h.html#a20c9d249b570a42778a148bcbc2f1725", null ],
+    [ "vexWatchdogResetFlagGet", "vex_8h.html#a3cb02cdbbd62fff145d6e1b0458645eb", null ],
     [ "vexTest", "vex_8h.html#a4fc01bcd12295e370760a3f95d9a51d0", null ],
     [ "vexTestDebug", "vex_8h.html#afd49f54f5b5d8e3aab0c829e68210cd5", null ],
     [ "vexServiceEncoder", "vex_8h.html#ad5b9ed71db0a76ac1647949a18933512", null ]

@@ -10,5 +10,6 @@ var vexcortex_8c =
     [ "vexCortexInit", "vexcortex_8c.html#aade65211a50360620fdd4b72256f3e95", null ],
     [ "vexConsoleInit", "vexcortex_8c.html#a495b476edacff72d6eff8d5bafe41223", null ],
     [ "vexWatchdogInit", "vexcortex_8c.html#ac0ea7c2950b2c11747ceb7f08a717e92", null ],
-    [ "vexWatchdogReload", "vexcortex_8c.html#a027fcf7cca49081b8df30365f6e69965", null ]
+    [ "vexWatchdogReload", "vexcortex_8c.html#a027fcf7cca49081b8df30365f6e69965", null ],
+    [ "vexWatchdogResetFlagGet", "vexcortex_8c.html#a4d445d81bcfbb6bfbb39a2d9a19b58f9", null ]
 ];

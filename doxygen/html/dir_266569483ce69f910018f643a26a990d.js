@@ -5,6 +5,8 @@ var dir_266569483ce69f910018f643a26a990d =
     [ "vexanalog.h", "vexanalog_8h.html", "vexanalog_8h" ],
     [ "vexaudio.c", "vexaudio_8c.html", "vexaudio_8c" ],
     [ "vexaudio.h", "vexaudio_8h.html", "vexaudio_8h" ],
+    [ "vexbkup.c", "vexbkup_8c.html", "vexbkup_8c" ],
+    [ "vexbkup.h", "vexbkup_8h.html", "vexbkup_8h" ],
     [ "vexcompat.h", "vexcompat_8h.html", "vexcompat_8h" ],
     [ "vexconfig.c", "vexconfig_8c.html", "vexconfig_8c" ],
     [ "vexconfig.h", "vexconfig_8h.html", "vexconfig_8h" ],

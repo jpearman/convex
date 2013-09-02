@@ -129,6 +129,7 @@ $(document).ready(function(){initNavTree('vex_8h.html','');});
 <code>#include &quot;<a class="el" href="vexsensor_8h_source.html">vexsensor.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="vexprintf_8h_source.html">vexprintf.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="vexshell_8h_source.html">vexshell.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="vexbkup_8h_source.html">vexbkup.h</a>&quot;</code><br/>
 </div>
 <p><a href="vex_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -222,6 +223,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a20c9d249b570a42778a148bcbc2f1725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vex_8h.html#a20c9d249b570a42778a148bcbc2f1725">vexWatchdogReload</a> (void)</td></tr>
 <tr class="memdesc:a20c9d249b570a42778a148bcbc2f1725"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reload the IWDG - call several times per second.  <a href="#a20c9d249b570a42778a148bcbc2f1725">More...</a><br/></td></tr>
 <tr class="separator:a20c9d249b570a42778a148bcbc2f1725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cb02cdbbd62fff145d6e1b0458645eb"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vex_8h.html#a3cb02cdbbd62fff145d6e1b0458645eb">vexWatchdogResetFlagGet</a> (void)</td></tr>
+<tr class="memdesc:a3cb02cdbbd62fff145d6e1b0458645eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check to see if the IWDG was the cause of reset.  <a href="#a3cb02cdbbd62fff145d6e1b0458645eb">More...</a><br/></td></tr>
+<tr class="separator:a3cb02cdbbd62fff145d6e1b0458645eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fc01bcd12295e370760a3f95d9a51d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vex_8h.html#a4fc01bcd12295e370760a3f95d9a51d0">vexTest</a> (void)</td></tr>
 <tr class="memdesc:a4fc01bcd12295e370760a3f95d9a51d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for testing new ideas.  <a href="#a4fc01bcd12295e370760a3f95d9a51d0">More...</a><br/></td></tr>
 <tr class="separator:a4fc01bcd12295e370760a3f95d9a51d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -760,6 +764,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3cb02cdbbd62fff145d6e1b0458645eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t vexWatchdogResetFlagGet </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check to see if the IWDG was the cause of reset. </p>
+
+</div>
+</div>
 <a class="anchor" id="a4fc01bcd12295e370760a3f95d9a51d0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -864,7 +886,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vex_8h.html">vex.h</a></li>
-    <li class="footer">Generated on Wed Aug 28 2013 20:30:53 for Convex by
+    <li class="footer">Generated on Mon Sep 2 2013 14:13:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

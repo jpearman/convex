@@ -179,114 +179,116 @@ $(document).ready(function(){initNavTree('vex_8h_source.html','');});
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vexsensor_8h.html" title="ROBOTC style sensor interface macros and prototypes. ">vexsensor.h</a>&quot;</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vexprintf_8h.html" title="Lightweight printf with float support header. ">vexprintf.h</a>&quot;</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vexshell_8h.html" title="Simple CLI shell header. ">vexshell.h</a>&quot;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> * @brief   ConVEX version string.</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="vex_8h.html#a1be71c47748d3ff2141bdddce8ef374c">   77</a></span>&#160;<span class="preprocessor">#define CONVEX_VERSION       &quot;1.0.0&quot;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> * @name    ConVEX version</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> * @{</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> */</span><span class="comment"></span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> * @brief   ConVEX version major number.</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="vex_8h.html#a769bb3214746fddee5b8e08ad7449327">   86</a></span>&#160;<span class="preprocessor">#define CONVEX_MAJOR         1</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"> * @brief   ConVEX version minor number.</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="vex_8h.html#aab3f8edbfcd24e4e995dc102c9e7b91d">   91</a></span>&#160;<span class="preprocessor">#define CONVEX_MINOR         0</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"> * @brief   ConVEX version patch number.</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="vex_8h.html#afd95849181a088e15d853d98663f3211">   96</a></span>&#160;<span class="preprocessor">#define CONVEX_PATCH         0</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor"></span><span class="comment">/** @} */</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span><span class="comment"></span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/** @{                                                                         */</span><span class="comment"></span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/** @name task priorities                                                      */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="code" href="vex_8h.html#a56217a723acc7d405ee061fe3b89c05d">  103</a></span>&#160;<span class="preprocessor">#define SYSTEM_THREAD_PRIORITY      NORMALPRIO + 10</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="vex_8h.html#af10266cd756ff2f5a2892249162c393b">  104</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IME_THREAD_PRIORITY         NORMALPRIO + 9</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="vex_8h.html#a6f32b9ca1b28224b5551fe9c5d0c945f">  105</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MONITOR_THREAD_PRIORITY     NORMALPRIO + 8</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="vex_8h.html#ad3aa39e7f9911d0bff28baebc9082875">  106</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SONAR_THREAD_PRIORITY       NORMALPRIO + 8</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="vex_8h.html#a1542b2b70b08ff0f5d904b13dcfb98f6">  107</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_THREAD_PRIORITY         NORMALPRIO</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="vex_8h.html#a4547d91c1cb267404d7abc3d19528d53">  108</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define USER_THREAD_PRIORITY        NORMALPRIO + 1</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor"></span><span class="comment">/** @} */</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span><span class="comment"></span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/** @{                                                                         */</span><span class="comment"></span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/** @name Stack sizes                                                          */</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="vex_8h.html#ad361d401eb87a0d9a8ae3309f10770d6">  115</a></span>&#160;<span class="preprocessor">#define USER_TASK_STACK_SIZE        512</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="vex_8h.html#a7c8ed35b92fac50a0b2dc907c47625d4">  116</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IME_TASK_STACK_SIZE         0xD0</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="code" href="vex_8h.html#a145835a97db015b36fadd18b3e45631b">  117</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SONAR_TASK_STACK_SIZE       0xD0</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="vex_8h.html#a0ed52b7592f526f75995e802c4ced66b">  118</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_TASK_STACK_SIZE         0xD0</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="vex_8h.html#a5a50c304bdd9e66032df79cfea02fb35">  119</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TEST_TASK_STACK_SIZE        0xD0</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="code" href="vex_8h.html#a0e78772bacf76e3dc606c29381ef882b">  120</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SYSTEM_TASK_STACK_SIZE      0xD0</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="vex_8h.html#a60c90ff81a26eeb689f5ae7dfb196727">  121</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MONITOR_TASK_STACK_SIZE     0xD0</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="vex_8h.html#a150a799e4e1a672dcfbca2ab33e68771">  122</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define AUDIO_TASK_STACK_SIZE       0xD0</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span><span class="comment">/** @} */</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">// Serial ports swap around depending on the board</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#ifdef  BOARD_OLIMEX_STM32_P103</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_CONSOLE     &amp;SD2</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_LCD1        &amp;SD1</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="vex_8h.html#a93369098b4c23738a6d7657df97f1e1e">  131</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_CONSOLE     &amp;SD1</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="vex_8h.html#ae8487c224188f0591a7321280236bdfe">  132</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_LCD1        &amp;SD2</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00135"></a><span class="lineno"><a class="code" href="vex_8h.html#ad0891525c00ba4b0f00efed2a8ed737b">  135</a></span>&#160;<span class="preprocessor">#define SD_LCD2        &amp;SD3</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">// Competition top level tasks and functions</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#ac5b7557d665fb6e6dc124f8f891f9a0b" title="User setup. ">vexUserSetup</a>(<span class="keywordtype">void</span>)   __attribute__ ((weak));</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a8817d8150444d94744f9771725acc712" title="User initialize. ">vexUserInit</a>( <span class="keywordtype">void</span> )  __attribute__ ((weak));</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;msg_t       <a class="code" href="vex_8h.html#a287b65e0518551afca65e5b7b19a44d9" title="Autonomous. ">vexAutonomous</a>( <span class="keywordtype">void</span> *arg );</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;msg_t       <a class="code" href="vex_8h.html#a2a32915075b519dbc7c34af7f2e16c46" title="Driver control. ">vexOperator</a>( <span class="keywordtype">void</span> *arg );</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">// System related functions</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a7ca5ec7dacb87e96ed2d527ddae8ab4b" title="Initialize the VEX cortex. ">vexCortexInit</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a6f2874efc9b81a3a55c3e5a72c3c5dca" title="Initialize the console serial port. ">vexConsoleInit</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a08847f8db8d168c4f8acad495beda363" title="Register a thread so it can be terminated during vexSleep. ">vexTaskRegister</a>( <span class="keywordtype">char</span> *name );</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a1c7abfe1bdc870614d3b7c9c09b6c412" title="Register a thread so it can be terminated during vexSleep. ">vexTaskRegisterPersistant</a>(<span class="keywordtype">char</span> *name, bool_t p );</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a6930ce37b9659b139db671ba8d47cfe5" title="Stop all tasks. ">vexTaskEmergencyStop</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a0069824f3952a61165be297146701489" title="Sleep for given number of ms. ">vexSleep</a>( int32_t msec );</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">//#define     VEX_WATCHDOG_ENABLE     1</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a3602218c8729a3fa41ea9a979f1dbdcb" title="Init watchdog timer. ">vexWatchdogInit</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="vex_8h.html#a20c9d249b570a42778a148bcbc2f1725" title="Reload the IWDG - call several times per second. ">vexWatchdogReload</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">// used for trying out code</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a4fc01bcd12295e370760a3f95d9a51d0" title="Used for testing new ideas. ">vexTest</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#afd49f54f5b5d8e3aab0c829e68210cd5" title="Dump test data for debug. ">vexTestDebug</a>(<a class="code" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#ad5b9ed71db0a76ac1647949a18933512">vexServiceEncoder</a>( <span class="keywordtype">short</span> source, <span class="keywordtype">short</span> pa, <span class="keywordtype">short</span> pb, <span class="keywordtype">long</span> *encoder );</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#endif  // __VEX__</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vexbkup_8h.html" title="Backup register access macros and prototypes. ">vexbkup.h</a>&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> * @brief   ConVEX version string.</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="vex_8h.html#a1be71c47748d3ff2141bdddce8ef374c">   78</a></span>&#160;<span class="preprocessor">#define CONVEX_VERSION       &quot;1.0.0&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> * @name    ConVEX version</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> * @{</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"> */</span><span class="comment"></span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> * @brief   ConVEX version major number.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="vex_8h.html#a769bb3214746fddee5b8e08ad7449327">   87</a></span>&#160;<span class="preprocessor">#define CONVEX_MAJOR         1</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> * @brief   ConVEX version minor number.</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="vex_8h.html#aab3f8edbfcd24e4e995dc102c9e7b91d">   92</a></span>&#160;<span class="preprocessor">#define CONVEX_MINOR         0</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor"></span><span class="comment"></span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"> * @brief   ConVEX version patch number.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="vex_8h.html#afd95849181a088e15d853d98663f3211">   97</a></span>&#160;<span class="preprocessor">#define CONVEX_PATCH         0</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span><span class="comment">/** @} */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span><span class="comment"></span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/** @{                                                                         */</span><span class="comment"></span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/** @name task priorities                                                      */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="vex_8h.html#a56217a723acc7d405ee061fe3b89c05d">  104</a></span>&#160;<span class="preprocessor">#define SYSTEM_THREAD_PRIORITY      NORMALPRIO + 10</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="vex_8h.html#af10266cd756ff2f5a2892249162c393b">  105</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IME_THREAD_PRIORITY         NORMALPRIO + 9</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="vex_8h.html#a6f32b9ca1b28224b5551fe9c5d0c945f">  106</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MONITOR_THREAD_PRIORITY     NORMALPRIO + 8</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="vex_8h.html#ad3aa39e7f9911d0bff28baebc9082875">  107</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SONAR_THREAD_PRIORITY       NORMALPRIO + 8</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="vex_8h.html#a1542b2b70b08ff0f5d904b13dcfb98f6">  108</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_THREAD_PRIORITY         NORMALPRIO</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="code" href="vex_8h.html#a4547d91c1cb267404d7abc3d19528d53">  109</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define USER_THREAD_PRIORITY        NORMALPRIO + 1</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor"></span><span class="comment">/** @} */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span><span class="comment"></span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/** @{                                                                         */</span><span class="comment"></span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/** @name Stack sizes                                                          */</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="vex_8h.html#ad361d401eb87a0d9a8ae3309f10770d6">  116</a></span>&#160;<span class="preprocessor">#define USER_TASK_STACK_SIZE        512</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="code" href="vex_8h.html#a7c8ed35b92fac50a0b2dc907c47625d4">  117</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define IME_TASK_STACK_SIZE         0xD0</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="vex_8h.html#a145835a97db015b36fadd18b3e45631b">  118</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SONAR_TASK_STACK_SIZE       0xD0</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="vex_8h.html#a0ed52b7592f526f75995e802c4ced66b">  119</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LCD_TASK_STACK_SIZE         0xD0</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="code" href="vex_8h.html#a5a50c304bdd9e66032df79cfea02fb35">  120</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TEST_TASK_STACK_SIZE        0xD0</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="vex_8h.html#a0e78772bacf76e3dc606c29381ef882b">  121</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SYSTEM_TASK_STACK_SIZE      0xD0</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="vex_8h.html#a60c90ff81a26eeb689f5ae7dfb196727">  122</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MONITOR_TASK_STACK_SIZE     0xD0</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="vex_8h.html#a150a799e4e1a672dcfbca2ab33e68771">  123</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define AUDIO_TASK_STACK_SIZE       0xD0</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span><span class="comment">/** @} */</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">// Serial ports swap around depending on the board</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#ifdef  BOARD_OLIMEX_STM32_P103</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_CONSOLE     &amp;SD2</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_LCD1        &amp;SD1</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="vex_8h.html#a93369098b4c23738a6d7657df97f1e1e">  132</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_CONSOLE     &amp;SD1</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="code" href="vex_8h.html#ae8487c224188f0591a7321280236bdfe">  133</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SD_LCD1        &amp;SD2</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="code" href="vex_8h.html#ad0891525c00ba4b0f00efed2a8ed737b">  136</a></span>&#160;<span class="preprocessor">#define SD_LCD2        &amp;SD3</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">// Competition top level tasks and functions</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#ac5b7557d665fb6e6dc124f8f891f9a0b" title="User setup. ">vexUserSetup</a>(<span class="keywordtype">void</span>)   __attribute__ ((weak));</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a8817d8150444d94744f9771725acc712" title="User initialize. ">vexUserInit</a>( <span class="keywordtype">void</span> )  __attribute__ ((weak));</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;msg_t       <a class="code" href="vex_8h.html#a287b65e0518551afca65e5b7b19a44d9" title="Autonomous. ">vexAutonomous</a>( <span class="keywordtype">void</span> *arg );</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;msg_t       <a class="code" href="vex_8h.html#a2a32915075b519dbc7c34af7f2e16c46" title="Driver control. ">vexOperator</a>( <span class="keywordtype">void</span> *arg );</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">// System related functions</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a7ca5ec7dacb87e96ed2d527ddae8ab4b" title="Initialize the VEX cortex. ">vexCortexInit</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a6f2874efc9b81a3a55c3e5a72c3c5dca" title="Initialize the console serial port. ">vexConsoleInit</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a08847f8db8d168c4f8acad495beda363" title="Register a thread so it can be terminated during vexSleep. ">vexTaskRegister</a>( <span class="keywordtype">char</span> *name );</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a1c7abfe1bdc870614d3b7c9c09b6c412" title="Register a thread so it can be terminated during vexSleep. ">vexTaskRegisterPersistant</a>(<span class="keywordtype">char</span> *name, bool_t p );</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a6930ce37b9659b139db671ba8d47cfe5" title="Stop all tasks. ">vexTaskEmergencyStop</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a0069824f3952a61165be297146701489" title="Sleep for given number of ms. ">vexSleep</a>( int32_t msec );</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">//#define     VEX_WATCHDOG_ENABLE     1</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a3602218c8729a3fa41ea9a979f1dbdcb" title="Init watchdog timer. ">vexWatchdogInit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="vex_8h.html#a20c9d249b570a42778a148bcbc2f1725" title="Reload the IWDG - call several times per second. ">vexWatchdogReload</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;int16_t     <a class="code" href="vex_8h.html#a3cb02cdbbd62fff145d6e1b0458645eb" title="Check to see if the IWDG was the cause of reset. ">vexWatchdogResetFlagGet</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/*-----------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">// used for trying out code</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#a4fc01bcd12295e370760a3f95d9a51d0" title="Used for testing new ideas. ">vexTest</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#afd49f54f5b5d8e3aab0c829e68210cd5" title="Dump test data for debug. ">vexTestDebug</a>(<a class="code" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="vex_8h.html#ad5b9ed71db0a76ac1647949a18933512">vexServiceEncoder</a>( <span class="keywordtype">short</span> source, <span class="keywordtype">short</span> pa, <span class="keywordtype">short</span> pb, <span class="keywordtype">long</span> *encoder );</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#endif  // __VEX__</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vex_8h.html">vex.h</a></li>
-    <li class="footer">Generated on Wed Aug 28 2013 20:30:53 for Convex by
+    <li class="footer">Generated on Mon Sep 2 2013 14:13:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

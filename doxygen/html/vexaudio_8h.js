@@ -5,7 +5,7 @@ var vexaudio_8h =
     [ "vexAudioPlaySound", "vexaudio_8h.html#a3f36e72b5bdbbd7a4aa951ffe1e9028b", null ],
     [ "vexAudioPlaySoundWait", "vexaudio_8h.html#a50c80248e06103b00067ec8503d7d7f9", null ],
     [ "vexAudioStopSound", "vexaudio_8h.html#a9fc44afa7cf827aaf7df180902b08ba8", null ],
-    [ "vexAudioPlayRttl", "vexaudio_8h.html#acc76d576496be414da2d430d4e793399", null ],
+    [ "vexAudioPlayRtttl", "vexaudio_8h.html#a98b4b231b6bb31c7120ae2e7870204d4", null ],
     [ "vexAudioInitChipToneSong", "vexaudio_8h.html#a10cc35fabf02e2639387cf98cdbb5847", null ],
     [ "vexAudioDeinitChipToneSong", "vexaudio_8h.html#a984e5850a5c9e9e6488a878269800801", null ],
     [ "vexAudioStartChipToneSong", "vexaudio_8h.html#a3d00488582e8ce168e38182b6919ed32", null ],

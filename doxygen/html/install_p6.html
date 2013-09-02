@@ -103,7 +103,15 @@ $(document).ready(function(){initNavTree('install_p6.html','');});
 <div class="contents">
 <div class="textblock"><p>If PROS is already installed, the toolchain and flash utility included with that will work with ConVEX. There is a small problem with the make utility that ships with PROS on windows, it runs slowly with ConVEX due to the large number of dependencies. you may still wish to install yagarto tools and modify the windows PATH variable so the make utility included with yagarto is used instead of the PROS make utility.</p>
 <p>The ChibiOS_2.6.0 and convex folders should be placed into the workspace that is being used for PROS. The default workspace (on OSX) would be /Users/yourname/Documents/pros, you would now have /Users/yourname/Documents/pros/ChibiOS_2.6.0 and /Users/yourname/Documents/pros/convex.</p>
-<p>Copy the plugin from the convex/plugins folder to the PROS plugins folder (on OSX /Applications/PROS/plugins).</p>
+<p>There are three ways to install the "new ConVEX project" plugin. As PROS is usually installed with root (admin) ownership you will need to run PROS as root for any of these to work.</p>
+<p>On Linux use<br/>
+ sudo /opt/pros/ccide</p>
+<p>On Windows 7, run pros as adminstrator.</p>
+<p>On OSX, if your account is an administrator account, software install will usually work, otherwise run as;<br/>
+ sudo /Applications/PROS/PROS</p>
+<p>Best. Use the install new software feature of eclipse and go to the update site. <a href="http://jpearman.github.io/convex/eclipse/update-site">http://jpearman.github.io/convex/eclipse/update-site</a></p>
+<p>or Use the install new software feature of eclipse, use the Add button and then select the local archive in this folder, eclipse_plugin_archive.zip</p>
+<p>or move the raw plugin to the eclipse (or PROS) plugins folder. You may then need to restart eclipse with admin privileges before using as a standard user</p>
 <p>A shortcut for the "New ConVEX project" wizzard is not available but it can be accessed from New-&gt;project.. under the "VEX Cortex" folder along with the "New PROS Project" wizard. You can also customize the PROS perspective and add the "New ConVEX project" wizard under the Window-&gt;customize perspective... menu and then the "Menu Visibility" tab.</p>
 <p>The PROS flash uploader does not work if eclipse finds any errors. Turn of Task tags (preferences-&gt;C/C++) as these are detected by the uploader as errors and will abort the upload.</p>
 <p>See also some of the other information on eclipse here <a class="el" href="install_p5.html">Installing eclipse</a> </p>
@@ -113,7 +121,7 @@ $(document).ready(function(){initNavTree('install_p6.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="getstarted.html">Getting Started</a></li>
-    <li class="footer">Generated on Thu Aug 29 2013 10:29:27 for Convex by
+    <li class="footer">Generated on Mon Sep 2 2013 14:13:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

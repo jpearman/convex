@@ -138,9 +138,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9fc44afa7cf827aaf7df180902b08ba8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexaudio_8h.html#a9fc44afa7cf827aaf7df180902b08ba8">vexAudioStopSound</a> (void)</td></tr>
 <tr class="memdesc:a9fc44afa7cf827aaf7df180902b08ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop sound playing.  <a href="#a9fc44afa7cf827aaf7df180902b08ba8">More...</a><br/></td></tr>
 <tr class="separator:a9fc44afa7cf827aaf7df180902b08ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc76d576496be414da2d430d4e793399"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexaudio_8h.html#acc76d576496be414da2d430d4e793399">vexAudioPlayRttl</a> (char *song, int amplitude, int repeat)</td></tr>
-<tr class="memdesc:acc76d576496be414da2d430d4e793399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play ringtone string using the vsl sound library.  <a href="#acc76d576496be414da2d430d4e793399">More...</a><br/></td></tr>
-<tr class="separator:acc76d576496be414da2d430d4e793399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98b4b231b6bb31c7120ae2e7870204d4"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexaudio_8h.html#a98b4b231b6bb31c7120ae2e7870204d4">vexAudioPlayRtttl</a> (char *song, int amplitude, int repeat)</td></tr>
+<tr class="memdesc:a98b4b231b6bb31c7120ae2e7870204d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play ringtone string using the vsl sound library.  <a href="#a98b4b231b6bb31c7120ae2e7870204d4">More...</a><br/></td></tr>
+<tr class="separator:a98b4b231b6bb31c7120ae2e7870204d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10cc35fabf02e2639387cf98cdbb5847"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexaudio_8h.html#a10cc35fabf02e2639387cf98cdbb5847">vexAudioInitChipToneSong</a> (int len)</td></tr>
 <tr class="memdesc:a10cc35fabf02e2639387cf98cdbb5847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a chiptone song.  <a href="#a10cc35fabf02e2639387cf98cdbb5847">More...</a><br/></td></tr>
 <tr class="separator:a10cc35fabf02e2639387cf98cdbb5847"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,7 +227,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>This is the base function that all sound playback is based around The first time this is called all the DAC and DMA initialization is done a thread is created to stop the sound after the requested time </p>
+<p>This is the base function that all sound playback uses. The first time this is called all the DAC and DMA initialization is done, a thread is created to stop the sound after the requested playback time </p>
 
 </div>
 </div>
@@ -284,12 +284,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acc76d576496be414da2d430d4e793399"></a>
+<a class="anchor" id="a98b4b231b6bb31c7120ae2e7870204d4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* vexAudioPlayRttl </td>
+          <td class="memname">char* vexAudioPlayRtttl </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>song</em>, </td>
@@ -317,7 +317,7 @@ Functions</h2></td></tr>
 <p>Play ringtone string using the vsl sound library. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">song</td><td>Pointer to buffer with rttl sond data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">song</td><td>Pointer to buffer with rtttl sound data </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">amplitude</td><td>volume to play song at </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">repeat</td><td>flag indicating song is played continuously in a loop </td></tr>
   </table>
@@ -594,7 +594,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexaudio_8h.html">vexaudio.h</a></li>
-    <li class="footer">Generated on Wed Aug 28 2013 20:30:53 for Convex by
+    <li class="footer">Generated on Mon Sep 2 2013 14:13:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

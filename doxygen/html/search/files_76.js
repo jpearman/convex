@@ -5,6 +5,8 @@ var searchData=
   ['vexanalog_2eh',['vexanalog.h',['../vexanalog_8h.html',1,'']]],
   ['vexaudio_2ec',['vexaudio.c',['../vexaudio_8c.html',1,'']]],
   ['vexaudio_2eh',['vexaudio.h',['../vexaudio_8h.html',1,'']]],
+  ['vexbkup_2ec',['vexbkup.c',['../vexbkup_8c.html',1,'']]],
+  ['vexbkup_2eh',['vexbkup.h',['../vexbkup_8h.html',1,'']]],
   ['vexcompat_2eh',['vexcompat.h',['../vexcompat_8h.html',1,'']]],
   ['vexconfig_2ec',['vexconfig.c',['../vexconfig_8c.html',1,'']]],
   ['vexconfig_2eh',['vexconfig.h',['../vexconfig_8h.html',1,'']]],

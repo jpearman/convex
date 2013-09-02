@@ -35,9 +35,9 @@ var NAVTREEINDEX =
 "annotated.html",
 "smartmotor_8c.html#a904612dd738c965769a62093603b1c2f",
 "struct__vex_motor.html#a6c2d858945ff55bc94ce6eb0cd2ea664",
-"vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749a02c37bbb44c7e0bc3d37709aa1ac83dc",
-"vexime_8h.html#abdedc015623219b3582271bd3caf86cc",
-"vexsonar_8h.html#a41db38bb0a136363e87ccf1958e76924afd393c3b19239965b8eaf2ba6674d7d1"
+"vexctl_8h.html#a347b97c527e51e3bf3a389bc8a809077",
+"vexime_8h.html#a6221c36d200cbc4fd6e061e69f1df9ff",
+"vexsonar_8c.html#af163dd0ca739c8d5e9559b18dac0a1bd"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
