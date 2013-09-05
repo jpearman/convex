@@ -180,3 +180,28 @@ vexControllerGet( tCtlIndex index )
             return 0;
         }
 }
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      Wait for button release                                        */
+/*-----------------------------------------------------------------------------*/
+
+void
+vexControllerReleaseWait( tCtlIndex index )
+{
+    int timeout;
+
+    // Does not make sense on analog channels
+    // relies on Btn8D being enumerated to 5
+    if( ( index & 0x7F ) < Btn8D )
+        return;
+
+    // Max of 5 seconds
+    for(timeout=0;timeout<(5000/25);timeout++)
+        {
+        if( vexControllerGet(index) == 0 )
+            return;
+
+        vexSleep(25);
+        }
+}
+

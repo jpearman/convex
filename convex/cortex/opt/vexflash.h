@@ -6,12 +6,12 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*    Module:     vexctl.h                                                     */
+/*    Module:     vexflash.h                                                   */
 /*    Author:     James Pearman                                                */
-/*    Created:    7 May 2013                                                   */
+/*    Created:    3 Sept 2013                                                  */
 /*                                                                             */
 /*    Revisions:                                                               */
-/*                V1.00     4 July 2013 - Initial release                      */
+/*                V1.00     3 Sept 2013 - Initial release                      */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
@@ -43,69 +43,50 @@
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 
-#ifndef __VEXCTL__
-#define __VEXCTL__
+#ifndef VEXFLASH_H_
+#define VEXFLASH_H_
 
 /*-----------------------------------------------------------------------------*/
-/** @file    vexctl.h
-  * @brief   Extract data from SPI data received from master processor
+/** @file    vexflash.h
+  * @brief   Store user parameters in Flash macros and prototypes
 *//*---------------------------------------------------------------------------*/
 
-/*-----------------------------------------------------------------------------*/
-/** @brief  controller button and analog control definitions                   */
-/** @note   loosely follows the ROBOTC definition of the same functions        */
-/*-----------------------------------------------------------------------------*/
-/** @details
- *  These are the constants that are used in the call to vexControllerGet.
- *  They follow the format that ROBOTC uses in its call to vexRT[], however,
- *  there are a few additions to allow multiple buttons to be checked.
- */
-typedef enum {
-        Ch1 = 0,        Ch2,            Ch3,            Ch4,
-        Btn8D,          Btn8L,          Btn8U,          Btn8R,
-        Btn7D,          Btn7L,          Btn7U,          Btn7R,
-        Btn5D,          Btn5U,
-        Btn6D,          Btn6U,
-        AcclX,          AcclY,          AcclZ,
-        Btn5,           Btn6,           Btn7,           Btn8,
-        BtnAny,
+#include "stm32f10x_flash.h"
 
-        Ch1Xmtr2 = 128, Ch2Xmtr2,       Ch3Xmtr2,       Ch4Xmtr2,
-        Btn8DXmtr2,     Btn8LXmtr2,     Btn8UXmtr2,     Btn8RXmtr2,
-        Btn7DXmtr2,     Btn7LXmtr2,     Btn7UXmtr2,     Btn7RXmtr2,
-        Btn5DXmtr2,     Btn5UXmtr2,
-        Btn6DXmtr2,     Btn6UXmtr2,
-        AcclXXmtr2,     AcclYXmtr2,     AcclZXmtr2,
-        Btn5Xmtr2,      Btn6Xmtr2,      Btn7Xmtr2,      Btn8mXtr2,
-        BtnAnyXmtr2
-} tCtlIndex;
+// For user functions, these are not in the stm32 library
+#define FLASH_SUCCESS               1
+#define FLASH_ERROR_WRITE         (-1)
+#define FLASH_ERROR_WRITE_LIMIT   (-2)
+#define FLASH_ERROR_ERASE         (-3)
+#define FLASH_ERROR_ERASE_LIMIT   (-4)
+#define FLASH_ERROR               (-5)
 
-/*-----------------------------------------------------------------------------*/
-/** @brief  Various competition and controller flags                           */
-/*-----------------------------------------------------------------------------*/
-typedef enum {
-    kFlagNoXmiters           = 0,        // No transmitters connected
-    kFlagXmit1               = 0x01,     //                          1 == Transmitter 1 connected
-    kFlagXmit2               = 0x02,     //                          1 == Transmitter 2 connected
-    kFlagBit2                = 0x04,     // Unused
-    kFlagCompetitionSwitch   = 0x08,     // 0 == No Comp Switch      1 == Competition Switch attached.
-    kFlagResetSlave          = 0x10,     // Unused
-    kFlagGameController      = 0x20,     // 0 == Legacy75MHz,        1 == Game Controller
-    kFlagAutonomousMode      = 0x40,     // 0 == Driver Control,     1 == Autonomous Mode
-    kFlagDisabled            = 0x80,     // 0 == Enabled             1 == Disabled.
-} tVexControlState;
+// Number of user parameter words
+// Do not change !!
+#define USER_PARAM_WORDS    8
+
+// Structure to hold user parameters
+typedef struct _user_param {
+    // storage for the NV data
+    unsigned char data[USER_PARAM_WORDS * 4];
+
+    // useful debug data
+             int  offset;
+    void          *addr;
+    } user_param;
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-int16_t     vexControllerGet( tCtlIndex index );
-uint16_t    vexControllerCompetitonState(void);
-void        vexControllerReleaseWait( tCtlIndex index );
+// public functions
+user_param *vexFlashUserParamRead( void );
+int16_t     vexFlashUserParamWrite( user_param *u );
+int16_t     vexFlashUserParamInit( void );
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // __VEXCTL__
+#endif // VEXFLASH_H_
