@@ -385,17 +385,21 @@ vexCortexInit()
     // start any test code
     vexTest();
 
+#ifndef	USER_UART1_ENABLE
     // Activates the lcd serial driver using custom configuration.
     sdStart(SD_LCD1, &lcd_config);
     vexLcdInit( 0, SD_LCD1 );
     vexLcdPrintf( 0, 0, "ConVEX V%s" , CONVEX_VERSION);
     vexLcdPrintf( 0, 1, "VEX CORTEX LCD1" );
+#endif
 
+#ifndef	USER_UART2_ENABLE
     // Activates the lcd serial driver using custom configuration.
     sdStart(SD_LCD2, &lcd_config);
     vexLcdInit( 1, SD_LCD2 );
     vexLcdPrintf( 1, 0, "ConVEX V%s" , CONVEX_VERSION);
     vexLcdPrintf( 1, 1, "VEX CORTEX LCD2" );
+#endif
 
     // Init encoder data structures
     vexEncoderInit();

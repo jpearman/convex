@@ -42,9 +42,9 @@
 
 #include <stdlib.h>
 
-#include "ch.h"  		// needs for all ChibiOS programs
-#include "hal.h" 		// hardware abstraction layer header
-#include "vex.h"		// vex library header
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
+#include "vex.h"        // vex library header
 
 #include "vexflash.h"   // vex flash user parameter
 
@@ -89,11 +89,11 @@ user_param  *userp;
 void
 vexUserSetup()
 {
-	vexDigitalConfigure( dConfig, DIG_CONFIG_SIZE( dConfig ) );
-	vexMotorConfigure( mConfig, MOT_CONFIG_SIZE( mConfig ) );
+    vexDigitalConfigure( dConfig, DIG_CONFIG_SIZE( dConfig ) );
+    vexMotorConfigure( mConfig, MOT_CONFIG_SIZE( mConfig ) );
 
-	// read user parameters
-	userp = vexFlashUserParamRead();
+    // read user parameters
+    userp = vexFlashUserParamRead();
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -142,21 +142,21 @@ vexAutonomous( void *arg )
 msg_t
 vexOperator( void *arg )
 {
-	(void)arg;
+    (void)arg;
 
-	// Must call this
-	vexTaskRegister("operator");
+    // Must call this
+    vexTaskRegister("operator");
 
     vexLcdClearLine(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_T);
     vexLcdClearLine(VEX_LCD_DISPLAY_1, VEX_LCD_LINE_B);
 
-	// Run until asked to terminate
-	while(!chThdShouldTerminate())
-		{
-	    // show some user parameters
-	    vexLcdPrintf( VEX_LCD_DISPLAY_1, VEX_LCD_LINE_T, "%02X %02X %02X %02X", userp->data[0],userp->data[1],userp->data[2],userp->data[3]);
+    // Run until asked to terminate
+    while(!chThdShouldTerminate())
+        {
+        // show some user parameters
+        vexLcdPrintf( VEX_LCD_DISPLAY_1, VEX_LCD_LINE_T, "%02X %02X %02X %02X", userp->data[0],userp->data[1],userp->data[2],userp->data[3]);
 
-	    // buttons 8 change user parameters
+        // buttons 8 change user parameters
         if( vexControllerGet( Btn8U ) == 1 )
             {
             userp->data[0]++;
@@ -187,10 +187,10 @@ vexOperator( void *arg )
             }
 
         // Don't hog cpu
-		vexSleep( 25 );
-		}
+        vexSleep( 25 );
+        }
 
-	return (msg_t)0;
+    return (msg_t)0;
 }
 
 

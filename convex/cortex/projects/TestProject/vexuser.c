@@ -157,10 +157,10 @@ vexOperator( void *arg )
 
 		// Tank drive
 		// left drive
-		vexMotorSet( MotorDriveL, abs( vexControllerGet( Ch3 )) );
+		vexMotorSet( MotorDriveL, vexControllerGet( Ch3 ) );
 
 		// right drive
-		vexMotorSet( MotorDriveR, abs( vexControllerGet( Ch2 )) );
+		vexMotorSet( MotorDriveR, vexControllerGet( Ch2 ) );
 
 		// Don't hog cpu
 		vexSleep( 25 );

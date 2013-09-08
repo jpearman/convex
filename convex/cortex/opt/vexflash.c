@@ -204,7 +204,7 @@ vexFlashUserParamWrite( user_param *u )
         // program one word (4 bytes)
         FLASHStatus = FLASH_ProgramWord( p, *q++ );
 
-        // Next work
+        // Next word
         p += 4;
 
         // check for error
