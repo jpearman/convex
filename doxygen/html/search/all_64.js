@@ -4,7 +4,7 @@ var searchData=
   ['d_5fwidth',['D_WIDTH',['../apollo_8h.html#aea50e2c54d14df9a3dc77a4993a2b457',1,'apollo.h']]],
   ['d_5fx_5fpos',['D_X_POS',['../apollo_8h.html#a14454984c2068beab4c61921448eba3f',1,'apollo.h']]],
   ['d_5fy_5fpos',['D_Y_POS',['../apollo_8h.html#acdaa3b67eb0cd4b312719438cf422044',1,'apollo.h']]],
-  ['data',['data',['../union__spi_tx_packet.html#a725a51e042a923ae976b0c9426cc956c',1,'_spiTxPacket::data()'],['../union__spi_rx_packet.html#a725a51e042a923ae976b0c9426cc956c',1,'_spiRxPacket::data()']]],
+  ['data',['data',['../union__spi_tx_packet.html#a725a51e042a923ae976b0c9426cc956c',1,'_spiTxPacket::data()'],['../union__spi_rx_packet.html#a725a51e042a923ae976b0c9426cc956c',1,'_spiRxPacket::data()'],['../struct__user__param.html#a4f06ca069e51bedc4b173c8828897e3c',1,'_user_param::data()']]],
   ['data_5ferrors',['data_errors',['../struct__ime_data.html#ab3cfee1634f963620c44540abdbf16d0',1,'_imeData']]],
   ['data_5fpolls',['data_polls',['../struct__ime_data.html#a0c7bdfd115bf56c6bacaa7a6a0eebfee',1,'_imeData']]],
   ['debug',['debug',['../struct__vex_ime_data.html#a091f28f9a24ec18ef6b2cf8d85bb35e3',1,'_vexImeData::debug()'],['../debug.html',1,'basics']]],

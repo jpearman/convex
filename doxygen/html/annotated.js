@@ -10,6 +10,7 @@ var annotated =
     [ "_SpiData", "struct___spi_data.html", "struct___spi_data" ],
     [ "_spiRxPacket", "union__spi_rx_packet.html", "union__spi_rx_packet" ],
     [ "_spiTxPacket", "union__spi_tx_packet.html", "union__spi_tx_packet" ],
+    [ "_user_param", "struct__user__param.html", "struct__user__param" ],
     [ "_vexDigiCfg", "struct__vex_digi_cfg.html", "struct__vex_digi_cfg" ],
     [ "_vexImeData", "struct__vex_ime_data.html", "struct__vex_ime_data" ],
     [ "_vexMotor", "struct__vex_motor.html", "struct__vex_motor" ],

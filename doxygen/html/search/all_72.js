@@ -4,6 +4,7 @@ var searchData=
   ['r_5fmotor',['r_motor',['../structsmart_motor.html#a9364cc0b4bf508bf27d00d647be5b628',1,'smartMotor']]],
   ['rc_5ftasks',['RC_TASKS',['../robotc__glue_8c.html#a1187ced94889aa3f3c7b0eeb6be4b03d',1,'robotc_glue.c']]],
   ['rctask',['rcTask',['../robotc__glue_8c.html#a7d0b5ed3b8671d466cc976c82c35d3b7',1,'robotc_glue.c']]],
+  ['rdp_5fkey',['RDP_Key',['../vexflash_8c.html#a34ec82060edcc9a18bf804b07dec5881',1,'vexflash.c']]],
   ['res',['res',['../struct__jsdata.html#ab7332c7abeb92a208a632e6a0286e594',1,'_jsdata']]],
   ['res1',['res1',['../struct__spi_rx_packet_1_1__spi_rx_pak.html#a3de0fc88d793c26aa68e4f5847e6cd1b',1,'_spiRxPacket::_spiRxPak::res1()'],['../struct__pid_controller.html#a6fc13fbafb421d7160b3e58fc82c2e2e',1,'_pidController::res1()']]],
   ['reserved',['reserved',['../struct__spi_tx_packet_1_1__spi_tx_pak.html#afed60964847c88c9ba5b2548a41e6c60',1,'_spiTxPacket::_spiTxPak']]],

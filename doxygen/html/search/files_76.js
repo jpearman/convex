@@ -19,6 +19,8 @@ var searchData=
   ['vexencoder_2ec',['vexencoder.c',['../vexencoder_8c.html',1,'']]],
   ['vexencoder_2eh',['vexencoder.h',['../vexencoder_8h.html',1,'']]],
   ['vexext_2ec',['vexext.c',['../vexext_8c.html',1,'']]],
+  ['vexflash_2ec',['vexflash.c',['../vexflash_8c.html',1,'']]],
+  ['vexflash_2eh',['vexflash.h',['../vexflash_8h.html',1,'']]],
   ['vexgyro_2ec',['vexgyro.c',['../vexgyro_8c.html',1,'']]],
   ['vexgyro_2eh',['vexgyro.h',['../vexgyro_8h.html',1,'']]],
   ['vexime_2ec',['vexime.c',['../vexime_8c.html',1,'']]],

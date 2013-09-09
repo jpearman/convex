@@ -62,5 +62,6 @@ var vexctl_8h =
       [ "kFlagDisabled", "vexctl_8h.html#a3b0bd22e6e91cb390da831648bfb560faa4ebbe2181dd2c18e7a298492c2be7a1", null ]
     ] ],
     [ "vexControllerGet", "vexctl_8h.html#a347b97c527e51e3bf3a389bc8a809077", null ],
-    [ "vexControllerCompetitonState", "vexctl_8h.html#a4bf83d26199537609eacd2d6356d80d2", null ]
+    [ "vexControllerCompetitonState", "vexctl_8h.html#a4bf83d26199537609eacd2d6356d80d2", null ],
+    [ "vexControllerReleaseWait", "vexctl_8h.html#a5e52a6b1aae1af1b237f6297bec3822c", null ]
 ];

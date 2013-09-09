@@ -12,6 +12,7 @@ var searchData=
   ['_5fspirxpak',['_spiRxPak',['../struct__spi_rx_packet_1_1__spi_rx_pak.html',1,'_spiRxPacket']]],
   ['_5fspitxpacket',['_spiTxPacket',['../union__spi_tx_packet.html',1,'']]],
   ['_5fspitxpak',['_spiTxPak',['../struct__spi_tx_packet_1_1__spi_tx_pak.html',1,'_spiTxPacket']]],
+  ['_5fuser_5fparam',['_user_param',['../struct__user__param.html',1,'']]],
   ['_5fvexdigicfg',['_vexDigiCfg',['../struct__vex_digi_cfg.html',1,'']]],
   ['_5fveximedata',['_vexImeData',['../struct__vex_ime_data.html',1,'']]],
   ['_5fvexmotor',['_vexMotor',['../struct__vex_motor.html',1,'']]],
