@@ -3,7 +3,7 @@
    <description name="ConVEX plugins" url="http://jpearman.github.io/convex/eclipse/update-site">
       Simple plugin for a new ConVEX project
    </description>
-   <feature url="features/com.sbj.convex_1.0.0.201310122118.jar" id="com.sbj.convex" version="1.0.0.201310122118">
+   <feature url="features/com.sbj.convex_1.0.0.201310122149.jar" id="com.sbj.convex" version="1.0.0.201310122149">
       <category name="sbj.convex"/>
    </feature>
    <category-def name="sbj.convex" label="ConVEX plugins"/>
