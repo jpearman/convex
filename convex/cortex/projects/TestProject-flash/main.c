@@ -52,7 +52,7 @@
 /* Command line related.                                                       */
 /*-----------------------------------------------------------------------------*/
 
-#define SHELL_WA_SIZE   THD_WA_SIZE(256)
+#define SHELL_WA_SIZE   THD_WA_SIZE(512)
 
 // Shell command
 static const ShellCommand commands[] = {

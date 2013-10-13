@@ -75,7 +75,7 @@
 /**
  * @brief   ConVEX version string.
  */
-#define CONVEX_VERSION       "1.0.0"
+#define CONVEX_VERSION       "1.0.1"
 
 /**
  * @name    ConVEX version
@@ -114,7 +114,7 @@
 /** @name Stack sizes                                                          */
 /*-----------------------------------------------------------------------------*/
 #define USER_TASK_STACK_SIZE        512
-#define IME_TASK_STACK_SIZE         0xD0
+#define IME_TASK_STACK_SIZE         0x110
 #define SONAR_TASK_STACK_SIZE       0xD0
 #define LCD_TASK_STACK_SIZE         0xD0
 #define TEST_TASK_STACK_SIZE        0xD0

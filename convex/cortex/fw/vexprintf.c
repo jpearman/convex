@@ -12,6 +12,7 @@
 /*                                                                             */
 /*    Revisions:                                                               */
 /*                V1.00     4 July 2013 - Initial release                      */
+/*                         12 Oct 2013  - Thread safe vesion                   */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
@@ -81,6 +82,14 @@
 /*    as described above.                                                      */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
+/*                                                                             */
+/*    This version now has a data structure holding what were the              */
+/*    globals variables.  Separate data structures are used for vex_printf and */
+/*    vex_sprintf. A mutex is used to make access to these thread safe, printf */
+/*    was made separate so that it did not block sprintf when the serial       */
+/*    output port blocked.                                                     */
+/*                                                                             */
+/*-----------------------------------------------------------------------------*/
 
 #include <string.h>
 #include <stdarg.h>
@@ -89,39 +98,55 @@
 #include "hal.h"
 #include "vex.h"
 
+#if (CH_KERNEL_MAJOR >= 2) && (CH_KERNEL_MINOR >= 6)
+#define      vexStreamPut(stream, c)    chSequentialStreamPut( stream, c );
+#else
+#define      vexStreamPut(stream, c)    chIOPut( stream, c );
+#endif
+
 /*-----------------------------------------------------------------------------*/
 /** @file    vexprintf.c
   * @brief   Lightweight printf with float support
 *//*---------------------------------------------------------------------------*/
 
-static uint16_t use_leading_plus = 0 ;
+// the following should be enough for 32 bit int
+// it's not enough for a 32 bit binary if we add that later
+#define PRINT_BUF_LEN 16
 
-static int max_output_len = -1 ;
-static int curr_output_len = 0 ;
+typedef struct _pdefs {
+    // this need to be the first element so we can easily initialize the structure
+    // with one value
+    int     init;
 
-#define FLOAT_BUF_SIZE      32
+    // Handle to output buffer
+    char **out;
+    
+    // flags that determine formatting
+    int  use_leading_plus;
+    int  max_output_len;
+    int  curr_output_len;
 
-//****************************************************************************
-static void
-vex_printc (char **str, int c)
-{
-    if (max_output_len >= 0  &&  curr_output_len >= max_output_len)
-        return ;
-    if (str) {
-        **str = (char) c;
-        ++(*str);
-        curr_output_len++ ;
-    }
-    else {
-        curr_output_len++ ;
-        sdPut(SD_CONSOLE, (uint8_t)c);
-    }
-}
+    // buffer to assemble output    
+    char print_buf[PRINT_BUF_LEN];
+    char float_buf[PRINT_BUF_LEN*2];
+    
+    // mutex or semaphore to protect this structure if more
+    // than one thread tries to use it simulateously
+#if CH_USE_MUTEXES
+    Mutex       mutex;
+#elif CH_USE_SEMAPHORES
+    Semaphore   semaphore;
+#endif
 
-//****************************************************************************
-//  This version returns the length of the output string.
-//  It is more useful when implementing a walking-string function.
-//****************************************************************************
+} pdefs;
+
+static  pdefs   pdefs1 = {0};
+static  pdefs   pdefs2 = {0};
+
+/*-----------------------------------------------------------------------------*/
+/*  Constants for floating point rounding                                      */
+/*-----------------------------------------------------------------------------*/
+
 static const double round_nums[8] = {
         0.5,
         0.05,
@@ -133,106 +158,98 @@ static const double round_nums[8] = {
         0.00000005
 } ;
 
-static unsigned
-dbl2stri(char *outbfr, double dbl, unsigned dec_digits)
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      acquire lock on print variables                                */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/*-----------------------------------------------------------------------------*/
+
+inline void
+vex_print_acquire( pdefs *p )
 {
-    char *output = outbfr ;
-    static  char tbfr[FLOAT_BUF_SIZE]; // used to be on stack
-
-    // there used to be a local buffer, but what was the point ?
-    if( output == NULL )
-        return(0);
-
-    //*******************************************
-    //  extract negative info
-    //*******************************************
-    if (dbl < 0.0) {
-        *output++ = '-' ;
-        dbl *= -1.0 ;
-    } else {
-        if (use_leading_plus) {
-            *output++ = '+' ;
+    if(!p->init)
+        {
+        p->init = 1;
+        
+#if CH_USE_MUTEXES
+    chMtxInit(&p->mutex);
+#elif CH_USE_SEMAPHORES
+    chSemInit(&p->semaphore, 0);
+#endif
         }
-    }
-
-    //  handling rounding by adding .5LSB to the floating-point data
-    if (dec_digits < 8) {
-        dbl += round_nums[dec_digits] ;
-    }
-
-    //**************************************************************************
-    //  construct fractional multiplier for specified number of digits.
-    //**************************************************************************
-    uint16_t mult = 1 ;
-    uint16_t idx ;
-    for (idx=0; idx < dec_digits; idx++)
-        mult *= 10 ;
-
-    uint16_t wholeNum   = (uint16_t) dbl ;
-    uint16_t decimalNum = (uint16_t) ((dbl - wholeNum) * mult);
-
-    //*******************************************
-    //  convert integer portion
-    //*******************************************
-
-    idx = 0 ;
-    while (wholeNum != 0) {
-        tbfr[idx++] = '0' + (wholeNum % 10) ;
-        wholeNum /= 10 ;
-    }
-
-    if (idx == 0) {
-        *output++ = '0' ;
-    } else {
-        while (idx > 0) {
-            *output++ = tbfr[idx-1] ;  //lint !e771
-            idx-- ;
-        }
-    }
-    if (dec_digits > 0) {
-        *output++ = '.' ;
-
-        //*******************************************
-        //  convert fractional portion
-        //*******************************************
-        idx = 0 ;
-        while (decimalNum != 0) {
-            tbfr[idx++] = '0' + (decimalNum % 10) ;
-            decimalNum /= 10 ;
-        }
-        //  pad the decimal portion with 0s as necessary;
-        //  We wouldn't want to report 3.093 as 3.93, would we??
-        while (idx < dec_digits) {
-            tbfr[idx++] = '0' ;
-        }
-
-        if (idx == 0) {
-            *output++ = '0' ;
-        } else {
-            while (idx > 0) {
-                *output++ = tbfr[idx-1] ;
-                idx-- ;
-            }
-        }
-    }
-    *output = 0 ;
-
-    //  prepare output
-    output = outbfr ;
-
-    return strlen(output) ;
+        
+#if CH_USE_MUTEXES
+    chMtxLock(&p->mutex);
+#elif CH_USE_SEMAPHORES
+    chSemWait(&p->semaphore);
+#endif
 }
 
-//****************************************************************************
+/*-----------------------------------------------------------------------------*/
+/** @brief      release lock on print variables                                */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/*-----------------------------------------------------------------------------*/
+
+inline void
+vex_print_release( pdefs *p )
+{
+    (void)p;
+    
+#if CH_USE_MUTEXES
+    chMtxUnlock();
+#elif CH_USE_SEMAPHORES
+    chSemSignal(&p->semaphore);
+#endif
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      move one character to output                                   */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/** @param[in]  c the character to output                                      */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This function moves one character to the output buffer, if the buffer is NULL
+ *  then the character is sent to the standard console
+ */
+static void
+vex_printc ( pdefs *p, int c )
+{
+    // reachec maximum length of output buffer ?
+    if (p->max_output_len >= 0  &&  p->curr_output_len >= p->max_output_len)
+        return ;
+
+    // is output buffer NULL ?
+    if (p->out) {
+        **p->out = (char) c;
+        ++(*p->out);
+        p->curr_output_len++ ;
+    }
+    else {
+        p->curr_output_len++ ;
+        vexStreamPut(SD_CONSOLE, (uint8_t)c);
+    }
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      move string to output with padding                             */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/** @param[in]  string the string to output                                    */
+/** @param[in]  width required output width                                    */
+/** @param[in]  pad type of padding, left, right, zeros                        */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This function moves a string into the output buffer with required padding
+ */
+#define  PAD_NORMAL  0
 #define  PAD_RIGHT   1
 #define  PAD_ZERO    2
 
 static int
-vex_prints (char **out, const char *string, int width, int pad)
+vex_prints ( pdefs *p, const char *string, int width, int pad )
 {
     register int pc = 0, padchar = ' ';
 
-    if (width > 0){
+    if (width > 0) {
         int len = 0;
         const char *ptr;
         for (ptr = string; *ptr; ++ptr)
@@ -246,39 +263,41 @@ vex_prints (char **out, const char *string, int width, int pad)
     }
     if (!(pad & PAD_RIGHT)) {
         for (; width > 0; --width) {
-            vex_printc (out, padchar);
+            vex_printc ( p, padchar );
             ++pc;
         }
     }
     for (; *string; ++string) {
-        vex_printc (out, *string);
+        vex_printc ( p, *string );
         ++pc;
     }
     for (; width > 0; --width) {
-        vex_printc (out, padchar);
+        vex_printc ( p, padchar );
         ++pc;
     }
     return pc;
 }
 
-//****************************************************************************
-// the following should be enough for 32 bit int
-#define PRINT_BUF_LEN 16
-
+/*-----------------------------------------------------------------------------*/
+/** @brief      convert one integer to ascii representation                    */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/** @param[in]  base number base, 10, 16 etc.                                  */
+/** @param[in]  sign is number signed or unsigned, 1 = signed                  */
+/** @param[in]  pad type of padding, left, right, zeros                        */
+/** @param[in]  letbase base ascii character for conversion, 'a' or 'A'        */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This function converts one integer to formatted output
+ */
 static int
-vex_printi (char **out, int i, uint16_t base, int sign, int width, int pad, int letbase)
+vex_printi ( pdefs *p, int i, uint16_t base, int sign, int width, int pad, int letbase )
 {
-    static  char print_buf[PRINT_BUF_LEN];
-    char *s;
+    register char *s;
     int t, neg = 0, pc = 0;
     unsigned u = (unsigned) i;
 
     if (i == 0)
-        {
-        print_buf[0] = '0';
-        print_buf[1] = '\0';
-        return vex_prints (out, print_buf, width, pad);
-        }
+        return vex_prints ( p, "0", width, pad );
 
     if (sign && base == 10 && i < 0)
         {
@@ -286,7 +305,7 @@ vex_printi (char **out, int i, uint16_t base, int sign, int width, int pad, int 
         u = (unsigned) -i;
         }
     //  make sure print_buf is NULL-term
-    s = print_buf + PRINT_BUF_LEN - 1;
+    s = p->print_buf + PRINT_BUF_LEN - 1;
     *s = '\0';
 
     while (u)
@@ -302,7 +321,7 @@ vex_printi (char **out, int i, uint16_t base, int sign, int width, int pad, int 
         {
         if (width && (pad & PAD_ZERO))
             {
-            vex_printc (out, '-');
+            vex_printc ( p, '-' );
             ++pc;
             --width;
             }
@@ -313,26 +332,147 @@ vex_printi (char **out, int i, uint16_t base, int sign, int width, int pad, int 
         }
     else
         {
-        if (use_leading_plus) {
+        if (p->use_leading_plus) {
             *--s = '+';
         }
     }
 
-    return pc + vex_prints (out, s, width, pad);
+    return pc + vex_prints ( p, s, width, pad );
 }
 
-//****************************************************************************
+/*-----------------------------------------------------------------------------*/
+/** @brief      convert one double to ascii representation                     */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/** @param[in]  dbl input value                                                */
+/** @param[in]  dec_width required number of fractional digits                 */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This function converts one double to a string
+ *  it's declared inline as it is only called from vex_printdbl
+ */
+static inline void
+dbl2stri( pdefs *p, double dbl, unsigned dec_digits )
+{
+    char *output = p->float_buf;
+        
+    //  extract negative info
+    if (dbl < 0.0) {
+        *output++ = '-' ;
+        dbl *= -1.0 ;
+    } else {
+        if (p->use_leading_plus) {
+            *output++ = '+' ;
+        }
+    }
+
+    //  handling rounding by adding .5LSB to the floating-point data
+    if (dec_digits < 8) {
+        dbl += round_nums[dec_digits] ;
+    }
+
+    //  construct fractional multiplier for specified number of digits.
+    uint16_t mult = 1 ;
+    uint16_t idx ;
+    for (idx=0; idx < dec_digits; idx++)
+        mult *= 10 ;
+
+    uint16_t wholeNum   = (uint16_t) dbl ;
+    uint16_t decimalNum = (uint16_t) ((dbl - wholeNum) * mult);
+
+    // convert integer portion
+    // this creates the number in reverse in print_buf
+    idx = 0 ;
+    while (wholeNum != 0) {
+        p->print_buf[idx++] = '0' + (wholeNum % 10) ;
+        wholeNum /= 10 ;
+    }
+
+    // move integer part to output buffer
+    if (idx == 0) {
+        *output++ = '0' ;
+    } else {
+        while (idx > 0) {
+            *output++ = p->print_buf[idx-1] ;  //lint !e771
+            idx-- ;
+        }
+    }
+    
+    // convert fractional part if necessary
+    if (dec_digits > 0)
+        {
+        *output++ = '.' ;
+
+        // convert fractional portion
+        // this creates the number in reverse in print_buf
+        idx = 0 ;
+        while (decimalNum != 0) {
+            p->print_buf[idx++] = '0' + (decimalNum % 10) ;
+            decimalNum /= 10 ;
+        }
+        
+        //  pad the decimal portion with 0s as necessary;
+        //  We wouldn't want to report 3.093 as 3.93, would we??
+        while (idx < dec_digits) {
+            p->print_buf[idx++] = '0' ;
+        }
+
+        // move fractional part to output buffer
+        if (idx == 0) {
+            *output++ = '0' ;
+        } else {
+            while (idx > 0) {
+                *output++ = p->print_buf[idx-1] ;
+                idx-- ;
+            }
+        }
+    }
+    
+    // terminating null
+    *output = 0 ;
+
+    return;
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      convert one double to ascii representation                     */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/** @param[in]  width required output width                                    */
+/** @param[in]  dec_digits required number of fractional digits                */
+/** @param[in]  pad type of padding, left, right, zeros                        */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This function converts one double to formatted output
+ *  it's declared inline as it's only called from vex_print
+ */
+static inline int
+vex_printdbl( pdefs *p, double dbl, int width, int dec_digits, int pad )
+{
+    dbl2stri( p, dbl, dec_digits ) ;
+    
+    return vex_prints ( p, p->float_buf, width, pad );
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      created formatted output                                       */
+/** @param[in]  p pointer to our working variables, a pdef structure           */
+/** @param[in]  format The format string                                       */
+/** @param[in]  args variable argument list                                    */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This is the function that provides the formatting for all vex_printf and
+ *  related functions
+ */
 static int
-vex_print(char **out, const char *format, va_list args )
+vex_print( pdefs *p, const char *format, va_list args )
 {
     int post_decimal ;
     int width, pad ;
     unsigned dec_width = 6 ;
     int pc = 0;
     char scr[2];
-    static  char fbuffer[FLOAT_BUF_SIZE] ;
 
-    use_leading_plus = 0 ;  //  start out with this clear
+    p->use_leading_plus = 0 ; //  start out with this clear
+    p->curr_output_len  = 0 ; // No output yet
 
     for (; *format != 0; ++format)
         {
@@ -352,7 +492,7 @@ vex_print(char **out, const char *format, va_list args )
             }
             if (*format == '+') {
                 ++format;
-                use_leading_plus = 1 ;
+                p->use_leading_plus = 1 ;
             }
             while (*format == '0') {
                 ++format;
@@ -399,65 +539,62 @@ vex_print(char **out, const char *format, va_list args )
                 case 's':
                     {
                     char *s = (char *)va_arg( args, int );
-                    pc += vex_prints (out, s ? s : "(null)", width, pad);
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    pc += vex_prints ( p, s ? s : "(null)", width, pad );
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     }
                     break;
                 case 'd':
-                    pc += vex_printi (out, va_arg( args, int ), 10, 1, width, pad, 'a');
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    pc += vex_printi ( p, va_arg( args, int ), 10, 1, width, pad, 'a');
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     break;
                 case 'x':
-                    pc += vex_printi (out, va_arg( args, int ), 16, 0, width, pad, 'a');
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    pc += vex_printi ( p, va_arg( args, int ), 16, 0, width, pad, 'a');
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     break;
                 case 'X':
-                    pc += vex_printi (out, va_arg( args, int ), 16, 0, width, pad, 'A');
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    pc += vex_printi ( p, va_arg( args, int ), 16, 0, width, pad, 'A');
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     break;
                 case 'p':
                 case 'u':
-                    pc += vex_printi (out, va_arg( args, int ), 10, 0, width, pad, 'a');
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    pc += vex_printi ( p, va_arg( args, int ), 10, 0, width, pad, 'a');
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     break;
                 case 'c':
                     // convert char to string/
                     scr[0] = (char)va_arg( args, int );
                     scr[1] = '\0';
-                    pc += vex_prints (out, scr, width, pad);
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    pc += vex_prints ( p, scr, width, pad );
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     break;
 
                 case 'f':
                     {
-                    double dbl = va_arg( args, double );
-
-                    // convert the double to a string
-                    dbl2stri(fbuffer, dbl, dec_width) ;
-
-                    // print the string
-                    pc += vex_prints (out, fbuffer, width, pad);
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    vex_printdbl(p, va_arg( args, double ), width, dec_width, pad ) ;
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     }
                     break;
 
                 default:
-                    vex_printc (out, '%');
-                    vex_printc (out, *format);
-                    use_leading_plus = 0 ;  //  reset this flag after printing one value
+                    vex_printc ( p, '%' );
+                    vex_printc ( p, *format );
+                    p->use_leading_plus = 0 ;  //  reset this flag after printing one value
                     break;
                 }
             }
         else
             {
             out_lbl:
-            vex_printc (out, *format);
+            vex_printc ( p, *format );
             ++pc;
             }
         }  //  for each char in format string
 
-    if (out)
-        **out = '\0';
+    if (p->out)
+        **p->out = '\0';
+
+    // release mutex/semaphore
+    vex_print_release(p);
 
     return pc;
 }
@@ -474,11 +611,13 @@ int vex_printf (const char *format, ...)
 {
     va_list args;
 
-    max_output_len = -1 ;
-    curr_output_len = 0 ;
+    vex_print_acquire(&pdefs1);
+
+    pdefs1.out = 0;
+    pdefs1.max_output_len = -1 ;
 
     va_start( args, format );
-    return vex_print( 0, format, args );
+    return vex_print( &pdefs1, format, args );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -494,11 +633,13 @@ int vex_sprintf (char *out, const char *format, ...)
 {
     va_list args;
 
-    max_output_len = -1 ;
-    curr_output_len = 0 ;
+    vex_print_acquire(&pdefs2);
+
+    pdefs2.out = &out;
+    pdefs2.max_output_len = -1 ;
 
     va_start( args, format );
-    return vex_print( &out, format, args );
+    return vex_print( &pdefs2, format, args );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -515,11 +656,13 @@ int vex_snprintf(char *out, uint16_t max_len, const char *format, ...)
 {
     va_list args;
 
-    max_output_len = (int) max_len ;
-    curr_output_len = 0 ;
+    vex_print_acquire(&pdefs2);
+
+    pdefs2.out = &out;
+    pdefs2.max_output_len = (int) max_len ;
 
     va_start( args, format );
-    return vex_print( &out, format, args );
+    return vex_print( &pdefs2, format, args );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -534,10 +677,12 @@ int vex_snprintf(char *out, uint16_t max_len, const char *format, ...)
  */
 int vex_vsprintf( char *out, const char *format, va_list args )
 {
-    max_output_len = -1 ;
-    curr_output_len = 0 ;
+    vex_print_acquire(&pdefs2);
 
-    return vex_print( &out, format, args );
+    pdefs2.out = &out;
+    pdefs2.max_output_len = -1 ;
+
+    return vex_print( &pdefs2, format, args );
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -553,8 +698,10 @@ int vex_vsprintf( char *out, const char *format, va_list args )
  */
 int vex_vsnprintf(char *out, uint16_t max_len, const char *format, va_list args )
 {
-    max_output_len = (int) max_len ;
-    curr_output_len = 0 ;
+    vex_print_acquire(&pdefs2);
 
-    return vex_print( &out, format, args );
+    pdefs2.out = &out;
+    pdefs2.max_output_len = (int) max_len ;
+
+    return vex_print( &pdefs2, format, args );
 }
