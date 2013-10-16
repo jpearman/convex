@@ -96,7 +96,7 @@ vexGyroTask(void *arg)
 
     while(1)
         {
-        vexDigitalPinSet( kVexDigital_1, 1);
+        //vexDigitalPinSet( kVexDigital_1, 1);
         // Get raw analog value
         GyroRaw   = vexAdcGet( kVexAnalog_1 );
         // remove bias
@@ -115,7 +115,7 @@ vexGyroTask(void *arg)
 
         // calculate angle in deg * 10
         GyroValue = GyroRawFiltered / GyroSensorScale;
-        vexDigitalPinSet( kVexDigital_1, 0);
+        //vexDigitalPinSet( kVexDigital_1, 0);
 
         chThdSleepMilliseconds(1);
         }
