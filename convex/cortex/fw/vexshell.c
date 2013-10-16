@@ -179,11 +179,18 @@ cmd_systime(vexStream *chp, int argc, char *argv[])
 }
 
 /*-----------------------------------------------------------------------------*/
+// external symbols used to calculate flash usage
+#define SYMVAL(sym) (uint32_t)(((uint8_t *)&(sym)) - ((uint8_t *)0))
+
+extern uint32_t _textdata;
+extern uint32_t _data;
+extern uint32_t _edata;
 
 static void
 cmd_mem(vexStream *chp, int argc, char *argv[])
 {
     size_t n, size;
+    uint32_t flash;
 
     (void)argv;
     if (argc > 0)
@@ -196,6 +203,9 @@ cmd_mem(vexStream *chp, int argc, char *argv[])
     chprintf(chp, "core free memory : %u bytes\r\n", chCoreStatus());
     chprintf(chp, "heap fragments   : %u\r\n", n);
     chprintf(chp, "heap free total  : %u bytes\r\n", size);
+
+    flash = (SYMVAL(_textdata) - 0x08000000) + (SYMVAL(_edata) - SYMVAL(_data));
+    chprintf(chp, "flash used       : %lu (0x%05X) bytes\r\n", flash, flash);
 }
 
 /*-----------------------------------------------------------------------------*/

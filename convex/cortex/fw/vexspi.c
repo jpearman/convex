@@ -117,9 +117,11 @@ _vspi_gpt_cb(GPTDriver *gptp)
 /*-----------------------------------------------------------------------------*/
 
 static const GPTConfig vexSpiGpt = {
-    1000000,    /* 1MHz timer clock.*/
+    1000000,      /* 1MHz timer clock.*/
     _vspi_gpt_cb  /* Timer callback.*/
-    //NULL  /* Timer callback.*/
+#if (CH_KERNEL_MAJOR >= 2) && (CH_KERNEL_MINOR >= 6) && (CH_KERNEL_PATCH >= 1)
+    ,0            /* DIER = 0, version 2.6.1.and on */
+#endif
     };
 
 /*-----------------------------------------------------------------------------*/

@@ -123,6 +123,9 @@ _vs_gpt_cb(GPTDriver *gptp)
 static const GPTConfig vexSonarGpt = {
     1000000,    /* 1MHz timer clock.*/
     _vs_gpt_cb  /* Timer callback.*/
+#if (CH_KERNEL_MAJOR >= 2) && (CH_KERNEL_MINOR >= 6) && (CH_KERNEL_PATCH >= 1)
+    ,0          /* DIER = 0, version 2.6.1.and on */
+#endif
     };
 
 /*-----------------------------------------------------------------------------*/
