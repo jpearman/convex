@@ -46,6 +46,7 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
+#include "chprintf.h"
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
@@ -83,7 +84,7 @@ static const SerialConfig lcd_config =
 typedef struct {
     Thread          *tp;
     EventListener   el;
-    bool_t          persistant;
+    bool_t          persistent;
 } vexThread;
 
 /*-----------------------------------------------------------------------------*/
@@ -121,23 +122,139 @@ vexTaskRegister(char *name)
 /*-----------------------------------------------------------------------------*/
 /** @brief      Register a thread so it can be terminated during vexSleep      */
 /** @param[in]  name string describing the thread                              */
-/** @param[in]  p persistant flag                                              */
+/** @param[in]  p persistent flag                                              */
 /*-----------------------------------------------------------------------------*/
 
 void
 vexTaskRegisterPersistant(char *name, bool_t p )
 {
     uint16_t    i;
+
+    // register name
     chRegSetThreadName(name);
 
+    // check the array to see if this thread was already registered
+    for(i=0;i<MAX_THREAD;i++)
+        {
+        // if we are already in the array
+        if( myThreads[ i ].tp == chThdSelf())
+            {
+            // update persistent flag
+            myThreads[ i ].persistent = p;
+            return;
+            }
+        }
+
+    // So we are not registered, look for an empty slot
     for(i=0;i<MAX_THREAD;i++)
         {
         if( myThreads[ i ].tp == 0 )
             {
             myThreads[ i ].tp = chThdSelf();
-            myThreads[ i ].persistant = p;
+            myThreads[ i ].persistent = p;
             chEvtRegisterMask(&task_terminate, &myThreads[ i ].el, 1);
             break;
+            }
+        }
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      Check if this thread was already registered                    */
+/** @param[in]  tp pointer to the Thread structure                             */
+/** @return     bool with registration status                                  */
+/*-----------------------------------------------------------------------------*/
+
+bool_t
+vexTaskIsRegistered( Thread *tp )
+{
+    uint16_t    i;
+    bool_t  isreg = FALSE;
+
+    for(i=0;i<MAX_THREAD;i++)
+        {
+        // see if we are already in the array
+        if( myThreads[ i ].tp == tp)
+            {
+            isreg = TRUE;
+            break;
+            }
+        }
+    return(isreg);
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      Check if this thread has persistent flag set                   */
+/** @param[in]  tp pointer to the Thread structure                             */
+/** @return     bool with persistent status                                    */
+/*-----------------------------------------------------------------------------*/
+
+bool_t
+vexTaskPersistentGet( Thread *tp )
+{
+    uint16_t    i;
+    bool_t      p = FALSE;
+
+    for(i=0;i<MAX_THREAD;i++)
+        {
+        // see if we are already in the array
+        if( myThreads[ i ].tp == tp)
+            {
+            p = myThreads[ i ].persistent;
+            break;
+            }
+        }
+    return(p);
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      Set persistent flag                                            */
+/** @param[in]  tp pointer to the Thread structure                             */
+/** @param[in]  p persistent flag                                              */
+/*-----------------------------------------------------------------------------*/
+
+void
+vexTaskPersistentSet( Thread *tp, bool_t p )
+{
+    uint16_t    i;
+
+    for(i=0;i<MAX_THREAD;i++)
+        {
+        // see if we are already in the array
+        if( myThreads[ i ].tp == tp)
+            {
+            myThreads[ i ].persistent = p;
+            break;
+            }
+        }
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      Dump the list of registered tasks                              */
+/** @param[in]  chp     A pointer to a vexStream object                        */
+/** @param[in]  argc    The number of command line arguments                   */
+/** @param[in]  argv    An array of pointers to the command line args          */
+/*-----------------------------------------------------------------------------*/
+
+void
+vexTaskDebug(vexStream *chp, int argc, char *argv[])
+{
+    uint16_t    i;
+    Thread  *tp;
+
+    (void)argc;
+    (void)argv;
+
+    for(i=0;i<MAX_THREAD;i++)
+        {
+        tp = myThreads[ i ].tp;
+        if( tp != NULL )
+            {
+            if( tp->p_name != NULL )
+                chprintf(chp, "%16s ", tp->p_name);
+            else
+                chprintf(chp,"                 ");
+
+            chprintf( chp, "%2d: %.8X %d\r\n", i, tp, myThreads[ i ].persistent );
             }
         }
 }
@@ -152,10 +269,10 @@ vexTaskRegisterPersistant(char *name, bool_t p )
 void
 vexTaskEmergencyStop()
 {
-    int     i;
-    // scrap persistant flag
+    uint16_t     i;
+    // scrap persistent flag
     for(i=0;i<MAX_THREAD;i++)
-        myThreads[ i ].persistant = FALSE;
+        myThreads[ i ].persistent = FALSE;
 
     vexKillAll = TRUE;
 }
@@ -172,35 +289,39 @@ vexTaskEmergencyStop()
 void
 vexSleep( int32_t msec )
 {
-    if( chEvtWaitAnyTimeout( ALL_EVENTS, MS2ST(msec) ) != 0 )
+    if( (chEvtWaitAnyTimeout( ALL_EVENTS, MS2ST(msec) ) != 0) || chThdShouldTerminate() )
         {
-        chSysLock();
-
-        int i;
+        // We used to lock here, that was incorrect and has been removed
+        // we have been asked to terminate either by the THD_TERMINATE flag being set or
+        // by an event sent from the task_terminate event source
+        uint16_t i;
         for(i=0;i<MAX_THREAD;i++)
             {
             if( myThreads[ i ].tp == chThdSelf() )
                 {
-                // A persistant thread ?
-                if( myThreads[ i ].persistant == TRUE )
+                // A persistent thread ?
+                if( myThreads[ i ].persistent == TRUE )
                     {
-                    // do not terminate
-                    return;
+                    // do not terminate unless a real terminate request
+                    if(!chThdShouldTerminate())
+                        return;
                     }
-
+                // unregister the event listener
                 chEvtUnregister( &task_terminate, &myThreads[ i ].el );
-                //myThreads[ i ].tp = (Thread *)0;
 
                 // may have been started by the ROBOTC glue code
                 if( CleanupTask )
                     CleanupTask( myThreads[ i ].tp );
+
+                // If terminated rather than event then clear slot
+                if(chThdShouldTerminate())
+                    myThreads[ i ].tp = (Thread *)0;
                 break;
                 }
             }
 
         // terminate ourself
-        chThdExitS((msg_t)0);
-        chSysUnlock();
+        chThdExit((msg_t)0);
         }
 }
 
@@ -232,7 +353,7 @@ vexCortexMonitorTask(void *arg)
     for(i=0;i<MAX_THREAD;i++)
         {
         myThreads[ i ].tp = (Thread *)0;
-        myThreads[ i ].persistant = FALSE;
+        myThreads[ i ].persistent = FALSE;
         }
 
     // wait until all the master cpu resets are done
@@ -240,12 +361,14 @@ vexCortexMonitorTask(void *arg)
     // at 100mS intervals
     chThdSleepMilliseconds(120);
 
+#ifndef  BOARD_OLIMEX_STM32_P103
     // wait for good spi comms
     while( vexSpiGetOnlineStatus() == 0 )
         {
         // wait for a while
         chThdSleepMilliseconds(100);
         }
+#endif
 
     // another delay
     chThdSleepMilliseconds(2000);
@@ -258,7 +381,9 @@ vexCortexMonitorTask(void *arg)
         {
         chThdSleepMilliseconds(16);
 
+#ifndef  BOARD_OLIMEX_STM32_P103
         if( (vexControllerCompetitonState() & kFlagDisabled ) != kFlagDisabled )
+#endif
             {
             if( (vexControllerCompetitonState() & kFlagAutonomousMode ) != kFlagAutonomousMode )
                 {
@@ -310,7 +435,7 @@ vexCortexMonitorTask(void *arg)
             // wait for all threads to stop
             for(i=0;i<MAX_THREAD;i++)
                 {
-                if( ( myThreads[ i ].tp != 0 ) && (myThreads[ i ].persistant == FALSE) )
+                if( ( myThreads[ i ].tp != 0 ) && (myThreads[ i ].persistent == FALSE) )
                     {
                     chThdWait( myThreads[ i ].tp );
                     myThreads[ i ].tp = (Thread *)0;

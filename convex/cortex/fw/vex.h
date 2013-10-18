@@ -114,12 +114,12 @@
 /** @name Stack sizes                                                          */
 /*-----------------------------------------------------------------------------*/
 #define USER_TASK_STACK_SIZE        512
-#define IME_TASK_STACK_SIZE         0x110
+#define IME_TASK_STACK_SIZE         0x1D0
 #define SONAR_TASK_STACK_SIZE       0xD0
 #define LCD_TASK_STACK_SIZE         0xD0
 #define TEST_TASK_STACK_SIZE        0xD0
 #define SYSTEM_TASK_STACK_SIZE      0xD0
-#define MONITOR_TASK_STACK_SIZE     0xD0
+#define MONITOR_TASK_STACK_SIZE     0x1D0
 #define AUDIO_TASK_STACK_SIZE       0xD0
 /** @} */
 
@@ -154,6 +154,10 @@ void        vexCortexInit( void );
 void        vexConsoleInit( void );
 void        vexTaskRegister( char *name );
 void        vexTaskRegisterPersistant(char *name, bool_t p );
+bool_t      vexTaskIsRegistered( Thread *tp );
+bool_t      vexTaskPersistentGet( Thread *tp );
+void        vexTaskPersistentSet( Thread *tp, bool_t p );
+
 void        vexTaskEmergencyStop( void );
 void        vexSleep( int32_t msec );
 

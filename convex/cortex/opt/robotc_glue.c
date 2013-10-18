@@ -58,7 +58,13 @@
 /*-----------------------------------------------------------------------------*/
 /** @brief   Maximum number of ROBOTC style tasks
  */
-#define RC_TASKS    10
+#define RC_TASKS        10
+/*-----------------------------------------------------------------------------*/
+/** @brief   Stack size for ROBOTC
+ *  each thread also uses 176 bytes (0xB0) for thread overhead and 8 bytes for
+ *  heap header
+ */
+#define TC_THREAD_STACK 584
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Structure that correlates a function name with a thread
@@ -71,6 +77,26 @@ typedef struct _rcTask {
 static  rcTask  rcTasks[RC_TASKS];
 
 /*-----------------------------------------------------------------------------*/
+/*  All robotc threads now start here, this then calls the user supplied       */
+/*-----------------------------------------------------------------------------*/
+static msg_t
+vexRobotcTask(void *arg)
+{
+    // All robotc tasks enter here and then call the user provided function
+    if(arg != NULL)
+        {
+        // register the task
+        tfunc_t  func = arg;
+        vexTaskRegister( "robotc_task" );
+
+        // call user supplied function, this may not return
+        return func(NULL);
+        }
+    else
+        return (msg_t)0;
+}
+
+/*-----------------------------------------------------------------------------*/
 /** @brief      Start a task with a given priority                             */
 /** @param[in]  pf The thread function                                         */
 /** @param[in]  priority The thread priority                                   */
@@ -81,6 +107,7 @@ StartTaskWithPriority(tfunc_t pf, tprio_t priority, ... )
 {
     static  bool_t  init = TRUE;
     int16_t     i;
+    bool_t      memfree = FALSE;
 
     // First time initialization
     if(init)
@@ -94,17 +121,40 @@ StartTaskWithPriority(tfunc_t pf, tprio_t priority, ... )
         init = FALSE;
         }
 
-    Thread *tp;
-    tp = chThdCreateFromHeap(NULL, THD_WA_SIZE(512), priority, pf, (void *)NULL );
-
-    // Save association of thread and callback
+    // Check to see of this function is already in the robotc task list
     for(i=0;i<RC_TASKS;i++)
         {
-        if( rcTasks[i].tp == NULL )
+        if( rcTasks[i].pf == pf )
+            return(NULL);
+        }
+
+    // check to see of we have exhausted the task array
+    for(i=0;i<RC_TASKS;i++)
             {
-            rcTasks[i].tp = tp;
-            rcTasks[i].pf = pf;
-            break;
+            if( rcTasks[i].pf == NULL )
+                {
+                memfree = TRUE;
+                break;
+                }
+            }
+    if( !memfree )
+        return(NULL);
+
+    Thread *tp;
+    tp = chThdCreateFromHeap(NULL, THD_WA_SIZE(TC_THREAD_STACK), priority, vexRobotcTask, (void *)pf );
+
+    // tp will be NULL if memory is exhausted
+    if( tp != NULL )
+        {
+        // Save association of thread and callback
+        for(i=0;i<RC_TASKS;i++)
+            {
+            if( rcTasks[i].tp == NULL )
+                {
+                rcTasks[i].tp = tp;
+                rcTasks[i].pf = pf;
+                break;
+                }
             }
         }
 
@@ -119,6 +169,7 @@ void
 StopTask(tfunc_t pf)
 {
     int16_t     i;
+    Thread     *tp;
 
     for(i=0;i<RC_TASKS;i++)
         {
@@ -126,9 +177,19 @@ StopTask(tfunc_t pf)
             {
             if( rcTasks[i].tp != NULL )
                 {
-                chThdTerminate( rcTasks[i].tp );
+                tp = rcTasks[i].tp;
+
+                // We cannot stop ourself
+                if( tp == chThdSelf() )
+                    return;
+
+                // Set terminate flag - the other thread has to see this and exit
+                chThdTerminate( tp );
+                // this will cause a higher priority task to run immeadiately
+                chThdResume( tp );
                 // wait for termination
-                chThdWait( rcTasks[i].tp );
+                chThdWait( tp );
+                // may already be NULL for high priority task
                 rcTasks[i].tp = NULL;
                 rcTasks[i].pf = NULL;
                 }
@@ -137,7 +198,7 @@ StopTask(tfunc_t pf)
 }
 
 /*-----------------------------------------------------------------------------*/
-/** @brief      cleanup a task it was terminated elsewhere                     */
+/** @brief      cleanup a task if it was terminated elsewhere                  */
 /** @param[in]  tp A pointer to a thread                                       */
 /** @note this will not usually be called by the user by by an internal thread */
 /*-----------------------------------------------------------------------------*/
