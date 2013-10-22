@@ -158,6 +158,9 @@ cmd_info(vexStream *chp, int argc, char *argv[])
 #ifdef BOARD_NAME
     chprintf(chp, "Board:        %s\r\n", BOARD_NAME);
 #endif
+#ifdef CONVEX_VERSION
+    chprintf(chp, "ConVEX:       %s\r\n", CONVEX_VERSION);
+#endif
 #ifdef __DATE__
 #ifdef __TIME__
     chprintf(chp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
@@ -311,7 +314,7 @@ shell_thread(void *p)
     chRegSetThreadName("shell");
     chprintf(chp, "\033[2J"); // clearscreen
     chprintf(chp, "\r\nVEX-Cortex Shell V1.00\r\n");
-    chprintf(chp, "Kernel:%s    ", CH_KERNEL_VERSION);
+    chprintf(chp, "Kernel:%s  ConVEX:%s  ", CH_KERNEL_VERSION, CONVEX_VERSION);
 #ifdef __DATE__
 #ifdef __TIME__
     chprintf(chp, "Build time:%s%s%s\r\n", __DATE__, " - ", __TIME__);

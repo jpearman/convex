@@ -63,6 +63,8 @@ static  SpiData             vexSpiData;
 static  GPTDriver          *spiGpt    = &GPTD2;
 static  Thread             *spiThread = NULL;
 
+static  char                spiTeamName[16] = CONVEX_TEAM_NAME;
+
 /*-----------------------------------------------------------------------------*/
 /* SPI configuration structure.                                                */
 /* Maximum speed (2.25MHz), CPHA=1, CPOL=0, 16bits frames                      */
@@ -82,7 +84,7 @@ static SPIConfig spicfg = {
 /*-----------------------------------------------------------------------------*/
 
 static const unsigned char txInitData[32] =
-{0x17, 0xC9, 0x08, 0x00, 0x00, 0x00,
+{0x17, 0xC9, 0x02, 0x00, 0x00, 0x00,
  0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -147,6 +149,25 @@ vexSpiInit()
 }
 
 /*-----------------------------------------------------------------------------*/
+/** @brief      Set the team name                                              */
+/** @param[in]  name pointer to string                                         */
+/*-----------------------------------------------------------------------------*/
+
+void
+vexSpiTeamnameSet( char *name )
+{
+    int16_t i;
+
+    for(i=0;i<8;i++)
+        {
+        if(*name != 0)
+            spiTeamName[i] = *name++;
+        else
+            spiTeamName[i] = 0;
+        }
+}
+
+/*-----------------------------------------------------------------------------*/
 /** @brief      We use presence of js_1 as indication of good joystick data    */
 /** @returns    online status                                                  */
 /** @retval     1 = online                                                     */
@@ -160,7 +181,7 @@ vexSpiGetOnlineStatus()
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      return a pointer to a raw joystick data structure              */
-/** @param[in]  index Which joytstick to use, 1 or 2                           */
+/** @param[in]  index Which joystick to use, 1 or 2                            */
 /** @returns    pointer to _jsdata structure                                   */
 /*-----------------------------------------------------------------------------*/
 
@@ -293,6 +314,23 @@ vexSpiSend()
     uint16_t    *txbuf = (uint16_t *)vexSpiData.txdata.data;
     uint16_t    *rxbuf = (uint16_t *)vexSpiData.rxdata_t.data;
 
+    // configure team name if in configuration state
+    if(vexSpiData.txdata.pak.state == 0x03)
+        {
+        char *p = spiTeamName;
+        // Set team name data type
+        vexSpiData.txdata.pak.type = 0x55;
+        // Copy team name into data area
+        // This is the same area as occupied normally by motor data
+        for(i=0;i<8;i++)
+            {
+            if(*p != 0)
+                vexSpiData.txdata.data[6+i] = *p++;
+            else
+                vexSpiData.txdata.data[6+i] = ' ';
+            }
+        }
+
     // Set handshake to indicate new spi message
     palSetPad( VEX_SPI_ENABLE_PORT, VEX_SPI_ENABLE_PIN );
 
@@ -325,9 +363,30 @@ vexSpiSend()
         for(i=0;i<32;i++)
             vexSpiData.rxdata.data[i] = vexSpiData.rxdata_t.data[i];
 
-        // Set online status
-        if( (vexSpiData.rxdata.data[3] & 0x01 ) == 1)
+        // Set online status if valid data status set
+        if( (vexSpiData.rxdata.pak.status & 0x0F) == 0x08 )
             vexSpiData.online = 1;
+
+        // If in configuration initialize state (0x02 or 0x03)
+        if( (vexSpiData.txdata.pak.state & 0x0E) == 0x02 )
+            {
+            // check for configure request
+            if( (vexSpiData.rxdata.pak.status & 0x0F) == 0x02 )
+                vexSpiData.txdata.pak.state = 0x03;
+            // check for configure and acknowledge
+            if( (vexSpiData.rxdata.pak.status & 0x0F) == 0x03 )
+                {
+                vexSpiData.txdata.pak.state = 0x08;
+                vexSpiData.txdata.pak.type  = 0;
+                }
+            // Either good or bad data force to normal transmission
+            // status will either be 0x04 or 0x08
+            if( (vexSpiData.rxdata.pak.status & 0x0C) != 0x00 )
+                {
+                vexSpiData.txdata.pak.state = 0x08;
+                vexSpiData.txdata.pak.type  = 0;
+                }
+            }
         }
     else
         vexSpiData.errors++;

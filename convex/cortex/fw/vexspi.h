@@ -70,6 +70,13 @@
 /** @endcond */
 
 /*-----------------------------------------------------------------------------*/
+/** @brief      default team name                                              */
+/*-----------------------------------------------------------------------------*/
+#if !defined(CONVEX_TEAM_NAME)
+#define CONVEX_TEAM_NAME    "CONVEX  ";
+#endif
+
+/*-----------------------------------------------------------------------------*/
 /** @brief      joystick data structure                                        */
 /*-----------------------------------------------------------------------------*/
 /** @details
@@ -99,7 +106,9 @@ typedef union _spiTxPacket {
     struct  _spiTxPak {
         unsigned char h1;           ///< Header byte one
         unsigned char h2;           ///< Header byte two
-        unsigned char reserved[4];  ///< unknown data
+        unsigned char state;        ///< Control state
+        unsigned char reserved[2];  ///< unknown data
+        unsigned char type;         ///< data type
         unsigned char motor[8];     ///< motor pwm data
         unsigned char pad[15];      ///< not used
         unsigned char rev_lsb;      ///< revision of user code lsb
@@ -120,7 +129,7 @@ typedef union _spiRxPacket {
     struct _spiRxPak {
         unsigned char h1;           ///< Header byte one
         unsigned char h2;           ///< Header byte two
-        unsigned char res1;         ///< unknown
+        unsigned char status;       ///< status
         unsigned char ctl;          ///< status and control byte
         unsigned char batt1;        ///< main battery level, 59mV per bit
         unsigned char batt2;        ///< backup battery level, 59mV per bit
@@ -154,7 +163,10 @@ typedef struct _SpiData {
 extern "C" {
 #endif
 
+#define     vexTeamnameSet(name)    vexSpiTeamnameSet( name )
+
 void        vexSpiInit(void);
+void        vexSpiTeamnameSet( char *name );
 short       vexSpiGetOnlineStatus(void);
 void        vexSpiSetMotor( int16_t index, int16_t data, bool_t reversed );
 void        vexSpiSend(void);

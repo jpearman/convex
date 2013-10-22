@@ -374,7 +374,9 @@ vexLcdCheckReceiveMessage( LcdData *lcd )
         {
         // lcd message ?
         if( (lcd->rxbuf[0] == 0xAA) && (lcd->rxbuf[1] == 0x55) && (lcd->rxbuf[2] == 0x16))
-            lcd->buttons = lcd->rxbuf[4];
+            // verify checksum
+            if( !((lcd->rxbuf[4] + lcd->rxbuf[5]) & 0xFF) )
+                lcd->buttons = lcd->rxbuf[4];
         }
 
     // flush anything left
