@@ -101,6 +101,7 @@ extern "C" {
 #endif
 
 int16_t     vexControllerGet( tCtlIndex index );
+int16_t     vexControllerCompetitionStateSet( uint16_t ctl, int16_t mask );
 uint16_t    vexControllerCompetitonState(void);
 void        vexControllerReleaseWait( tCtlIndex index );
 

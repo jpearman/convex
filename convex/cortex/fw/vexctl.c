@@ -56,6 +56,36 @@
   * @brief   Extract data from SPI data received from master processor
 *//*---------------------------------------------------------------------------*/
 
+static  uint16_t    vexLocalCompState;  ///< Used to override the comp state
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      Set competition state, a simulation of the competition modes   */
+/** @param[in]  ctl The control byte                                           */
+/** @param[in]  mask bit to change                                             */
+/** @returns    1 if success else 0                                            */
+/*-----------------------------------------------------------------------------*/
+
+int16_t
+vexControllerCompetitionStateSet( uint16_t ctl, int16_t mask )
+{
+    // If No competition switch connected
+#ifndef  BOARD_OLIMEX_STM32_P103
+    if( (vexSpiGetControl() & kFlagCompetitionSwitch) == 0 )
+#else
+    if(1)
+#endif
+        {
+        // Only allow disabled and auton flags to be set
+        vexLocalCompState &= ~mask;
+        vexLocalCompState |= (ctl & mask) & (kFlagDisabled | kFlagAutonomousMode);
+        return(1);
+        }
+    else
+        vexLocalCompState = 0;
+
+    return(0);
+}
+
 /*-----------------------------------------------------------------------------*/
 /** @brief      Get competition state word (and controller status)             */
 /** @returns    status word from SPI data                                      */
@@ -64,7 +94,24 @@
 uint16_t
 vexControllerCompetitonState()
 {
-    return( vexSpiGetControl() );
+    uint16_t ctl = vexSpiGetControl();
+
+#ifdef  BOARD_OLIMEX_STM32_P103
+    // There is no SPI on the Olimex debug board
+    ctl = 0;
+#endif
+
+    // If No competition switch connected
+    if( (ctl & kFlagCompetitionSwitch) == 0 )
+        {
+        // ctl would normally be enabled/driver here, both bits 0
+        ctl |= vexLocalCompState;
+        }
+    else
+        // make sure this is disabled for when comp switch is removed
+        vexLocalCompState = 0;
+
+    return( ctl );
 }
 
 /*-----------------------------------------------------------------------------*/

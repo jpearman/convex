@@ -381,9 +381,8 @@ vexCortexMonitorTask(void *arg)
         {
         chThdSleepMilliseconds(16);
 
-#ifndef  BOARD_OLIMEX_STM32_P103
+        // If enabled
         if( (vexControllerCompetitonState() & kFlagDisabled ) != kFlagDisabled )
-#endif
             {
             if( (vexControllerCompetitonState() & kFlagAutonomousMode ) != kFlagAutonomousMode )
                 {
@@ -400,17 +399,9 @@ vexCortexMonitorTask(void *arg)
                 state = kFlagAutonomousMode;
                 }
 
+            // While we are enabled, either auton or operator, wait here unless kill all flag is set
             while( (vexControllerCompetitonState() & (kFlagDisabled | kFlagAutonomousMode)) == state )
                {
-#ifdef  BOARD_OLIMEX_STM32_P103
-               // Debug
-               if( palReadPad( GPIOA, GPIOA_BUTTON ) )
-                   {
-                   while( palReadPad( GPIOA, GPIOA_BUTTON ) )
-                       chThdSleepMilliseconds(16);
-                   break;
-                   }
-#endif
                chThdSleepMilliseconds(16);
 
                // Emergency stop
@@ -510,7 +501,7 @@ vexCortexInit()
     // start any test code
     vexTest();
 
-#ifndef	USER_UART1_ENABLE
+#ifndef USER_UART1_ENABLE
     // Activates the lcd serial driver using custom configuration.
     sdStart(SD_LCD1, &lcd_config);
     vexLcdInit( 0, SD_LCD1 );
@@ -518,7 +509,7 @@ vexCortexInit()
     vexLcdPrintf( 0, 1, "VEX CORTEX LCD1" );
 #endif
 
-#ifndef	USER_UART2_ENABLE
+#ifndef USER_UART2_ENABLE
     // Activates the lcd serial driver using custom configuration.
     sdStart(SD_LCD2, &lcd_config);
     vexLcdInit( 1, SD_LCD2 );
