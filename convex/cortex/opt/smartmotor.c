@@ -33,7 +33,10 @@
 /*                      want to add a new variable so reused encoder_id        */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
-/*               V1.10     4 July 2013 - Initial release for ChibiOS           */
+/*               V1.10  4 July 2013 - Initial release for ChibiOS              */
+/*               V1.11  11 Nov 2013                                            */
+/*                      Fix bug when speed limited and changing directions     */
+/*                      quickly.                                               */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
@@ -1624,8 +1627,13 @@ msg_t SmartMotorSlewRateTask( void *arg )
             // check for limiting
             if( (PtcLimitEnabled || CurrentLimitEnabled) && (m->limit_cmd != SMLIB_MOTOR_MAX_CMD_UNDEFINED) )
                 {
-                if( abs(m->motor_cmd) > abs(m->limit_cmd) )
-                    m->motor_req = m->limit_cmd;
+                if( abs(m->motor_cmd) > abs(m->limit_cmd) ) {
+                    // don't limit if we are reversing direction
+                    if( sgn(m->motor_cmd) == sgn(m->limit_cmd) )
+                        m->motor_req = m->limit_cmd;
+                    else
+                        m->motor_req = m->motor_cmd;
+                    }
                 else
                     m->motor_req = m->motor_cmd;
                 }

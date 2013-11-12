@@ -53,8 +53,8 @@
 #include "hal.h"        // hardware abstraction layer header
 #include "vex.h"
 
-// Version 1.03
-#define kSmartMotorLibVersion   110
+// Version 1.11
+#define kSmartMotorLibVersion   111
 
 // System parameters - don't change
 #define SMLIB_R_SYS             0.3
