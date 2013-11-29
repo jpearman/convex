@@ -330,8 +330,8 @@ vexLcdSendMessage( LcdData *lcd, int16_t line )
     else {
         for(i=0;i<16;i++) {
             if( lcd->line2[i] != 0)
-            	lcd->txbuf[ 5+i ] = lcd->line2[i];
-        	}
+                lcd->txbuf[ 5+i ] = lcd->line2[i];
+            }
         }
 
     // calculate checksum
