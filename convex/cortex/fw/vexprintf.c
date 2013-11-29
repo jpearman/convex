@@ -137,7 +137,9 @@ typedef struct _pdefs {
 #elif CH_USE_SEMAPHORES
     Semaphore   semaphore;
 #endif
-
+    short	      txcount;
+    unsigned long lasttime;
+    unsigned long delta;
 } pdefs;
 
 static  pdefs   pdefs1 = {0};
@@ -176,6 +178,8 @@ vex_print_acquire( pdefs *p )
 #elif CH_USE_SEMAPHORES
     chSemInit(&p->semaphore, 0);
 #endif
+        p->txcount  = 0;
+        p->lasttime = 0;
         }
         
 #if CH_USE_MUTEXES
@@ -211,6 +215,12 @@ vex_print_release( pdefs *p )
  *  This function moves one character to the output buffer, if the buffer is NULL
  *  then the character is sent to the standard console
  */
+
+// minimum time in which to send 128 characters
+#define	THROTTLE_DELAY		30
+// quarter of above rounded up to nearest integer
+#define THROTTLE_DELAY_4	8
+
 static void
 vex_printc ( pdefs *p, int c )
 {
@@ -225,6 +235,41 @@ vex_printc ( pdefs *p, int c )
         p->curr_output_len++ ;
     }
     else {
+    	// calculate delta, the time since we were last here
+    	p->delta = chTimeNow() - p->lasttime;
+
+    	// If we were here recently, gap is less then THROTTLE_DELAY
+    	if( p->delta < THROTTLE_DELAY )
+    		{
+    		// but did we have a significant gap ?
+    		if( p->delta > THROTTLE_DELAY_4 )
+    			{
+    			// if so reduce accumulated count
+    			// allow 4 chars per mS
+    			p->txcount -= (p->delta * 4);
+    			// limit to 0
+    			if( p->txcount < 0 )
+    				p->txcount = 0;
+    			}
+
+    		// Have we reached the limit for transmission in this period
+    		if( ++p->txcount == 128 )
+        		{
+    			// we know p->delta is less than THROTTLE_DELAY
+    			// minimum sleep time will be 1mS but most of the
+    			// time it will be THROTTLE_DELAY mS
+    			chThdSleepMilliseconds( THROTTLE_DELAY - p->delta );
+        		p->txcount = 0;
+        		}
+    		}
+    	else
+    		// Enough time from the last character so start over
+    		p->txcount = 0;
+
+        // remember time of this transmit
+        p->lasttime = chTimeNow();
+
+        // send next character
         p->curr_output_len++ ;
         vexStreamPut(SD_CONSOLE, (uint8_t)c);
     }

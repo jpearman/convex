@@ -323,12 +323,15 @@ vexLcdSendMessage( LcdData *lcd, int16_t line )
 
     // Copy data transmit buffer
     if(!line) {
-        for(i=0;(i<16)&&(lcd->line1[i]!=0);i++)
-            lcd->txbuf[ 5+i ] = lcd->line1[i];
+        for(i=0;i<16;i++)
+            if( lcd->line1[i] != 0)
+                lcd->txbuf[ 5+i ] = lcd->line1[i];
         }
     else {
-        for(i=0;(i<16)&&(lcd->line2[i]!=0);i++)
-            lcd->txbuf[ 5+i ] = lcd->line2[i];
+        for(i=0;i<16;i++) {
+            if( lcd->line2[i] != 0)
+            	lcd->txbuf[ 5+i ] = lcd->line2[i];
+        	}
         }
 
     // calculate checksum
