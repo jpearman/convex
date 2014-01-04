@@ -50,8 +50,7 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
-#include "vex.h"
+#include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
 /** @file    vexime.c
@@ -261,14 +260,14 @@ vexImeTask( void *arg )
                 for( i = 0;i<vexImes.num;i++ )
                     {
                     // print data for demo
-                    chprintf(vexImes.chp,"Encoder:%d\r\n", i);
-                    chprintf(vexImes.chp,"Version:   ");
+                    vex_chprintf(vexImes.chp,"Encoder:%d\r\n", i);
+                    vex_chprintf(vexImes.chp,"Version:   ");
                     vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].version, 8 );
 
-                    chprintf(vexImes.chp,"Vendor:    ");
+                    vex_chprintf(vexImes.chp,"Vendor:    ");
                     vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].vendor, 8 );
 
-                    chprintf(vexImes.chp,"Device ID: ");
+                    vex_chprintf(vexImes.chp,"Device ID: ");
                     vexIMEPrintBuf( vexImes.chp, vexImes.imes[i].deviceid, 8 );
                     }
                 }
@@ -947,19 +946,19 @@ vexIMEPrintBuf( vexStream *chp, uint8_t *buf, uint8_t len )
     int i;
 
     for(i=0;i<len;i++)
-        chprintf(chp,"%02X ", buf[i] );
+        vex_chprintf(chp,"%02X ", buf[i] );
 
-    chprintf(chp,": ");
+    vex_chprintf(chp,": ");
 
     for(i=0;i<len;i++)
         {
         if((buf[i] < 0x7f) && (buf[i] > 0x1f))
-            chprintf(chp,"%c", buf[i] );
+            vex_chprintf(chp,"%c", buf[i] );
         else
-            chprintf(chp,".");
+            vex_chprintf(chp,".");
         }
 
-    chprintf(chp,"\r\n");
+    vex_chprintf(chp,"\r\n");
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -977,36 +976,36 @@ vexIMEDebug(vexStream *chp, int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    chprintf(chp,"%d IME's found\r\n",vexImes.num);
-    chprintf(chp,"Errors Lock(%d) Ack(%d) Bus(%d) Arb(%d) Tim(%d)\r\n",
+    vex_chprintf(chp,"%d IME's found\r\n",vexImes.num);
+    vex_chprintf(chp,"Errors Lock(%d) Ack(%d) Bus(%d) Arb(%d) Tim(%d)\r\n",
             vexImes.error_lockup, vexImes.error_ack, vexImes.error_bus, vexImes.error_arb, vexImes.error_tim );
 
     for(i=0;i<vexImes.num;i++)
         {
-        chprintf(chp,"IME_%d ", i+1); // want to show 1 through 8 not 0 through 7
-                                      // same with motor index below
+        vex_chprintf(chp,"IME_%d ", i+1); // want to show 1 through 8 not 0 through 7
+                                          // same with motor index below
         switch( vexImes.imes[i].type )
             {
             case    IME_269:
-                chprintf(chp,"269  ");
+                vex_chprintf(chp,"269  ");
                 break;
             case    IME_393T:
-                chprintf(chp,"393T ");
+                vex_chprintf(chp,"393T ");
                 break;
             case    IME_393S:
-                chprintf(chp,"393S ");
+                vex_chprintf(chp,"393S ");
                 break;
             default:
-                chprintf(chp,"---- ");
+                vex_chprintf(chp,"---- ");
                 break;
             }
 
-        chprintf(chp,"(%-8s) M_%-2d ",vexImes.imes[i].deviceid, vexImes.imes[i].motor_index+1 );
-        chprintf(chp,"%8d/", vexImes.imes[i].data_polls );
-        chprintf(chp,"%-5d ", vexImes.imes[i].data_errors );
-        chprintf(chp,"count %6d ", vexImes.imes[i].count );
-        chprintf(chp,"vel   %5d ", vexImes.imes[i].velocity );
-        chprintf(chp,"rpm   %3d ", vexImes.imes[i].rpm );
-        chprintf(chp,"\r\n");
+        vex_chprintf(chp,"(%-8s) M_%-2d ",vexImes.imes[i].deviceid, vexImes.imes[i].motor_index+1 );
+        vex_chprintf(chp,"%8d/", vexImes.imes[i].data_polls );
+        vex_chprintf(chp,"%-5d ", vexImes.imes[i].data_errors );
+        vex_chprintf(chp,"count %6d ", vexImes.imes[i].count );
+        vex_chprintf(chp,"vel   %5d ", vexImes.imes[i].velocity );
+        vex_chprintf(chp,"rpm   %3d ", vexImes.imes[i].rpm );
+        vex_chprintf(chp,"\r\n");
         }
 }

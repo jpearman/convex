@@ -46,7 +46,6 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
@@ -250,11 +249,11 @@ vexTaskDebug(vexStream *chp, int argc, char *argv[])
         if( tp != NULL )
             {
             if( tp->p_name != NULL )
-                chprintf(chp, "%16s ", tp->p_name);
+            	vex_chprintf(chp, "%16s ", tp->p_name);
             else
-                chprintf(chp,"                 ");
+            	vex_chprintf(chp,"                 ");
 
-            chprintf( chp, "%2d: %.8X %d\r\n", i, tp, myThreads[ i ].persistent );
+            vex_chprintf( chp, "%2d: %.8X %d\r\n", i, tp, myThreads[ i ].persistent );
             }
         }
 }

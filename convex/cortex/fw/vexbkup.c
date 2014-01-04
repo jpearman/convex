@@ -45,7 +45,6 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
@@ -145,17 +144,17 @@ vexBkupDebug(vexStream *chp, int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    chprintf( chp, "Backup Registers\r\n" );
-    chprintf( chp, "00-15: " );
+    vex_chprintf( chp, "Backup Registers\r\n" );
+    vex_chprintf( chp, "00-15: " );
     for(i=0;i<16;i++)
-        chprintf( chp, "%02X ", vexBkupRegisterRead(i) );
-    chprintf(chp,"\r\n");
-    chprintf( chp, "16-32: " );
+        vex_chprintf( chp, "%02X ", vexBkupRegisterRead(i) );
+    vex_chprintf(chp,"\r\n");
+    vex_chprintf( chp, "16-32: " );
     for(i=16;i<32;i++)
-        chprintf( chp, "%02X ", vexBkupRegisterRead(i) );
-    chprintf(chp,"\r\n");
-    chprintf( chp, "32-41: " );
+        vex_chprintf( chp, "%02X ", vexBkupRegisterRead(i) );
+    vex_chprintf(chp,"\r\n");
+    vex_chprintf( chp, "32-41: " );
     for(i=32;i<42;i++)
-        chprintf( chp, "%02X ", vexBkupRegisterRead(i) );
-    chprintf(chp,"\r\n");
+        vex_chprintf( chp, "%02X ", vexBkupRegisterRead(i) );
+    vex_chprintf(chp,"\r\n");
 }

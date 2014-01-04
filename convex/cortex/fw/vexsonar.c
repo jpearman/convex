@@ -51,8 +51,7 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
-#include "vex.h"
+#include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
 /** @file    vexsonar.c
@@ -384,8 +383,8 @@ vexSonarDebug(vexStream *chp, int argc, char *argv[])
 
     for(c=kVexSonar_1;c<kVexSonar_Num;c++)
         {
-        chprintf(chp,"S%d %d %5d %5d ", c, vexSonars[c].flags, vexSonars[c].time_r, vexSonars[c].time_f );
-        chprintf(chp,"%5d %4d(cm) %3d(inch)\r\n", vexSonars[c].time, vexSonars[c].distance_cm, vexSonars[c].distance_inch );
+        vex_chprintf(chp,"S%d %d %5d %5d ", c, vexSonars[c].flags, vexSonars[c].time_r, vexSonars[c].time_f );
+        vex_chprintf(chp,"%5d %4d(cm) %3d(inch)\r\n", vexSonars[c].time, vexSonars[c].distance_cm, vexSonars[c].distance_inch );
         }
 }
 

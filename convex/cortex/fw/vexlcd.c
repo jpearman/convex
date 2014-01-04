@@ -50,8 +50,7 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
-#include "vex.h"
+#include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
 /** @file    vexlcd.c
@@ -406,19 +405,19 @@ vexLcdDebug(vexStream *chp, int argc, char *argv[])
     (void)argv;
 
     if( vexLcdData[0].enabled){
-        chprintf(chp,"\r\n" );
-        chprintf(chp,"LCD 0 \r\n" );
-        chprintf(chp,"%-16s\r\n", vexLcdData[0].line1 );
-        chprintf(chp,"%-16s\r\n", vexLcdData[0].line2 );
-        chprintf(chp,"Buttons = %2X\r\n", vexLcdData[0].buttons );
+        vex_chprintf(chp,"\r\n" );
+        vex_chprintf(chp,"LCD 0 \r\n" );
+        vex_chprintf(chp,"%-16s\r\n", vexLcdData[0].line1 );
+        vex_chprintf(chp,"%-16s\r\n", vexLcdData[0].line2 );
+        vex_chprintf(chp,"Buttons = %2X\r\n", vexLcdData[0].buttons );
         }
 
     if( vexLcdData[1].enabled){
-        chprintf(chp,"\r\n" );
-        chprintf(chp,"LCD 1 \r\n" );
-        chprintf(chp,"%-16s\r\n", vexLcdData[1].line1 );
-        chprintf(chp,"%-16s\r\n", vexLcdData[1].line2 );
-        chprintf(chp,"Buttons = %2X\r\n", vexLcdData[1].buttons );
+        vex_chprintf(chp,"\r\n" );
+        vex_chprintf(chp,"LCD 1 \r\n" );
+        vex_chprintf(chp,"%-16s\r\n", vexLcdData[1].line1 );
+        vex_chprintf(chp,"%-16s\r\n", vexLcdData[1].line2 );
+        vex_chprintf(chp,"Buttons = %2X\r\n", vexLcdData[1].buttons );
         }
 }
 

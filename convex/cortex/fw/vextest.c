@@ -51,8 +51,7 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
-#include "vex.h"
+#include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
 /** @file    vextest.c

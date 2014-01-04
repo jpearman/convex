@@ -45,8 +45,7 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
-#include "vex.h"
+#include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
 /** @file    vexanalog.c
@@ -142,6 +141,6 @@ vexAdcDebug(vexStream *chp, int argc, char *argv[])
     (void)argv;
 
     for(i=0;i<8;i++)
-        chprintf( chp, "channel %d = %4d\r\n", i, vexAdcGet(i) );
+        vex_chprintf( chp, "channel %d = %4d\r\n", i, vexAdcGet(i) );
 }
 

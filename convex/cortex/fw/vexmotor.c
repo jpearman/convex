@@ -53,7 +53,6 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
 #include "vex.h"        // vex library header
 
 // local variable to store the timer used for pwm motors
@@ -343,7 +342,7 @@ vexMotorEncoderIdGet( int16_t index )
 
 /*-----------------------------------------------------------------------------*/
 /** @brief      Command line debug of motors                                   */
-/** @param[in]  chp     A pointer to a vexStream object                      */
+/** @param[in]  chp     A pointer to a vexStream object                        */
 /** @param[in]  argc    The number of command line arguments                   */
 /** @param[in]  argv    An array of pointers to the command line args          */
 /*-----------------------------------------------------------------------------*/
@@ -357,15 +356,15 @@ vexMotorDebug(vexStream *chp, int argc, char *argv[])
     if (argc < 2)
         {
         // Status
-        chprintf(chp, "Motor  Speed  Position Rev   ID\r\n");
+        vex_chprintf(chp, "Motor  Speed  Position Rev   ID\r\n");
         for(index=0;index<kVexMotorNum;index++)
             {
-            chprintf(chp, "M_%d  %4d %7d      ", index, vexMotors[ index ].value, vexMotorPositionGet( index ) );
+            vex_chprintf(chp, "M_%d  %4d %7d      ", index, vexMotors[ index ].value, vexMotorPositionGet( index ) );
             if( vexMotors[ index ].reversed )
-                chprintf(chp, "true  ");
+                vex_chprintf(chp, "true  ");
             else
-                chprintf(chp, "false ");
-            chprintf(chp,"%d\r\n", vexMotorEncoderIdGet(index));
+                vex_chprintf(chp, "false ");
+            vex_chprintf(chp,"%d\r\n", vexMotorEncoderIdGet(index));
             }
         }
     else
@@ -373,7 +372,7 @@ vexMotorDebug(vexStream *chp, int argc, char *argv[])
         index = atoi( argv[0] );
         data  = atoi( argv[1] );
         if( index >= 0 ) {
-            chprintf(chp, "set motor %d to %d\r\n", index, data );
+            vex_chprintf(chp, "set motor %d to %d\r\n", index, data );
 
             vexMotorSet( index, data );
             }
@@ -584,10 +583,8 @@ _vexMotorPwmSet_0( int16_t value )
         {
         PwmTimer->CCR2 = 0;
         palClearPad( VEX_PWM_PORT, VEX_EBL_T0_N_PIN );
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR3);
         x = value & 0x7F;
         palSetPad( VEX_PWM_PORT, VEX_EBL_T0_P_PIN );
-        //GPIO_SetBits( GPIOD, GPIO_ODR_ODR4);
         PwmTimer->CCR1 = x;
         }
     else
@@ -595,10 +592,8 @@ _vexMotorPwmSet_0( int16_t value )
         {
         PwmTimer->CCR1 = 0;
         palClearPad( VEX_PWM_PORT, VEX_EBL_T0_P_PIN );
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR4);
         x = (-value) & 0x7F;
         palSetPad( VEX_PWM_PORT, VEX_EBL_T0_N_PIN );
-        //GPIO_SetBits( GPIOD, GPIO_ODR_ODR3);
         PwmTimer->CCR2 = x;
         }
     else
@@ -607,8 +602,6 @@ _vexMotorPwmSet_0( int16_t value )
         PwmTimer->CCR2 = 0;
         palClearPad( VEX_PWM_PORT, VEX_EBL_T0_N_PIN );
         palClearPad( VEX_PWM_PORT, VEX_EBL_T0_P_PIN );
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR3);
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR4);
         }
 }
 
@@ -633,10 +626,8 @@ _vexMotorPwmSet_9( int16_t value )
         {
         PwmTimer->CCR4 = 0;
         palClearPad( VEX_PWM_PORT, VEX_EBL_T9_N_PIN );
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR7);
         x = value & 0x7F;
         palSetPad( VEX_PWM_PORT, VEX_EBL_T9_P_PIN );
-        //GPIO_SetBits( GPIOD, GPIO_ODR_ODR8);
         PwmTimer->CCR3 = x;
         }
     else
@@ -644,10 +635,8 @@ _vexMotorPwmSet_9( int16_t value )
         {
         PwmTimer->CCR3 = 0;
         palClearPad( VEX_PWM_PORT, VEX_EBL_T9_P_PIN );
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR8);
         x = (-value) & 0x7F;
         palSetPad( VEX_PWM_PORT, VEX_EBL_T9_N_PIN );
-        //GPIO_SetBits( GPIOD, GPIO_ODR_ODR7);
         PwmTimer->CCR4 = x;
         }
     else
@@ -656,8 +645,6 @@ _vexMotorPwmSet_9( int16_t value )
         PwmTimer->CCR4 = 0;
         palClearPad( VEX_PWM_PORT, VEX_EBL_T9_N_PIN );
         palClearPad( VEX_PWM_PORT, VEX_EBL_T9_P_PIN );
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR7);
-        //GPIO_ResetBits( GPIOD, GPIO_ODR_ODR8);
         }
 }
 

@@ -51,7 +51,6 @@
 
 #include "ch.h"         // needs for all ChibiOS programs
 #include "hal.h"        // hardware abstraction layer header
-#include "chprintf.h"
 #include "vex.h"        // vex library header
 
 /*-----------------------------------------------------------------------------*/
@@ -464,7 +463,7 @@ vexEncoderDebug(vexStream *chp, int argc, char *argv[])
     tVexQuadEncoderChannel  c;
 
     for(c=kVexQuadEncoder_1;c<kVexQuadEncoder_Num;c++)
-        chprintf(chp,"E%d %8ld  %8ld\r\n", c, vexQuadEncoders[c].count, vexQuadEncoders[c].offset );
+        vex_chprintf(chp,"E%d %8ld  %8ld\r\n", c, vexQuadEncoders[c].count, vexQuadEncoders[c].offset );
 }
 
 
