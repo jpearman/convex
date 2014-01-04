@@ -57,13 +57,13 @@
 
 // External interrupt control was changed significantly between
 // versions 2.4.3 and 2.6.0
-#if (CH_KERNEL_MAJOR == 2) && (CH_KERNEL_MINOR == 6)
+#if (CH_KERNEL_MAJOR >= 2) && (CH_KERNEL_MINOR >= 6)
 #define EXT_VERSION   1
 #else
 #define EXT_VERSION   0
 #endif
 
-// Old stile EXTConfig
+// Old style EXTConfig
 #if EXT_VERSION == 0
 static  EXTConfig vexExtCfg = {
    {
