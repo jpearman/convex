@@ -94,9 +94,9 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include "ch.h"
-#include "hal.h"
-#include "vex.h"
+#include "ch.h"         // needs for all ChibiOS programs
+#include "hal.h"        // hardware abstraction layer header
+#include "vex.h"        // vex library header
 
 #if (CH_KERNEL_MAJOR >= 2) && (CH_KERNEL_MINOR >= 6)
 #define      vexStreamPut(stream, c)    chSequentialStreamPut( stream, c );
@@ -116,30 +116,34 @@
 typedef struct _pdefs {
     // this need to be the first element so we can easily initialize the structure
     // with one value
-    int     init;
+    int           init;
 
     // Handle to output buffer
-    char **out;
+    char          **out;
     
     // flags that determine formatting
-    int  use_leading_plus;
-    int  max_output_len;
-    int  curr_output_len;
+    int           use_leading_plus;
+    int           max_output_len;
+    int           curr_output_len;
 
     // buffer to assemble output    
-    char print_buf[PRINT_BUF_LEN];
-    char float_buf[PRINT_BUF_LEN*2];
+    char          print_buf[PRINT_BUF_LEN];
+    char          float_buf[PRINT_BUF_LEN*2];
     
     // mutex or semaphore to protect this structure if more
     // than one thread tries to use it simulateously
 #if CH_USE_MUTEXES
-    Mutex       mutex;
+    Mutex         mutex;
 #elif CH_USE_SEMAPHORES
-    Semaphore   semaphore;
+    Semaphore     semaphore;
 #endif
     short         txcount;
     unsigned long lasttime;
     unsigned long delta;
+
+    // vexStream added so we can "printf" to the other serial ports without
+    // using sprintf.  This allows all the old chprintf calls to be replaced.
+    vexStream     *chp;
 } pdefs;
 
 static  pdefs   pdefs1 = {0};
@@ -178,8 +182,10 @@ vex_print_acquire( pdefs *p )
 #elif CH_USE_SEMAPHORES
     chSemInit(&p->semaphore, 0);
 #endif
+        // we init some other variables here as well
         p->txcount  = 0;
         p->lasttime = 0;
+        p->chp      = (vexStream *)SD_CONSOLE;
         }
         
 #if CH_USE_MUTEXES
@@ -224,7 +230,7 @@ vex_print_release( pdefs *p )
 static void
 vex_printc ( pdefs *p, int c )
 {
-    // reachec maximum length of output buffer ?
+    // reached maximum length of output buffer ?
     if (p->max_output_len >= 0  &&  p->curr_output_len >= p->max_output_len)
         return ;
 
@@ -271,7 +277,7 @@ vex_printc ( pdefs *p, int c )
 
         // send next character
         p->curr_output_len++ ;
-        vexStreamPut(SD_CONSOLE, (uint8_t)c);
+        vexStreamPut( p->chp, (uint8_t)c);
     }
 }
 
@@ -281,6 +287,7 @@ vex_printc ( pdefs *p, int c )
 /** @param[in]  string the string to output                                    */
 /** @param[in]  width required output width                                    */
 /** @param[in]  pad type of padding, left, right, zeros                        */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This function moves a string into the output buffer with required padding
@@ -330,6 +337,7 @@ vex_prints ( pdefs *p, const char *string, int width, int pad )
 /** @param[in]  sign is number signed or unsigned, 1 = signed                  */
 /** @param[in]  pad type of padding, left, right, zeros                        */
 /** @param[in]  letbase base ascii character for conversion, 'a' or 'A'        */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This function converts one integer to formatted output
@@ -484,6 +492,7 @@ dbl2stri( pdefs *p, double dbl, unsigned dec_digits )
 /** @param[in]  width required output width                                    */
 /** @param[in]  dec_digits required number of fractional digits                */
 /** @param[in]  pad type of padding, left, right, zeros                        */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This function converts one double to formatted output
@@ -502,6 +511,7 @@ vex_printdbl( pdefs *p, double dbl, int width, int dec_digits, int pad )
 /** @param[in]  p pointer to our working variables, a pdef structure           */
 /** @param[in]  format The format string                                       */
 /** @param[in]  args variable argument list                                    */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This is the function that provides the formatting for all vex_printf and
@@ -647,6 +657,7 @@ vex_print( pdefs *p, const char *format, va_list args )
 /*-----------------------------------------------------------------------------*/
 /** @brief      send formated string to the console                            */
 /** @param[in]  format The format string                                       */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This has similar but reduced functionality to the standard library function
@@ -660,15 +671,85 @@ int vex_printf (const char *format, ...)
 
     pdefs1.out = 0;
     pdefs1.max_output_len = -1 ;
+    pdefs1.chp = (vexStream *)SD_CONSOLE;
 
     va_start( args, format );
     return vex_print( &pdefs1, format, args );
 }
 
 /*-----------------------------------------------------------------------------*/
+/** @brief      send formated string to a vexStream                            */
+/** @param[in]  chp The stream                                                 */
+/** @param[in]  format The format string                                       */
+/** @returns    the number of characters that were output                      */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This function is used as a direct replacement for chprintf. It has similar
+ *  but reduced functionality to the standard library function sprintf.
+ */
+int vex_chprintf ( vexStream *chp, const char *format, ...)
+{
+    va_list args;
+
+    vex_print_acquire(&pdefs1);
+
+    pdefs1.out = 0;
+    pdefs1.max_output_len = -1 ;
+    pdefs1.chp = chp;
+
+    va_start( args, format );
+    return vex_print( &pdefs1, format, args );
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      send formated string to a vexStream                            */
+/** @param[in]  format The format string                                       */
+/** @param[in]  args variable argument list                                    */
+/** @returns    the number of characters that were output                      */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This has similar but reduced functionality to the standard library function
+ *  sprintf.  This version takes a variable argument list directly.
+ */
+int vex_vprintf(const char *format, va_list args)
+{
+    vex_print_acquire(&pdefs1);
+
+    pdefs1.out = 0;
+    pdefs1.max_output_len = -1;
+    pdefs1.chp = (vexStream *)SD_CONSOLE;
+
+    return vex_print(&pdefs1, format, args);
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      send formated string to a vexStream                            */
+/** @param[in]  chp The stream                                                 */
+/** @param[in]  format The format string                                       */
+/** @param[in]  args variable argument list                                    */
+/** @returns    the number of characters that were output                      */
+/*-----------------------------------------------------------------------------*/
+/** @details
+ *  This has similar but reduced functionality to the standard library function
+ *  sprintf.  This version takes a variable argument list directly and can also
+ *  output to a stream that is not the CONSOLE.
+ */
+int vex_vchprintf(vexStream *chp, const char *format, va_list args)
+{
+    vex_print_acquire(&pdefs1);
+
+    pdefs1.out = 0;
+    pdefs1.max_output_len = -1;
+    pdefs1.chp = chp;
+
+    return vex_print(&pdefs1, format, args);
+}
+
+/*-----------------------------------------------------------------------------*/
 /** @brief      create formated string in a buffer                             */
 /** @param[out] out The output buffer                                          */
 /** @param[in]  format The format string                                       */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This has similar but reduced functionality to the standard library function
@@ -692,6 +773,7 @@ int vex_sprintf (char *out, const char *format, ...)
 /** @param[out] out The output buffer                                          */
 /** @param[out] max_len The output buffer length                               */
 /** @param[in]  format The format string                                       */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This has similar but reduced functionality to the standard library function
@@ -699,6 +781,8 @@ int vex_sprintf (char *out, const char *format, ...)
  */
 int vex_snprintf(char *out, uint16_t max_len, const char *format, ...)
 {
+    int pc;
+
     va_list args;
 
     vex_print_acquire(&pdefs2);
@@ -707,7 +791,13 @@ int vex_snprintf(char *out, uint16_t max_len, const char *format, ...)
     pdefs2.max_output_len = (int) max_len ;
 
     va_start( args, format );
-    return vex_print( &pdefs2, format, args );
+
+    pc = vex_print( &pdefs2, format, args );
+
+    // maximum will have been limited to max)len
+    if(pc > max_len) pc = max_len;
+
+    return pc;
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -715,6 +805,7 @@ int vex_snprintf(char *out, uint16_t max_len, const char *format, ...)
 /** @param[out] out The output buffer                                          */
 /** @param[in]  format The format string                                       */
 /** @param[in]  args a variable argument list                                  */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This has similar but reduced functionality to the standard library function
@@ -736,6 +827,7 @@ int vex_vsprintf( char *out, const char *format, va_list args )
 /** @param[out] max_len The output buffer length                               */
 /** @param[in]  format The format string                                       */
 /** @param[in]  args a variable argument list                                  */
+/** @returns    the number of characters that were output                      */
 /*-----------------------------------------------------------------------------*/
 /** @details
  *  This has similar but reduced functionality to the standard library function
@@ -743,10 +835,17 @@ int vex_vsprintf( char *out, const char *format, va_list args )
  */
 int vex_vsnprintf(char *out, uint16_t max_len, const char *format, va_list args )
 {
+    int pc;
+
     vex_print_acquire(&pdefs2);
 
     pdefs2.out = &out;
     pdefs2.max_output_len = (int) max_len ;
 
-    return vex_print( &pdefs2, format, args );
+    pc = vex_print( &pdefs2, format, args );
+
+    // maximum will have been limited to max)len
+    if(pc > max_len) pc = max_len;
+
+    return pc;
 }

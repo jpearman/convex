@@ -56,6 +56,9 @@ extern "C" {
 #endif
 
 int         vex_printf (const char *format, ...);
+int         vex_chprintf ( vexStream *chp, const char *format, ...);
+int         vex_vprintf(const char *format, va_list args);
+int         vex_vchprintf(vexStream *chp, const char *format, va_list args);
 int         vex_sprintf (char *out, const char *format, ...);
 int         vex_snprintf(char *out, uint16_t max_len, const char *format, ...);
 int         vex_vsprintf( char *out, const char *format, va_list args );
