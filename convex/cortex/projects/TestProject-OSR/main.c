@@ -64,12 +64,9 @@ cmd_apollo( vexStream *chp, int argc, char *argv[])
     apolloInit();
 
     // run until any key press
-    //while( chIOGetWouldBlock(chp) )
     while( sdGetWouldBlock((SerialDriver *)chp) )
         {
         apolloUpdate();
-
-        //chThdSleepMilliseconds(50);
         }
 
     apolloDeinit();
@@ -86,32 +83,6 @@ cmd_sm(vexStream *chp, int argc, char *argv[])
     SmartMotorDebugStatus();
 }
 
-static void
-cmd_stest(vexStream *chp, int argc, char *argv[])
-{
-    int     i,j;
-    char    buf[32];
-
-    (void)argv;
-    (void)chp;
-    (void)argc;
-
-    // wait for buffer to clear
-//    chThdSleepMilliseconds(50);
-
-    // 40 x 16 bytes = 640 bytes, should be 10 packets
-    for(i=0;i<16;i++)
-        {
-        for(j=0;j<16;j++)
-            buf[j] = 0x41 + (i%26);
-        buf[11] = 0;
-        chprintf(chp,"%2d %s\r\n",i, buf);
-        }
-
-    // wait for buffer to clear
-    chThdSleepMilliseconds(50);
-}
-
 #define SHELL_WA_SIZE   THD_WA_SIZE(2048)
 
 // Shell command
@@ -126,8 +97,7 @@ static const ShellCommand commands[] = {
   {"test",    vexTestDebug},
   {"sm",      cmd_sm },
   {"apollo",  cmd_apollo},
-  {"stest",  cmd_stest},
-   {NULL, NULL}
+  {NULL, NULL}
 };
 
 // configuration for the shell
