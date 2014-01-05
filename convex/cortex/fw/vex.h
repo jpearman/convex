@@ -97,6 +97,9 @@
 #define CONVEX_PATCH         4
 /** @} */
 
+// ChibiOS version as a hex number, eg. 2.6.1 becomes 0x261
+#define CH_KERNEL_VERSION_HEX    ((CH_KERNEL_MAJOR << 8) | (CH_KERNEL_MINOR << 4) | (CH_KERNEL_PATCH))
+
 /*-----------------------------------------------------------------------------*/
 /** @{                                                                         */
 /** @name task priorities                                                      */
