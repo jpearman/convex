@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['max_5foutput_5flen',['max_output_len',['../struct__pdefs.html#a798d46563ed2f22d19b4492c371abd05',1,'_pdefs']]],
   ['mode',['mode',['../struct__io_def.html#ada87067450b66ed1056b42f2ae4fbeba',1,'_ioDef']]],
   ['motor',['motor',['../struct__spi_tx_packet_1_1__spi_tx_pak.html#a8ff47446054caacd1abf4df8635dd5c8',1,'_spiTxPacket::_spiTxPak']]],
   ['motor_5fcmd',['motor_cmd',['../structsmart_motor.html#a32cb403d82c7a72c08df429f3a76096c',1,'smartMotor']]],

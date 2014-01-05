@@ -117,13 +117,10 @@ $(document).ready(function(){initNavTree('vexshell_8c.html','');});
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br/>
 <code>#include &quot;ch.h&quot;</code><br/>
 <code>#include &quot;hal.h&quot;</code><br/>
-<code>#include &quot;chprintf.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="vex_8h_source.html">vex.h</a>&quot;</code><br/>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a3c8913832bf2d12d508e23dda3ea33d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a3c8913832bf2d12d508e23dda3ea33d5">vexStreamPut</a>(stream, c)&#160;&#160;&#160;chIOPut( stream, c );</td></tr>
-<tr class="separator:a3c8913832bf2d12d508e23dda3ea33d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a876ce77f3c672c7162658151e648389e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a876ce77f3c672c7162658151e648389e">CR</a>&#160;&#160;&#160;'\r'</td></tr>
 <tr class="separator:a876ce77f3c672c7162658151e648389e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a350c9d6cb81908d59427ee96844d1a9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a350c9d6cb81908d59427ee96844d1a9c">LF</a>&#160;&#160;&#160;'\n'</td></tr>
@@ -144,50 +141,35 @@ Macros</h2></td></tr>
 <tr class="separator:aaf49e634ad0839770268f77bd9035e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4af1b6159e447ba72652bb7fcdfa726e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a4af1b6159e447ba72652bb7fcdfa726e">ESC</a>&#160;&#160;&#160;0x1B</td></tr>
 <tr class="separator:a4af1b6159e447ba72652bb7fcdfa726e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd54e169174a2bbdf42b387a546c0b92"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#abd54e169174a2bbdf42b387a546c0b92">SYMVAL</a>(sym)&#160;&#160;&#160;(uint32_t)(((uint8_t *)&amp;(sym)) - ((uint8_t *)0))</td></tr>
+<tr class="separator:abd54e169174a2bbdf42b387a546c0b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0b1dba28bb03cb29749f32a595d5ec57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a0b1dba28bb03cb29749f32a595d5ec57">shellInit</a> (void)</td></tr>
+<tr class="memdesc:a0b1dba28bb03cb29749f32a595d5ec57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shell manager initialization.  <a href="#a0b1dba28bb03cb29749f32a595d5ec57">More...</a><br/></td></tr>
 <tr class="separator:a0b1dba28bb03cb29749f32a595d5ec57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ede18cdbb5be45803078432acb3f9ec"><td class="memItemLeft" align="right" valign="top">Thread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a3ede18cdbb5be45803078432acb3f9ec">shellCreate</a> (const <a class="el" href="struct_shell_config.html">ShellConfig</a> *scp, size_t size, tprio_t prio)</td></tr>
+<tr class="memdesc:a3ede18cdbb5be45803078432acb3f9ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spawns a new shell using dynamic memory allocation.  <a href="#a3ede18cdbb5be45803078432acb3f9ec">More...</a><br/></td></tr>
+<tr class="separator:a3ede18cdbb5be45803078432acb3f9ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7509ff947d413ce90202a9d998f65ce"><td class="memItemLeft" align="right" valign="top">Thread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#af7509ff947d413ce90202a9d998f65ce">shellCreateStatic</a> (const <a class="el" href="struct_shell_config.html">ShellConfig</a> *scp, void *wsp, size_t size, tprio_t prio)</td></tr>
+<tr class="memdesc:af7509ff947d413ce90202a9d998f65ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create statically allocated shell thread.  <a href="#af7509ff947d413ce90202a9d998f65ce">More...</a><br/></td></tr>
 <tr class="separator:af7509ff947d413ce90202a9d998f65ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeee3d8b5c9fa415c38eeee0f0aa7dd16"><td class="memItemLeft" align="right" valign="top">bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#aeee3d8b5c9fa415c38eeee0f0aa7dd16">shellGetLine</a> (<a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp, char *line, unsigned size)</td></tr>
-<tr class="separator:aeee3d8b5c9fa415c38eeee0f0aa7dd16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a168440e44c637282589a4e28eb3a91b8"><td class="memItemLeft" align="right" valign="top">EventSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a168440e44c637282589a4e28eb3a91b8">shell_terminated</a></td></tr>
 <tr class="separator:a168440e44c637282589a4e28eb3a91b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e3c30a35a47e1b32b69c3deaf333a4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a75e3c30a35a47e1b32b69c3deaf333a4">_textdata</a></td></tr>
+<tr class="separator:a75e3c30a35a47e1b32b69c3deaf333a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45c84a718a302530a9e80cce14821e33"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a45c84a718a302530a9e80cce14821e33">_data</a></td></tr>
+<tr class="separator:a45c84a718a302530a9e80cce14821e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fc4a71c31f5b048d3b1b7b2d10684d1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexshell_8c.html#a1fc4a71c31f5b048d3b1b7b2d10684d1">_edata</a></td></tr>
+<tr class="separator:a1fc4a71c31f5b048d3b1b7b2d10684d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Simple Command line interface shell. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a3c8913832bf2d12d508e23dda3ea33d5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define vexStreamPut</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">stream, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">c&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;chIOPut( stream, c );</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a876ce77f3c672c7162658151e648389e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -308,6 +290,22 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abd54e169174a2bbdf42b387a546c0b92"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SYMVAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sym)</td><td></td>
+          <td>&#160;&#160;&#160;(uint32_t)(((uint8_t *)&amp;(sym)) - ((uint8_t *)0))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a0b1dba28bb03cb29749f32a595d5ec57"></a>
 <div class="memitem">
@@ -322,6 +320,58 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Shell manager initialization. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3ede18cdbb5be45803078432acb3f9ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Thread* shellCreate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_shell_config.html">ShellConfig</a> *&#160;</td>
+          <td class="paramname"><em>scp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tprio_t&#160;</td>
+          <td class="paramname"><em>prio</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Spawns a new shell using dynamic memory allocation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">scp</td><td>pointer to a <code><a class="el" href="struct_shell_config.html" title="Shell descriptor type. ">ShellConfig</a></code> object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>size of the shell working area to be allocated </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prio</td><td>priority level for the new shell </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the shell thread. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">NULL</td><td>thread creation failed because memory allocation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>CH_USE_MALLOC_HEAP and <code>CH_USE_DYNAMIC</code> must be enabled. </dd></dl>
 
 </div>
 </div>
@@ -361,37 +411,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="aeee3d8b5c9fa415c38eeee0f0aa7dd16"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool_t shellGetLine </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *&#160;</td>
-          <td class="paramname"><em>chp</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Create statically allocated shell thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">scp</td><td>pointer to a <code><a class="el" href="struct_shell_config.html" title="Shell descriptor type. ">ShellConfig</a></code> object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">wsp</td><td>pointer to a working area dedicated to the shell thread stack </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>size of the shell working area to be allocated </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prio</td><td>priority level for the new shell </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the shell thread. </dd></dl>
 
 </div>
 </div>
@@ -408,13 +438,49 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a75e3c30a35a47e1b32b69c3deaf333a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t _textdata</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a45c84a718a302530a9e80cce14821e33"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t _data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1fc4a71c31f5b048d3b1b7b2d10684d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t _edata</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexshell_8c.html">vexshell.c</a></li>
-    <li class="footer">Generated on Sun Sep 8 2013 17:54:43 for Convex by
+    <li class="footer">Generated on Sun Jan 5 2014 15:43:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

@@ -133,7 +133,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac708e4b167d25fd3fd57f773cfb1b372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#ac708e4b167d25fd3fd57f773cfb1b372">CleanupTask</a> (Thread *tp) __attribute__((weak))</td></tr>
-<tr class="memdesc:ac708e4b167d25fd3fd57f773cfb1b372"><td class="mdescLeft">&#160;</td><td class="mdescRight">cleanup a task it was terminated elsewhere  <a href="#ac708e4b167d25fd3fd57f773cfb1b372">More...</a><br/></td></tr>
+<tr class="memdesc:ac708e4b167d25fd3fd57f773cfb1b372"><td class="mdescLeft">&#160;</td><td class="mdescRight">cleanup a task if it was terminated elsewhere  <a href="#ac708e4b167d25fd3fd57f773cfb1b372">More...</a><br/></td></tr>
 <tr class="separator:ac708e4b167d25fd3fd57f773cfb1b372"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08847f8db8d168c4f8acad495beda363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a08847f8db8d168c4f8acad495beda363">vexTaskRegister</a> (char *name)</td></tr>
 <tr class="memdesc:a08847f8db8d168c4f8acad495beda363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a thread so it can be terminated during vexSleep.  <a href="#a08847f8db8d168c4f8acad495beda363">More...</a><br/></td></tr>
@@ -141,6 +141,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a1c7abfe1bdc870614d3b7c9c09b6c412">vexTaskRegisterPersistant</a> (char *name, bool_t p)</td></tr>
 <tr class="memdesc:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a thread so it can be terminated during vexSleep.  <a href="#a1c7abfe1bdc870614d3b7c9c09b6c412">More...</a><br/></td></tr>
 <tr class="separator:a1c7abfe1bdc870614d3b7c9c09b6c412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8bd970680e963bf14975f72bd51efa"><td class="memItemLeft" align="right" valign="top">bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a1f8bd970680e963bf14975f72bd51efa">vexTaskIsRegistered</a> (Thread *tp)</td></tr>
+<tr class="memdesc:a1f8bd970680e963bf14975f72bd51efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this thread was already registered.  <a href="#a1f8bd970680e963bf14975f72bd51efa">More...</a><br/></td></tr>
+<tr class="separator:a1f8bd970680e963bf14975f72bd51efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67eb18eb7284be8e71b0ad85586e237d"><td class="memItemLeft" align="right" valign="top">bool_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a67eb18eb7284be8e71b0ad85586e237d">vexTaskPersistentGet</a> (Thread *tp)</td></tr>
+<tr class="memdesc:a67eb18eb7284be8e71b0ad85586e237d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this thread has persistent flag set.  <a href="#a67eb18eb7284be8e71b0ad85586e237d">More...</a><br/></td></tr>
+<tr class="separator:a67eb18eb7284be8e71b0ad85586e237d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8bd8d1b2920b86c609d17be42a50ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#aaf8bd8d1b2920b86c609d17be42a50ff">vexTaskPersistentSet</a> (Thread *tp, bool_t p)</td></tr>
+<tr class="memdesc:aaf8bd8d1b2920b86c609d17be42a50ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set persistent flag.  <a href="#aaf8bd8d1b2920b86c609d17be42a50ff">More...</a><br/></td></tr>
+<tr class="separator:aaf8bd8d1b2920b86c609d17be42a50ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a267b888fd32e409cf5e38e95f04d45e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#a267b888fd32e409cf5e38e95f04d45e4">vexTaskDebug</a> (<a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp, int argc, char *argv[])</td></tr>
+<tr class="memdesc:a267b888fd32e409cf5e38e95f04d45e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump the list of registered tasks.  <a href="#a267b888fd32e409cf5e38e95f04d45e4">More...</a><br/></td></tr>
+<tr class="separator:a267b888fd32e409cf5e38e95f04d45e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20339f269fec77376a5ee00407a1ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexcortex_8c.html#ae20339f269fec77376a5ee00407a1ce5">vexTaskEmergencyStop</a> ()</td></tr>
 <tr class="memdesc:ae20339f269fec77376a5ee00407a1ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop all tasks.  <a href="#ae20339f269fec77376a5ee00407a1ce5">More...</a><br/></td></tr>
 <tr class="separator:ae20339f269fec77376a5ee00407a1ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,7 +207,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>cleanup a task it was terminated elsewhere </p>
+<p>cleanup a task if it was terminated elsewhere </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">tp</td><td>A pointer to a thread </td></tr>
@@ -258,7 +270,134 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>string describing the thread </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>persistant flag </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>persistent flag </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1f8bd970680e963bf14975f72bd51efa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool_t vexTaskIsRegistered </td>
+          <td>(</td>
+          <td class="paramtype">Thread *&#160;</td>
+          <td class="paramname"><em>tp</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if this thread was already registered. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tp</td><td>pointer to the Thread structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool with registration status </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a67eb18eb7284be8e71b0ad85586e237d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool_t vexTaskPersistentGet </td>
+          <td>(</td>
+          <td class="paramtype">Thread *&#160;</td>
+          <td class="paramname"><em>tp</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if this thread has persistent flag set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tp</td><td>pointer to the Thread structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool with persistent status </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaf8bd8d1b2920b86c609d17be42a50ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexTaskPersistentSet </td>
+          <td>(</td>
+          <td class="paramtype">Thread *&#160;</td>
+          <td class="paramname"><em>tp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool_t&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set persistent flag. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tp</td><td>pointer to the Thread structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>persistent flag </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a267b888fd32e409cf5e38e95f04d45e4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexTaskDebug </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *&#160;</td>
+          <td class="paramname"><em>chp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dump the list of registered tasks. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">chp</td><td>A pointer to a vexStream object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">argc</td><td>The number of command line arguments </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">argv</td><td>An array of pointers to the command line args </td></tr>
   </table>
   </dd>
 </dl>
@@ -413,7 +552,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexcortex_8c.html">vexcortex.c</a></li>
-    <li class="footer">Generated on Sun Sep 8 2013 17:54:43 for Convex by
+    <li class="footer">Generated on Sun Jan 5 2014 15:43:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

@@ -9,9 +9,10 @@ var searchData=
   ['pb_5fpad',['pb_pad',['../struct__vex_quad_encoder__t.html#ac3f4f959b1e161377425c9cfdcf2e337',1,'_vexQuadEncoder_t::pb_pad()'],['../struct__vex_sonar__t.html#ac3f4f959b1e161377425c9cfdcf2e337',1,'_vexSonar_t::pb_pad()']]],
   ['pb_5fport',['pb_port',['../struct__vex_quad_encoder__t.html#a4d49ef7e20428609dffdad6a12d5b06b',1,'_vexQuadEncoder_t::pb_port()'],['../struct__vex_sonar__t.html#a4d49ef7e20428609dffdad6a12d5b06b',1,'_vexSonar_t::pb_port()']]],
   ['peak_5fcurrent',['peak_current',['../structsmart_motor.html#a61eb9d5dcca443d300bc077407243003',1,'smartMotor::peak_current()'],['../struct__smart_controller.html#a61eb9d5dcca443d300bc077407243003',1,'_smartController::peak_current()']]],
-  ['persistant',['persistant',['../structvex_thread.html#a76244b7169887bd8d5714d39d69433bb',1,'vexThread']]],
+  ['persistent',['persistent',['../structvex_thread.html#aa7cc6b96c9394072ffa9cbda205342d0',1,'vexThread']]],
   ['pf',['pf',['../struct__rc_task.html#a3b6e602437a1a3b3a6dad66ac1a9f4c2',1,'_rcTask']]],
   ['pin',['pin',['../struct__vex_digi_cfg.html#ae88783d66670ea5cf7b31c9b550afb5c',1,'_vexDigiCfg']]],
   ['port',['port',['../struct__vex_motor_cfg.html#a7735a4a01bd3f6c908aa37dfd1c4bc77',1,'_vexMotorCfg::port()'],['../struct__io_def.html#a495b2c6f704acdae860c48d5a8115e62',1,'_ioDef::port()'],['../struct__vex_motor.html#af113e27943856fda379256192bf93450',1,'_vexMotor::port()'],['../structsmart_motor.html#a7735a4a01bd3f6c908aa37dfd1c4bc77',1,'smartMotor::port()']]],
+  ['print_5fbuf',['print_buf',['../struct__pdefs.html#acf4d8d62360603d221f1c64e5e967b93',1,'_pdefs']]],
   ['ptc_5ftripped',['ptc_tripped',['../structsmart_motor.html#a0cb2f86584d6f4553d0dc69bb3ed9161',1,'smartMotor::ptc_tripped()'],['../struct__smart_controller.html#a0cb2f86584d6f4553d0dc69bb3ed9161',1,'_smartController::ptc_tripped()']]]
 ];

@@ -11,10 +11,13 @@ var searchData=
   ['target_5fcurrent',['target_current',['../structsmart_motor.html#ad0dde8cc8b9f87ad0bfa060e67a9c9b7',1,'smartMotor']]],
   ['target_5fvalue',['target_value',['../struct__pid_controller.html#a7678870ce09fbeabf20ffa6d4fbef8eb',1,'_pidController']]],
   ['task',['task',['../robotc__glue_8h.html#a8bc22769f445ed91abfcbac376dea14d',1,'robotc_glue.h']]],
+  ['tc_5fthread_5fstack',['TC_THREAD_STACK',['../robotc__glue_8c.html#a2125a6156bc841d6cfcb19a09377661b',1,'robotc_glue.c']]],
   ['tctlindex',['tCtlIndex',['../vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749',1,'vexctl.h']]],
   ['temperature',['temperature',['../structsmart_motor.html#afc1d28cfbce795d6ea954ebe725241f5',1,'smartMotor::temperature()'],['../struct__smart_controller.html#afc1d28cfbce795d6ea954ebe725241f5',1,'_smartController::temperature()']]],
   ['test_5ftask_5fstack_5fsize',['TEST_TASK_STACK_SIZE',['../vex_8h.html#a5a50c304bdd9e66032df79cfea02fb35',1,'vex.h']]],
   ['threads_2edox',['threads.dox',['../threads_8dox.html',1,'']]],
+  ['throttle_5fdelay',['THROTTLE_DELAY',['../vexprintf_8c.html#aecfa466e9c515a171b4e30a71c1ab893',1,'vexprintf.c']]],
+  ['throttle_5fdelay_5f4',['THROTTLE_DELAY_4',['../vexprintf_8c.html#a40ec05deb1a66458361e654d9383fd9a',1,'vexprintf.c']]],
   ['ticks_5fper_5frev',['ticks_per_rev',['../structsmart_motor.html#a3f9e294d86d5eedec4eee2085cc87cbc',1,'smartMotor']]],
   ['time',['time',['../struct__vex_sonar__t.html#abff537f25bc8d06192bd18aff2597aa0',1,'_vexSonar_t']]],
   ['time_5ff',['time_f',['../struct__vex_sonar__t.html#a890e5c2c653e732e4d7f7e73e059df38',1,'_vexSonar_t']]],
@@ -36,6 +39,7 @@ var searchData=
   ['tvexsonarchannel',['tVexSonarChannel',['../vexsonar_8h.html#a41db38bb0a136363e87ccf1958e76924',1,'vexsonar.h']]],
   ['tvexsonnarstate',['tVexSonnarState',['../vexsonar_8c.html#a29c82aafbc701da27b8b8650775b053c',1,'vexsonar.c']]],
   ['txbuf',['txbuf',['../struct___lcd_data.html#afceac5b879e63920af87befe3f86b28e',1,'_LcdData']]],
+  ['txcount',['txcount',['../struct__pdefs.html#a3d58fbc9c694d56dbe59a674f323be0d',1,'_pdefs']]],
   ['txdata',['txdata',['../struct___spi_data.html#aef8e6eb12bae695844450d0b62d87d69',1,'_SpiData']]],
-  ['type',['type',['../struct__vex_digi_cfg.html#abe24e3c38994f9a44d053d8cfb7965bf',1,'_vexDigiCfg::type()'],['../struct__ime_data.html#a1d127017fb298b889f4ba24752d08b8e',1,'_imeData::type()'],['../struct__vex_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'_vexMotor::type()'],['../structsmart_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'smartMotor::type()']]]
+  ['type',['type',['../struct__vex_digi_cfg.html#abe24e3c38994f9a44d053d8cfb7965bf',1,'_vexDigiCfg::type()'],['../struct__ime_data.html#a1d127017fb298b889f4ba24752d08b8e',1,'_imeData::type()'],['../struct__vex_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'_vexMotor::type()'],['../struct__spi_tx_packet_1_1__spi_tx_pak.html#aa5044999f3339d2ba3b1bf22fa6cfe95',1,'_spiTxPacket::_spiTxPak::type()'],['../structsmart_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'smartMotor::type()']]]
 ];

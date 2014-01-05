@@ -13,6 +13,7 @@ var searchData=
   ['timems',['timems',['../struct__vsl__ct.html#ac3a489340f4fa4a29e009402645258c0',1,'_vsl_ct']]],
   ['tp',['tp',['../structvex_thread.html#a52f1e9d706c55e1a2014ffff078729ac',1,'vexThread::tp()'],['../struct__rc_task.html#a52f1e9d706c55e1a2014ffff078729ac',1,'_rcTask::tp()']]],
   ['txbuf',['txbuf',['../struct___lcd_data.html#afceac5b879e63920af87befe3f86b28e',1,'_LcdData']]],
+  ['txcount',['txcount',['../struct__pdefs.html#a3d58fbc9c694d56dbe59a674f323be0d',1,'_pdefs']]],
   ['txdata',['txdata',['../struct___spi_data.html#aef8e6eb12bae695844450d0b62d87d69',1,'_SpiData']]],
-  ['type',['type',['../struct__vex_digi_cfg.html#abe24e3c38994f9a44d053d8cfb7965bf',1,'_vexDigiCfg::type()'],['../struct__ime_data.html#a1d127017fb298b889f4ba24752d08b8e',1,'_imeData::type()'],['../struct__vex_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'_vexMotor::type()'],['../structsmart_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'smartMotor::type()']]]
+  ['type',['type',['../struct__vex_digi_cfg.html#abe24e3c38994f9a44d053d8cfb7965bf',1,'_vexDigiCfg::type()'],['../struct__ime_data.html#a1d127017fb298b889f4ba24752d08b8e',1,'_imeData::type()'],['../struct__vex_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'_vexMotor::type()'],['../struct__spi_tx_packet_1_1__spi_tx_pak.html#aa5044999f3339d2ba3b1bf22fa6cfe95',1,'_spiTxPacket::_spiTxPak::type()'],['../structsmart_motor.html#a8ec107c17aab9518e5ecd9dc92c76d4d',1,'smartMotor::type()']]]
 ];

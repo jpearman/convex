@@ -204,6 +204,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a347b97c527e51e3bf3a389bc8a809077"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexctl_8h.html#a347b97c527e51e3bf3a389bc8a809077">vexControllerGet</a> (<a class="el" href="vexctl_8h.html#a5715c53d995bf45c042a6bbf07e62749">tCtlIndex</a> index)</td></tr>
 <tr class="memdesc:a347b97c527e51e3bf3a389bc8a809077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get controller data.  <a href="#a347b97c527e51e3bf3a389bc8a809077">More...</a><br/></td></tr>
 <tr class="separator:a347b97c527e51e3bf3a389bc8a809077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4782afa184d8edcc8affb5e7f0c85f"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexctl_8h.html#aaf4782afa184d8edcc8affb5e7f0c85f">vexControllerCompetitionStateSet</a> (uint16_t ctl, int16_t mask)</td></tr>
+<tr class="memdesc:aaf4782afa184d8edcc8affb5e7f0c85f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set competition state, a simulation of the competition modes.  <a href="#aaf4782afa184d8edcc8affb5e7f0c85f">More...</a><br/></td></tr>
+<tr class="separator:aaf4782afa184d8edcc8affb5e7f0c85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bf83d26199537609eacd2d6356d80d2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexctl_8h.html#a4bf83d26199537609eacd2d6356d80d2">vexControllerCompetitonState</a> (void)</td></tr>
 <tr class="memdesc:a4bf83d26199537609eacd2d6356d80d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get competition state word (and controller status)  <a href="#a4bf83d26199537609eacd2d6356d80d2">More...</a><br/></td></tr>
 <tr class="separator:a4bf83d26199537609eacd2d6356d80d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -388,6 +391,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aaf4782afa184d8edcc8affb5e7f0c85f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t vexControllerCompetitionStateSet </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>ctl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set competition state, a simulation of the competition modes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ctl</td><td>The control byte </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mask</td><td>bit to change </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if success else 0 </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a4bf83d26199537609eacd2d6356d80d2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -431,7 +470,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexctl_8h.html">vexctl.h</a></li>
-    <li class="footer">Generated on Sun Sep 8 2013 17:54:43 for Convex by
+    <li class="footer">Generated on Sun Jan 5 2014 15:43:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

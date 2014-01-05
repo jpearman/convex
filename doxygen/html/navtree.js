@@ -10,8 +10,8 @@ var NAVTREE =
       [ "Data Structures", "annotated.html", "annotated" ],
       [ "Data Structure Index", "classes.html", null ],
       [ "Data Fields", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -33,11 +33,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"smartmotor_8c.html#a904612dd738c965769a62093603b1c2f",
-"struct__vex_ime_data.html#a8b17811a58fd97b1e812afb95a98b851",
-"vexctl_8c.html",
-"vexime_8c.html#ad3e92757f38d6f7a1a95fb342925f8ad",
-"vexshell_8c.html#aeee3d8b5c9fa415c38eeee0f0aa7dd16"
+"pidlib_8h.html#aefb4d1dc1e34c920581b000edc5d5b6b",
+"struct__rc_task.html#a52f1e9d706c55e1a2014ffff078729ac",
+"vexbkup_8c.html#a499aa2fc359b3a847c37a7981cf6f542",
+"vexencoder_8h.html#a5ecdf3347cd5be5373546451ba2d2205a9aa6a4572ad7529729524629169270be",
+"vexprintf_8c.html#a3c8913832bf2d12d508e23dda3ea33d5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

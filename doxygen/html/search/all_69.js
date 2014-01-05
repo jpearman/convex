@@ -28,6 +28,7 @@ var searchData=
   ['ime_5fversion_5faddr',['IME_VERSION_ADDR',['../vexime_8h.html#a00df939951c03d03608e22f55b94b0b3',1,'vexime.h']]],
   ['imedata',['imeData',['../vexime_8h.html#a7239f33409962b7cf56b4c952d96b401',1,'vexime.h']]],
   ['imes',['imes',['../struct__vex_ime_data.html#a7372d711b49be7eaa07359f3b8d9274b',1,'_vexImeData']]],
+  ['init',['init',['../struct__pdefs.html#a795ea50921b36311ffd5e7baa2ef1f7e',1,'_pdefs']]],
   ['installing_20the_20arm_20toolchain',['Installing the ARM toolchain',['../install_p1.html',1,'getstarted']]],
   ['installing_20chibios_2frt',['Installing ChibiOS/RT',['../install_p2.html',1,'getstarted']]],
   ['installing_20convex',['Installing ConVEX',['../install_p3.html',1,'getstarted']]],

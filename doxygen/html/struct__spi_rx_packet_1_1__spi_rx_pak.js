@@ -2,7 +2,7 @@ var struct__spi_rx_packet_1_1__spi_rx_pak =
 [
     [ "h1", "struct__spi_rx_packet_1_1__spi_rx_pak.html#ad094fc8bdb3b5e8bd31db7ab1d669cd5", null ],
     [ "h2", "struct__spi_rx_packet_1_1__spi_rx_pak.html#a74bfc07dca9a615f9d57d04059e2553b", null ],
-    [ "res1", "struct__spi_rx_packet_1_1__spi_rx_pak.html#a3de0fc88d793c26aa68e4f5847e6cd1b", null ],
+    [ "status", "struct__spi_rx_packet_1_1__spi_rx_pak.html#a54849a1c58ce64ba16a055ad9555a027", null ],
     [ "ctl", "struct__spi_rx_packet_1_1__spi_rx_pak.html#aa0de48cd4b9fbb9b9270905a05cdec6e", null ],
     [ "batt1", "struct__spi_rx_packet_1_1__spi_rx_pak.html#a1500de1e875c7578e2e09d045da468c0", null ],
     [ "batt2", "struct__spi_rx_packet_1_1__spi_rx_pak.html#aca805c191969bf5ae45346a5054ac5f1", null ],

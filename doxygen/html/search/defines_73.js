@@ -78,6 +78,7 @@ var searchData=
   ['sonar_5ftimeout',['SONAR_TIMEOUT',['../vexsonar_8c.html#a3ff51c7401376f7c722a5d4118471c86',1,'vexsonar.c']]],
   ['spi_5fbattery_5fscale',['SPI_BATTERY_SCALE',['../vexspi_8c.html#a075c50046cb6d0d94cbcebdf2383c6ce',1,'vexspi.c']]],
   ['starttask',['StartTask',['../robotc__glue_8h.html#af4543c25ec70dbf7d2d11dd3971c61e7',1,'robotc_glue.h']]],
+  ['symval',['SYMVAL',['../vexshell_8c.html#abd54e169174a2bbdf42b387a546c0b92',1,'vexshell.c']]],
   ['system_5ftask_5fstack_5fsize',['SYSTEM_TASK_STACK_SIZE',['../vex_8h.html#a0e78772bacf76e3dc606c29381ef882b',1,'vex.h']]],
   ['system_5fthread_5fpriority',['SYSTEM_THREAD_PRIORITY',['../vex_8h.html#a56217a723acc7d405ee061fe3b89c05d',1,'vex.h']]]
 ];

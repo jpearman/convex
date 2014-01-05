@@ -120,6 +120,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a1789c053290e69204da34f02a4542466"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexprintf_8h.html#a1789c053290e69204da34f02a4542466">vex_printf</a> (const char *format,...)</td></tr>
 <tr class="memdesc:a1789c053290e69204da34f02a4542466"><td class="mdescLeft">&#160;</td><td class="mdescRight">send formated string to the console  <a href="#a1789c053290e69204da34f02a4542466">More...</a><br/></td></tr>
 <tr class="separator:a1789c053290e69204da34f02a4542466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae376598c82a960716d39a86b66eaf8e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexprintf_8h.html#ae376598c82a960716d39a86b66eaf8e6">vex_chprintf</a> (<a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp, const char *format,...)</td></tr>
+<tr class="memdesc:ae376598c82a960716d39a86b66eaf8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">send formated string to a vexStream  <a href="#ae376598c82a960716d39a86b66eaf8e6">More...</a><br/></td></tr>
+<tr class="separator:ae376598c82a960716d39a86b66eaf8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c68e3ded3f8f00f1f7fc8316e1a75a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexprintf_8h.html#a5c68e3ded3f8f00f1f7fc8316e1a75a0">vex_vprintf</a> (const char *format, va_list args)</td></tr>
+<tr class="memdesc:a5c68e3ded3f8f00f1f7fc8316e1a75a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">send formated string to a vexStream  <a href="#a5c68e3ded3f8f00f1f7fc8316e1a75a0">More...</a><br/></td></tr>
+<tr class="separator:a5c68e3ded3f8f00f1f7fc8316e1a75a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa76889e4054b30a1274fac0c674a05c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexprintf_8h.html#aa76889e4054b30a1274fac0c674a05c2">vex_vchprintf</a> (<a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *chp, const char *format, va_list args)</td></tr>
+<tr class="memdesc:aa76889e4054b30a1274fac0c674a05c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">send formated string to a vexStream  <a href="#aa76889e4054b30a1274fac0c674a05c2">More...</a><br/></td></tr>
+<tr class="separator:aa76889e4054b30a1274fac0c674a05c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07f8fdd32ab6a9acd6587d65997424cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexprintf_8h.html#a07f8fdd32ab6a9acd6587d65997424cb">vex_sprintf</a> (char *out, const char *format,...)</td></tr>
 <tr class="memdesc:a07f8fdd32ab6a9acd6587d65997424cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">create formated string in a buffer  <a href="#a07f8fdd32ab6a9acd6587d65997424cb">More...</a><br/></td></tr>
 <tr class="separator:a07f8fdd32ab6a9acd6587d65997424cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,11 +172,136 @@ Functions</h2></td></tr>
 <p>send formated string to the console </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
 <p>This has similar but reduced functionality to the standard library function sprintf </p>
+
+</div>
+</div>
+<a class="anchor" id="ae376598c82a960716d39a86b66eaf8e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vex_chprintf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *&#160;</td>
+          <td class="paramname"><em>chp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send formated string to a vexStream </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">chp</td><td>The stream </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
+<p>This function is used as a direct replacement for chprintf. It has similar but reduced functionality to the standard library function sprintf. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5c68e3ded3f8f00f1f7fc8316e1a75a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vex_vprintf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send formated string to a vexStream </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>variable argument list </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
+<p>This has similar but reduced functionality to the standard library function sprintf. This version takes a variable argument list directly. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa76889e4054b30a1274fac0c674a05c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vex_vchprintf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vexcompat_8h.html#a9e6611df4bd25a03db00eccdfa63b02b">vexStream</a> *&#160;</td>
+          <td class="paramname"><em>chp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send formated string to a vexStream </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">chp</td><td>The stream </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>variable argument list </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
+<p>This has similar but reduced functionality to the standard library function sprintf. This version takes a variable argument list directly and can also output to a stream that is not the CONSOLE. </p>
 
 </div>
 </div>
@@ -205,10 +339,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>The output buffer </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
 <p>This has similar but reduced functionality to the standard library function sprintf </p>
 
 </div>
@@ -254,10 +389,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>The output buffer </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">max_len</td><td>The output buffer length </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
 <p>This has similar but reduced functionality to the standard library function sprintf </p>
 
 </div>
@@ -297,10 +433,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>The output buffer </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>a variable argument list</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>a variable argument list </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
 <p>This has similar but reduced functionality to the standard library function sprintf </p>
 
 </div>
@@ -347,10 +484,11 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>The output buffer </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">max_len</td><td>The output buffer length </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">format</td><td>The format string </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>a variable argument list</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>a variable argument list </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of characters that were output</dd></dl>
 <p>This has similar but reduced functionality to the standard library function sprintf </p>
 
 </div>
@@ -361,7 +499,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexprintf_8h.html">vexprintf.h</a></li>
-    <li class="footer">Generated on Sun Sep 8 2013 17:54:43 for Convex by
+    <li class="footer">Generated on Sun Jan 5 2014 15:43:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

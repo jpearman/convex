@@ -105,6 +105,7 @@ $(document).ready(function(){initNavTree('vexspi_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -136,6 +137,14 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI data.  <a href="struct___spi_data.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a79a24503ef6644b677a11ebd728bbb3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexspi_8h.html#a79a24503ef6644b677a11ebd728bbb3d">CONVEX_TEAM_NAME</a>&#160;&#160;&#160;&quot;CONVEX  &quot;;</td></tr>
+<tr class="memdesc:a79a24503ef6644b677a11ebd728bbb3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">default team name  <a href="#a79a24503ef6644b677a11ebd728bbb3d">More...</a><br/></td></tr>
+<tr class="separator:a79a24503ef6644b677a11ebd728bbb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad69a78a6cf6fb05f536d56a26af9ba4c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexspi_8h.html#ad69a78a6cf6fb05f536d56a26af9ba4c">vexTeamnameSet</a>(name)&#160;&#160;&#160;<a class="el" href="vexspi_8h.html#a0d24affab431c1a8acd11f04d1e84cd8">vexSpiTeamnameSet</a>( name )</td></tr>
+<tr class="separator:ad69a78a6cf6fb05f536d56a26af9ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a39249d33e8ead275e89219b2ece31ae5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__jsdata.html">_jsdata</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexspi_8h.html#a39249d33e8ead275e89219b2ece31ae5">jsdata</a></td></tr>
@@ -156,6 +165,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a44aeafe00f3881481a954aa8a0420f30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexspi_8h.html#a44aeafe00f3881481a954aa8a0420f30">vexSpiInit</a> (void)</td></tr>
 <tr class="memdesc:a44aeafe00f3881481a954aa8a0420f30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init the SPI communication to the master processor.  <a href="#a44aeafe00f3881481a954aa8a0420f30">More...</a><br/></td></tr>
 <tr class="separator:a44aeafe00f3881481a954aa8a0420f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d24affab431c1a8acd11f04d1e84cd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexspi_8h.html#a0d24affab431c1a8acd11f04d1e84cd8">vexSpiTeamnameSet</a> (char *name)</td></tr>
+<tr class="memdesc:a0d24affab431c1a8acd11f04d1e84cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the team name.  <a href="#a0d24affab431c1a8acd11f04d1e84cd8">More...</a><br/></td></tr>
+<tr class="separator:a0d24affab431c1a8acd11f04d1e84cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8214853c22173cbb3437236580efd8f9"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vexspi_8h.html#a8214853c22173cbb3437236580efd8f9">vexSpiGetOnlineStatus</a> (void)</td></tr>
 <tr class="memdesc:a8214853c22173cbb3437236580efd8f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">We use presence of js_1 as indication of good joystick data.  <a href="#a8214853c22173cbb3437236580efd8f9">More...</a><br/></td></tr>
 <tr class="separator:a8214853c22173cbb3437236580efd8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,7 +198,38 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SPI communication to the master processor, macros and prototypes. </p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a79a24503ef6644b677a11ebd728bbb3d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CONVEX_TEAM_NAME&#160;&#160;&#160;&quot;CONVEX  &quot;;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>default team name </p>
+
+</div>
+</div>
+<a class="anchor" id="ad69a78a6cf6fb05f536d56a26af9ba4c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define vexTeamnameSet</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name)</td><td></td>
+          <td>&#160;&#160;&#160;<a class="el" href="vexspi_8h.html#a0d24affab431c1a8acd11f04d1e84cd8">vexSpiTeamnameSet</a>( name )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="a39249d33e8ead275e89219b2ece31ae5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -263,6 +306,30 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Init the SPI communication to the master processor. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0d24affab431c1a8acd11f04d1e84cd8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vexSpiTeamnameSet </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the team name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>pointer to string </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -399,7 +466,7 @@ Internal SPI driver use only </dd></dl>
 <p>return a pointer to a raw joystick data structure </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Which joytstick to use, 1 or 2 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Which joystick to use, 1 or 2 </td></tr>
   </table>
   </dd>
 </dl>
@@ -514,7 +581,7 @@ Internal SPI driver use only </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_266569483ce69f910018f643a26a990d.html">fw</a></li><li class="navelem"><a class="el" href="vexspi_8h.html">vexspi.h</a></li>
-    <li class="footer">Generated on Sun Sep 8 2013 17:54:43 for Convex by
+    <li class="footer">Generated on Sun Jan 5 2014 15:43:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

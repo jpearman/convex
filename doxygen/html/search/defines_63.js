@@ -1,6 +1,7 @@
 var searchData=
 [
   ['cast_5fuint32_5ft',['cast_uint32_t',['../fastmath_8c.html#a676fea0678945be0b1da32705b938e1a',1,'fastmath.c']]],
+  ['ch_5fkernel_5fversion_5fhex',['CH_KERNEL_VERSION_HEX',['../vex_8h.html#a96d7f7ae0cdb70d57a40cf4629f908c7',1,'vex.h']]],
   ['claw_5fclose_5fhigh_5fspeed',['CLAW_CLOSE_HIGH_SPEED',['../clawbot_8c.html#ae2f1957e0bf814ea229b801add3f2c03',1,'clawbot.c']]],
   ['claw_5fclose_5flow_5fspeed',['CLAW_CLOSE_LOW_SPEED',['../clawbot_8c.html#a88ba0f745d088c2428fb1b93f78b8925',1,'clawbot.c']]],
   ['claw_5fopen_5fhigh_5fspeed',['CLAW_OPEN_HIGH_SPEED',['../clawbot_8c.html#aec87aba8d7935ee17692e4d1b3eef299',1,'clawbot.c']]],
@@ -9,6 +10,7 @@ var searchData=
   ['convex_5fmajor',['CONVEX_MAJOR',['../vex_8h.html#a769bb3214746fddee5b8e08ad7449327',1,'vex.h']]],
   ['convex_5fminor',['CONVEX_MINOR',['../vex_8h.html#aab3f8edbfcd24e4e995dc102c9e7b91d',1,'vex.h']]],
   ['convex_5fpatch',['CONVEX_PATCH',['../vex_8h.html#afd95849181a088e15d853d98663f3211',1,'vex.h']]],
+  ['convex_5fteam_5fname',['CONVEX_TEAM_NAME',['../vexspi_8h.html#a79a24503ef6644b677a11ebd728bbb3d',1,'vexspi.h']]],
   ['convex_5fversion',['CONVEX_VERSION',['../vex_8h.html#a1be71c47748d3ff2141bdddce8ef374c',1,'vex.h']]],
   ['cr',['CR',['../vexshell_8c.html#a876ce77f3c672c7162658151e648389e',1,'vexshell.c']]],
   ['ctrl_5fc',['CTRL_C',['../vexshell_8c.html#a8751d8b101fef3c1d372bab4cd16e318',1,'vexshell.c']]],

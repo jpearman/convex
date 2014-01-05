@@ -9,8 +9,9 @@ var searchData=
   ['sensor_5fport',['sensor_port',['../struct__pid_controller.html#ac0374a69b6b05fc730b1f7e45bfde7c8',1,'_pidController']]],
   ['sensor_5freverse',['sensor_reverse',['../struct__pid_controller.html#a4762ad2ad018a012b1bd957fa9814124',1,'_pidController']]],
   ['sensor_5fvalue',['sensor_value',['../struct__pid_controller.html#a966d65d508240085f920d39ced8c7db1',1,'_pidController']]],
-  ['shell_5fterminated',['shell_terminated',['../vexshell_8c.html#a168440e44c637282589a4e28eb3a91b8',1,'shell_terminated():&#160;vexshell.c'],['../vexshell_8h.html#a168440e44c637282589a4e28eb3a91b8',1,'shell_terminated():&#160;vexshell.c']]],
-  ['state',['state',['../struct__vex_quad_encoder__t.html#a802ec7a63bfab2b1f8b19624be383e6e',1,'_vexQuadEncoder_t']]],
+  ['shell_5fterminated',['shell_terminated',['../vexshell_8c.html#a168440e44c637282589a4e28eb3a91b8',1,'vexshell.c']]],
+  ['state',['state',['../struct__vex_quad_encoder__t.html#a802ec7a63bfab2b1f8b19624be383e6e',1,'_vexQuadEncoder_t::state()'],['../struct__spi_tx_packet_1_1__spi_tx_pak.html#ab12828525693568ae9c217805bea1ef9',1,'_spiTxPacket::_spiTxPak::state()']]],
+  ['status',['status',['../struct__spi_rx_packet_1_1__spi_rx_pak.html#a54849a1c58ce64ba16a055ad9555a027',1,'_spiRxPacket::_spiRxPak']]],
   ['statusled',['statusLed',['../struct__smart_controller.html#ae1218c8ebf4e1e11ffe0b1bb39239079',1,'_smartController']]],
   ['statusport',['statusPort',['../struct__smart_controller.html#a19cd451e510d94a280e12848a895ce69',1,'_smartController']]],
   ['stype',['stype',['../struct__vex_motor_cfg.html#ada43155599aec37af02355654d1f66d0',1,'_vexMotorCfg']]]

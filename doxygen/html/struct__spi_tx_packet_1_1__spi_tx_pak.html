@@ -121,9 +121,15 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a74bfc07dca9a615f9d57d04059e2553b"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__spi_tx_packet_1_1__spi_tx_pak.html#a74bfc07dca9a615f9d57d04059e2553b">h2</a></td></tr>
 <tr class="memdesc:a74bfc07dca9a615f9d57d04059e2553b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header byte two.  <a href="#a74bfc07dca9a615f9d57d04059e2553b">More...</a><br/></td></tr>
 <tr class="separator:a74bfc07dca9a615f9d57d04059e2553b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afed60964847c88c9ba5b2548a41e6c60"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__spi_tx_packet_1_1__spi_tx_pak.html#afed60964847c88c9ba5b2548a41e6c60">reserved</a> [4]</td></tr>
-<tr class="memdesc:afed60964847c88c9ba5b2548a41e6c60"><td class="mdescLeft">&#160;</td><td class="mdescRight">unknown data  <a href="#afed60964847c88c9ba5b2548a41e6c60">More...</a><br/></td></tr>
-<tr class="separator:afed60964847c88c9ba5b2548a41e6c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12828525693568ae9c217805bea1ef9"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__spi_tx_packet_1_1__spi_tx_pak.html#ab12828525693568ae9c217805bea1ef9">state</a></td></tr>
+<tr class="memdesc:ab12828525693568ae9c217805bea1ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Control state.  <a href="#ab12828525693568ae9c217805bea1ef9">More...</a><br/></td></tr>
+<tr class="separator:ab12828525693568ae9c217805bea1ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c236ae866fccd80af9eb1a66bbd4601"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__spi_tx_packet_1_1__spi_tx_pak.html#a0c236ae866fccd80af9eb1a66bbd4601">reserved</a> [2]</td></tr>
+<tr class="memdesc:a0c236ae866fccd80af9eb1a66bbd4601"><td class="mdescLeft">&#160;</td><td class="mdescRight">unknown data  <a href="#a0c236ae866fccd80af9eb1a66bbd4601">More...</a><br/></td></tr>
+<tr class="separator:a0c236ae866fccd80af9eb1a66bbd4601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5044999f3339d2ba3b1bf22fa6cfe95"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__spi_tx_packet_1_1__spi_tx_pak.html#aa5044999f3339d2ba3b1bf22fa6cfe95">type</a></td></tr>
+<tr class="memdesc:aa5044999f3339d2ba3b1bf22fa6cfe95"><td class="mdescLeft">&#160;</td><td class="mdescRight">data type  <a href="#aa5044999f3339d2ba3b1bf22fa6cfe95">More...</a><br/></td></tr>
+<tr class="separator:aa5044999f3339d2ba3b1bf22fa6cfe95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ff47446054caacd1abf4df8635dd5c8"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__spi_tx_packet_1_1__spi_tx_pak.html#a8ff47446054caacd1abf4df8635dd5c8">motor</a> [8]</td></tr>
 <tr class="memdesc:a8ff47446054caacd1abf4df8635dd5c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">motor pwm data  <a href="#a8ff47446054caacd1abf4df8635dd5c8">More...</a><br/></td></tr>
 <tr class="separator:a8ff47446054caacd1abf4df8635dd5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,17 +175,45 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afed60964847c88c9ba5b2548a41e6c60"></a>
+<a class="anchor" id="ab12828525693568ae9c217805bea1ef9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned char reserved[4]</td>
+          <td class="memname">unsigned char state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Control state. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0c236ae866fccd80af9eb1a66bbd4601"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char reserved[2]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>unknown data </p>
+
+</div>
+</div>
+<a class="anchor" id="aa5044999f3339d2ba3b1bf22fa6cfe95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>data type </p>
 
 </div>
 </div>
@@ -262,7 +296,7 @@ Data Fields</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="union__spi_tx_packet.html">_spiTxPacket</a></li><li class="navelem"><a class="el" href="struct__spi_tx_packet_1_1__spi_tx_pak.html">_spiTxPak</a></li>
-    <li class="footer">Generated on Sun Sep 8 2013 17:54:44 for Convex by
+    <li class="footer">Generated on Sun Jan 5 2014 15:43:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

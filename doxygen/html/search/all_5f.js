@@ -1,10 +1,13 @@
 var searchData=
 [
+  ['_5fdata',['_data',['../vexshell_8c.html#a45c84a718a302530a9e80cce14821e33',1,'vexshell.c']]],
+  ['_5fedata',['_edata',['../vexshell_8c.html#a1fc4a71c31f5b048d3b1b7b2d10684d1',1,'vexshell.c']]],
   ['_5fimedata',['_imeData',['../struct__ime_data.html',1,'']]],
   ['_5fiodef',['_ioDef',['../struct__io_def.html',1,'']]],
   ['_5fjsdata',['_jsdata',['../struct__jsdata.html',1,'']]],
   ['_5flcddata',['_LcdData',['../struct___lcd_data.html',1,'']]],
   ['_5flinearizedrive',['_LinearizeDrive',['../pidlib_8c.html#aca270e1fbbd7f448b35eee2da1dfc0f5',1,'pidlib.c']]],
+  ['_5fpdefs',['_pdefs',['../struct__pdefs.html',1,'']]],
   ['_5fpidcontroller',['_pidController',['../struct__pid_controller.html',1,'']]],
   ['_5frctask',['_rcTask',['../struct__rc_task.html',1,'']]],
   ['_5fsetmotor',['_SetMotor',['../smartmotor_8c.html#af00cc3c5f3aeec6476139ca32baadf63',1,'_SetMotor(int index, int value, bool_t immediate,...):&#160;smartmotor.c'],['../smartmotor_8h.html#af00cc3c5f3aeec6476139ca32baadf63',1,'_SetMotor(int index, int value, bool_t immediate,...):&#160;smartmotor.c']]],
@@ -20,6 +23,7 @@ var searchData=
   ['_5fspirxpak',['_spiRxPak',['../struct__spi_rx_packet_1_1__spi_rx_pak.html',1,'_spiRxPacket']]],
   ['_5fspitxpacket',['_spiTxPacket',['../union__spi_tx_packet.html',1,'']]],
   ['_5fspitxpak',['_spiTxPak',['../struct__spi_tx_packet_1_1__spi_tx_pak.html',1,'_spiTxPacket']]],
+  ['_5ftextdata',['_textdata',['../vexshell_8c.html#a75e3c30a35a47e1b32b69c3deaf333a4',1,'vexshell.c']]],
   ['_5fuser_5fparam',['_user_param',['../struct__user__param.html',1,'']]],
   ['_5fvexdigicfg',['_vexDigiCfg',['../struct__vex_digi_cfg.html',1,'']]],
   ['_5fveximedata',['_vexImeData',['../struct__vex_ime_data.html',1,'']]],

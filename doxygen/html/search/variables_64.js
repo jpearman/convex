@@ -5,7 +5,7 @@ var searchData=
   ['data_5fpolls',['data_polls',['../struct__ime_data.html#a0c7bdfd115bf56c6bacaa7a6a0eebfee',1,'_imeData']]],
   ['debug',['debug',['../struct__vex_ime_data.html#a091f28f9a24ec18ef6b2cf8d85bb35e3',1,'_vexImeData']]],
   ['delaytimems',['delayTimeMs',['../structsmart_motor.html#a5a8cc605943c4c91758a5f6e286fa53d',1,'smartMotor']]],
-  ['delta',['delta',['../structsmart_motor.html#a1ee4a05b54419bfadd66ee351d05812e',1,'smartMotor']]],
+  ['delta',['delta',['../struct__pdefs.html#a979193a0106f8825178eedf1b45c2949',1,'_pdefs::delta()'],['../structsmart_motor.html#a1ee4a05b54419bfadd66ee351d05812e',1,'smartMotor::delta()']]],
   ['delta_5fcount',['delta_count',['../struct__ime_data.html#ad6c78b0503c582b1c5ea8433475c1437',1,'_imeData']]],
   ['derivative',['derivative',['../struct__pid_controller.html#a8e72ce2ff66dac2c00897016716c4eb0',1,'_pidController']]],
   ['deviceid',['deviceid',['../struct__ime_data.html#a7e7bb10926c33e76cb517b28f00abe29',1,'_imeData']]],

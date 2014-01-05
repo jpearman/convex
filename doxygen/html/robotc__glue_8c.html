@@ -131,6 +131,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a1187ced94889aa3f3c7b0eeb6be4b03d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="robotc__glue_8c.html#a1187ced94889aa3f3c7b0eeb6be4b03d">RC_TASKS</a>&#160;&#160;&#160;10</td></tr>
 <tr class="memdesc:a1187ced94889aa3f3c7b0eeb6be4b03d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of ROBOTC style tasks.  <a href="#a1187ced94889aa3f3c7b0eeb6be4b03d">More...</a><br/></td></tr>
 <tr class="separator:a1187ced94889aa3f3c7b0eeb6be4b03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2125a6156bc841d6cfcb19a09377661b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="robotc__glue_8c.html#a2125a6156bc841d6cfcb19a09377661b">TC_THREAD_STACK</a>&#160;&#160;&#160;584</td></tr>
+<tr class="memdesc:a2125a6156bc841d6cfcb19a09377661b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stack size for ROBOTC each thread also uses 176 bytes (0xB0) for thread overhead and 8 bytes for heap header.  <a href="#a2125a6156bc841d6cfcb19a09377661b">More...</a><br/></td></tr>
+<tr class="separator:a2125a6156bc841d6cfcb19a09377661b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -147,7 +150,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa4a3f9d8b6a8c656b1f12ce259b4b9f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop a task.  <a href="#aa4a3f9d8b6a8c656b1f12ce259b4b9f8">More...</a><br/></td></tr>
 <tr class="separator:aa4a3f9d8b6a8c656b1f12ce259b4b9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebb980fafc63f221694f745ca77c32ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="robotc__glue_8c.html#aebb980fafc63f221694f745ca77c32ad">CleanupTask</a> (Thread *tp)</td></tr>
-<tr class="memdesc:aebb980fafc63f221694f745ca77c32ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">cleanup a task it was terminated elsewhere  <a href="#aebb980fafc63f221694f745ca77c32ad">More...</a><br/></td></tr>
+<tr class="memdesc:aebb980fafc63f221694f745ca77c32ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">cleanup a task if it was terminated elsewhere  <a href="#aebb980fafc63f221694f745ca77c32ad">More...</a><br/></td></tr>
 <tr class="separator:aebb980fafc63f221694f745ca77c32ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -164,6 +167,20 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Maximum number of ROBOTC style tasks. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2125a6156bc841d6cfcb19a09377661b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TC_THREAD_STACK&#160;&#160;&#160;584</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stack size for ROBOTC each thread also uses 176 bytes (0xB0) for thread overhead and 8 bytes for heap header. </p>
 
 </div>
 </div>
@@ -263,7 +280,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>cleanup a task it was terminated elsewhere </p>
+<p>cleanup a task if it was terminated elsewhere </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">tp</td><td>A pointer to a thread </td></tr>
@@ -280,7 +297,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_240fa4efddcd226155aaa345120ebf34.html">convex</a></li><li class="navelem"><a class="el" href="dir_fc43809cb25ada970d3b4ce5bb9d082c.html">cortex</a></li><li class="navelem"><a class="el" href="dir_ebe72c5ade9cb40c4c1c2c44c411d5c9.html">opt</a></li><li class="navelem"><a class="el" href="robotc__glue_8c.html">robotc_glue.c</a></li>
-    <li class="footer">Generated on Sun Sep 8 2013 17:54:43 for Convex by
+    <li class="footer">Generated on Sun Jan 5 2014 15:43:38 for Convex by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

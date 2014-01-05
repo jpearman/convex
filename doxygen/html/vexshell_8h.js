@@ -8,6 +8,5 @@ var vexshell_8h =
     [ "shellInit", "vexshell_8h.html#a0b1dba28bb03cb29749f32a595d5ec57", null ],
     [ "shellCreate", "vexshell_8h.html#a3ede18cdbb5be45803078432acb3f9ec", null ],
     [ "shellCreateStatic", "vexshell_8h.html#af7509ff947d413ce90202a9d998f65ce", null ],
-    [ "shellGetLine", "vexshell_8h.html#aeee3d8b5c9fa415c38eeee0f0aa7dd16", null ],
-    [ "shell_terminated", "vexshell_8h.html#a168440e44c637282589a4e28eb3a91b8", null ]
+    [ "shellGetLine", "vexshell_8h.html#aeee3d8b5c9fa415c38eeee0f0aa7dd16", null ]
 ];

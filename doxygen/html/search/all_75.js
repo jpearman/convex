@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['use_5fleading_5fplus',['use_leading_plus',['../struct__pdefs.html#aaa0290880112e1564a20fbe80623e337',1,'_pdefs']]],
   ['user_5fparam',['user_param',['../vexflash_8h.html#a43fd389aa3377c70339dec6e0d242f64',1,'vexflash.h']]],
   ['user_5fparam_5findex',['USER_PARAM_INDEX',['../vexflash_8c.html#ad5683404b9c895a310da67edd9c76bd4',1,'vexflash.c']]],
   ['user_5fparam_5fmax_5fwrite',['USER_PARAM_MAX_WRITE',['../vexflash_8c.html#ae97a734d3bb5e1ead4d1329d560f0982',1,'vexflash.c']]],

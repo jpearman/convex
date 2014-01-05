@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['shellcreate',['shellCreate',['../vexshell_8h.html#a3ede18cdbb5be45803078432acb3f9ec',1,'vexshell.h']]],
+  ['shellcreate',['shellCreate',['../vexshell_8c.html#a3ede18cdbb5be45803078432acb3f9ec',1,'shellCreate(const ShellConfig *scp, size_t size, tprio_t prio):&#160;vexshell.c'],['../vexshell_8h.html#a3ede18cdbb5be45803078432acb3f9ec',1,'shellCreate(const ShellConfig *scp, size_t size, tprio_t prio):&#160;vexshell.c']]],
   ['shellcreatestatic',['shellCreateStatic',['../vexshell_8c.html#af7509ff947d413ce90202a9d998f65ce',1,'shellCreateStatic(const ShellConfig *scp, void *wsp, size_t size, tprio_t prio):&#160;vexshell.c'],['../vexshell_8h.html#af7509ff947d413ce90202a9d998f65ce',1,'shellCreateStatic(const ShellConfig *scp, void *wsp, size_t size, tprio_t prio):&#160;vexshell.c']]],
-  ['shellgetline',['shellGetLine',['../vexshell_8c.html#aeee3d8b5c9fa415c38eeee0f0aa7dd16',1,'shellGetLine(vexStream *chp, char *line, unsigned size):&#160;vexshell.c'],['../vexshell_8h.html#aeee3d8b5c9fa415c38eeee0f0aa7dd16',1,'shellGetLine(vexStream *chp, char *line, unsigned size):&#160;vexshell.c']]],
+  ['shellgetline',['shellGetLine',['../vexshell_8h.html#aeee3d8b5c9fa415c38eeee0f0aa7dd16',1,'vexshell.c']]],
   ['shellinit',['shellInit',['../vexshell_8c.html#a0b1dba28bb03cb29749f32a595d5ec57',1,'shellInit(void):&#160;vexshell.c'],['../vexshell_8h.html#a0b1dba28bb03cb29749f32a595d5ec57',1,'shellInit(void):&#160;vexshell.c']]],
   ['smartmotorcontrollercurrent',['SmartMotorControllerCurrent',['../smartmotor_8c.html#a3b466ecd01cce0df66c503b9043e5872',1,'SmartMotorControllerCurrent(smartController *s):&#160;smartmotor.c'],['../smartmotor_8h.html#a3b466ecd01cce0df66c503b9043e5872',1,'SmartMotorControllerCurrent(smartController *s):&#160;smartmotor.c']]],
   ['smartmotorcontrollergetptr',['SmartMotorControllerGetPtr',['../smartmotor_8c.html#a8ca350fdeab68b0c71c8df78c86b497f',1,'SmartMotorControllerGetPtr(short index):&#160;smartmotor.c'],['../smartmotor_8h.html#a8ca350fdeab68b0c71c8df78c86b497f',1,'SmartMotorControllerGetPtr(short index):&#160;smartmotor.c']]],
