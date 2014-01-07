@@ -1,6 +1,6 @@
 # uncomment these if running from default project location
 # Path to ChibiOS
-#CHIBIOS    = ../ChibiOS_2.6.0
+#CHIBIOS    = ../ChibiOS_2.6.2
 # Path to convex
 #CONVEX     = ../convex/cortex
 

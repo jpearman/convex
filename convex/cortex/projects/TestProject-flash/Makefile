@@ -67,7 +67,7 @@ endif
 
 # Path to ChibiOS/RT - default assumes making examples
 ifeq ($(CHIBIOS),)
-CHIBIOS = ../../../../ChibiOS_2.6.0
+CHIBIOS = ../../../../ChibiOS_2.6.2
 endif
 
 # Path to ConVEX root - default assumes making examples

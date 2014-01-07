@@ -94,7 +94,7 @@
 		<link>
 			<name>os</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/ChibiOS_2.6.0/os</locationURI>
+			<locationURI>WORKSPACE_LOC/ChibiOS_2.6.2/os</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

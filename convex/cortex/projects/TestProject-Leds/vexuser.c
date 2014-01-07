@@ -170,7 +170,7 @@ vexOperator( void *arg )
         // run a pattern with speed 50
         for(delay=100;delay>10;delay-=10)
             RunPattern( &pattern_0[0], sizeof(pattern_0)/sizeof(short), delay );
-\
+
         for(i=0;i<20;i++)
             RunPattern( &pattern_0[0], sizeof(pattern_0)/sizeof(short), 10 );
 
