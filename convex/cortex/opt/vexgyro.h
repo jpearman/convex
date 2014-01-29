@@ -55,8 +55,9 @@
 extern "C" {
 #endif
 
-void        vexGyroInit(void);
+void        vexGyroInit(tVexAnalogPin pin);
 int32_t     vexGyroGet(void);
+void        vexGyroReset(void);
 
 #ifdef __cplusplus
 }

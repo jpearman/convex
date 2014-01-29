@@ -12,7 +12,9 @@
 /*                                                                             */
 /*    Revisions:                                                               */
 /*                V1.00     4 July 2013 - Initial release for ChibiOS          */
-/*                                                                             */
+/*                          28 Jan 2014 - A few small improvements             */
+/*                                        to allow different analog ports and  */
+/*                                        thread restart.                      */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
 /*    This file is part of ConVEX.                                             */
@@ -65,6 +67,11 @@ static int32_t     GyroValue = 0;
 // filter out noise.
 const int GyroJitterRange = 4;
 
+// pointer to our thread so we can kill it
+static Thread *gyroThread = NULL;
+
+// the gyro analog port
+static  tVexAnalogPin   gyroAnalogPin = kVexAnalog_1;
 
 static msg_t
 vexGyroTask(void *arg)
@@ -86,7 +93,7 @@ vexGyroTask(void *arg)
     // find bias
     for(i=0;i<1024;i++)
         {
-        GyroBiasAcc = GyroBiasAcc + vexAdcGet( kVexAnalog_1 );
+        GyroBiasAcc = GyroBiasAcc + vexAdcGet( gyroAnalogPin );
         chThdSleepMilliseconds(1);
         }
 
@@ -94,11 +101,10 @@ vexGyroTask(void *arg)
     GyroSmallBias = GyroBiasAcc - (GyroBias * 1024);
     // Ok bias done
 
-    while(1)
+    while(!chThdShouldTerminate())
         {
-        //vexDigitalPinSet( kVexDigital_1, 1);
         // Get raw analog value
-        GyroRaw   = vexAdcGet( kVexAnalog_1 );
+        GyroRaw   = vexAdcGet( gyroAnalogPin );
         // remove bias
         GyroDelta = GyroRaw - GyroBias;
 
@@ -115,8 +121,8 @@ vexGyroTask(void *arg)
 
         // calculate angle in deg * 10
         GyroValue = GyroRawFiltered / GyroSensorScale;
-        //vexDigitalPinSet( kVexDigital_1, 0);
 
+        // sleep
         chThdSleepMilliseconds(1);
         }
 
@@ -139,7 +145,30 @@ vexGyroGet()
 /*-----------------------------------------------------------------------------*/
 
 void
-vexGyroInit()
+vexGyroInit( tVexAnalogPin pin )
 {
-    chThdCreateStatic(waVexGyroTask, sizeof(waVexGyroTask), USER_THREAD_PRIORITY, vexGyroTask, NULL);
+    if( (pin < kVexAnalog_1) || (pin > kVexAnalog_8))
+        return;
+        
+    gyroThread = chThdCreateStatic(waVexGyroTask, sizeof(waVexGyroTask), USER_THREAD_PRIORITY, vexGyroTask, NULL);
+}
+
+/*-----------------------------------------------------------------------------*/
+/** @brief      Restart the gyro task                                          */
+/*-----------------------------------------------------------------------------*/
+
+void
+vexGyroReset()
+{
+    if( gyroThread != NULL )
+        {
+        // terminate the gyro task
+        chThdTerminate(gyroThread);
+        // wait for it to die - 1mS max
+        chThdWait(gyroThread);
+        
+        // restart
+        gyroThread = NULL;
+        vexGyroInit(gyroAnalogPin);
+        }
 }
