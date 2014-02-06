@@ -149,7 +149,9 @@ vexGyroInit( tVexAnalogPin pin )
 {
     if( (pin < kVexAnalog_1) || (pin > kVexAnalog_8))
         return;
-        
+
+    gyroAnalogPin = pin;
+
     gyroThread = chThdCreateStatic(waVexGyroTask, sizeof(waVexGyroTask), USER_THREAD_PRIORITY, vexGyroTask, NULL);
 }
 
