@@ -168,6 +168,18 @@ vexSpiTeamnameSet( char *name )
 }
 
 /*-----------------------------------------------------------------------------*/
+/** @brief      Force stand alone operational mode                             */
+/*-----------------------------------------------------------------------------*/
+
+void
+vexSpiModeStandalone()
+{
+    // set stand alone mode
+    // the autonomous task will execute
+    vexSpiData.txdata.data[3] = 0x01;
+}
+
+/*-----------------------------------------------------------------------------*/
 /** @brief      We use presence of js_1 as indication of good joystick data    */
 /** @returns    online status                                                  */
 /** @retval     1 = online                                                     */

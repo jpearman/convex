@@ -167,6 +167,7 @@ extern "C" {
 
 void        vexSpiInit(void);
 void        vexSpiTeamnameSet( char *name );
+void        vexSpiModeStandalone(void);
 short       vexSpiGetOnlineStatus(void);
 void        vexSpiSetMotor( int16_t index, int16_t data, bool_t reversed );
 void        vexSpiSend(void);
