@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
 /*                        Copyright (c) James Pearman                          */
-/*                                   2013                                      */
+/*                                 2013-2015                                   */
 /*                            All Rights Reserved                              */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
@@ -12,7 +12,8 @@
 /*                                                                             */
 /*    Revisions:                                                               */
 /*                V1.00     4 July 2013 - Initial release                      */
-/*                         12 Oct 2013  - Thread safe vesion                   */
+/*                         12 Oct  2013 - Thread safe version                  */
+/*                         13 Mar  2015 - Bug fix in dbl2stri                  */
 /*                                                                             */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
@@ -424,13 +425,13 @@ dbl2stri( pdefs *p, double dbl, unsigned dec_digits )
     }
 
     //  construct fractional multiplier for specified number of digits.
-    uint16_t mult = 1 ;
+    uint32_t mult = 1 ;
     uint16_t idx ;
     for (idx=0; idx < dec_digits; idx++)
         mult *= 10 ;
 
-    uint16_t wholeNum   = (uint16_t) dbl ;
-    uint16_t decimalNum = (uint16_t) ((dbl - wholeNum) * mult);
+    uint32_t wholeNum   = (uint32_t) dbl ;
+    uint32_t decimalNum = (uint32_t) ((dbl - wholeNum) * mult);
 
     // convert integer portion
     // this creates the number in reverse in print_buf
