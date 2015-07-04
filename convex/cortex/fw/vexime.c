@@ -182,6 +182,9 @@ vexImeSetType( tVexImeChannels channel, tVexMotorType type )
         case    kVexMotor393S:
             vexImes.imes[channel].type = IME_393S;
             break;
+        case    kVexMotor393R:
+            vexImes.imes[channel].type = IME_393R;
+            break;
         default:
             vexImes.imes[channel].type = IME_UND;
             break;
@@ -468,6 +471,7 @@ vexIMEFindEncoders()
             // type, we could do this from the device_id but will not know
             // if a 393 is set for speed or torque.
             // constants reduced by a factor of 4 due to overflow issues
+            // take the ticks_per_rev * 125 to get these numbers
             switch( ime->type )
                 {
                 case    IME_269:
@@ -478,6 +482,9 @@ vexIMEFindEncoders()
                     break;
                 case    IME_393S:
                     ime->rpm_constant = 49000/4;
+                    break;
+                case    IME_393R:
+                    ime->rpm_constant = 32668/4;
                     break;
                 default:
                     ime->rpm_constant = 39200/4;
@@ -994,6 +1001,9 @@ vexIMEDebug(vexStream *chp, int argc, char *argv[])
                 break;
             case    IME_393S:
                 vex_chprintf(chp,"393S ");
+                break;
+            case    IME_393R:
+                vex_chprintf(chp,"393R ");
                 break;
             default:
                 vex_chprintf(chp,"---- ");

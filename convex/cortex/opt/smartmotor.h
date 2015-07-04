@@ -54,7 +54,7 @@
 #include "vex.h"
 
 // Version 1.11
-#define kSmartMotorLibVersion   111
+#define kSmartMotorLibVersion   112
 
 // System parameters - don't change
 #define SMLIB_R_SYS             0.3
@@ -87,6 +87,7 @@
 
 // encoder counts per revolution depending on motor
 #define SMLIB_TPR_269           240.448
+#define SMLIB_TPR_393R          261.333
 #define SMLIB_TPR_393S          392
 #define SMLIB_TPR_393T          627.2
 #define SMLIB_TPR_QUAD          360.0

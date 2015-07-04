@@ -100,7 +100,8 @@ typedef enum {
     kVexMotorUndefined = 0,
     kVexMotor269,
     kVexMotor393T,
-    kVexMotor393S
+    kVexMotor393S,
+    kVexMotor393R
 } tVexMotorType;
 
 /*-----------------------------------------------------------------------------*/

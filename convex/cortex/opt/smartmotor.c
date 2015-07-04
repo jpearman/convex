@@ -37,7 +37,7 @@
 /*               V1.11  11 Nov 2013                                            */
 /*                      Fix bug when speed limited and changing directions     */
 /*                      quickly.                                               */
-/*                                                                             */
+/*               V1.12  Turbo gear support                                     */
 /*-----------------------------------------------------------------------------*/
 /*                                                                             */
 /*    This file is part of ConVEX.                                             */
@@ -641,6 +641,23 @@ SmartMotorsInit()
                 m->rpm_free = SMLIB_RPM_FREE_393 * 1.6;
 
                 m->ticks_per_rev = SMLIB_TPR_393S;
+
+                m->safe_current = SMLIB_I_SAFE393;
+
+                m->t_const_1 = SMLIB_C1_393;
+                m->t_const_2 = SMLIB_C2_393;
+                break;
+
+            // 393 set for Turbo
+            case    kVexMotor393R:
+                m->i_free   = SMLIB_I_FREE_393;
+                m->i_stall  = SMLIB_I_STALL_393;
+                m->r_motor  = SMLIB_R_393;
+                m->l_motor  = SMLIB_L_393;
+                m->ke_motor = SMLIB_Ke_393/2.4;
+                m->rpm_free = SMLIB_RPM_FREE_393 * 2.4;
+
+                m->ticks_per_rev = SMLIB_TPR_393R;
 
                 m->safe_current = SMLIB_I_SAFE393;
 

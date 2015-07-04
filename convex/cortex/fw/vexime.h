@@ -169,6 +169,7 @@ typedef struct _vexImeData {
 #define     IME_269             0
 #define     IME_393T            1
 #define     IME_393S            2
+#define     IME_393R            3  // Turbo gears
 #define     IME_UND             16
 /** @} */
 
