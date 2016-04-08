@@ -2,6 +2,9 @@
 # Build global options
 # NOTE: Can be overridden externally.
 #
+
+TOOLS_FOLDER = /usr/local/gcc-arm-none-eabi-5_2-2015q4/bin/
+
 include setup.mk
 
 # Compiler options here.
@@ -152,7 +155,8 @@ INCDIR = $(PORTINC) $(KERNINC) \
 MCU  = cortex-m3
 
 #TRGT = arm-elf-
-TRGT = arm-none-eabi-
+#TRGT = arm-none-eabi-
+TRGT = $(TOOLS_FOLDER)/arm-none-eabi-
 CC   = $(TRGT)gcc
 CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
