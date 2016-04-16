@@ -166,8 +166,13 @@ void        vexSleep( int32_t msec );
 
 //#define     VEX_WATCHDOG_ENABLE     1
 void        vexWatchdogInit(void);
-inline void vexWatchdogReload(void);
-int16_t     vexWatchdogResetFlagGet(void);
+#ifdef USING_GCC_CROSS_COMPILER
+  // declaring the function inline generates errors on gcc
+  void vexWatchdogReload(void);
+#else
+  inline void vexWatchdogReload(void);
+#endif  
+  int16_t     vexWatchdogResetFlagGet(void);
 
 /*-----------------------------------------------------------------------------*/
 // used for trying out code
