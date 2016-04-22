@@ -79,6 +79,9 @@
 #define HISTORY_CHAR          '!'
 #define ESC                   0x1B
 
+#define xstr(a) str(a)
+#define str(a) #a
+
 // Shell termination event source.
 EventSource shell_terminated;
 
@@ -162,6 +165,12 @@ cmd_info(vexStream *chp, int argc, char *argv[])
 #ifdef __TIME__
     vex_chprintf(chp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
 #endif
+#endif
+#ifdef PROJECT
+    vex_chprintf(chp, "Project:      %s\r\n",xstr(PROJECT));
+#endif
+#ifdef GIT_SHORT_HASH
+    vex_chprintf(chp, "Git Hash:     %s\r\n",xstr(GIT_SHORT_HASH));
 #endif
 }
 
