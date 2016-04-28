@@ -237,3 +237,14 @@ ifeq ($(USE_FWLIB),yes)
 endif
 
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk
+
+CORTEX_FLASH_FOLDER=/usr/local/bin/
+#SERIAL_PORT = /dev/tty.usbmodem14170                                                     
+#SERIAL_PORT = /dev/tty.usbmodem14170                                                     
+SERIAL_PORT = /dev/tty.usbmodem1410
+
+install:
+	$(CORTEX_FLASH_FOLDER)cortexflash -X -w bin/$(PROJECT).hex -g 0x0 $(SERIAL_PORT)
+
+connect:
+	screen $(SERIAL_PORT) 115200
