@@ -1,0 +1,370 @@
+/** @page basics The Basics
+  The cortex is a simple controller, it really does not do that much.  There are 12 digital ports, these can be used as inputs
+  or outputs or be configured for more complex sensors that use multiple connections.  There are 8 analog inputs and 10 motor ports.
+  Two of the motor ports use built-in motor controllers while the other 8 use three wire servo style connections.  There are two
+  serial ports that can be used for the VEX LCD display or other user defined functions and, last but not least, an I2C port that
+  currently supports the integrated motor encoders.
+  
+  Almost all robotic control programs on the cortex have the same elements.
+  
+  1. We must configure the cortex for the motors and sensors that are connected.
+  2. We read information from the joystick and connected sensors.
+  3. We drive the motors forwards and backwards based on the data we have read.
+  4. We give the operator feedback using LEDs, the VEX speaker and the VEX LCD display.
+
+  The following sections discuss the basic commands needed to achieve these.
+  
+  - @subpage loaddemo "Loading the demo projects"
+  - @subpage newproject "Creating a new project"
+  - @subpage config  "Cortex configuration" 
+  - @subpage control "Reading Joystick values"
+  - @subpage motors  "Controlling motors"
+  - @subpage sensors "Reading sensors"
+  - @subpage display "Display on the LCD"
+  - @subpage debug "Debug and command shell"
+  - @subpage threads "Using multi tasking"
+*/
+
+/** @page loaddemo Loading the demo projects
+  The convex distribution contains a number of example projects.  These can be loaded into the workspace by using the import
+  menu and then selecting "existing project into workspace".  Navigate to the convex/cortex/projects folder, either individual
+  projects or all may be imported.  Do not copy into the workspace as them the makefiles will not work without editing
+  the setup.mk file.
+  
+  @image  html "import_projects.jpg" Import the example projects
+*/
+ 
+/** @page newproject Creating new projects
+  The easiest way to create a new project is to make a copy of one of the existing examples.  If you are using the command line
+  makefile process this only involves making a copy of the folder with the example code in the same root location (usually C:\\projects\\vex\\cortex\\projects).
+  
+  If using the eclipse IDE you can right click on the project in the project explorer window and then select paste.  A dialog
+  will ask for a new project name and location.  An example where I was making the flashing Led example shows the following dialog.
+  
+  @image  html "new_project.jpg" Paste project dialog
+  
+  When browsing to the new project location, be sure to make a new folder under projects, it does not have to have the
+  same name as the new project but is best if it does.
+  
+  <B>New:
+  An eclipse "new project" plugin is now available.
+  @ref install_p5 "Installing eclipse"</B>
+*/
+
+/** @page config Cortex configuration
+  Before use, the digital and motor ports need to be configured, this is done by passing structures with configuration information
+  to the following functions.
+  
+  vexDigitalConfigure(vexDigiCfg *cfg, int16_t cfg_num)\n
+  vexMotorConfigure(vexMotorCfg *cfg, int16_t cfg_num)\n
+  
+  This is usually done in the @ref vexUserSetup function which is called part way through the initialization process.
+  Here is an example of use.
+  
+  @code
+// Digi IO configuration
+static  vexDigiCfg  dConfig[ kVexDigital_Num ] = {
+        { kVexDigital_1,    kVexSensorDigitalOutput, kVexConfigOutput,      0 },
+        { kVexDigital_2,    kVexSensorDigitalOutput, kVexConfigOutput,      0 },
+        { kVexDigital_3,    kVexSensorSonarCm,       kVexConfigSonarOut,    kVexSonar_1 },
+        { kVexDigital_4,    kVexSensorSonarCm,       kVexConfigSonarIn,     kVexSonar_1 },
+        { kVexDigital_5,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
+        { kVexDigital_6,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
+        { kVexDigital_7,    kVexSensorDigitalInput,  kVexConfigInput,       0 },
+        { kVexDigital_8,    kVexSensorQuadEncoder,   kVexConfigQuadEnc1,    kVexQuadEncoder_2 },
+        { kVexDigital_9,    kVexSensorQuadEncoder,   kVexConfigQuadEnc2,    kVexQuadEncoder_2 },
+        { kVexDigital_10,   kVexSensorDigitalInput,  kVexConfigInput,       0 },
+        { kVexDigital_11,   kVexSensorQuadEncoder,   kVexConfigQuadEnc1,    kVexQuadEncoder_1 },
+        { kVexDigital_12,   kVexSensorQuadEncoder,   kVexConfigQuadEnc2,    kVexQuadEncoder_1 }
+};
+// Motor configuration
+static  vexMotorCfg mConfig[ kVexMotorNum ] = {
+        { kVexMotor_1,      kVexMotor393T,           kVexMotorNormal,       kVexSensorIME,         kImeChannel_1 },
+        { kVexMotor_2,      kVexMotorUndefined,      kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_3,      kVexMotor393S,           kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_4,      kVexMotorUndefined,      kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_5,      kVexMotor269,            kVexMotorReversed,     kVexSensorQuadEncoder, kVexQuadEncoder_1 },
+        { kVexMotor_6,      kVexMotorUndefined,      kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_7,      kVexMotorUndefined,      kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_8,      kVexMotorUndefined,      kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_9,      kVexMotorUndefined,      kVexMotorNormal,       kVexSensorNone,        0 },
+        { kVexMotor_10,     kVexMotor393T,           kVexMotorNormal,       kVexSensorIME,         kImeChannel_2 }
+};
+
+void
+vexUserSetup()
+{
+    vexDigitalConfigure( dConfig, DIG_CONFIG_SIZE( dConfig ) );
+    vexMotorConfigure( mConfig, MOT_CONFIG_SIZE( mConfig ) );
+}
+  @endcode
+
+  Digital pins are configured as follows
+
+  - pin name
+  - pin function
+    + digital input
+    + digital output
+    + sonar with return values in cm  
+    + sonar with return values in inches 
+    + quadrature encoder
+  - pin configuration - depends on function
+    + For Sonar sensors
+	  + Sonar input
+	  + Sonar outout
+	+ For Quad encoders
+	  + first encoder input
+	  + second encoder input
+  - function channel
+  
+  Motors are configured as follows
+  
+  - Motor port
+  - Motor type
+    + 393 motor in Torque mode
+	+ 393 motor in speed mode
+	+ 269 motor
+  - Motor direction (direction the positive command values cause the motor to turn)
+  - Sensor assigned to this motor, this should be one of the following
+    + kVexSensorNone - no motor position sensor
+	+ kVexSensorQuadEncoder - a quadrature encoder used for motor position feedback.
+	+ kVexSensorIME - An IME used as motor position feedback.
+  - Sensor channel
+  */
+
+/** @page control Reading Joystick values
+  Access to the joystick is done in a similar way to ROBOTC but with a few extensions.
+  
+  vexControllerGet( tCtlIndex index )
+
+  index can either be an analog channel or button name, these are the definitions.
+  
+  index   | joystick function
+  --------|----------------
+  Ch1     | Analog channel 1
+  Ch2     | Analog channel 2
+  Ch3     | Analog channel 3
+  Ch4     | Analog channel 4
+  Btn5U   | Button 5 Up
+  Btn5D   | Button 5 Down
+  Btn6U   | Button 6 Up
+  Btn6D   | Button 6 Down
+  Btn7U   | Button 8 Up
+  Btn7D   | Button 8 Down
+  Btn7L   | Button 8 Left
+  Btn7R   | Button 8 Right
+  Btn8U   | Button 8 Up
+  Btn8D   | Button 8 Down
+  Btn8L   | Button 8 Left
+  Btn8R   | Button 8 Right
+  AcclX   | Accelerometer X axis
+  AcclY   | Accelerometer Y axis
+  AcclZ   | Accelerometer Z axis (not used)
+  Btn5    | Btn5U or Btn5D
+  Btn6    | Btn6U or Btn6D
+  Btn7    | Btn7U or Btn7D or Btn7L or Btn8R
+  Btn8    | Btn8U or Btn8D or Btn8L or Btn8R
+  BtnAny  | Any button
+  
+  To access the second controller append Xmtr2 to any of the index names, eg. Btn8UXmtr2.
+  
+  Buttons will return 1 (pressed) or 0 (not pressed).
+  
+  Analog joystick values are in the range -127 to +127.
+*/
+
+/** @page motors Controlling motors
+  This describes the simplest way of controlling the motors connected to the cortex, the equivalent of the 
+  motor[] intrinsic in ROBOTC or the SetMotor function in EasyC.  For more comprehensive motor control see
+  the @ref SetMotor function that is part of the smartMotor optional code.
+
+  Making the motors run
+  ---------------------
+  
+  Motors are controlled using vexMotorSet
+  
+  vexMotorSet( int16_t index, int16_t value )
+
+  The motor addressed by index is immediately set to the speed contained in the variable value.
+  
+  index should be in the range 0 through 9, shortcuts are defined in the enumerated type @ref tVexMotor
+  
+  Finding out what speed a motor is running at
+  --------------------------------------------
+  
+  The current motor speed can be found by using
+  
+  vexMotorGet( int16_t index )
+  
+  This returbs the current motor speed in the range -127 to +127.
+  
+*/
+
+/** @page sensors Reading sensors
+
+  There are only three fundamental types of sensors.
+  - Analog sensors
+  - Digital sensors
+  - Smart sensors on the I2C bus
+  
+  Analog Sensors
+  --------------
+  
+  Analog sensors include, potentiometers, gyro and line sensors.  To read an analog sensor use the @ref vexAdcGet function.
+  
+  vexAdcGet( int16_t index )
+  
+  This returns a 12 bit value in the range 0 to 4095.
+  
+  The analog inputs are constantly being scanned, vexAdcGet returns the latest value.  The sample rate for each analog
+  input in ConVEX is 13.4KHz.
+  
+  Digital Sensors
+  ---------------
+  
+  Digital sensors need to be configured before they can be used, by default; all digital pins are set to be inputs.
+  To change the type of a digital pin the @ref _vexDigiCfg "digital configuration structure" is used, see the @ref config "configuration page" for details.
+  
+  Simple digital sensors such as bump switches can be read using the @ref vexDigitalPinGet function.
+  
+  vexDigitalPinGet(tVexDigitalPin pin)
+  
+  Control of LEDs and pneumatics is done using the @ref vexDigitalPinSet function.
+  
+  vexDigitalPinSet(tVexDigitalPin pin, tVexDigitalState state)
+  
+  Complex digital sensors have dedicated functions to read them; they also need to be configured correctly before use.
+  
+  ###Ultrasonic distance sensor
+  
+  vexSonarGetCm(tVexSonarChannel channel)\n
+  vexSonarGetInch(tVexSonarChannel channel)\n
+  
+  Sonars can read in either cm or inches regardless of the way they were originally configured.
+  
+  ###Quadrature encoders
+  
+  vexEncoderGet(int16_t channel)
+  
+  Encoder data is returned as a 32 bit signed value.
+  
+  Encoders can be set using the vexEncoderSet function, non zero values are allowed.
+  
+  vexEncoderSet( int16_t channel, int32_t value );
+  
+  Smart Sensors
+  -------------
+  
+  The only smart sensors that are currently available are the Integrated Motor Encoders (IMEs).
+  
+  @ref vexImeGetChannelMax() can be used to find the number of IMEs attached to the cortex.
+  
+  To read an individual IME
+  
+  vexImeGetCount(int16_t channel)
+  
+  IMEs or quadrature encoders can be assigned to a motor for position feedback, this is done using the @ref _vexMotorCfg "motor configuration structure",
+  see the @ref config "configuration page" for details.  When an encoder is assigned to a motor is may be
+  read using the following function.
+  
+  vexMotorPositionGet(int16_t index)
+  
+*/
+
+/** @page display Display on the LCD
+  ConVEX supports two VEX LCD displays connected to the serial ports which are both initialized by default.
+
+  The following simple functions are used to display text and numbers.
+  
+  vexLcdSet(int16_t display, int16_t line, char *buf)
+  
+  - display is 0 for the first display and 1 for the second.
+  - line is 0 for the top display line and 1 for the lower display line.
+  - buf is a pointer to the text top be displayed.
+  
+  vexLcdSetAt(int16_t display, int16_t line, int16_t col, char *buf)\n
+  @ref vexLcdPrintf "vexLcdPrintf(int16_t display, int16_t line, char *fmt,...)"\n
+  @ref vexLcdPrintf "vexLcdPrintfAt(int16_t display, int16_t line, int16_t col, char *fmt,...)"\n
+  vexLcdClearLine(int16_t display, int16_t line)\n
+  vexLcdBacklight(int16_t display, int16_t value)\n
+
+  LCD buttons can be read using the following.
+  
+  vexLcdButtonGet(int16_t display)
+  
+*/
+
+/** @page debug Debug and command shell
+
+A command shell can (optionally) be used on the host serial port, this is the same port used to
+download the firmware so they can not be used simulateously.  Open the serial port on the PC or OSX
+at a baud rate of 115200, for example, on OSX the screen command can be used in the terminal.
+
+@verbatim
+screen /dev/tty.usbserial 115200
+@endverbatim
+
+Your serial port may be different to the one shown.
+
+
+The shell is usually created in the "main" function and is enabled for all the demo programs.  Typing "help" at
+the command prompt will list all commands available.
+
+@verbatim
+ch> 
+ch> help 
+Commands: help exit info systime mem threads reboot adc spi motor lcd enc son ime test sm apollo 
+ch> 
+@endverbatim
+
+some commands are always available, some configured by the user code.  Here is the output from the "info" command.  See
+the demo code for examples of how to add more shell commands.
+
+@verbatim
+ch> info
+Kernel:       2.6.0
+Compiler:     GCC 4.7.2
+Architecture: ARMv7-M
+Core Variant: Cortex-M3
+Port Info:    Advanced kernel mode
+Platform:     STM32F10x Performance Line High Density
+Board:        VEX CORTEX
+Build time:   Aug 19 2013 - 18:30:40
+ch> 
+@endverbatim
+
+Try the others to see their output.
+
+###Apollo
+
+Apollo is an optionally linked file that allows a real time text based display of most cortex
+sensor and motor data.  Type "apollo" at the prompt to start the display, hit any key to stop it.
+
+@verbatim
++------------------------------------------------------------------------------+
+| MTR EID  CMD ENCODER  RPM  AMPS  TEMP |  DIGITAL          |  ANALOG          |
+|  1  -- R   0       0    0  0.00  22.2 |  1 SonarCm     -1 |  1         251   |
+|  2   0   -26       0    0  0.75  32.5 |  2                |  2         253   |
+|  3   0   -26       0    0  0.75  32.2 |  3 Input        1 |  3         253   |
+|  4  -- R   0       0    0  0.00  22.2 |  4 Input        1 |  4         251   |
+|  5      ----  ------  ---  ----  ---- |  5 Encoder      0 |  5         254   |
+|  6      ----  ------  ---  ----  ---- |  6                |  6         251   |
+|  7   4     0       0    0  0.00  22.2 |  7 Input        1 |  7         253   |
+|  8   0 R -26       0    0  0.75  32.3 |  8 Input        1 |  8         254   |
+|  9   0 R -26       0    0  0.75  32.9 |  9 Input        1 |                  |
+| 10   0     0       0    0  0.00  22.2 | 10 Output       1 |                  |
+| C 1-5                      1.49  35.4 | 11 Output       0 |                  |
+| C 6-10                     1.49  36.0 | 12 Output       0 |                  |
++------------------------------------------------------------------------------|
+|        U  D  L  R           H     V            U  D  L  R           H     V  |
+| BTN5   0  0        JS_1     0  -101     BTN5   0  0        JS_1     0     0  |
+| BTN6   0  0        JS_2     0    14     BTN6   0  0        JS_2     0     0  |
+| BTN7   0  0  0  0           X     Y     BTN7   0  0  0  0           X     Y  |
+| BTN8   0  0  0  0  ACCL    10     0     BTN8   0  0  0  0  ACCL     0     0  |
+|                                                                              |
+|                                                                              |
+| 00:00:30  Main 7.02V  Backup 0.00V                                           |
++------------------------------------------------------------------------------+
+@endverbatim
+
+*/

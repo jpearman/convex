@@ -1,0 +1,18 @@
+external tools config
+
+ST-Link
+========
+Location
+C:\utils\openocd-0.6.1\bin\openocd-0.6.1.exe
+
+args
+-f C:\utils\openocd-0.6.1\scripts\interface\stlink-v2.cfg -f C:\utils\openocd-0.6.1\scripts\target\stm32f1x_stlink.cfg
+
+
+Download
+========
+location
+C:\utils\cortexflash.exe
+
+args
+-X -w bin/output.hex  -g0x0 COM4

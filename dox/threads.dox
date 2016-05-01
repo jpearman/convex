@@ -1,0 +1,90 @@
+/** @page threads Multi-tasking
+
+  As ConVEX is built upon the ChibiOS API, multi-tasking is straightforward and uses it's native multi threading
+  features.
+  
+  ConVEX creates several default systems tasks.
+  
+  name     | priority | type   | description
+  ---------|:--------:|--------|---------------------
+  main     | 64       | static | main program 
+  system   | 74       | static | communicate with the master processor
+  monitor  | 72       | static | competition control monitor task
+  ime      | 73       | static | IME background polling
+  sonar    | 72       | static | ultrasonic sensor polling - if a sonar is enabled
+  lcd      | 64       | static | LCD display communications
+  audio    | 64       | heap   | audio tone and rttl playback - if audio is enabled
+  shell    | 64       | static | shell (command line)
+  operator | 65       | static | driver control - started from monitor thread
+  auton    | 65       | static | autonomous     - started from monitor thread
+  
+  To create a static task using the ChibiOS API, code in the following form is used.  If the task needs to be stopped by
+  competition control then vexTaskRegister should be called near the beginning of the task and vexSleep called to yeild
+  processing rather than the ChibiOS function chThdSleepMilliseconds.
+
+  @code
+  // memory for task - use the WORKING_AREA macro
+  static WORKING_AREA(waVexTestThread, 512);
+  static msg_t
+  vexTestThread( void *arg )
+  {
+    (void)arg;
+	// register the task so competition control can kill it
+    vexTaskRegister(("test");
+	
+    // thread processing
+    while (TRUE)
+        {
+		// use vexSleep rather than chThdSleepMilliseconds
+        vexSleep(25);
+        }
+
+    return (msg_t)0;
+  }
+  
+  void
+  MyFunc()
+  {
+      // Creates the test thread.
+      chThdCreateStatic(waVexTestThread, sizeof(waVexTestThread), NORMALPRIO-1, vexTestThread, NULL);
+  }
+  @endcode
+  
+  See vexcortex.c for more information on @ref vexTaskRegister and other thread related functions.
+  
+  
+  An alternative way of creating tasks uses a ROBOTC style API.
+
+  @code
+  #include "robotc_glue.h"
+  
+  task
+  vexTestThread( void *arg )
+  {
+    (void)arg;
+
+    vexTaskRegister("test");
+
+    while (TRUE)
+        {
+        wait1Msec(25);
+        }
+
+    return (msg_t)0;
+  }
+  
+  void
+  MyFunc()
+  {
+      // Creates the test thread.
+      StartTask( vexTestThread );
+  }
+  @endcode
+
+  This creates the thread using dynamic memory allocation and allocates a fixed 512 bytes for it.
+  The task should still be registered using vexTaskRegister so competition control can stop it if necessary.
+  
+  See robotc_glue.c and robotc_glue.h for more details on ROBOTC style tasks.
+  
+  
+*/

@@ -1,0 +1,53 @@
+ /** @mainpage ConVEX API
+ *  The ConVEX firmware library is an add on package for the ChibiOS/RT
+ *  operating system that supports the VEX cortex microcontroller.
+ *  The library adds the necessary functionality to allow C applications to be
+ *  created and executed on the cortex that can access its available hardware.
+ *
+ *  ConVEX is not trying to be competitive with ROBOTC or EasyC, it is only 
+ *  appropriate for advanced users who have some familiarity with RTOS concepts
+ *  and are comfortable with programming micro-controllers at a bare bones level.
+ *
+ *  ConVEX uses many features of the ChibiOS/RT library and the hardware abstraction 
+ *  layer it provides for the STM32 processor.  Modification of the low level drivers
+ *  could cause damage to the cortex hardware, however, under most circumstances user
+ *  code can be developed that is as robust as the existing environments for the cortex.
+ *
+ *  Follow the steps outlined in the @ref getstarted "Getting Started" section to install ConVEX and the
+ *  necessary tools.  A few demo programs are included that can be used as a starting point for
+ *  user projects.
+ *  
+ *  ### Features
+ *  Preemptive multithreading @n
+ *  128 priority levels @n
+ *  Round-robin scheduling for threads at the same priority level @n
+ *  Software timers @n
+ *  Counting semaphores @n
+ *  Mutexes with support for the priority inheritance algorithm @n
+ *  Condition variables @n
+ *  Synchronous and asynchronous Messages @n
+ *  Event flags and handlers @n
+ *  Queues @n
+ *  Synchronous and asynchronous I/O with timeout capability @n
+ *  Thread-safe memory heap and memory pool allocators. @n
+ * 
+ *  ### Cortex specific features
+ *  Digital IO @n
+ *  Analog Inputs, potentiometer, accelerometer etc. @n
+ *  Ultrasonic sensor support @n
+ *  Quadrature encoder support @n
+ *  Motor control @n
+ *  Integrated motor encoder support @n
+ *  Support for two VEX LCD displays @n
+ *  Competition control @n
+ *  Simple audio tones and chip tone playback support @n
+ *  Command line interface (shell) @n
+ *  
+ *  ### Optional features
+ *  SmartMotor library @n
+ *  Apollo - real time display of motor and sensor data @n
+ *  VEX Gyro @n
+ *  PID library @n
+ *  ROBOTC style tasks and Sensor support to allow easy code porting @n
+ *  
+ */

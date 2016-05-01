@@ -1,0 +1,95 @@
+/** @page comp_control Competition control
+
+  There are few differences in the way competition control is handled in ConVEX as compared to ROBOTC
+  and EasyC.  In all cases the indication of disabled, driver or autonomous periods comes from the
+  master processor as part of the background communication between it and the user processor.  EasyC literally
+  resets the user processor when it detects a change of state, this causes havoc with variables that may need to be
+  retained between the different competition periods but is the only way it can interrupt and reset code
+  that may be, for example, waiting for sensors or performing other lenghty operations.  ROBOTC has the oportunity
+  to stop user code and tasks at any point as control of the processor returns to the ROBOTC operating system
+  between each line of user code.
+
+  ConVEX takes a more cooporative approach to the problem, it does not use the brute force mechanism of EasyC
+  and, because it is running native ARM code, cannot force a thread or function to stop running at any arbitary
+  point.  Every thread in ConVEX that needs to be under competition control must register with a supervisory
+  thread and avoid long periods of operation without calling back to the system via a "vexSleep" call.
+
+  With the V1.00 release of ConVEX, every program runs expecting VEXnet to be present and, if the competition
+  switch is connected, will run in a competition mode.
+	
+  User code is usually started from functions in the vexuser.c file, four functions should normally be provided,
+  although the setup functions are technically optional.  Here is a skeleton vexuser.c file.
+	
+	@code
+#include <stdlib.h>
+
+#include "ch.h"  		// needs for all ChibiOS programs
+#include "hal.h" 		// hardware abstraction layer header
+#include "vex.h"		// vex library header
+
+void
+vexUserSetup()
+{
+}
+
+/*-----------------------------------------------------------------------------*/
+
+void
+vexUserInit()
+{
+}
+
+/*-----------------------------------------------------------------------------*/
+msg_t
+vexAutonomous( void *arg )
+{
+    (void)arg;
+
+    // Must call this
+    vexTaskRegister("auton");
+
+    while(!chThdShouldTerminate())
+        {
+        // Don't hog cpu
+        vexSleep( 25 );
+        }
+
+    return (msg_t)0;
+}
+
+/*-----------------------------------------------------------------------------*/
+msg_t
+vexOperator( void *arg )
+{
+	(void)arg;
+
+	// Must call this
+	vexTaskRegister("operator");
+
+	// Run until asked to terminate
+	while(!chThdShouldTerminate())
+		{
+		// Don't hog cpu
+		vexSleep( 25 );
+		}
+
+	return (msg_t)0;
+}	
+	@endcode
+	
+	@ref vexUserSetup is normally where sensors and motors are defined, this is called early in the initialization
+	process before interrupts are started for such things as ultrasonic sensors and quad encoders.
+	
+	@ref vexUserInit is called later on but before competition control monitoring starts.  By this time most
+	things have been initialized including, for example, IMEs.  This is a function where one time initialization
+    of variables can be done or permanant user threads such as the smart motor library started.
+	
+	@ref vexAutonomous is started when the competition control monitor detects the start of that period.
+	
+	@ref vexOperator is started when the competition control monitor detects the start of that period.
+	
+	This diagram shows this graphically.
+	
+    @image  html "convex_user_code.jpg" ""
+
+*/
