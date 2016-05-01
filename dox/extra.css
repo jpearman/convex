@@ -2,6 +2,11 @@ body {
   background-color: #CCCCCC;
 }
 
+.image
+{
+        text-align: left;
+}
+
 div.contents {
   margin-top: 0px;
   margin-left: 0px;
