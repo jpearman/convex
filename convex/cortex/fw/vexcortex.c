@@ -608,7 +608,7 @@ vexWatchdogInit()
 /** @brief      Reload the IWDG - call several times per second                */
 /*-----------------------------------------------------------------------------*/
 
-inline void
+void
 vexWatchdogReload()
 {
     IWDG_TypeDef   *p = IWDG;
