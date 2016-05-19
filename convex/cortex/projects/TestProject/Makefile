@@ -152,7 +152,8 @@ INCDIR = $(PORTINC) $(KERNINC) \
 MCU  = cortex-m3
 
 #TRGT = arm-elf-
-TRGT = arm-none-eabi-
+#TRGT = arm-none-eabi-
+TRGT = $(ARM_TOOLS_FOLDER)arm-none-eabi-
 CC   = $(TRGT)gcc
 CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
