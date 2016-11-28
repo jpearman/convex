@@ -429,6 +429,12 @@ vexIMEFindEncoders()
     int16_t i = 0;
     imeData *ime;
 
+    // Try and disable the termination on every IME
+    for(i=0;i<IME_MAX+2;i++) {
+        vexIMEDisableTermination(0);
+        chThdSleepMilliseconds(3);
+    }
+
     // Reset
     vexIMEResetAll();
 
