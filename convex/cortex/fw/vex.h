@@ -71,6 +71,7 @@
 #include "vexprintf.h"
 #include "vexshell.h"
 #include "vexbkup.h"
+#include "vexserial.h"
 
 /**
  * @brief   ConVEX version string.
